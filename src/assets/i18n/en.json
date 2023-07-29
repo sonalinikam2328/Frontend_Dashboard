@@ -1,0 +1,33 @@
+{
+  "HEADER": {
+    "LOGIN": {
+      "PROFILE": "Profile",
+      "MY_WALLET": "My Wallet",
+      "SETTINGS": "Settings",
+      "LOCK_SCREEN": "Lock screen",
+      "LOGOUT": "Logout"
+    }
+  },
+
+  "MENUITEMS": {
+    "CHARTS": {
+      "TEXT": "Charts",
+      "LIST": {
+        "APEX": "Apex Chart",
+        "CHARTJS": "Chartjs Chart",
+        "CHARTIST": "Chartist Chart",
+        "ECHART": "E Chart",
+        "DEMO": "Demo Chart"
+      }
+    },
+    "SALES": {
+      "TEXT": "Sales",
+      "LIST": {
+        "PAYMENTCOLLECTION": "Payment Collection Plan",
+        "TURNOVER": "Turnover"
+   
+      }
+    }
+  
+  }
+}
