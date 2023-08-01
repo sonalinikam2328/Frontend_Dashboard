@@ -24,7 +24,16 @@
       "TEXT": "Sales",
       "LIST": {
         "PAYMENTCOLLECTION": "Payment Collection Plan",
-        "TURNOVER": "Turnover"
+        "TURNOVER": "Turnover",
+        "DEVELOPMENTCOSTDETAILS":"Developent Cost Details"
+   
+      }
+    },
+    "PURCHASE": {
+      "TEXT": "Purchase",
+      "LIST": {
+        "Supplierwise purchase and CR in Tons": "Supplierwise purchase and CR in Tons"
+        
    
       }
     }

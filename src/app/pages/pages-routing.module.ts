@@ -35,6 +35,7 @@ const routes: Routes = [
   { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) },
   { path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) },
   { path: 'jobs', loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule) },
+  { path: 'purchase', loadChildren: () => import('./purchase/purchase.module').then(m => m.PurchaseModule) },
 ];
 
 @NgModule({

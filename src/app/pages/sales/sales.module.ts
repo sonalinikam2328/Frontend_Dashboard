@@ -12,13 +12,15 @@ import { SalesRoutingModule } from './sales-routing.module';
 import { PaymentCollectionPlanComponent } from './payment-collection-plan/payment-collection-plan.component';
 import { TurnOverComponent } from './turn-over/turn-over.component';
 // import { CheckBoxModule } from 'smart-webcomponents-angular/checkbox';
-import { TableModule} from '@smart-webcomponents-angular/table'
+import { TableModule} from '@smart-webcomponents-angular/table';
+import { DevelopmentCostDetailsComponent } from './development-cost-details/development-cost-details.component'
 
 
 @NgModule({
   declarations: [
     PaymentCollectionPlanComponent,
-    TurnOverComponent
+    TurnOverComponent,
+    DevelopmentCostDetailsComponent
   ],
   imports: [
     CommonModule,

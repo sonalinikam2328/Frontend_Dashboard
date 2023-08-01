@@ -56,7 +56,27 @@ export const MENU: MenuItem[] = [
                 label: 'MENUITEMS.SALES.LIST.TURNOVER',
                 link: '/sales/turnOver',
                 parentId: 1
+            },
+            {
+                id: 4,
+                label: 'MENUITEMS.SALES.LIST.DEVELOPMENTCOSTDETAILS',
+                link: '/sales/developmentcostdeatils',
+                parentId: 1
             }
+        ]
+    },
+    {
+        id: 21,
+        icon: 'bxs-bar-chart-alt-2',
+        label: 'MENUITEMS.PURCHASE.TEXT',
+        subItems: [
+            {
+                id: 22,
+                label: 'Supplierwise purchase and CR in Tons',
+                link: '/purchase/Supplierwise purchase and CR in Tons',
+                parentId: 21
+            }
+            
         ]
     }
 
