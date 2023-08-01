@@ -42,6 +42,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChatComponent } from './chat/chat.component';
 
 import { FilemanagerComponent } from './filemanager/filemanager.component';
+import { FinanceModule } from './finance/finance.module';
 import { PurchaseModule } from './purchase/purchase.module';
 
 @NgModule({
@@ -80,7 +81,10 @@ import { PurchaseModule } from './purchase/purchase.module';
     SimplebarAngularModule,
     LightboxModule,
     PickerModule,
+    PurchaseModule,
+    FinanceModule,
     PurchaseModule
+   
   ],
 })
 export class PagesModule { }

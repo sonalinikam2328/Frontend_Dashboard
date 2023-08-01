@@ -63,6 +63,7 @@ export const MENU: MenuItem[] = [
                 link: '/sales/developmentcostdeatils',
                 parentId: 1
             }
+            
         ]
     },
     {
@@ -75,10 +76,31 @@ export const MENU: MenuItem[] = [
                 label: 'Supplierwise purchase and CR in Tons',
                 link: '/purchase/Supplierwise purchase and CR in Tons',
                 parentId: 21
+            },
+            {
+                id: 23,
+                label: 'top5 suppilers cr percent',
+                link: '/purchase/top5supplierscrpercentcomponent',
+                parentId: 21
             }
             
+        ]
+    },
+    {
+        id: 11,
+        icon: 'bxs-bar-chart-alt-2',
+        label: 'MENUITEMS.FINANCE.TEXT',
+        subItems: [
+            
+            {
+                id: 12,
+                label: 'MENUITEMS.FINANCE.LIST.CUSTOMERRECEIVABLECHART',
+                link: '/finance/customerreceivablechart',
+                parentId: 11
+            }
         ]
     }
 
 ];
-
+    
+   

@@ -36,7 +36,20 @@
         
    
       }
-    }
-  
+    },
+    "FINANCE": {
+      "TEXT": "Finance",
+      "LIST": {
+        "CUSTOMERRECEIVABLECHART": "Customer receivable chart"
+        
+      }, 
+      "PURCHASE": {
+        "TEXT": "Purchase",
+        "LIST": {
+          "Top5SuppliersCrPercent": "Top5 Suppliers Cr Percent"
+        }       
   }
 }
+} 
+}
+  

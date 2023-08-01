@@ -1,0 +1,18 @@
+
+
+<select class="form-control" style="width: 120px;
+    height: 30px;
+    font-size: 10px;
+    margin-top: 3px;
+    float: right;" (change)="handleClick($event, 'csv')">
+    <option selected>Export Type </option>
+    <option>CSV</option>
+    <option>PDF</option>
+</select>
+
+<!-- <smart-table #table class="table-hover table-bordered" id="table" [dataSource]="dataSource" [sortMode]="sortMode" [paging]="true" [columns]="columns" [columnMenu]="true" [filtering]="true" [columnReorder]="true" [columnResize]="true" [columnSizeMode]="columnSizeMode" [selection]="true" [selectionMode]="'one'">
+
+</smart-table> -->
+
+<smart-table #table id="table" [dataSource]="dataSource" [grouping]="grouping" [keyboardNavigation]="keyboardNavigation"
+    [columns]="columns"></smart-table>
