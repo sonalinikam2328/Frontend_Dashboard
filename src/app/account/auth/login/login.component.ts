@@ -8,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import { LoginService } from './login.service'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -24,18 +26,19 @@ export class LoginComponent implements OnInit {
   submitted = false;
   error = '';
   returnUrl: string;
+  passType: string = 'password';
 
   // set the currenr year
   year: number = new Date().getFullYear();
 
   // tslint:disable-next-line: max-line-length
   constructor(private formBuilder: UntypedFormBuilder, private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService,
-    private authFackservice: AuthfakeauthenticationService) { }
+    private authFackservice: AuthfakeauthenticationService, private _LoginService: LoginService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['admin@themesbrand.com', [Validators.required, Validators.email]],
-      password: ['123456', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: [''],
     });
 
     // reset login status
@@ -53,29 +56,51 @@ export class LoginComponent implements OnInit {
    */
   onSubmit() {
     this.submitted = true;
-
+    const formVal = this.loginForm.value;
+    let datatosend = {
+      UserId: formVal.email,
+      Password: formVal.password,
+      CompanyID: 101,
+    }
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     } else {
-      if (environment.defaultauth === 'firebase') {
-        this.authenticationService.login(this.f.email.value, this.f.password.value).then((res: any) => {
-          this.router.navigate(['/dashboard']);
-        })
-          .catch(error => {
+
+      this._LoginService.loginData(datatosend)
+        .pipe(first())
+        .subscribe(
+          response => {
+            if (response.DataSet['diffgr:diffgram']['NewDataSet'] == undefined) {
+              Swal.fire('Error', 'Invalid User Name', 'error')
+            } else {
+              if (response.DataSet['diffgr:diffgram']['NewDataSet']['Table']['IS_VALID'] == "True") {
+                this._LoginService.loginData1(datatosend).subscribe(res => {
+                  localStorage.setItem('user', JSON.stringify(res.List[0]));
+                  this.router.navigate(['/account/companyList']);
+                  // this.router.navigateByUrl('/dashboard');
+                });
+              } else {
+                Swal.fire('Error', 'Invalid Password', 'error')
+
+              }
+            }
+          },
+          error => {
             this.error = error ? error : '';
           });
-      } else {
-        this.authFackservice.login(this.f.email.value, this.f.password.value)
-          .pipe(first())
-          .subscribe(
-            data => {
-              this.router.navigate(['/dashboard']);
-            },
-            error => {
-              this.error = error ? error : '';
-            });
-      }
+
     }
   }
+
+  showHidePassword() {
+
+    if (this.passType == 'password') {
+      this.passType = 'text';
+    }
+    else {
+      this.passType = 'password';
+    }
+  }
+
 }

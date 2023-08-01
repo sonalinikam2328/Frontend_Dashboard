@@ -1,0 +1,51 @@
+<div class="account-pages my-5 pt-sm-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12 col-xl-12">
+                <div class="card overflow-hidden">
+                    <div class="card-header">
+                        <h5 class="card-title mb-4">Company List</h5>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div style="margin-top: 3%;">
+                                        <div class="table-responsive">
+                                            <div class="table-fixed">
+                                                <table class="table table-striped table-bordered table-hover compact"
+                                                    id="usertable">
+                                                    <thead style="position: sticky; top: 0; text-align: center">
+                                                        <tr>
+                                                            <th style="text-transform: capitalize;">Company Id</th>
+                                                            <th style="text-transform: capitalize;">Comapny Name</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody *ngIf="tabledata.length != 0">
+                                                        <tr *ngFor="let data of tabledata;let indexOfelement = index">
+                                                            <td class="td_right" style="text-align: right;"><a
+                                                                    style="color: blue; cursor: pointer;"
+                                                                    (click)="navigate(data)"><u>{{data.CODE}}</u></a>
+                                                            </td>
+                                                            <td class="td_center">{{data.COMPANY_NAME}}</td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                    <tbody *ngIf="tabledata.length == 0">
+                                                        <td colspan="2">No Data</td>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
