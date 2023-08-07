@@ -1,0 +1,81 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Purchase Tonnage</h5>
+    </div>
+    <div class="card-block">
+        <div class="row" style="margin: 2%;">
+            <div class="col-sm-3">
+                <label>Select Branch *</label>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group form-primary form-static-label">
+                    <span class="border-lable-flt">
+                        <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
+                            (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true'>
+                            <ng-option *ngFor="let values of branch" [value]="values">
+                                {{values.NAME}}</ng-option>
+                        </ng-select>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <div class="row" style="margin: 2%;">
+            <div class="col-sm-3">
+                <label>Select Dates *</label>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group input-group">
+                    <span class="border-lable-flt">
+                        <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control"
+                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [maxDate]="maxDate" bsDatepicker required>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group input-group">
+                    <span class="border-lable-flt">
+                        <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control"
+                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [maxDate]="maxDate" bsDatepicker required>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 2%;">
+            <div class="col-sm-3">
+                <label>Supplier Category *</label>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group form-primary form-static-label">
+                    <span class="border-lable-flt">
+                        <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
+                            (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true'>
+                            <ng-option *ngFor="let values of branch" [value]="values">
+                                {{values.NAME}}</ng-option>
+                        </ng-select>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <div class="row" style="margin: 2%;">
+            <div class="col-sm-3">
+                <label>Select Supplier *</label>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="formRadios" id="formRadios1" checked>
+                    <label class="form-check-label" for="formRadios1">
+                        Form Radio
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="formRadios" id="formRadios2">
+                    <label class="form-check-label" for="formRadios2">
+                        Form Radio checked
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

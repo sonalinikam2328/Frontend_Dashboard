@@ -13,16 +13,20 @@ import { UiModule } from '../ui/ui.module';
 import { SupplierwisePurchaseAndCRInTonsComponent } from './supplierwise-purchase-and-cr-in-tons/supplierwise-purchase-and-cr-in-tons.component';
 import { UIModule } from '../../shared/ui/ui.module';
 // import { CheckBoxModule } from 'smart-webcomponents-angular/checkbox';
-import { TableModule} from '@smart-webcomponents-angular/table'
-
-
+import { TableModule } from '@smart-webcomponents-angular/table';
+import { PurchaseTonnageComponent } from './purchase-tonnage/purchase-tonnage.component'
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     SupplierwisePurchaseAndCRInTonsComponent,
-    
-    Top5SuppliersCRPercentComponent
+    Top5SuppliersCRPercentComponent,
+    PurchaseTonnageComponent
   ],
+
   imports: [
     CommonModule,
     PurchaseRoutingModule,
@@ -31,7 +35,13 @@ import { TableModule} from '@smart-webcomponents-angular/table'
     NgApexchartsModule,
     ChartsModule,
     NgxChartistModule,
-    TableModule
-  ]
+    TableModule,
+    BsDatepickerModule.forRoot(),
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+
 })
 export class PurchaseModule { }

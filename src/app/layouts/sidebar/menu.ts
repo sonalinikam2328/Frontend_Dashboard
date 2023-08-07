@@ -63,7 +63,21 @@ export const MENU: MenuItem[] = [
                 link: '/sales/developmentcostdeatils',
                 parentId: 1
             }
-            
+
+        ]
+    },
+    {
+        id: 11,
+        icon: 'bxs-bar-chart-alt-2',
+        label: 'MENUITEMS.FINANCE.TEXT',
+        subItems: [
+
+            {
+                id: 12,
+                label: 'MENUITEMS.FINANCE.LIST.CUSTOMERRECEIVABLECHART',
+                link: '/finance/customerreceivablechart',
+                parentId: 11
+            }
         ]
     },
     {
@@ -73,34 +87,27 @@ export const MENU: MenuItem[] = [
         subItems: [
             {
                 id: 22,
-                label: 'Supplierwise purchase and CR in Tons',
-                link: '/purchase/Supplierwise purchase and CR in Tons',
+                label: 'MENUITEMS.PURCHASE.LIST.SUPPLIERWISEPURCHASEANDCRNTONS',
+                link: '/purchase/SupplierwisepurchaseandCRinTons',
                 parentId: 21
             },
             {
                 id: 23,
-                label: 'top5 suppilers cr percent',
+                label: 'MENUITEMS.PURCHASE.LIST.TOP5SUPPLIERSCRPERCENT',
                 link: '/purchase/top5supplierscrpercentcomponent',
                 parentId: 21
-            }
-            
-        ]
-    },
-    {
-        id: 11,
-        icon: 'bxs-bar-chart-alt-2',
-        label: 'MENUITEMS.FINANCE.TEXT',
-        subItems: [
-            
+            },
             {
-                id: 12,
-                label: 'MENUITEMS.FINANCE.LIST.CUSTOMERRECEIVABLECHART',
-                link: '/finance/customerreceivablechart',
-                parentId: 11
+                id: 24,
+                label: 'MENUITEMS.PURCHASE.LIST.PURCHASETONNAGE',
+                link: '/purchase/PurchaseTonnage',
+                parentId: 21
             }
+
         ]
     }
 
+
 ];
-    
-   
+
+

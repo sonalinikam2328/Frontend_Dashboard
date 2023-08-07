@@ -8,7 +8,6 @@
       "LOGOUT": "Logout"
     }
   },
-
   "MENUITEMS": {
     "CHARTS": {
       "TEXT": "Charts",
@@ -25,31 +24,22 @@
       "LIST": {
         "PAYMENTCOLLECTION": "Payment Collection Plan",
         "TURNOVER": "Turnover",
-        "DEVELOPMENTCOSTDETAILS":"Developent Cost Details"
-   
+        "DEVELOPMENTCOSTDETAILS": "Developent Cost Details"
       }
     },
     "PURCHASE": {
       "TEXT": "Purchase",
       "LIST": {
-        "Supplierwise purchase and CR in Tons": "Supplierwise purchase and CR in Tons"
-        
-   
+        "SUPPLIERWISEPURCHASEANDCRNTONS": "Supplierwise purchase and CR in Tons",
+        "TOP5SUPPLIERSCRPERCENT": "Top5 Suppliers Cr Percent",
+        "PURCHASETONNAGE": "Purchase Tonnage"
       }
     },
     "FINANCE": {
       "TEXT": "Finance",
       "LIST": {
         "CUSTOMERRECEIVABLECHART": "Customer receivable chart"
-        
-      }, 
-      "PURCHASE": {
-        "TEXT": "Purchase",
-        "LIST": {
-          "Top5SuppliersCrPercent": "Top5 Suppliers Cr Percent"
-        }       
+      }
+    }
   }
 }
-} 
-}
-  
