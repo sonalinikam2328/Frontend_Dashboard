@@ -18,8 +18,8 @@
                     </span>
                 </div>
             </div>
-
         </div>
+
         <div class="row" style="margin: 2%;">
             <div class="col-sm-3">
                 <label>Select Dates *</label>
@@ -49,7 +49,7 @@
                 <div class="form-group form-primary form-static-label">
                     <span class="border-lable-flt">
                         <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
-                            (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true'>
+                            (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true' >
                             <ng-option *ngFor="let values of branch" [value]="values">
                                 {{values.NAME}}</ng-option>
                         </ng-select>

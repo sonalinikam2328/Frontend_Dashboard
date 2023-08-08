@@ -1,4 +1,47 @@
-
+<div class="card">
+    <div class="card-header">
+        <h5>Supplier Purchase and CR in Tons</h5>
+    </div>
+    <div class="card-block">
+        <div class="row" style="margin: 2%;">
+            <div class="col-sm-3">
+                <label>Select Branch *</label>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group form-primary form-static-label">
+                    <span class="border-lable-flt">
+                        <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
+                            (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true'>
+                            <ng-option *ngFor="let values of branch" [value]="values">
+                                {{values.NAME}}</ng-option>
+                        </ng-select>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+                <div class="row" style="margin: 2%;">
+                    <div class="col-sm-3">
+                        <label>Select Finacial year *</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group form-primary form-static-label">
+                            <span class="border-lable-flt">
+                                <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
+                                    (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true'>
+                                    <ng-option *ngFor="let values of branch" [value]="values">
+                                        {{values.NAME}}</ng-option>
+                                </ng-select>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                
+       
+            
+            
 
 <select class="form-control" style="width: 120px;
     height: 30px;

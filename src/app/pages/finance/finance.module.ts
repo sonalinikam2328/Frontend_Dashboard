@@ -6,11 +6,12 @@ import { ChartsModule } from 'ng2-charts';
 import { NgxChartistModule } from 'ngx-chartist';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { UIModule } from '../../shared/ui/ui.module';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { FinanceRoutingModule } from './finance-routing.module';
 import { CustomerReceivableChartComponent } from './customer-receivable-chart/customer-receivable-chart.component';
 import { TableModule} from '@smart-webcomponents-angular/table'
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { TableModule} from '@smart-webcomponents-angular/table'
     NgApexchartsModule,
     ChartsModule,
     NgxChartistModule,
-    TableModule
+    TableModule,
+    NgSelectModule,
+    BsDatepickerModule.forRoot(),
   ],  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
 })

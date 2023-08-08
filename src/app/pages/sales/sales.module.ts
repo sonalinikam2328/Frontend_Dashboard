@@ -14,6 +14,8 @@ import { TurnOverComponent } from './turn-over/turn-over.component';
 // import { CheckBoxModule } from 'smart-webcomponents-angular/checkbox';
 import { TableModule} from '@smart-webcomponents-angular/table';
 import { DevelopmentCostDetailsComponent } from './development-cost-details/development-cost-details.component'
+import { NgSelectModule } from '@ng-select/ng-select';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { DevelopmentCostDetailsComponent } from './development-cost-details/deve
     NgApexchartsModule,
     ChartsModule,
     NgxChartistModule,
-    TableModule
+    TableModule,
+    NgSelectModule,
+    BsDatepickerModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

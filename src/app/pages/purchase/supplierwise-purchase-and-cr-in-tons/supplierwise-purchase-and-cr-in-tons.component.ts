@@ -1,6 +1,11 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TableComponent } from '@smart-webcomponents-angular/table';
 import { environment } from 'src/environments/environment';
+import * as  moment from 'moment';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { NgSelectComponent } from "@ng-select/ng-select";
 
 
 @Component({
@@ -9,6 +14,13 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./supplierwise-purchase-and-cr-in-tons.component.scss']
 })
 export class SupplierwisePurchaseAndCRInTonsComponent {
+
+  branch = []
+
+  onFocus(ele: NgSelectComponent) {
+    ele.open();
+  }
+
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 
 
@@ -89,6 +101,9 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
     this.table.exportData(type, 'table');
   }
 
+
 }
+
+
 
 

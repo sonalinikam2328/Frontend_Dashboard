@@ -1,12 +1,41 @@
 import { Component,ViewChild } from '@angular/core';
 import { TableComponent } from '@smart-webcomponents-angular/table';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import * as  moment from 'moment';
+import { Subject } from 'rxjs';
+import Swal from 'sweetalert2';
+import { NgSelectComponent } from "@ng-select/ng-select";
+
 @Component({
   selector: 'app-customer-receivable-chart',
   templateUrl: './customer-receivable-chart.component.html',
   styleUrls: ['./customer-receivable-chart.component.scss']
 })
 export class CustomerReceivableChartComponent {
+  maxDate: Date;
+  maxDatet: Date;
+  minDate: Date;
+  branch = []
+  angForm: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
+  ) {
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.minDate.setDate(this.minDate.getDate() - 1);
+    this.maxDate.setDate(this.maxDate.getDate() - 1);
+  }
+  onFocus(ele: NgSelectComponent) {
+    ele.open();
+  }
+
+
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 
 
