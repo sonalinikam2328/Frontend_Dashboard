@@ -45,6 +45,7 @@ import { FilemanagerComponent } from './filemanager/filemanager.component';
 import { FinanceModule } from './finance/finance.module';
 import { PurchaseModule } from './purchase/purchase.module';
 
+
 @NgModule({
   declarations: [CalendarComponent, ChatComponent, FilemanagerComponent],
   imports: [

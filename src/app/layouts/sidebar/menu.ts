@@ -62,6 +62,24 @@ export const MENU: MenuItem[] = [
                 label: 'MENUITEMS.SALES.LIST.DEVELOPMENTCOSTDETAILS',
                 link: '/sales/developmentcostdeatils',
                 parentId: 1
+            },
+            {
+                id: 5,
+                label: 'MENUITEMS.SALES.LIST.DAILYSALESDATA',
+                link: '/sales/dailysalesdata',
+                parentId: 1
+            },
+            {
+                id: 6,
+                label: 'MENUITEMS.SALES.LIST.MONTHLYSALESANDTARGET',
+                link: '/sales/monthlysalesandtarget',
+                parentId: 1
+            },
+            {
+                id: 7,
+                label: 'MENUITEMS.SALES.LIST.CUSTOMERWISEPLANVS.ACTUALSALE',
+                link: '/sales/customerwiseplanvs.actualsale',
+                parentId: 1
             }
 
         ]

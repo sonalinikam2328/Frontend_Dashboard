@@ -24,7 +24,10 @@
       "LIST": {
         "PAYMENTCOLLECTION": "Payment Collection Plan",
         "TURNOVER": "Turnover",
-        "DEVELOPMENTCOSTDETAILS": "Developent Cost Details"
+        "DEVELOPMENTCOSTDETAILS": "Developent Cost Details",
+         "DAILYSALESDATA": "Daily Sales data",
+         "MONTHLYSALESANDTARGET": "Monthly Sales and Target",
+         "CUSTOMERWISEPLANVS.ACTUALSALE": " Customer wise Plan Vs. Actual Sale"
       }
     },
     "PURCHASE": {

@@ -16,13 +16,19 @@ import { TableModule} from '@smart-webcomponents-angular/table';
 import { DevelopmentCostDetailsComponent } from './development-cost-details/development-cost-details.component'
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DailySalesDataComponent } from './daily-sales-data/daily-sales-data.component';
+import { MonthlySalesAndTargetComponent } from './monthly-sales-and-target/monthly-sales-and-target.component';
+import { CustomerWisePlanVsActualSaleComponent } from './customer-wise-plan-vs.-actual-sale/customer-wise-plan-vs.-actual-sale.component';
 
 
 @NgModule({
   declarations: [
     PaymentCollectionPlanComponent,
     TurnOverComponent,
-    DevelopmentCostDetailsComponent
+    DevelopmentCostDetailsComponent,
+    DailySalesDataComponent,
+    MonthlySalesAndTargetComponent,
+    CustomerWisePlanVsActualSaleComponent
   ],
   imports: [
     CommonModule,
@@ -32,8 +38,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ChartsModule,
     NgxChartistModule,
     TableModule,
-    NgSelectModule,
-    BsDatepickerModule
+    BsDatepickerModule.forRoot(),
+    NgSelectModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
