@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 import { NgSelectComponent } from "@ng-select/ng-select";
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { CustomerService } from './customer.service';
 
 @Component({
   selector: 'app-customer-wise-plan-vs.-actual-sale',
@@ -23,10 +23,14 @@ export class CustomerWisePlanVsActualSaleComponent {
   maxDate: Date;
   maxDatet: Date;
   minDate: Date;
+  selectedBrach;
+  selectedYear;
+  selectedMonth;
 
   angForm: FormGroup;
 
   constructor(
+    private _CustomerService:CustomerService,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
@@ -35,6 +39,15 @@ export class CustomerWisePlanVsActualSaleComponent {
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate() - 1);
     this.maxDate.setDate(this.maxDate.getDate() - 1);
+  }
+  createForm() {
+    this.angForm = this.fb.group({
+
+      BRANCH_NAME: ["", Validators.required],
+      YEAR_NAME: ["", Validators.required],
+      MONTH_NAME: ["", Validators.required],
+
+    });
   }
 
   onFocus(ele: NgSelectComponent){
@@ -103,6 +116,7 @@ export class CustomerWisePlanVsActualSaleComponent {
 
   ngOnInit(): void {
     // onInit code.
+    this.createForm();
   }
 
   ngAfterViewInit(): void {
@@ -120,6 +134,30 @@ export class CustomerWisePlanVsActualSaleComponent {
 
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
+  }
+  loadData() {
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+
+    const formVal = this.angForm.value;
+    let objdata = {
+
+      BRANCH_NAME: this.selectedBrach,
+      YEAR_NAME: this.selectedYear,
+      MONTH_NAME: this.selectedMonth
+    }
+    if (this.angForm.valid) {
+      this._CustomerService.findAll(objdata).subscribe((newdata) => {
+
+      }, err => {
+        Swal.fire('Warning', err, 'info')
+      })
+    } else {
+
+      Swal.fire('Warning', 'Please fill from and to date', 'info')
+    }
+
+
   }
 
 }

@@ -1,61 +1,69 @@
 <div class="card">
     <div class="card-header">
-        <h5>Customer wise Plan Vs. Actual Sale</h5>
+        <h5>Schedule Adherence for the month</h5>
     </div>
-    <div class="card-block">
-        <div class="row" style="margin: 2%;">
-            <div class="col-sm-3">
-                <label>Select Branch *</label>
+        <form [formGroup]="angForm">
+            <div class="card-block">
+            <div class="row" style="margin: 2%;">
+                <div class="col-sm-3">
+                    <label>Select Branch *</label>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-primary form-static-label">
+                        <span class="border-lable-flt">
+                            <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
+                                [(ngModel)]="selectedBrach" formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)"
+                                [selectOnTab]='true'>
+                                <ng-option *ngFor="let values of branch" [value]="values">
+                                    {{values.NAME}}</ng-option>
+                            </ng-select>
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-4">
-                <div class="form-group form-primary form-static-label">
-                    <span class="border-lable-flt">
-                        <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
-                            (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true'>
-                            <ng-option *ngFor="let values of branch" [value]="values">
-                                {{values.NAME}}</ng-option>
-                        </ng-select>
-                    </span>
+            <div class="row" style="margin: 2%;">
+                <div class="col-sm-3">
+                    <label>Select Finacial year *</label>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-primary form-static-label">
+                        <span class="border-lable-flt">
+                            <ng-select id="YEAR_NAME" bindValue="CODE" bindLabel="NAME" required #YEAR_NAME
+                                [(ngModel)]="selectedYear" formControlName="YEAR_NAME" (focus)="onFocus(YEAR_NAME)"
+                                [selectOnTab]='true'>
+                                <ng-option *ngFor="let values of branch" [value]="values">
+                                    {{values.NAME}}</ng-option>
+                            </ng-select>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin: 2%;">
+                <div class="col-sm-3">
+                    <label>Select Month *</label>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-primary form-static-label">
+                        <span class="border-lable-flt">
+                            <ng-select id="MONTH_NAME" bindValue="CODE" bindLabel="NAME" required #MONTH_NAME
+                                [(ngModel)]=" selectedMonth" formControlName="MONTH_NAME" (focus)="onFocus(MONTH_NAME)"
+                                [selectOnTab]='true'>
+                                <ng-option *ngFor="let values of branch" [value]="values">
+                                    {{values.NAME}}</ng-option>
+                            </ng-select>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row" style="margin: 2%;">
+                <div class="col-sm text-right">
+                    <button class="btn btn-primary">Go</button>
                 </div>
             </div>
 
-        </div>
-        <div class="row" style="margin: 2%;">
-            <div class="col-sm-3">
-                <label>final year dropdown *</label>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group form-primary form-static-label">
-                    <span class="border-lable-flt">
-                        <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
-                            (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true'>
-                            <ng-option *ngFor="let values of branch" [value]="values">
-                                {{values.NAME}}</ng-option>
-                        </ng-select>
-                    </span>
-                </div>
-            </div>
-
-        </div>
-        <div class="row" style="margin: 2%;">
-            <div class="col-sm-3">
-                <label>Month dropdown *</label>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group form-primary form-static-label">
-                    <span class="border-lable-flt">
-                        <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
-                            (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true'>
-                            <ng-option *ngFor="let values of branch" [value]="values">
-                                {{values.NAME}}</ng-option>
-                        </ng-select>
-                    </span>
-                </div>
-            </div>
-
-        </div>
-           </div>
-</div>
+        </form>
 
 
 
