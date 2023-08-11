@@ -1,51 +1,52 @@
+
 import { Component, ViewChild } from '@angular/core';
-import { TableComponent } from '@smart-webcomponents-angular/table';
-import { environment } from 'src/environments/environment';
+import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
+import { environment } from '../../../../environments/environment';
+import { NgSelectComponent } from "@ng-select/ng-select";
 import * as  moment from 'moment';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgSelectComponent } from "@ng-select/ng-select";
-
+import { scheduleadherenceservice } from './scheduleadherence.service';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
-import { SupplierwisePurchaseService } from './supplierwise-purchase.service';
-
-
 
 @Component({
-  selector: 'app-supplierwise-purchase-and-cr-in-tons',
-  templateUrl: './supplierwise-purchase-and-cr-in-tons.component.html',
-  styleUrls: ['./supplierwise-purchase-and-cr-in-tons.component.scss']
+  selector: 'app-schedule-adherence-for-the-month',
+  templateUrl: './schedule-adherence-for-the-month.component.html',
+  styleUrls: ['./schedule-adherence-for-the-month.component.scss']
 })
-export class SupplierwisePurchaseAndCRInTonsComponent {
+export class ScheduleAdherenceForTheMonthComponent {
+  branch = []
 
-  branch = [];
   selectedBrach;
   selectedYear;
+  selectedMonth;
   angForm: FormGroup;
 
+
   constructor(
-    private _SupplierwisePurchaseService:SupplierwisePurchaseService,
+    private _scheduleadherenceservice: scheduleadherenceservice,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
   ) { }
 
 
-  onFocus(ele: NgSelectComponent) {
-    ele.open();
-  }
-
   createForm() {
     this.angForm = this.fb.group({
 
       BRANCH_NAME: ["", Validators.required],
       YEAR_NAME: ["", Validators.required],
+      MONTH_NAME: ["", Validators.required],
 
     });
   }
 
+
+  onFocus(ele: NgSelectComponent) {
+    ele.open();
+  }
 
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 
@@ -109,7 +110,6 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
   ngOnInit(): void {
     // onInit code.
     this.createForm();
-
   }
 
   ngAfterViewInit(): void {
@@ -135,10 +135,12 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
     const formVal = this.angForm.value;
     let objdata = {
 
-      BRANCH_NAME: this.selectedBrach
+      BRANCH_NAME: this.selectedBrach,
+      YEAR_NAME: this.selectedYear,
+      MONTH_NAME: this.selectedMonth
     }
     if (this.angForm.valid) {
-      this._SupplierwisePurchaseService.findAll(objdata).subscribe((newdata) => {
+      this._scheduleadherenceservice.findAll(objdata).subscribe((newdata) => {
 
       }, err => {
         Swal.fire('Warning', err, 'info')
@@ -150,8 +152,7 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
 
 
   }
+
 }
-
-
 
 

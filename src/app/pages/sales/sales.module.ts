@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ChartsModule } from 'ng2-charts';
@@ -21,15 +21,24 @@ import { MonthlySalesAndTargetComponent } from './monthly-sales-and-target/month
 import { CustomerWisePlanVsActualSaleComponent } from './customer-wise-plan-vs.-actual-sale/customer-wise-plan-vs.-actual-sale.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { MonthlyValueAdditionTargetVsActualComponent } from './monthly-value-addition-target-vs-actual/monthly-value-addition-target-vs-actual.component';
+import { ScheduleAdherenceForTheMonthComponent } from './schedule-adherence-for-the-month/schedule-adherence-for-the-month.component';
+
 
 @NgModule({
   declarations: [
     PaymentCollectionPlanComponent,
     TurnOverComponent,
     DevelopmentCostDetailsComponent,
+<<<<<<< Updated upstream
     DailySalesDataComponent,
     MonthlySalesAndTargetComponent,
     CustomerWisePlanVsActualSaleComponent
+=======
+    
+    MonthlyValueAdditionTargetVsActualComponent,
+          ScheduleAdherenceForTheMonthComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     CommonModule,
@@ -41,6 +50,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     TableModule,
     BsDatepickerModule.forRoot(),
     NgSelectModule,
+<<<<<<< Updated upstream
+=======
+    BsDatepickerModule,
+>>>>>>> Stashed changes
     ReactiveFormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

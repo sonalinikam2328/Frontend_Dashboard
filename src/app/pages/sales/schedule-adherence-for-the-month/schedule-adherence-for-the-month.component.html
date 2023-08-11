@@ -1,0 +1,84 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Schedule Adherence for the month</h5>
+    </div>
+        <form [formGroup]="angForm">
+            <div class="card-block">
+            <div class="row" style="margin: 2%;">
+                <div class="col-sm-3">
+                    <label>Select Branch *</label>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-primary form-static-label">
+                        <span class="border-lable-flt">
+                            <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
+                                [(ngModel)]="selectedBrach" formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)"
+                                [selectOnTab]='true'>
+                                <ng-option *ngFor="let values of branch" [value]="values">
+                                    {{values.NAME}}</ng-option>
+                            </ng-select>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin: 2%;">
+                <div class="col-sm-3">
+                    <label>Select Finacial year *</label>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-primary form-static-label">
+                        <span class="border-lable-flt">
+                            <ng-select id="YEAR_NAME" bindValue="CODE" bindLabel="NAME" required #YEAR_NAME
+                                [(ngModel)]="selectedYear" formControlName="YEAR_NAME" (focus)="onFocus(YEAR_NAME)"
+                                [selectOnTab]='true'>
+                                <ng-option *ngFor="let values of branch" [value]="values">
+                                    {{values.NAME}}</ng-option>
+                            </ng-select>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin: 2%;">
+                <div class="col-sm-3">
+                    <label>Select Month *</label>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-primary form-static-label">
+                        <span class="border-lable-flt">
+                            <ng-select id="MONTH_NAME" bindValue="CODE" bindLabel="NAME" required #MONTH_NAME
+                                [(ngModel)]=" selectedMonth" formControlName="MONTH_NAME" (focus)="onFocus(MONTH_NAME)"
+                                [selectOnTab]='true'>
+                                <ng-option *ngFor="let values of branch" [value]="values">
+                                    {{values.NAME}}</ng-option>
+                            </ng-select>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row" style="margin: 2%;">
+                <div class="col-sm text-right">
+                    <button class="btn btn-primary">Go</button>
+                </div>
+            </div>
+
+        </form>
+    
+
+<select class="form-control" style="width: 120px;
+    height: 30px;
+    font-size: 10px;
+    margin-top: 3px;
+    float: right;" (change)="handleClick($event, 'csv')">
+    <option selected>Export Type </option>
+    <option>CSV</option>
+    <option>PDF</option>
+</select>
+
+<!-- <smart-table #table class="table-hover table-bordered" id="table" [dataSource]="dataSource" [sortMode]="sortMode" [paging]="true" [columns]="columns" [columnMenu]="true" [filtering]="true" [columnReorder]="true" [columnResize]="true" [columnSizeMode]="columnSizeMode" [selection]="true" [selectionMode]="'one'">
+
+</smart-table> -->
+
+<smart-table #table id="table" [dataSource]="dataSource" [grouping]="grouping" [keyboardNavigation]="keyboardNavigation"
+    [columns]="columns"></smart-table>

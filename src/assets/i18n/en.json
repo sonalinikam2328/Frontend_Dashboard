@@ -25,9 +25,15 @@
         "PAYMENTCOLLECTION": "Payment Collection Plan",
         "TURNOVER": "Turnover",
         "DEVELOPMENTCOSTDETAILS": "Developent Cost Details",
+<<<<<<< Updated upstream
          "DAILYSALESDATA": "Daily Sales data",
          "MONTHLYSALESANDTARGET": "Monthly Sales and Target",
          "CUSTOMERWISEPLANVS.ACTUALSALE": " Customer wise Plan Vs. Actual Sale"
+=======
+        "MONTHLYVALUEADDITIONTARGETV/SACTUAL":"Monthly Value Addition target V/s Actual",
+        "SCHUDLEADHERENCEFORTHEMONTH":"schedule adherence for the month"
+
+>>>>>>> Stashed changes
       }
     },
     "PURCHASE": {

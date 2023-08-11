@@ -1,32 +1,28 @@
-import { Component, ViewChild } from '@angular/core';
-import { TableComponent } from '@smart-webcomponents-angular/table';
-import { environment } from 'src/environments/environment';
+
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
+import { environment } from '../../../../environments/environment';
+import { NgSelectComponent } from "@ng-select/ng-select";
 import * as  moment from 'moment';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgSelectComponent } from "@ng-select/ng-select";
-
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
-import { SupplierwisePurchaseService } from './supplierwise-purchase.service';
-
-
-
+import { monthlayvalueadditionservice } from './monthlayvalueaddition.service';
 @Component({
-  selector: 'app-supplierwise-purchase-and-cr-in-tons',
-  templateUrl: './supplierwise-purchase-and-cr-in-tons.component.html',
-  styleUrls: ['./supplierwise-purchase-and-cr-in-tons.component.scss']
+  selector: 'app-monthly-value-addition-target-vs-actual',
+  templateUrl: './monthly-value-addition-target-vs-actual.component.html',
+  styleUrls: ['./monthly-value-addition-target-vs-actual.component.scss']
 })
-export class SupplierwisePurchaseAndCRInTonsComponent {
-
+export class MonthlyValueAdditionTargetVsActualComponent {
   branch = [];
   selectedBrach;
   selectedYear;
   angForm: FormGroup;
 
   constructor(
-    private _SupplierwisePurchaseService:SupplierwisePurchaseService,
+    private _monthlayvalueadditionservice: monthlayvalueadditionservice,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
@@ -45,7 +41,6 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
 
     });
   }
-
 
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 
@@ -109,7 +104,6 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
   ngOnInit(): void {
     // onInit code.
     this.createForm();
-
   }
 
   ngAfterViewInit(): void {
@@ -135,10 +129,11 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
     const formVal = this.angForm.value;
     let objdata = {
 
-      BRANCH_NAME: this.selectedBrach
+      BRANCH_NAME: this.selectedBrach,
+      YEAR_NAME: this.selectedYear
     }
     if (this.angForm.valid) {
-      this._SupplierwisePurchaseService.findAll(objdata).subscribe((newdata) => {
+      this._monthlayvalueadditionservice.findAll(objdata).subscribe((newdata) => {
 
       }, err => {
         Swal.fire('Warning', err, 'info')
@@ -150,8 +145,5 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
 
 
   }
+
 }
-
-
-
-
