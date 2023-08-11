@@ -12,6 +12,7 @@ import { FinanceRoutingModule } from './finance-routing.module';
 import { TableModule} from '@smart-webcomponents-angular/table'
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CustomerReceivableChartComponent } from './customer-receivable-chart/customer-receivable-chart.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { CustomerReceivableChartComponent } from './customer-receivable-chart/cu
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FinanceRoutingModule,
     UIModule,
     NgApexchartsModule,

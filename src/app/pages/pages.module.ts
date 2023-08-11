@@ -44,6 +44,8 @@ import { ChatComponent } from './chat/chat.component';
 import { FilemanagerComponent } from './filemanager/filemanager.component';
 import { FinanceModule } from './finance/finance.module';
 import { PurchaseModule } from './purchase/purchase.module';
+import { WIPMachineShopModule } from './wip-machine-shop/wip-machine-shop.module';
+
 
 
 @NgModule({
@@ -83,7 +85,10 @@ import { PurchaseModule } from './purchase/purchase.module';
     LightboxModule,
     PickerModule,
     PurchaseModule,
-    FinanceModule   
+    FinanceModule,
+    WIPMachineShopModule,
+    
+   
   ],
 })
 export class PagesModule { }

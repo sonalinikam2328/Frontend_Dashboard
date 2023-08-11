@@ -1,3 +1,4 @@
+import { ShopsComponent } from 'src/app/pages/ecommerce/shops/shops.component';
 import { MenuItem } from './menu.model';
 
 export const MENU: MenuItem[] = [
@@ -122,6 +123,20 @@ export const MENU: MenuItem[] = [
                 parentId: 21
             }
 
+        ]
+    },
+    {
+        id:31,
+        icon: 'bxs-bar-chart-alt-2',
+        label:'MENUITEMS.WIPMACHINESHOP.TEXT',
+        subItems: [
+            {
+                id:32,
+                label:'MENUITEMS.WIPMACHINESHOP.LIST.OILCONSUMPTION',
+                link:'/wipmachineshop/oilconsumption',
+                parentId:31
+
+            }
         ]
     }
 

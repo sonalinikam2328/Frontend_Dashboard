@@ -43,6 +43,12 @@
       "LIST": {
         "CUSTOMERRECEIVABLECHART": "Customer receivable chart"
       }
+    },
+    "WIPMACHINESHOP": {
+      "TEXT": "wip-machine-shop",
+      "LIST": {
+        "OILCONSUMPTION":"oil consumption"
+      }
     }
   }
 }

@@ -1,80 +1,51 @@
-import { Component,ViewChild,OnInit } from '@angular/core';
-import { TableComponent,TableColumn } from '@smart-webcomponents-angular/table';
-import { environment } from 'src/environments/environment';
+import { Component, OnInit,  } from '@angular/core';
+import { ViewChild } from '@angular/core';
+import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
+import { environment } from '../../../../environments/environment';
+import { NgSelectComponent } from '@ng-select/ng-select';
+import { CommonModule } from '@angular/common';
+
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators,FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import * as  moment from 'moment';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
-import { NgSelectComponent } from "@ng-select/ng-select";
-import { CommonModule } from '@angular/common';
-import { CustomerService } from './customer.service';
+import { OilConsumptionService } from './oil-consumption.service';
+
+
 @Component({
-  selector: 'app-customer-receivable-chart',
-  templateUrl: './customer-receivable-chart.component.html',
-  styleUrls: ['./customer-receivable-chart.component.scss']
+  selector: 'app-oil-consumption',
+  templateUrl: './oil-consumption.component.html',
+  styleUrls: ['./oil-consumption.component.scss']
 })
-export class CustomerReceivableChartComponent {
-  maxDate: Date;
-  maxDatet: Date;
-  minDate: Date;
-  minDatet:Date;
-  fromdate=null
-  todate=null
-  branch = [];
-  selectedBrach;
-      
-  angForm: FormGroup;
-
-  constructor(
-    private _CustomerService:CustomerService,
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private router: Router,
-  ) {
-    this.minDate = new Date();
-    this.maxDate = new Date();
-    this.minDate.setDate(this.minDate.getDate() - 1);
-    this.maxDate.setDate(this.maxDate.getDate() - 1);
-    this.fromdate =this.maxDate
-  }
-  onFocus(ele: NgSelectComponent) {
-    ele.open();
-  }
-  onValueChange(value: Date): void {
-    this.maxDatet = new Date();
-
-    this.maxDatet.setDate(this.maxDatet.getDate());
-    if (this.fromdate != null && this.todate != null) {
-
-      let from = this.fromdate.getFullYear() + '/' + (this.fromdate.getMonth() + 1) + '/' + this.fromdate.getDate()
-      let to = this.todate.getFullYear() + '/' + (this.todate.getMonth() + 1) + '/' + this.todate.getDate()
-
-      if (from == to) {
-        Swal.fire('Error', 'From date and To date not be equal', 'error');
-        this.angForm.controls['TO'].reset()
-      }
-
-      if (from > to) {
-        Swal.fire('Error', 'To date is must be less than From date', 'error');
-        this.angForm.controls['TO'].reset()
-      }
-
-    }
-
-  }
-  createForm() {
-    this.angForm = this.fb.group({
-      BRANCH_NAME: ["", Validators.required],
-      FROM: ["", [Validators.required]], // control name
-      TO: ["", [Validators.required]],
-    });
-  }
-
+export class OilConsumptionComponent implements OnInit {
+  
   
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 
+  branch = [];
+  selectedBrach;
+  selectedYear;
+  angForm: FormGroup;
+  constructor(
+    
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
+    private _OilConsumptionService:OilConsumptionService,
+  ){}
+  
+
+onFocus(ele: NgSelectComponent) {
+    ele.open();
+  }
+createForm() {
+    this.angForm = this.fb.group({
+      BRANCH_NAME: ["", Validators.required],
+      YEAR_NAME: ["", Validators.required],
+    });
+  }
 
   grouping: boolean = true;
 
@@ -131,11 +102,14 @@ export class CustomerReceivableChartComponent {
     },
 
   ];
+  
 
   ngOnInit(): void {
-    // onInit code.
     this.createForm();
+    // onInit code.
   }
+  
+  
 
   ngAfterViewInit(): void {
     // afterViewInit code.
@@ -153,7 +127,6 @@ export class CustomerReceivableChartComponent {
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
   }
-
   loadData() {
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
@@ -161,8 +134,7 @@ export class CustomerReceivableChartComponent {
     
     const formVal = this.angForm.value;
     let objdata = {
-      FROM: moment(this.fromdate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
-      TO: moment(this.todate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
+      
       
       BRANCH_NAME: this.selectedBrach
       
@@ -170,7 +142,7 @@ export class CustomerReceivableChartComponent {
     }
     if (this.angForm.valid) {
       
-      this._CustomerService.findAll(objdata).subscribe((newdata) => {
+      this._OilConsumptionService.findAll(objdata).subscribe((newdata) => {
 
       }, err => {
         Swal.fire('Warning', err, 'info')
@@ -183,7 +155,13 @@ export class CustomerReceivableChartComponent {
 
 
   }
+  
 
 }
+
+
+
+
+
 
 
