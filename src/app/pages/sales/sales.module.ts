@@ -19,6 +19,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DailySalesDataComponent } from './daily-sales-data/daily-sales-data.component';
 import { MonthlySalesAndTargetComponent } from './monthly-sales-and-target/monthly-sales-and-target.component';
 import { CustomerWisePlanVsActualSaleComponent } from './customer-wise-plan-vs.-actual-sale/customer-wise-plan-vs.-actual-sale.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { CustomerWisePlanVsActualSaleComponent } from './customer-wise-plan-vs.-
     NgxChartistModule,
     TableModule,
     BsDatepickerModule.forRoot(),
-    NgSelectModule
+    NgSelectModule,
+    ReactiveFormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

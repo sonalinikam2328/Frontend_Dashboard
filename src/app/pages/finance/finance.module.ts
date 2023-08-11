@@ -9,9 +9,9 @@ import { UIModule } from '../../shared/ui/ui.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 import { FinanceRoutingModule } from './finance-routing.module';
-import { CustomerReceivableChartComponent } from './customer-receivable-chart/customer-receivable-chart.component';
 import { TableModule} from '@smart-webcomponents-angular/table'
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { CustomerReceivableChartComponent } from './customer-receivable-chart/customer-receivable-chart.component';
 
 
 @NgModule({
@@ -28,7 +28,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     TableModule,
     NgSelectModule,
     BsDatepickerModule.forRoot(),
-  ],  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  ],  
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
 })
 export class FinanceModule { }

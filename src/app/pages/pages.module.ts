@@ -83,9 +83,7 @@ import { PurchaseModule } from './purchase/purchase.module';
     LightboxModule,
     PickerModule,
     PurchaseModule,
-    FinanceModule,
-    PurchaseModule
-   
+    FinanceModule   
   ],
 })
 export class PagesModule { }

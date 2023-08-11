@@ -4,7 +4,8 @@ import { environment } from '../../../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Customer } from '../../sales/turn-over/customer';
-
+import Swal from 'sweetalert2';
+catchError
 @Injectable({
   providedIn: 'root'
 })

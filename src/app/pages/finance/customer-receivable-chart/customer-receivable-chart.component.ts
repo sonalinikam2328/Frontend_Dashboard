@@ -1,4 +1,4 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component,OnInit,ViewChild } from '@angular/core';
 import { TableComponent } from '@smart-webcomponents-angular/table';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -8,34 +8,24 @@ import * as  moment from 'moment';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 import { NgSelectComponent } from "@ng-select/ng-select";
+import { CustomerService } from './customer.service';
 
 @Component({
   selector: 'app-customer-receivable-chart',
   templateUrl: './customer-receivable-chart.component.html',
   styleUrls: ['./customer-receivable-chart.component.scss']
 })
-export class CustomerReceivableChartComponent {
-  maxDate: Date;
-  maxDatet: Date;
-  minDate: Date;
-  branch = []
-  angForm: FormGroup;
+export class CustomerReceivableChartComponent implements OnInit {
+   // dataSource = []
+   freezeHeader: boolean = true;
 
-  constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private router: Router,
-  ) {
-    this.minDate = new Date();
-    this.maxDate = new Date();
-    this.minDate.setDate(this.minDate.getDate() - 1);
-    this.maxDate.setDate(this.maxDate.getDate() - 1);
-  }
-  onFocus(ele: NgSelectComponent) {
-    ele.open();
+   
+  
+  ngOnInit(): void {
+
   }
 
-
+  
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 
 
@@ -95,9 +85,7 @@ export class CustomerReceivableChartComponent {
 
   ];
 
-  ngOnInit(): void {
-    // onInit code.
-  }
+  
 
   ngAfterViewInit(): void {
     // afterViewInit code.
