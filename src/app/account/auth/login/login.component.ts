@@ -56,12 +56,8 @@ export class LoginComponent implements OnInit {
    */
   onSubmit() {
     this.submitted = true;
-<<<<<<< Updated upstream
     this.router.navigateByUrl('/dashboard');
-=======
-                      this.router.navigateByUrl('/dashboard');
 
->>>>>>> Stashed changes
     const formVal = this.loginForm.value;
     let datatosend = {
       UserId: formVal.email,

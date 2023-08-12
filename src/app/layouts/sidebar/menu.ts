@@ -66,30 +66,32 @@ export const MENU: MenuItem[] = [
             },
             {
                 id: 5,
-<<<<<<< Updated upstream
                 label: 'MENUITEMS.SALES.LIST.DAILYSALESDATA',
                 link: '/sales/dailysalesdata',
-=======
-                label: 'MENUITEMS.SALES.LIST.MONTHLYVALUEADDITIONTARGETV/SACTUAL',
-                link: '/sales/monthlayvalueadditiontargetvsactual',
->>>>>>> Stashed changes
                 parentId: 1
             },
             {
                 id: 6,
-<<<<<<< Updated upstream
+                label: 'MENUITEMS.SALES.LIST.MONTHLYVALUEADDITIONTARGETV/SACTUAL',
+                link: '/sales/monthlayvalueadditiontargetvsactual',
+                parentId: 1
+            },
+            {
+                id: 7,
                 label: 'MENUITEMS.SALES.LIST.MONTHLYSALESANDTARGET',
                 link: '/sales/monthlysalesandtarget',
                 parentId: 1
             },
             {
-                id: 7,
+                id: 8,
                 label: 'MENUITEMS.SALES.LIST.CUSTOMERWISEPLANVS.ACTUALSALE',
                 link: '/sales/customerwiseplanvs.actualsale',
-=======
+                parentId: 1
+            },
+            {
+                id: 8,
                 label: 'MENUITEMS.SALES.LIST.SCHUDLEADHERENCEFORTHEMONTH',
                 link: '/sales/scheduleadherenceforthemonth',
->>>>>>> Stashed changes
                 parentId: 1
             }
 

@@ -29,7 +29,7 @@
                     <div class="form-group form-primary form-static-label">
                         <span class="border-lable-flt">
                             <ng-select id="YEAR_NAME" bindValue="CODE" bindLabel="NAME" required #YEAR_NAME
-                                [{ngModel}]="selectedYear" formControlName="YEAR_NAME" (focus)="onFocus(YEAR_NAME)"
+                                [(ngModel)]="selectedYear" formControlName="YEAR_NAME" (focus)="onFocus(YEAR_NAME)"
                                 [selectOnTab]='true'>
                                 <ng-option *ngFor="let values of branch" [value]="values">
                                     {{values.NAME}}</ng-option>
