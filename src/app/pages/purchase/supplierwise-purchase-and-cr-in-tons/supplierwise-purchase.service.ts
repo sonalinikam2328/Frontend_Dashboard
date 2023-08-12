@@ -21,6 +21,10 @@ export class SupplierwisePurchaseService {
     return this.http.get(this.url + '/companyList').pipe(catchError(this.handleError));
   }
 
+  suppliCate(): Observable<any> {
+    return this.http.get(this.url + '/dashboard/supplierCategory').pipe(catchError(this.handleError));
+  }
+
   getCustomersLarge() {
     return this.http.get<any>('./data.json')
         .toPromise()

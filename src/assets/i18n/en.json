@@ -25,12 +25,11 @@
         "PAYMENTCOLLECTION": "Payment Collection Plan",
         "TURNOVER": "Turnover",
         "DEVELOPMENTCOSTDETAILS": "Developent Cost Details",
-         "DAILYSALESDATA": "Daily Sales data",
-         "MONTHLYSALESANDTARGET": "Monthly Sales and Target",
-         "CUSTOMERWISEPLANVS.ACTUALSALE": " Customer wise Plan Vs. Actual Sale",
-        "MONTHLYVALUEADDITIONTARGETV/SACTUAL":"Monthly Value Addition target V/s Actual",
-        "SCHUDLEADHERENCEFORTHEMONTH":"schedule adherence for the month"
-
+        "DAILYSALESDATA": "Daily Sales data",
+        "MONTHLYSALESANDTARGET": "Monthly Sales and Target",
+        "CUSTOMERWISEPLANVS.ACTUALSALE": " Customer wise Plan Vs. Actual Sale",
+        "MONTHLYVALUEADDITIONTARGETV/SACTUAL": "Monthly Value Addition target V/s Actual",
+        "SCHUDLEADHERENCEFORTHEMONTH": "schedule adherence for the month"
       }
     },
     "PURCHASE": {
@@ -50,7 +49,7 @@
     "WIPMACHINESHOP": {
       "TEXT": "wip-machine-shop",
       "LIST": {
-        "OILCONSUMPTION":"oil consumption"
+        "OILCONSUMPTION": "oil consumption"
       }
     }
   }

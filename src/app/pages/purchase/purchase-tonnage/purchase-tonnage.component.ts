@@ -6,7 +6,8 @@ import * as  moment from 'moment';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 import { NgSelectComponent } from "@ng-select/ng-select";
-
+import { AppComponentService } from '../../../app-component.service';
+import { SupplierwisePurchaseService } from '../supplierwise-purchase-and-cr-in-tons/supplierwise-purchase.service';
 @Component({
   selector: 'app-purchase-tonnage',
   templateUrl: './purchase-tonnage.component.html',
@@ -17,21 +18,51 @@ export class PurchaseTonnageComponent {
   maxDatet: Date;
   minDate: Date;
   branch = []
+  suppliCate = []
   angForm: FormGroup;
-
+  showBranch: boolean = false
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
+    private _AppComponentService: AppComponentService,
+    private _SupplierwisePurchaseService: SupplierwisePurchaseService,
   ) {
     this.minDate = new Date();
     this.maxDate = new Date();
-    this.minDate.setDate(this.minDate.getDate() - 1);
-    this.maxDate.setDate(this.maxDate.getDate() - 1);
+    this.minDate.setDate(this.minDate.getDate());
+    this.maxDate.setDate(this.maxDate.getDate());
   }
 
   ngOnInit(): void {
     this.createForm();
+
+    this._AppComponentService.branchList().subscribe((res) => {
+      console.log(res.List)
+      if (res.List.length > 1) {
+        this.showBranch = true;
+        let obj = {
+          ADDRESS1: "",
+          ADDRESS2: null,
+          CITY_NAME: "",
+          CODE: "100",
+          EMAIL_ID: null,
+          NAME: "ALL",
+          PHONE_NO: "",
+          PINCODE: "",
+          PREFIX_NAME: null
+        }
+        res.List.unshift(obj);
+        this.branch = res.List
+      } else {
+        this.showBranch = false;
+        this.branch = res.List
+      }
+    });
+
+    this._SupplierwisePurchaseService.suppliCate().subscribe((res) => {
+      this.suppliCate = res.List
+    });
 
   }
 

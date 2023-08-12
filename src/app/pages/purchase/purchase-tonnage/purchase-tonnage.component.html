@@ -3,7 +3,7 @@
         <h5>Purchase Tonnage</h5>
     </div>
     <div class="card-block">
-        <div class="row" style="margin: 2%;">
+        <div class="row" style="margin: 2%;" *ngIf="showBranch">
             <div class="col-sm-3">
                 <label>Select Branch *</label>
             </div>
@@ -48,9 +48,9 @@
             <div class="col-sm-4">
                 <div class="form-group form-primary form-static-label">
                     <span class="border-lable-flt">
-                        <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
-                            (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true' >
-                            <ng-option *ngFor="let values of branch" [value]="values">
+                        <ng-select id="SUPPLIERCATEGORY" bindValue="CODE" bindLabel="NAME" required #SUPPLIERCATEGORY
+                            (focus)="onFocus(SUPPLIERCATEGORY)" [selectOnTab]='true' >
+                            <ng-option *ngFor="let values of suppliCate" [value]="values">
                                 {{values.NAME}}</ng-option>
                         </ng-select>
                     </span>
