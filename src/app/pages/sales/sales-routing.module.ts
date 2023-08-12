@@ -6,6 +6,7 @@ import { DevelopmentCostDetailsComponent } from './development-cost-details/deve
 import { DailySalesDataComponent } from './daily-sales-data/daily-sales-data.component';
 import { MonthlySalesAndTargetComponent } from './monthly-sales-and-target/monthly-sales-and-target.component';
 import { CustomerWisePlanVsActualSaleComponent } from './customer-wise-plan-vs.-actual-sale/customer-wise-plan-vs.-actual-sale.component';
+
 import { MonthlyValueAdditionTargetVsActualComponent } from './monthly-value-addition-target-vs-actual/monthly-value-addition-target-vs-actual.component';
 import { ScheduleAdherenceForTheMonthComponent } from './schedule-adherence-for-the-month/schedule-adherence-for-the-month.component';
 const routes: Routes = [

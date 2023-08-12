@@ -89,7 +89,7 @@ export const MENU: MenuItem[] = [
                 parentId: 1
             },
             {
-                id: 8,
+                id: 9,
                 label: 'MENUITEMS.SALES.LIST.SCHUDLEADHERENCEFORTHEMONTH',
                 link: '/sales/scheduleadherenceforthemonth',
                 parentId: 1
