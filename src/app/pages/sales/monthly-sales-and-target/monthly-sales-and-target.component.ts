@@ -1,43 +1,44 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { Customer } from '../turn-over/customer';
-import { FormBuilder,FormGroup,Validators } from '@angular/forms';
-import * as moment from 'moment';
+import { NgSelectComponent } from "@ng-select/ng-select";
+import * as  moment from 'moment';
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
-import { NgSelectComponent } from "@ng-select/ng-select";
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-
+import { MonthlySalesService } from './monthly-sales.service';
 @Component({
   selector: 'app-monthly-sales-and-target',
   templateUrl: './monthly-sales-and-target.component.html',
   styleUrls: ['./monthly-sales-and-target.component.scss']
 })
 export class MonthlySalesAndTargetComponent {
-  branch = []
-  maxDate: Date;
-  maxDatet: Date;
-  minDate: Date;
-
+  branch = [];
+  selectedBrach;
+  selectedYear;
   angForm: FormGroup;
 
   constructor(
+    private _monthlysalesservice: MonthlySalesService,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-  ) {
-    this.minDate = new Date();
-    this.maxDate = new Date();
-    this.minDate.setDate(this.minDate.getDate() - 1);
-    this.maxDate.setDate(this.maxDate.getDate() - 1);
+  ) { }
+
+
+  onFocus(ele: NgSelectComponent) {
+    ele.open();
   }
 
-  onFocus(ele: NgSelectComponent){
-    ele.open();
+  createForm() {
+    this.angForm = this.fb.group({
+
+      BRANCH_NAME: ["", Validators.required],
+      YEAR_NAME: ["", Validators.required],
+
+    });
   }
 
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
@@ -101,6 +102,7 @@ export class MonthlySalesAndTargetComponent {
 
   ngOnInit(): void {
     // onInit code.
+    this.createForm();
   }
 
   ngAfterViewInit(): void {
@@ -119,8 +121,28 @@ export class MonthlySalesAndTargetComponent {
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
   }
+  loadData() {
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+
+    const formVal = this.angForm.value;
+    let objdata = {
+
+      BRANCH_NAME: this.selectedBrach,
+      YEAR_NAME: this.selectedYear
+    }
+    if (this.angForm.valid) {
+      this._monthlysalesservice.findAll(objdata).subscribe((newdata) => {
+
+      }, err => {
+        Swal.fire('Warning', err, 'info')
+      })
+    } else {
+
+      Swal.fire('Warning', 'Please fill from and to date', 'info')
+    }
+
+
+  }
 
 }
-
-
-
