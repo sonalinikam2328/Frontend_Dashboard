@@ -1,15 +1,16 @@
-import { Component,ViewChild,OnInit } from '@angular/core';
-import { TableComponent,TableColumn } from '@smart-webcomponents-angular/table';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators,FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import * as  moment from 'moment';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 import { NgSelectComponent } from "@ng-select/ng-select";
 import { CommonModule } from '@angular/common';
 import { CustomerService } from './customer.service';
+import { AppComponentService } from 'src/app/app-component.service';
 @Component({
   selector: 'app-customer-receivable-chart',
   templateUrl: './customer-receivable-chart.component.html',
@@ -19,16 +20,17 @@ export class CustomerReceivableChartComponent {
   maxDate: Date;
   maxDatet: Date;
   minDate: Date;
-  minDatet:Date;
-  fromdate=null
-  todate=null
+  minDatet: Date;
+  fromdate = null
+  todate = null
   branch = [];
   selectedBrach;
-      
+  showBranch: boolean = true
   angForm: FormGroup;
 
   constructor(
-    private _CustomerService:CustomerService,
+    private _CustomerService: CustomerService,
+    private _AppComponentService: AppComponentService,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
@@ -37,7 +39,7 @@ export class CustomerReceivableChartComponent {
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate() - 1);
     this.maxDate.setDate(this.maxDate.getDate() - 1);
-    this.fromdate =this.maxDate
+    this.fromdate = this.maxDate
   }
   onFocus(ele: NgSelectComponent) {
     ele.open();
@@ -67,12 +69,15 @@ export class CustomerReceivableChartComponent {
   createForm() {
     this.angForm = this.fb.group({
       BRANCH_NAME: ["", Validators.required],
+
       FROM: ["", [Validators.required]], // control name
       TO: ["", [Validators.required]],
+
+
     });
   }
 
-  
+
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 
 
@@ -135,6 +140,29 @@ export class CustomerReceivableChartComponent {
   ngOnInit(): void {
     // onInit code.
     this.createForm();
+
+    this._AppComponentService.branchList().subscribe((res) => {
+      console.log(res.List)
+      if (res.List.length > 1) {
+        this.showBranch = true;
+        let obj = {
+          ADDRESS1: "",
+          ADDRESS2: null,
+          CITY_NAME: "",
+          CODE: "100",
+          EMAIL_ID: null,
+          NAME: "ALL",
+          PHONE_NO: "",
+          PINCODE: "",
+          PREFIX_NAME: null
+        }
+        res.List.unshift(obj);
+        this.branch = res.List
+      } else {
+        this.showBranch = false;
+        this.branch = res.List
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -158,25 +186,25 @@ export class CustomerReceivableChartComponent {
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
 
-    
+
     const formVal = this.angForm.value;
     let objdata = {
       FROM: moment(this.fromdate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
       TO: moment(this.todate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
-      
+
       BRANCH_NAME: this.selectedBrach
-      
-      
+
+
     }
     if (this.angForm.valid) {
-      
+
       this._CustomerService.findAll(objdata).subscribe((newdata) => {
 
       }, err => {
         Swal.fire('Warning', err, 'info')
       })
     } else {
-      
+
 
       Swal.fire('Warning', 'Please fill from and to date', 'info')
     }

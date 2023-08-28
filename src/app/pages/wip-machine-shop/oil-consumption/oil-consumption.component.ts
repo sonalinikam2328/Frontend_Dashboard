@@ -1,9 +1,10 @@
-import { Component, OnInit,  } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
 import { NgSelectComponent } from '@ng-select/ng-select';
 import { CommonModule } from '@angular/common';
+import { AppComponentService } from '../../../app-component.service';
 
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -20,30 +21,33 @@ import { OilConsumptionService } from './oil-consumption.service';
   styleUrls: ['./oil-consumption.component.scss']
 })
 export class OilConsumptionComponent implements OnInit {
-  
-  
+
+
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 
   branch = [];
   selectedBrach;
   selectedYear;
   angForm: FormGroup;
+  showBranch: boolean = true
+
   constructor(
-    
+    private _AppComponentService: AppComponentService,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private _OilConsumptionService:OilConsumptionService,
-  ){}
-  
+    private _OilConsumptionService: OilConsumptionService,
+  ) { }
 
-onFocus(ele: NgSelectComponent) {
+
+  onFocus(ele: NgSelectComponent) {
     ele.open();
   }
-createForm() {
+  createForm() {
     this.angForm = this.fb.group({
       BRANCH_NAME: ["", Validators.required],
       YEAR_NAME: ["", Validators.required],
+
     });
   }
 
@@ -102,14 +106,38 @@ createForm() {
     },
 
   ];
-  
+
 
   ngOnInit(): void {
     this.createForm();
+
     // onInit code.
+
+    this._AppComponentService.branchList().subscribe((res) => {
+      console.log(res.List)
+      if (res.List.length > 1) {
+        this.showBranch = true;
+        let obj = {
+          ADDRESS1: "",
+          ADDRESS2: null,
+          CITY_NAME: "",
+          CODE: "100",
+          EMAIL_ID: null,
+          NAME: "ALL",
+          PHONE_NO: "",
+          PINCODE: "",
+          PREFIX_NAME: null
+        }
+        res.List.unshift(obj);
+        this.branch = res.List
+      } else {
+        this.showBranch = false;
+        this.branch = res.List
+      }
+    });
   }
-  
-  
+
+
 
   ngAfterViewInit(): void {
     // afterViewInit code.
@@ -131,31 +159,31 @@ createForm() {
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
 
-    
+
     const formVal = this.angForm.value;
     let objdata = {
-      
-      
+
+
       BRANCH_NAME: this.selectedBrach
-      
-      
+
+
     }
     if (this.angForm.valid) {
-      
+
       this._OilConsumptionService.findAll(objdata).subscribe((newdata) => {
 
       }, err => {
         Swal.fire('Warning', err, 'info')
       })
     } else {
-      
+
 
       Swal.fire('Warning', 'Please fill from and to date', 'info')
     }
 
 
   }
-  
+
 
 }
 

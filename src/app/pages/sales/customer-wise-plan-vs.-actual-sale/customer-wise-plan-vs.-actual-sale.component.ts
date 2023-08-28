@@ -1,10 +1,10 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Customer } from '../turn-over/customer';
-import { FormBuilder,FormGroup,Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -12,6 +12,8 @@ import { NgSelectComponent } from "@ng-select/ng-select";
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CustomerService } from './customer.service';
+import { AppComponentService } from 'src/app/app-component.service';
+
 
 @Component({
   selector: 'app-customer-wise-plan-vs.-actual-sale',
@@ -20,25 +22,21 @@ import { CustomerService } from './customer.service';
 })
 export class CustomerWisePlanVsActualSaleComponent {
   branch = []
-  maxDate: Date;
-  maxDatet: Date;
-  minDate: Date;
+
   selectedBrach;
   selectedYear;
   selectedMonth;
-
+  showBranch: boolean = true
   angForm: FormGroup;
 
   constructor(
-    private _CustomerService:CustomerService,
+    private _AppComponentService: AppComponentService,
+    private _CustomerService: CustomerService,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
   ) {
-    this.minDate = new Date();
-    this.maxDate = new Date();
-    this.minDate.setDate(this.minDate.getDate() - 1);
-    this.maxDate.setDate(this.maxDate.getDate() - 1);
+
   }
   createForm() {
     this.angForm = this.fb.group({
@@ -50,12 +48,12 @@ export class CustomerWisePlanVsActualSaleComponent {
     });
   }
 
-  onFocus(ele: NgSelectComponent){
+  onFocus(ele: NgSelectComponent) {
     ele.open();
   }
 
 
- @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
+  @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 
 
   grouping: boolean = true;
@@ -117,6 +115,28 @@ export class CustomerWisePlanVsActualSaleComponent {
   ngOnInit(): void {
     // onInit code.
     this.createForm();
+    this._AppComponentService.branchList().subscribe((res) => {
+      console.log(res.List)
+      if (res.List.length > 1) {
+        this.showBranch = true;
+        let obj = {
+          ADDRESS1: "",
+          ADDRESS2: null,
+          CITY_NAME: "",
+          CODE: "100",
+          EMAIL_ID: null,
+          NAME: "ALL",
+          PHONE_NO: "",
+          PINCODE: "",
+          PREFIX_NAME: null
+        }
+        res.List.unshift(obj);
+        this.branch = res.List
+      } else {
+        this.showBranch = false;
+        this.branch = res.List
+      }
+    });
   }
 
   ngAfterViewInit(): void {

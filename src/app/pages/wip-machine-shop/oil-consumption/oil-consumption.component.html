@@ -4,7 +4,7 @@
     </div>
     <form [formGroup]="angForm">
         <div class="card-block">
-            <div class="row" style="margin: 2%;">
+            <div class="row" style="margin: 2%;" *ngIf="showBranch">
                 <div class="col-sm-3">
                     <label>Select Branch *</label>
                 </div>
