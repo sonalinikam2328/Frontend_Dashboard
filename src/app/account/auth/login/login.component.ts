@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
    */
   onSubmit() {
     this.submitted = true;
-    this.router.navigateByUrl('/dashboard');
+    // this.router.navigateByUrl('/dashboard');
 
     const formVal = this.loginForm.value;
     let datatosend = {
