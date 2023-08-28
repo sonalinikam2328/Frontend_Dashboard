@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
 
 import { DevelopmentcostdetailsService } from './developmentcostdetails.service';
-
+import { AppComponentService } from 'src/app/app-component.service';
 @Component({
   selector: 'app-development-cost-details',
   templateUrl: './development-cost-details.component.html',
@@ -22,7 +22,7 @@ export class DevelopmentCostDetailsComponent implements OnInit {
 
   angForm: FormGroup;
   branch = [];
-
+  showBranch: boolean = true
 
   maxDate: Date;
   maxDatet: Date;
@@ -36,7 +36,7 @@ export class DevelopmentCostDetailsComponent implements OnInit {
     private _PaymentService: PaymentService,
 
     private _DevelopmentcostdetailsService: DevelopmentcostdetailsService,
-
+    private _AppComponentService: AppComponentService,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
@@ -81,13 +81,36 @@ export class DevelopmentCostDetailsComponent implements OnInit {
       FROM: ["", [Validators.required]], // control name
       TO: ["", [Validators.required]],
       BRANCH_NAME: ["", Validators.required],
+      
+
 
     });
   }
 
   ngOnInit() {
     this.createForm();
-
+    this._AppComponentService.branchList().subscribe((res) => {
+      console.log(res.List)
+      if (res.List.length > 1) {
+        this.showBranch = true;
+        let obj = {
+          ADDRESS1: "",
+          ADDRESS2: null,
+          CITY_NAME: "",
+          CODE: "100",
+          EMAIL_ID: null,
+          NAME: "ALL",
+          PHONE_NO: "",
+          PINCODE: "",
+          PREFIX_NAME: null
+        }
+        res.List.unshift(obj);
+        this.branch = res.List
+      } else {
+        this.showBranch = false;
+        this.branch = res.List
+      }
+    });
     this._PaymentService.companylist().subscribe(response => {
       this.dataSource = response.List
     });

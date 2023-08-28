@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { scheduleadherenceservice } from './scheduleadherence.service';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
+import { AppComponentService } from 'src/app/app-component.service';
 
 @Component({
   selector: 'app-schedule-adherence-for-the-month',
@@ -23,9 +24,10 @@ export class ScheduleAdherenceForTheMonthComponent {
   selectedYear;
   selectedMonth;
   angForm: FormGroup;
-
+  showBranch: boolean = true
 
   constructor(
+    private _AppComponentService: AppComponentService,
     private _scheduleadherenceservice: scheduleadherenceservice,
     private fb: FormBuilder,
     private http: HttpClient,
@@ -39,6 +41,7 @@ export class ScheduleAdherenceForTheMonthComponent {
       BRANCH_NAME: ["", Validators.required],
       YEAR_NAME: ["", Validators.required],
       MONTH_NAME: ["", Validators.required],
+     
 
     });
   }
@@ -110,6 +113,28 @@ export class ScheduleAdherenceForTheMonthComponent {
   ngOnInit(): void {
     // onInit code.
     this.createForm();
+    this._AppComponentService.branchList().subscribe((res) => {
+      console.log(res.List)
+      if (res.List.length > 1) {
+        this.showBranch = true;
+        let obj = {
+          ADDRESS1: "",
+          ADDRESS2: null,
+          CITY_NAME: "",
+          CODE: "100",
+          EMAIL_ID: null,
+          NAME: "ALL",
+          PHONE_NO: "",
+          PINCODE: "",
+          PREFIX_NAME: null
+        }
+        res.List.unshift(obj);
+        this.branch = res.List
+      } else {
+        this.showBranch = false;
+        this.branch = res.List
+      }
+    });
   }
 
   ngAfterViewInit(): void {

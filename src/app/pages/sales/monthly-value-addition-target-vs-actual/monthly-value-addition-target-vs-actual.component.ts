@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 import { monthlayvalueadditionservice } from './monthlayvalueaddition.service';
+import { AppComponentService } from 'src/app/app-component.service';
 @Component({
   selector: 'app-monthly-value-addition-target-vs-actual',
   templateUrl: './monthly-value-addition-target-vs-actual.component.html',
@@ -20,9 +21,12 @@ export class MonthlyValueAdditionTargetVsActualComponent {
   selectedBrach;
   selectedYear;
   angForm: FormGroup;
-
+  showBranch: boolean = true
+  
+ 
   constructor(
     private _monthlayvalueadditionservice: monthlayvalueadditionservice,
+    private _AppComponentService: AppComponentService,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
@@ -38,6 +42,8 @@ export class MonthlyValueAdditionTargetVsActualComponent {
 
       BRANCH_NAME: ["", Validators.required],
       YEAR_NAME: ["", Validators.required],
+      
+
 
     });
   }
@@ -104,6 +110,28 @@ export class MonthlyValueAdditionTargetVsActualComponent {
   ngOnInit(): void {
     // onInit code.
     this.createForm();
+    this._AppComponentService.branchList().subscribe((res) => {
+      console.log(res.List)
+      if (res.List.length > 1) {
+        this.showBranch = true;
+        let obj = {
+          ADDRESS1: "",
+          ADDRESS2: null,
+          CITY_NAME: "",
+          CODE: "100",
+          EMAIL_ID: null,
+          NAME: "ALL",
+          PHONE_NO: "",
+          PINCODE: "",
+          PREFIX_NAME: null
+        }
+        res.List.unshift(obj);
+        this.branch = res.List
+      } else {
+        this.showBranch = false;
+        this.branch = res.List
+      }
+    });
   }
 
   ngAfterViewInit(): void {
