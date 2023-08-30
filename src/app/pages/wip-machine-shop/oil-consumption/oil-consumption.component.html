@@ -28,11 +28,11 @@
                 <div class="col-sm-4">
                     <div class="form-group form-primary form-static-label">
                         <span class="border-lable-flt">
-                            <ng-select id="YEAR_NAME" bindValue="CODE" bindLabel="NAME" required #YEAR_NAME
+                            <ng-select id="YEAR_NAME" bindValue="DATEVALUE" bindLabel="DATEDESC" required #YEAR_NAME
                                 [(ngModel)]="selectedYear" formControlName="YEAR_NAME" (focus)="onFocus(YEAR_NAME)"
                                 [selectOnTab]='true'>
-                                <ng-option *ngFor="let values of branch" [value]="values">
-                                    {{values.NAME}}</ng-option>
+                                <ng-option *ngFor="let values of finyear" [value]="values">
+                                    {{values.DATEDESC}}</ng-option>
                             </ng-select>
                         </span>
                     </div>
@@ -41,31 +41,58 @@
         </div>
 
         <div class="row" style="margin: 2%;">
-            <div class="col-sm text-right">
-                <button class="btn btn-primary">Go</button>
+            <div class="col-sm text-center">
+                <button class="btn btn-primary" (click)="loadData()">Go</button>
             </div>
         </div>
     </form>
+</div>
 
 
-
-
-
-
-
-    <select class="form-control" style="width: 120px;
+<!-- *ngIf="showtable" -->
+<div class="row" *ngIf="showtable">
+    <div class="col-sm">
+        <div class="card">
+            <div class="card-block">
+                <!-- <select class="form-control" style="width: 120px;
     height: 30px;
     font-size: 10px;
     margin-top: 3px;
     float:right;" (change)="handleClick($event, 'csv')">
-        <option selected>Export Type </option>
-        <option>CSV</option>
-        <option>PDF</option>
-    </select>
+            <option selected>Export Type </option>
+            <option>CSV</option>
+            <option>PDF</option>
+        </select> -->
+                <!-- <smart-table #table class="table-hover table-bordered compact" id="table" [dataSource]="dataSource"
+            [sortMode]="sortMode" [paging]="true" [columns]="columns" [columnMenu]="true" [filtering]="true"
+            [columnReorder]="true" [columnResize]="true" [columnSizeMode]="columnSizeMode"
+            [selectionMode]="'one'">
+        </smart-table> -->
 
-    <!-- <smart-table #table class="table-hover table-bordered" id="table" [dataSource]="dataSource" [sortMode]="sortMode" [paging]="true" [columns]="columns" [columnMenu]="true" [filtering]="true" [columnReorder]="true" [columnResize]="true" [columnSizeMode]="columnSizeMode" [selection]="true" [selectionMode]="'one'">
+                <!-- <smart-table #table id="table"> -->
+                <table class="table table-striped table-bordered table-hover compact">
+                    <thead>
+                        <tr *ngIf="Headers.length !=0">
+                            <th scope="col" *ngFor="let data of Headers">{{data.MAT_NAME}}</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="Tabledata.length !=0">
+                        <tr *ngFor="let data of Tabledata">
+                            <td>{{data.MONTH_YR}}</td>
+                            <!-- <td>{{data?.1_MMX_3_CO}}</td> -->
+                            <td>{{data.COLOUR_AND}}</td>
+                            <td>{{data.GUNNY_BAG}}</td>
+                            <td>{{data.M_S_PIPES}}</td>
+                            <td>{{data.PLATS}}</td>
+                            <!-- <td>{{data.R.L.O.}}</td> -->
+                            <td>{{data.Total}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- </smart-table> -->
+            </div>
+        </div>
 
-</smart-table> -->
 
-    <smart-table #table id="table" [dataSource]="dataSource" [grouping]="grouping"
-        [keyboardNavigation]="keyboardNavigation" [columns]="columns"></smart-table>
+    </div>
+</div>

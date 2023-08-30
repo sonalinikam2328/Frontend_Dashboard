@@ -16,4 +16,8 @@ export class AppComponentService {
         return this.http.get(this.url + '/branchList').pipe(catchError(this.handleError));
     }
 
+    financialYear(): Observable<any> {
+        return this.http.get(this.url + '/financialYear').pipe(catchError(this.handleError));
+    }
+
 }

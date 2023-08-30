@@ -29,4 +29,33 @@
   opacity: 1;
 }
 
+.btn-primary {
+  background-image: linear-gradient(to bottom, #93b5d2 5%, #1e3567 100%) !important;
+}
 
+.card-header {
+  background-image: -webkit-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
+}
+
+.card-title {
+  font-size: 15px;
+  // margin: 2% 0 2% 20px !important;
+  font-weight: 600;
+}
+
+.card-header {
+ padding: 0;
+ height: 48px;
+}
+
+thead{
+  background-image: -webkit-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tfoot{
+  background-color: #f1f2f4;
+}

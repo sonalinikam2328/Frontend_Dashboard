@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   error = '';
   returnUrl: string;
   passType: string = 'password';
-
+  isLoading = false;
   // set the currenr year
   year: number = new Date().getFullYear();
 
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     // this.router.navigateByUrl('/dashboard');
-
+    this.isLoading = true;
     const formVal = this.loginForm.value;
     let datatosend = {
       UserId: formVal.email,
@@ -66,32 +66,33 @@ export class LoginComponent implements OnInit {
     }
     // stop here if form is invalid
     if (this.loginForm.invalid) {
+      this.isLoading = false;
       return;
     } else {
-
       this._LoginService.loginData(datatosend)
         .pipe(first())
         .subscribe(
           response => {
             if (response.DataSet['diffgr:diffgram']['NewDataSet'] == undefined) {
               Swal.fire('Error', 'Invalid User Name', 'error')
+              this.isLoading = false;
             } else {
               if (response.DataSet['diffgr:diffgram']['NewDataSet']['Table']['IS_VALID'] == "True") {
                 this._LoginService.loginData1(datatosend).subscribe(res => {
                   localStorage.setItem('user', JSON.stringify(res.List[0]));
                   this.router.navigate(['/account/companyList']);
-                  // this.router.navigateByUrl('/dashboard');
+                  this.isLoading = false;
                 });
               } else {
                 Swal.fire('Error', 'Invalid Password', 'error')
-
+                this.isLoading = false;
               }
             }
           },
           error => {
+            this.isLoading = false;
             this.error = error ? error : '';
           });
-
     }
   }
 
