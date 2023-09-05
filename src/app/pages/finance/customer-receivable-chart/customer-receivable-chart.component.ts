@@ -25,8 +25,13 @@ export class CustomerReceivableChartComponent {
   todate = null
   branch = [];
   selectedBrach;
-  showBranch: boolean = true
+  showBranch: boolean = true;
+  showtable: boolean = false;
+  BRANCH: boolean = false;
+
   angForm: FormGroup;
+  isLoading1: boolean = false;
+  isLoading = false;
 
   constructor(
     private _CustomerService: CustomerService,
@@ -68,7 +73,7 @@ export class CustomerReceivableChartComponent {
   }
   createForm() {
     this.angForm = this.fb.group({
-      BRANCH_NAME: ["", Validators.required],
+      BRANCH_NAME: [""],
 
       FROM: ["", [Validators.required]], // control name
       TO: ["", [Validators.required]],
@@ -96,7 +101,7 @@ export class CustomerReceivableChartComponent {
       // })
       new window.Smart.Ajax({
         // type:'post',
-        url: environment.base_url + '/companyList',
+        url: environment.base_url + '/customerreceivablechart/customerreceivablechartData',
         dataSourceType: 'json',
         data: sqlQuery
       }, (response: any) => {
@@ -106,14 +111,13 @@ export class CustomerReceivableChartComponent {
         });
       });
     },
-    dataFields: [
-      'SUBGL_LONGNAME: string',
-      'INVOICE_AMT: number',
-      'CR_DAYS: number',
-      'CREDIT_DAYS: number',
-      'SUB_GLACNO: number',
-
-    ]
+    // dataFields: [
+    //   'SUBGL_LONGNAME: string',
+    //   'INVOICE_AMT: number',
+    //   'CR_DAYS: number',
+    //   'CREDIT_DAYS: number',
+    //   'SUB_GLACNO: number',
+    // ]
   });
   filtering = true;
   filterRow = true;
@@ -122,34 +126,36 @@ export class CustomerReceivableChartComponent {
   columnSizeMode = 'default';
   columns = [
     {
-      label: 'SUBGL_LONGNAME', dataField: 'SUBGL_LONGNAME', formatFunction(settings: any) {
+      label: 'Bill Date', dataField: 'BILL_DATE', formatFunction(settings: any) {
       },
     },
-    { label: 'INVOICE_AMT', dataField: 'INVOICE_AMT' },
-    { label: 'CR_DAYS', dataField: 'CR_DAYS' },
-    { label: 'CREDIT_DAYS', dataField: 'CREDIT_DAYS' },
-
-    {
-      label: 'SUB_GLACNO', dataField: 'SUB_GLACNO', formatFunction(settings: any) {
-
-      },
-    },
-
+    { label: 'Bill No', dataField: 'BILL_NO' },
+    { label: 'Material Name', dataField: 'CR_DAYS' },
+    { label: 'Bill Qty.', dataField: 'BILL_QTY' },
+    { label: 'Bill Amount', dataField: 'BILL_AMOUNT' },
+    { label: 'Cumm. Bill', dataField: 'CUMM_BILL' },
+    { label: 'GRN No.', dataField: 'GIR_NO' },
+    { label: 'GRN Date', dataField: 'GIR_DATE' },
+    { label: 'GRN Qty.', dataField: 'GIR_QTY' },
+    { label: 'Due Date', dataField: 'DUE_DATE' },
+    { label: 'Delay Days', dataField: 'DELAY_DAYS' },
+    { label: 'Diff. Days', dataField: 'DIFF_DAYS' },
   ];
 
   ngOnInit(): void {
     // onInit code.
     this.createForm();
+    this.isLoading1 = true
 
     this._AppComponentService.branchList().subscribe((res) => {
-      console.log(res.List)
       if (res.List.length > 1) {
         this.showBranch = true;
+        this.BRANCH = true
         let obj = {
           ADDRESS1: "",
           ADDRESS2: null,
           CITY_NAME: "",
-          CODE: "100",
+          CODE: "0",
           EMAIL_ID: null,
           NAME: "ALL",
           PHONE_NO: "",
@@ -157,10 +163,15 @@ export class CustomerReceivableChartComponent {
           PREFIX_NAME: null
         }
         res.List.unshift(obj);
-        this.branch = res.List
+        this.branch = res.List;
+        this.isLoading1 = false
+
       } else {
+        this.BRANCH = false
         this.showBranch = false;
-        this.branch = res.List
+        this.branch = res.List;
+        this.isLoading1 = false
+        this.selectedBrach = this.branch[0]['CODE']
       }
     });
   }
@@ -175,13 +186,12 @@ export class CustomerReceivableChartComponent {
     // init code.
     const table = this.table;
 
-    table.addGroup('CREDIT_DAYS');
+    table.addGroup('CUSTOMER_NAME');
   }
 
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
   }
-
   loadData() {
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
@@ -197,12 +207,43 @@ export class CustomerReceivableChartComponent {
 
     }
     if (this.angForm.valid) {
+      this.showtable = true
 
-      this._CustomerService.findAll(objdata).subscribe((newdata) => {
+      this.dataSource = new window.Smart.DataAdapter({
+        virtualDataSource: function (resultCallbackFunction: any, details: any) {
+          const sqlQuery = details;
+          const queryData = details.query;
 
-      }, err => {
-        Swal.fire('Warning', err, 'info')
-      })
+          sqlQuery.query = JSON.stringify(queryData);
+          // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
+          //   console.log(data)
+          // })
+          new window.Smart.Ajax({
+            // type:'post',
+            url: environment.base_url + '/customerreceivablechart/customerreceivablechartData',
+            dataSourceType: 'json',
+            data: sqlQuery
+          }, (response: any) => {
+            resultCallbackFunction({
+              dataSource: response.List,
+              virtualDataSourceLength: 10
+            });
+          });
+        },
+        // dataFields: [
+        //   'SUBGL_LONGNAME: string',
+        //   'INVOICE_AMT: number',
+        //   'CR_DAYS: number',
+        //   'CREDIT_DAYS: number',
+        //   'SUB_GLACNO: number',
+        // ]
+      });
+
+      // this._CustomerService.findAll(objdata).subscribe((newdata) => {
+
+      // }, err => {
+      //   Swal.fire('Warning', err, 'info')
+      // })
     } else {
 
 

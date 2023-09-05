@@ -45,7 +45,7 @@ export class PurchaseTonnageComponent {
           ADDRESS1: "",
           ADDRESS2: null,
           CITY_NAME: "",
-          CODE: "100",
+          CODE: "0",
           EMAIL_ID: null,
           NAME: "ALL",
           PHONE_NO: "",

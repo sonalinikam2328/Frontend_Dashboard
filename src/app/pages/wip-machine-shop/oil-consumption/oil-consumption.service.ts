@@ -14,8 +14,8 @@ export class OilConsumptionService {
   // url1 = environment.base_url1;
   constructor(private http: HttpClient) { }
 
-  findAll(): Observable<any> {
-    return this.http.get(this.url + '/oilconsumption/getOilConsumptionData').pipe(catchError(this.handleError));
+  findAll(data): Observable<any> {
+    return this.http.post(this.url + '/oilconsumption/getOilConsumptionData/' , data).pipe(catchError(this.handleError));
   }
 
 

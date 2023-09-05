@@ -17,16 +17,9 @@ export class MonthlySalesService {
   [x: string]: any;
 
 
-  companylist(): Observable<any> {
-    return this.http.get(this.url + '/companyList').pipe(catchError(this.handleError));
+  findAll(data): Observable<any> {
+    return this.http.post(this.url + '/monthlysalesandtarget/monthlysalesandtargetData', data).pipe(catchError(this.handleError));
   }
-
-  getCustomersLarge() {
-    return this.http.get<any>('./data.json')
-        .toPromise()
-        .then(res => <Customer[]>res.data)
-        .then(data => { return data; });
-}
 
 
 }

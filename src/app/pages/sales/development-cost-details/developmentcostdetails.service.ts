@@ -14,9 +14,9 @@ export class DevelopmentcostdetailsService {
   constructor(private http: HttpClient) { }
   [x: string]: any;
   
-  
-  companylist(): Observable<any> {
-    return this.http.get(this.url + '/companyList').pipe(catchError(this.handleError));
+  findAll(data): Observable<any> {
+    return this.http.post(this.url + '/developmentcostdetails/DevelopmentcostdetailsData', data).pipe(catchError(this.handleError));
   }
+
   
 }

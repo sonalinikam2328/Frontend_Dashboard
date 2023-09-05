@@ -10,21 +10,15 @@ catchError
   providedIn: 'root'
 })
 export class Top5Service {
-  url = environment.base_url;
-  constructor(private http: HttpClient) { }
   [x: string]: any;
+  url = environment.base_url;
+  // url1 = environment.base_url1;
+  constructor(private http: HttpClient) { }
 
-
-  companylist(): Observable<any> {
-    return this.http.get(this.url + '/companyList').pipe(catchError(this.handleError));
+  findAll(data): Observable<any> {
+    return this.http.post(this.url + '/top5supplier/top5supplierData', data).pipe(catchError(this.handleError));
   }
 
-  getCustomersLarge() {
-    return this.http.get<any>('./data.json')
-        .toPromise()
-        .then(res => <Customer[]>res.data)
-        .then(data => { return data; });
-}
 
 
 }

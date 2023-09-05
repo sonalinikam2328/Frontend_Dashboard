@@ -29,7 +29,7 @@ export class HorizontaltopbarComponent implements OnInit, AfterViewInit {
   flagvalue;
   countryName;
   valueset;
-
+  username;
   menuItems = [];
 
   listLang = [
@@ -54,6 +54,11 @@ export class HorizontaltopbarComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+
+    this.username = result.NAME
     this.element = document.documentElement;
 
     this.initialize();

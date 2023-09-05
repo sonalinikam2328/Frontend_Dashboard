@@ -25,6 +25,8 @@ export class OilConsumptionComponent implements OnInit {
   finyear = [];
   Headers = [];
   Tabledata = [];
+  Keyarray = [];
+  montharray = []
   selectedBrach;
   selectedYear;
   angForm: FormGroup;
@@ -32,6 +34,9 @@ export class OilConsumptionComponent implements OnInit {
   grouping: boolean = true;
   keyboardNavigation: boolean = true;
   showtable: boolean = false;
+  isLoading1: boolean = false;
+  BRANCH: boolean = false;
+  isLoading = false;
   dataSource
   filtering = true;
   filterRow = true;
@@ -52,10 +57,12 @@ export class OilConsumptionComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.isLoading1 = true
 
     // onInit code.
     this._AppComponentService.branchList().subscribe((res) => {
       if (res.List.length > 1) {
+        this.BRANCH = true
         this.showBranch = true;
         let obj = {
           ADDRESS1: "",
@@ -70,9 +77,14 @@ export class OilConsumptionComponent implements OnInit {
         }
         res.List.unshift(obj);
         this.branch = res.List
+        this.isLoading1 = false
       } else {
+        this.BRANCH = false
         this.showBranch = false;
         this.branch = res.List
+        this.isLoading1 = false
+        this.selectedBrach = this.branch[0]['CODE']
+
       }
     });
 
@@ -88,7 +100,7 @@ export class OilConsumptionComponent implements OnInit {
 
   createForm() {
     this.angForm = this.fb.group({
-      BRANCH_NAME: ["", Validators.required],
+      BRANCH_NAME: [""],
       YEAR_NAME: ["", Validators.required],
     });
   }
@@ -144,77 +156,57 @@ export class OilConsumptionComponent implements OnInit {
   }
 
   loadData() {
+    this.Tabledata = []
+    this.Keyarray = []
+    this.isLoading = true;
+
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
-
+    let tempmonth = []
     const formVal = this.angForm.value;
+
     let objdata = {
-      BRANCH_NAME: this.selectedBrach
+      BRANCH_NAME: this.selectedBrach,
+      FINANCIAL_YEAR: this.selectedYear,
+      CODE: result.COMPANY_ID
     }
+
     if (this.angForm.valid) {
 
-      this._OilConsumptionService.findAll().subscribe((res) => {
+      this._OilConsumptionService.findAll(objdata).subscribe((res) => {
+
         this.showtable = true
-        this.Headers = res.Headers
-        let obj = { MAT_NAME: 'Month' }
-        this.Headers.unshift(obj);
-        this.Tabledata = res.List
+        if (res.List.length != 0) {
+          this.Headers = res.Headers
+          let obj = { MAT_NAME: 'Month' }
+          this.Headers.unshift(obj);
+          for (let i = 0; i <= res.List.length - 1; i++) {
+            const propertyValues = Object.values(res.List[i]);
+            propertyValues.shift()
+            // tempmonth.push(propertyValues[0])
+            // propertyValues.shift()
+            this.Keyarray.push(propertyValues)
+          }
+          // this.montharray = tempmonth
+          this.Tabledata = this.Keyarray
+          this.isLoading = false;
+
+        } else {
+          this.isLoading = false;
+          Swal.fire('Warning', 'No Data Found', 'info')
+        }
+
       });
-
-      // this.dataSource = new window.Smart.DataAdapter({
-      //   virtualDataSource: function (resultCallbackFunction: any, details: any) {
-      //     debugger
-
-      //     const sqlQuery = details;
-      //     const queryData = details.query;
-
-      //     sqlQuery.query = JSON.stringify(queryData);
-
-      //     new window.Smart.Ajax({
-      //       // type:'post',
-      //       url: environment.base_url + '/oilconsumption/getOilConsumptionData',
-      //       dataSourceType: 'json',
-      //       data: sqlQuery
-      //     }, (response: any) => {
-      //       resultCallbackFunction({
-      //         dataSource: response.List,
-
-      //         virtualDataSourceLength: 10
-      //       });
-      //     });
-      //   },
-      //   // dataFields: [
-      //   //   'SUBGL_LONGNAME: string',
-      //   //   'INVOICE_AMT: number',
-      //   //   'CR_DAYS: number',
-      //   //   'CREDIT_DAYS: number',
-      //   //   'SUB_GLACNO: number',
-
-      //   // ]
-      // });
-      // this.filtering = true;
-      // this.filterRow = true;
-      // this.sortMode = 'one';
-      // this.paging = true;
-      // this.columnSizeMode = 'default';
-      // this.columns = [
-      //   {
-      //     label: 'SUBGL_LONGNAME', dataField: 'SUBGL_LONGNAME', formatFunction(settings: any) {
-      //     },
-      //   },
-      //   { label: 'INVOICE_AMT', dataField: 'INVOICE_AMT' },
-      //   { label: 'CR_DAYS', dataField: 'CR_DAYS' },
-      //   { label: 'CREDIT_DAYS', dataField: 'CREDIT_DAYS' },
-
-      //   {
-      //     label: 'SUB_GLACNO', dataField: 'SUB_GLACNO', formatFunction(settings: any) {
-
-      //     },
-      //   },
-
-      // ];
     } else {
-      Swal.fire('Warning', 'Please fill from and to date', 'info')
+      this.isLoading = false;
+      if (this.selectedBrach == null && this.selectedYear == null) {
+        Swal.fire('Warning', 'Please select branch and financial year', 'info')
+      } else if (this.selectedBrach == null) {
+        Swal.fire('Warning', 'Please select branch', 'info')
+      } else if (this.selectedYear == null) {
+        Swal.fire('Warning', 'Please select financial year', 'info')
+      }
+
     }
 
 

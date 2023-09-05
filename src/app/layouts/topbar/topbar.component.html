@@ -28,12 +28,12 @@
       </button>
 
       <!-- App Search-->
-      <!-- <form class="app-search d-none d-xl-block">
+      <form class="app-search d-none d-xl-block">
         <div class="position-relative">
-          <input type="text" class="form-control" placeholder="{{'HEADER.SEARCH' | translate}}">
-          <span class="bx bx-search-alt"></span>
+          <!-- <label>EFSERP ALL Side Dashboards Designed and graphs</label> -->
+          <!-- <span class="bx bx-search-alt"></span> -->
         </div>
-      </form> -->
+      </form>
 
       <!-- <div class="dropdown-mega d-none d-lg-block ms-2" dropdown>
         <button type="button" class="btn header-item" dropdownToggle data-toggle="dropdown" aria-haspopup="false"
@@ -351,12 +351,12 @@
       <div class="dropdown d-inline-block" dropdown>
         <button type="button" class="btn header-item" dropdownToggle id="page-header-user-dropdown">
           <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
-          <span class="d-none d-xl-inline-block ms-1">Henry</span>
+          <span class="d-none d-xl-inline-block ms-1">{{username}}</span>
           <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
         </button>
         <div class="dropdown-menu dropdown-menu-end" *dropdownMenu>
           <!-- item-->
-          <a class="dropdown-item" routerLink="/contacts/profile"><i class="bx bx-user font-size-16 align-middle me-1"></i>
+          <!-- <a class="dropdown-item" routerLink="/contacts/profile"><i class="bx bx-user font-size-16 align-middle me-1"></i>
             {{ 'HEADER.LOGIN.PROFILE' | translate}}</a>
           <a class="dropdown-item" href="javascript: void(0);"><i
               class="bx bx-wallet font-size-16 align-middle me-1"></i>{{ 'HEADER.LOGIN.MY_WALLET' | translate}}</a>
@@ -365,7 +365,7 @@
             'HEADER.LOGIN.SETTINGS' | translate}} </a>
           <a class="dropdown-item" href="javascript: void(0);"><i
               class="bx bx-lock-open font-size-16 align-middle me-1"></i>
-            {{ 'HEADER.LOGIN.LOCK_SCREEN' | translate}}</a>
+            {{ 'HEADER.LOGIN.LOCK_SCREEN' | translate}}</a> -->
           <div class="dropdown-divider"></div>
           <a class="dropdown-item text-danger" href="javascript: void(0);" (click)="logout()"><i
               class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>

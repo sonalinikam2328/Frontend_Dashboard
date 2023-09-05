@@ -21,14 +21,21 @@ import { AppComponentService } from 'src/app/app-component.service';
 export class SupplierwisePurchaseAndCRInTonsComponent {
 
   branch = [];
+  Tabledata = [];
+  finyear = [];
+
   selectedBrach;
   selectedYear;
   angForm: FormGroup;
   showBranch: boolean = true
+  isLoading: boolean = false
+  isLoading1: boolean = false
+  BRANCH: boolean = false
+  showtable: boolean = false
 
 
   constructor(
-    private _SupplierwisePurchaseService:SupplierwisePurchaseService,
+    private _SupplierwisePurchaseService: SupplierwisePurchaseService,
     private _AppComponentService: AppComponentService,
     private fb: FormBuilder,
     private http: HttpClient,
@@ -43,15 +50,15 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
   createForm() {
     this.angForm = this.fb.group({
 
-      BRANCH_NAME: ["", Validators.required],
+      BRANCH_NAME: [""],
       YEAR_NAME: ["", Validators.required],
-      
-      
+
+
 
 
     });
-       
-  
+
+
   }
 
 
@@ -116,16 +123,18 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
 
   ngOnInit(): void {
     // onInit code.
+    this.isLoading1 = true
+
     this.createForm();
     this._AppComponentService.branchList().subscribe((res) => {
-      console.log(res.List)
       if (res.List.length > 1) {
+        this.BRANCH = true
         this.showBranch = true;
         let obj = {
           ADDRESS1: "",
           ADDRESS2: null,
           CITY_NAME: "",
-          CODE: "100",
+          CODE: "0",
           EMAIL_ID: null,
           NAME: "ALL",
           PHONE_NO: "",
@@ -134,12 +143,21 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
         }
         res.List.unshift(obj);
         this.branch = res.List
+        this.isLoading1 = false
+
       } else {
+        this.BRANCH = false
         this.showBranch = false;
         this.branch = res.List
+        this.isLoading1 = false
+        this.selectedBrach = this.branch[0]['CODE']
+
       }
     });
 
+    this._AppComponentService.financialYear().subscribe((res) => {
+      this.finyear = res.List
+    });
   }
 
   ngAfterViewInit(): void {
@@ -152,30 +170,41 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
     // init code.
     const table = this.table;
 
-    table.addGroup('CREDIT_DAYS');
+    // table.addGroup('CREDIT_DAYS');
   }
 
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
   }
   loadData() {
+    this.isLoading = true;
+    this.Tabledata = []
+
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
 
     const formVal = this.angForm.value;
     let objdata = {
-
-      BRANCH_NAME: this.selectedBrach
+      BRANCH_NAME: this.selectedBrach,
+      FINANCIAL_YEAR: this.selectedYear,
+      CODE: result.COMPANY_ID
     }
     if (this.angForm.valid) {
       this._SupplierwisePurchaseService.findAll(objdata).subscribe((newdata) => {
+        this.showtable = true
+
+        this.Tabledata = newdata.List
+        this.isLoading = false;
 
       }, err => {
+        this.isLoading = false;
+
         Swal.fire('Warning', err, 'info')
       })
     } else {
+      this.isLoading = false;
 
-      Swal.fire('Warning', 'Please fill from and to date', 'info')
+      Swal.fire('Warning', 'Please fill All Details', 'info')
     }
 
 

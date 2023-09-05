@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: '', component: LayoutComponent, loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
   { path: 'pages', loadChildren: () => import('./extrapages/extrapages.module').then(m => m.ExtrapagesModule) },
   { path: 'crypto-ico-landing', component: CyptolandingComponent },
-  { path: '**', component: Page404Component },
+  { path: '**', component: LoginComponent },
 ];
 
 @NgModule({

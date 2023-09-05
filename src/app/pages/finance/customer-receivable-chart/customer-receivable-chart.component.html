@@ -1,20 +1,22 @@
-<div class="card">
+<div class="text-center">
+  <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
+</div>
+<div class="card" *ngIf="!isLoading1">
   <div class="card-header">
     <h5>Customer Receivable Chart</h5>
   </div>
 
   <div class="card-block">
     <form [formGroup]="angForm">
-      <div class="row" style="margin: 2%;" *ngIf="showBranch">
+      <div class="form-group row justify-content-md-center" style="margin: 2%;" *ngIf="showBranch">
         <div class="col-sm-3">
-          <label>Select Branch *</label>
+          <label>Select Branch <sub class="required">* </sub></label>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="form-group form-primary form-static-label">
             <span class="border-lable-flt">
-              <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
-                [(ngModel)]="selectedBrach" formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)"
-                [selectOnTab]='true'>
+              <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" #BRANCH_NAME [(ngModel)]="selectedBrach"
+                formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true' [required]="BRANCH">
                 <ng-option *ngFor="let values of branch" [value]="values">
                   {{values.NAME}}</ng-option>
               </ng-select>
@@ -23,11 +25,11 @@
         </div>
       </div>
 
-      <div class="row" style="margin: 2%;">
+      <div class="form-group row justify-content-md-center" style="margin: 2%;">
         <div class="col-sm-3">
-          <label>Select Dates *</label>
+          <label>Select Dates <sub class="required">* </sub></label>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="form-group input-group">
             <span class="border-lable-flt">
               <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control"
@@ -42,13 +44,13 @@
               This field is required
             </div>
           </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="form-group input-group">
+          <!-- </div>
+        <div class="col-sm-4"> -->
+          <div class="form-group input-group" style="margin: 2%;">
             <span class="border-lable-flt">
               <input type="text" placeholder="dd/mm/yyyy" name="tdate" id="tdate" class="form-control"
-                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [minDate]="fromdate" [maxDate]="maxDate"
-                [(ngModel)]="todate" bsDatepicker formControlName="TO" required appTheme>
+                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [minDate]="fromdate" [(ngModel)]="todate" bsDatepicker
+                formControlName="TO" required appTheme>
             </span>
           </div>
           <div class="form-group form-primary form-static-label"
@@ -61,9 +63,10 @@
         </div>
       </div>
 
-      <div class="row" style="margin: 2%;">
-        <div class="col-sm text-right">
-          <button class="btn btn-primary">Go</button>
+      <div class="form-group row justify-content-md-center" style="margin: 2%;">
+        <div class="col-sm text-center">
+          <button class="btn btn-primary sm" (click)="loadData()">Go <i class="fa"
+              [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
         </div>
       </div>
 
@@ -79,7 +82,7 @@
 
 
 
-<select class="form-control" style="width: 120px;
+<!-- <select class="form-control" style="width: 120px;
     height: 30px;
     font-size: 10px;
     margin-top: 3px;
@@ -87,11 +90,18 @@
   <option selected>Export Type </option>
   <option>CSV</option>
   <option>PDF</option>
-</select>
+</select> -->
 
 <!-- <smart-table #table class="table-hover table-bordered" id="table" [dataSource]="dataSource" [sortMode]="sortMode" [paging]="true" [columns]="columns" [columnMenu]="true" [filtering]="true" [columnReorder]="true" [columnResize]="true" [columnSizeMode]="columnSizeMode" [selection]="true" [selectionMode]="'one'">
 
 </smart-table> -->
-
-<smart-table #table id="table" [dataSource]="dataSource" [grouping]="grouping" [keyboardNavigation]="keyboardNavigation"
-  [columns]="columns"></smart-table>
+<div class="form-group row justify-content-md-center" *ngIf="showtable">
+  <div class="col-sm">
+    <div class="card">
+      <div class="card-block">
+        <smart-table #table id="table" [dataSource]="dataSource" [grouping]="grouping"
+          [columns]="columns"></smart-table>
+      </div>
+    </div>
+  </div>
+</div>

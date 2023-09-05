@@ -19,12 +19,16 @@ import { AppComponentService } from 'src/app/app-component.service';
 })
 export class ScheduleAdherenceForTheMonthComponent {
   branch = []
-
+  finyear = [];
   selectedBrach;
   selectedYear;
   selectedMonth;
   angForm: FormGroup;
   showBranch: boolean = true
+  showtable: boolean = false;
+  isLoading1: boolean = false;
+  BRANCH: boolean = false;
+  isLoading = false;
 
   constructor(
     private _AppComponentService: AppComponentService,
@@ -38,10 +42,10 @@ export class ScheduleAdherenceForTheMonthComponent {
   createForm() {
     this.angForm = this.fb.group({
 
-      BRANCH_NAME: ["", Validators.required],
+      BRANCH_NAME: [""],
       YEAR_NAME: ["", Validators.required],
-      MONTH_NAME: ["", Validators.required],
-     
+      // MONTH_NAME: ["", Validators.required],
+
 
     });
   }
@@ -112,16 +116,18 @@ export class ScheduleAdherenceForTheMonthComponent {
 
   ngOnInit(): void {
     // onInit code.
+    this.isLoading1 = true
+
     this.createForm();
     this._AppComponentService.branchList().subscribe((res) => {
-      console.log(res.List)
       if (res.List.length > 1) {
         this.showBranch = true;
+        this.BRANCH = true
         let obj = {
           ADDRESS1: "",
           ADDRESS2: null,
           CITY_NAME: "",
-          CODE: "100",
+          CODE: "0",
           EMAIL_ID: null,
           NAME: "ALL",
           PHONE_NO: "",
@@ -130,10 +136,19 @@ export class ScheduleAdherenceForTheMonthComponent {
         }
         res.List.unshift(obj);
         this.branch = res.List
+        this.isLoading1 = false
+
       } else {
         this.showBranch = false;
+        this.BRANCH = false
         this.branch = res.List
+        this.isLoading1 = false
+        this.selectedBrach = this.branch[0]['CODE']
       }
+    });
+
+    this._AppComponentService.financialYear().subscribe((res) => {
+      this.finyear = res.List
     });
   }
 
@@ -147,37 +162,53 @@ export class ScheduleAdherenceForTheMonthComponent {
     // init code.
     const table = this.table;
 
-    table.addGroup('CREDIT_DAYS');
+    // table.addGroup('CREDIT_DAYS');
   }
 
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
   }
+  Tabledata = []
   loadData() {
+    this.Tabledata = []
+    this.isLoading = true;
+
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
-
     const formVal = this.angForm.value;
+    // let objdata = [
+    //   this.selectedBrach,
+    //   this.selectedYear
+    // ]
     let objdata = {
-
       BRANCH_NAME: this.selectedBrach,
-      YEAR_NAME: this.selectedYear,
-      MONTH_NAME: this.selectedMonth
+      FINANCIAL_YEAR: this.selectedYear,
+      CODE: result.COMPANY_ID
     }
+
     if (this.angForm.valid) {
-      this._scheduleadherenceservice.findAll(objdata).subscribe((newdata) => {
 
-      }, err => {
-        Swal.fire('Warning', err, 'info')
-      })
+      this._scheduleadherenceservice.findAll(objdata).subscribe((res) => {
+
+        this.showtable = true
+        this.Tabledata = res.List
+        this.isLoading = false;
+     
+
+      });
     } else {
+      this.isLoading = false;
+      if (this.selectedBrach == null && this.selectedYear == null) {
+        Swal.fire('Warning', 'Please select branch and financial year', 'info')
+      } else if (this.selectedBrach == null) {
+        Swal.fire('Warning', 'Please select branch', 'info')
+      } else if (this.selectedYear == null) {
+        Swal.fire('Warning', 'Please select financial year', 'info')
+      }
 
-      Swal.fire('Warning', 'Please fill from and to date', 'info')
     }
 
 
   }
-
 }
-
 

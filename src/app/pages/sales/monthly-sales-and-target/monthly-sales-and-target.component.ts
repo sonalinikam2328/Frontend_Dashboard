@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 import { MonthlySalesService } from './monthly-sales.service';
+import { AppComponentService } from 'src/app/app-component.service';
 @Component({
   selector: 'app-monthly-sales-and-target',
   templateUrl: './monthly-sales-and-target.component.html',
@@ -16,11 +17,18 @@ import { MonthlySalesService } from './monthly-sales.service';
 })
 export class MonthlySalesAndTargetComponent {
   branch = [];
+  finyear = [];
   selectedBrach;
   selectedYear;
   angForm: FormGroup;
+  showBranch: boolean = true
+  showtable: boolean = false
+  isLoading1: boolean = false;
+  isLoading: boolean = false;
+  BRANCH: boolean = false;
 
   constructor(
+    private _AppComponentService: AppComponentService,
     private _monthlysalesservice: MonthlySalesService,
     private fb: FormBuilder,
     private http: HttpClient,
@@ -35,7 +43,7 @@ export class MonthlySalesAndTargetComponent {
   createForm() {
     this.angForm = this.fb.group({
 
-      BRANCH_NAME: ["", Validators.required],
+      BRANCH_NAME: [""],
       YEAR_NAME: ["", Validators.required],
 
     });
@@ -101,8 +109,39 @@ export class MonthlySalesAndTargetComponent {
   ];
 
   ngOnInit(): void {
-    // onInit code.
     this.createForm();
+    this.isLoading1 = true
+    this._AppComponentService.branchList().subscribe((res) => {
+      if (res.List.length > 1) {
+        this.BRANCH = true
+        this.showBranch = true;
+        let obj = {
+          ADDRESS1: "",
+          ADDRESS2: null,
+          CITY_NAME: "",
+          CODE: "0",
+          EMAIL_ID: null,
+          NAME: "ALL",
+          PHONE_NO: "",
+          PINCODE: "",
+          PREFIX_NAME: null
+        }
+        res.List.unshift(obj);
+        this.branch = res.List
+        this.isLoading1 = false
+
+      } else {
+        this.BRANCH = false;
+        this.showBranch = false;
+        this.branch = res.List;
+        this.isLoading1 = false;
+        this.selectedBrach = this.branch[0]['CODE']
+      }
+    });
+
+    this._AppComponentService.financialYear().subscribe((res) => {
+      this.finyear = res.List
+    });
   }
 
   ngAfterViewInit(): void {
@@ -115,31 +154,68 @@ export class MonthlySalesAndTargetComponent {
     // init code.
     const table = this.table;
 
-    table.addGroup('CREDIT_DAYS');
+    // table.addGroup('CREDIT_DAYS');
   }
 
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
   }
+  Headers = [];
+  Tabledata = [];
+  Keyarray = [];
+
   loadData() {
+    this.Tabledata = []
+    this.Keyarray = []
+    this.isLoading = true;
+
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
-
+    let tempmonth = []
     const formVal = this.angForm.value;
+
     let objdata = {
-
       BRANCH_NAME: this.selectedBrach,
-      YEAR_NAME: this.selectedYear
+      FINANCIAL_YEAR: this.selectedYear,
+      CODE: result.COMPANY_ID
     }
+
     if (this.angForm.valid) {
-      this._monthlysalesservice.findAll(objdata).subscribe((newdata) => {
 
-      }, err => {
-        Swal.fire('Warning', err, 'info')
-      })
+      this._monthlysalesservice.findAll(objdata).subscribe((res) => {
+
+        this.showtable = true
+        if (res.List.length != 0) {
+          this.Headers = res.Headers
+          let obj = { VALUE: 'Month' }
+          this.Headers.unshift(obj);
+          for (let i = 0; i <= res.List.length - 1; i++) {
+            const propertyValues = Object.values(res.List[i]);
+            propertyValues.shift()
+            // tempmonth.push(propertyValues[0])
+            // propertyValues.shift()
+            this.Keyarray.push(propertyValues)
+          }
+          // this.montharray = tempmonth
+          this.Tabledata = this.Keyarray
+          this.isLoading = false;
+
+        } else {
+          this.isLoading = false;
+          Swal.fire('Warning', 'No Data Found', 'info')
+        }
+
+      });
     } else {
+      this.isLoading = false;
+      if (this.selectedBrach == null && this.selectedYear == null) {
+        Swal.fire('Warning', 'Please select branch and financial year', 'info')
+      } else if (this.selectedBrach == null) {
+        Swal.fire('Warning', 'Please select branch', 'info')
+      } else if (this.selectedYear == null) {
+        Swal.fire('Warning', 'Please select financial year', 'info')
+      }
 
-      Swal.fire('Warning', 'Please fill from and to date', 'info')
     }
 
 

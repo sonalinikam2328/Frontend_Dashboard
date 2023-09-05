@@ -33,10 +33,6 @@
   background-image: linear-gradient(to bottom, #93b5d2 5%, #1e3567 100%) !important;
 }
 
-.card-header {
-  background-image: -webkit-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
-}
-
 .card-title {
   font-size: 15px;
   // margin: 2% 0 2% 20px !important;
@@ -44,11 +40,13 @@
 }
 
 .card-header {
- padding: 0;
- height: 48px;
+  padding: 0;
+  height: 35px;
+  background-image: -webkit-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
+
 }
 
-thead{
+thead {
   background-image: -webkit-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
 }
 
@@ -56,6 +54,63 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-tfoot{
+tfoot {
   background-color: #f1f2f4;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 3px !important;
+  color: var(--bs-card-color);
+}
+
+.table> :not(caption)>*>* {
+  padding: 5px !important;
+}
+
+.navbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  height: 50px !important;
+  padding: 0 calc(24px * 0.5) 0 0;
+}
+
+body[data-sidebar=dark] .navbar-brand-box {
+  background: #2a3042;
+  height: 60px !important;
+}
+
+.ng-select .ng-select-container {
+  color: #333;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  min-height: 30px !important;
+  align-items: center;
+}
+
+.ng-select.ng-select-single .ng-select-container {
+  height: 30px !important;
+}
+
+.page-content {
+  padding: calc(34px + 24px) calc(14px * 0.75) 60px calc(16px * 0.75) !important;
+}
+
+.required {
+  color: red;
+  font-size: 17px;
+}
+
+.vertical-menu {
+  width: 250px;
+  z-index: 1001;
+  background: #ffffff;
+  bottom: 0;
+  margin-top: 0;
+  position: fixed;
+  top: 48px !important;
+  box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
 }

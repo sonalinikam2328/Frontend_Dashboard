@@ -1,20 +1,21 @@
-<div class="card">
+<div class="text-center">
+  <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
+</div>
+<div class="card" *ngIf="!isLoading1">
   <div class="card-header">
     <h5>Development Cost Details</h5>
   </div>
-  <div class="card-block">
-    <form [formGroup]="angForm">
-
-      <div class="row" style="margin: 2%;" *ngIf="showBranch">
-        <div class="col-sm-3">
-          <label>Select Branch *</label>
+  <form [formGroup]="angForm">
+    <div class="card-block">
+      <div class="form-group row justify-content-md-center" style="margin: 2%;" *ngIf="showBranch">
+        <div class="col-sm-2">
+          <label>Select Branch <sub class="required">* </sub></label>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="form-group form-primary form-static-label">
             <span class="border-lable-flt">
-              <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
-                [(ngModel)]="selectedBrach" formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)"
-                [selectOnTab]='true'>
+              <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" #BRANCH_NAME [(ngModel)]="selectedBrach"
+                formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true' [required]="BRANCH">
                 <ng-option *ngFor="let values of branch" [value]="values">
                   {{values.NAME}}</ng-option>
               </ng-select>
@@ -22,14 +23,14 @@
           </div>
         </div>
       </div>
-      <div class="row" style="margin: 2%;">
-        <div class="col-sm-3">
-          <label>Select Dates *</label>
+      <div class="form-group row justify-content-md-center" style="margin: 2%;">
+        <div class="col-sm-2">
+          <label>Select Dates <sub class="required">* </sub></label>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="form-group input-group">
             <span class="border-lable-flt">
-              <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" appTheme class="form-control"
+              <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control"
                 [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [(ngModel)]="fromdate" [maxDate]="maxDate" bsDatepicker
                 formControlName="FROM" required>
             </span>
@@ -41,13 +42,13 @@
               This field is required
             </div>
           </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="form-group input-group">
+          <!-- </div>
+        <div class="col-sm-3"> -->
+          <div class="form-group input-group" style="margin-top: 2%;">
             <span class="border-lable-flt">
               <input type="text" placeholder="dd/mm/yyyy" name="tdate" id="tdate" class="form-control"
-                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [minDate]="fromdate" [maxDate]="maxDate"
-                [(ngModel)]="todate" bsDatepicker formControlName="TO" required appTheme>
+                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [minDate]="fromdate" [(ngModel)]="todate" bsDatepicker
+                formControlName="TO" required>
             </span>
           </div>
           <div class="form-group form-primary form-static-label"
@@ -59,97 +60,53 @@
           </div>
         </div>
       </div>
-      <div class="row" style="margin: 2%;">
-        <div class="col-sm text-right">
-          <button class="btn btn-primary">Go</button>
+      <div class="form-group row justify-content-md-center" style="margin: 2%;">
+        <div class="col-sm text-center">
+          <button class="btn btn-primary sm" (click)="loadData()">Go <i class="fa"
+              [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
         </div>
       </div>
-      
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
-
-
-
-
 <div class="container-fluid">
-
-  <div class="row">
+  <div class="form-group row justify-content-md-center" *ngIf="showtable">
     <div class="col-lg-12">
       <div class="card">
-        <div class="card-body" dir="ltr">
-          <h4 class="card-title mb-4">Payment Collection Plan</h4>
-
-
-          <div class="row" id="r1" style="margin-top: 1%;margin-bottom: 30%;">
-            <div class="col-md-12">
-              <div class="table-responsive">
-                <div class="table-fixed">
-                  <!-- <smart-table #table id="table"> -->
-
-                  <table class="table table-striped table-bordered table-hover compact">
-                    <thead>
-                      <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th>Feb-23</th>
-                        <th>Jan-23</th>
-                        <th>Dec-22</th>
-                        <th>Nov-22</th>
-                        <th>Oct-22</th>
-                        <th>Sep-22</th>
-                      </tr>
-                      <tr>
-                        <th>Sr. No.</th>
-                        <th>Name of Customer</th>
-                        <th>Payment Amount Plan For The Month Rs.</th>
-                        <th>Amount Received Rs.</th>
-                        <th>% of Recovery</th>
-                        <th>Credit Days</th>
-                        <th>Avg Payment Receipt Days</th>
-                        <th>Avg Payment Receipt Days</th>
-                        <th>Avg Payment Receipt Days</th>
-                        <th>Avg Payment Receipt Days</th>
-                        <th>Avg Payment Receipt Days</th>
-                        <th>Avg Payment Receipt Days</th>
-                      </tr>
-                      <tr>
-                        <th colspan="12" style="align-items: center;">DOMASTIC</th>
-                      </tr>
-                    </thead>
-                    <tbody *ngIf="dataSource?.length != 0">
-                      <tr *ngFor="let data of dataSource;let indexOfelement = index">
-                        <td class="td_right">{{indexOfelement != dataSource?.length - 1 ? indexOfelement + 1 : ''}}
-                        </td>
-                        <td [ngClass]="indexOfelement != dataSource?.length - 1 ? '' : 'bold'">{{data.SUBGL_LONGNAME}}
-                        </td>
-                        <td class="td_right">{{data.INVOICE_AMT != null ? data.INVOICE_AMT : '-'}}</td>
-                        <td class="td_right">{{data.RECEIPT_AMT != null ? data.RECEIPT_AMT : '-'}}</td>
-                        <td class="td_right">{{data.RECV_PERCENT != null ? data.RECV_PERCENT + '%' :
-                          data.RECV_PERCENT}}
-                        </td>
-                        <td class="td_right">{{data.CREDIT_DAYS != null ? data.CREDIT_DAYS : '-'}}</td>
-                        <td class="td_right">{{data.CR_DAYS != null ? data.CR_DAYS : '-'}}</td>
-                        <td class="td_right">{{data.CR_DAYS1 != null ? data.CR_DAYS1 : '-'}}</td>
-                        <td class="td_right">{{data.CR_DAYS2 != null ? data.CR_DAYS2 : '-'}}</td>
-                        <td class="td_right">{{data.CR_DAYS3 != null ? data.CR_DAYS3 : '-'}}</td>
-                        <td class="td_right">{{data.CR_DAYS4 != null ? data.CR_DAYS4 : '-'}}</td>
-                        <td class="td_right">{{data.CR_DAYS5 != null ? data.CR_DAYS5 : '-'}}</td>
-                      </tr>
-                    </tbody>
-                    <tbody *ngIf="dataSource?.length == 0">
-                      <tr>
-                        <td colspan="12">No Data</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- </smart-table> -->
-
-                </div>
+        <div class="row" id="r1" style="margin-top: 1%;margin-bottom: 30%;">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <div class="table-fixed">
+                <!-- <smart-table #table id="table"> -->
+                <table class="table table-striped table-bordered table-hover compact">
+                  <thead>
+                    <tr>
+                      <th scope="col">Customer Name</th>
+                      <th scope="col">Part Name</th>
+                      <th scope="col">Development P.O.No/Referance</th>
+                      <th scope="col">Approved Development Cost in INR</th>
+                      <th scope="col">1st 50% Debit note/Invoice No.</th>
+                      <th scope="col">Balance 50% Debit note/Invoice No.</th>
+                      <th scope="col">Development cost received in INR</th>
+                      <th scope="col">Balanced D.C. in INR to be received</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="Tabledata.length !=0">
+                    <tr *ngFor="let data of Tabledata">
+                      <td>{{data.SR_NO}}</td>
+                      <td>{{data.AC_NAME}}</td>
+                      <td>{{data.RECEIPT_QTY}}</td>
+                      <td>{{data.CR_QTY}}</td>
+                      <td>{{data.RECEIPT_WT}}</td>
+                      <td>{{data.CR_WT}}</td>
+                      <td>{{data.CR_PERCENT}}</td>
+                      <td>{{data.REJ_DETAILS}}</td>
+                    </tr>
+                  <tbody *ngIf="Tabledata.length ==0">
+                    <td>No Data</td>
+                  </tbody>
+                </table>
+                <!-- </smart-table> -->
               </div>
             </div>
           </div>

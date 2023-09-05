@@ -1,60 +1,141 @@
-<div class="card">
-    <div class="card-header">
-      <h5>Supplierwise Purchase and CR in Tons</h5>
-    </div>
-    <form [formGroup]="angForm">
+<div class="text-center">
+  <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
+</div>
+<div class="card" *ngIf="!isLoading1">
+  <div class="card-header">
+    <h5>Supplierwise Purchase and CR in Tons</h5>
+  </div>
+  <form [formGroup]="angForm">
     <div class="card-block">
-        <div class="row" style="margin: 2%;" *ngIf="showBranch" >
-          <div class="col-sm-3">
-            <label>Select Branch *</label>
-          </div>
-          <div class="col-sm-4">
-            <div class="form-group form-primary form-static-label">
-              <span class="border-lable-flt">
-                <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" required #BRANCH_NAME
-                  [(ngModel)]="selectedBrach" formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)"
-                  [selectOnTab]='true'>
-                  <ng-option *ngFor="let values of branch" [value]="values">
-                    {{values.NAME}}</ng-option>
-                </ng-select>
-              </span>
-            </div>
-          </div>
+      <div class="form-group row justify-content-md-center" style="margin: 2%;" *ngIf="showBranch">
+        <div class="col-sm-3">
+          <label>Select Branch *</label>
         </div>
-        <div class="row" style="margin: 2%;">
-            <div class="col-sm-3">
-                <label>Select Finacial year *</label>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group form-primary form-static-label">
-                    <span class="border-lable-flt">
-                        <ng-select id="YEAR_NAME" bindValue="CODE" bindLabel="NAME" required #YEAR_NAME
-                        [(ngModel)]="selectedYear" formControlName="YEAR_NAME" (focus)="onFocus(YEAR_NAME)" [selectOnTab]='true'>
-                            <ng-option *ngFor="let values of branch" [value]="values">
-                                {{values.NAME}}</ng-option>
-                        </ng-select>
-                    </span>
-                </div>
-            </div>
+        <div class="col-sm-3">
+          <div class="form-group form-primary form-static-label">
+            <span class="border-lable-flt">
+              <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" #BRANCH_NAME [(ngModel)]="selectedBrach"
+                formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true' [required]="BRANCH">
+                <ng-option *ngFor="let values of branch" [value]="values">
+                  {{values.NAME}}</ng-option>
+              </ng-select>
+            </span>
+          </div>
         </div>
       </div>
-
-        <div class="row" style="margin: 2%;">
-            <div class="col-sm text-right">
-              <button class="btn btn-primary">Go</button>
-            </div>
+      <div class="form-group row justify-content-md-center" style="margin: 2%;">
+        <div class="col-sm-3">
+          <label>Select Finacial year *</label>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group form-primary form-static-label">
+            <span class="border-lable-flt">
+              <ng-select id="YEAR_NAME" bindValue="DATEVALUE" bindLabel="DATEDESC" required #YEAR_NAME
+                [(ngModel)]="selectedYear" formControlName="YEAR_NAME" (focus)="onFocus(YEAR_NAME)"
+                [selectOnTab]='true'>
+                <ng-option *ngFor="let values of finyear" [value]="values">
+                  {{values.DATEDESC}}</ng-option>
+              </ng-select>
+            </span>
           </div>
-          
-        </form>
-                
+        </div>
+      </div>
+    </div>
+    <div class="form-group row justify-content-md-center" style="margin: 2%;">
+      <div class="col-sm text-center">
+        <button class="btn btn-primary sm" (click)="loadData()">Go <i class="fa"
+            [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="form-group row justify-content-md-center" *ngIf="showtable">
+  <div class="col-sm">
+    <div class="card">
+      <div class="card-block">
+        <!-- <select class="form-control" style="width: 120px;
+    height: 30px;
+    font-size: 10px;
+    margin-top: 3px;
+    float:right;" (change)="handleClick($event, 'csv')">
+            <option selected>Export Type </option>
+            <option>CSV</option>
+            <option>PDF</option>
+        </select> -->
+        <!-- <smart-table #table class="table-hover table-bordered compact" id="table" [dataSource]="dataSource"
+            [sortMode]="sortMode" [paging]="true" [columns]="columns" [columnMenu]="true" [filtering]="true"
+            [columnReorder]="true" [columnResize]="true" [columnSizeMode]="columnSizeMode"
+            [selectionMode]="'one'">
+        </smart-table> -->
+
+        <!-- <smart-table #table id="table"> -->
+        <table class="table table-striped table-bordered table-hover compact">
+          <thead>
+            <tr>
+              <th scope="col">Supplier Name</th>
+              <th scope="col">Avg. Purchase</th>
+              <th scope="col">Avg. Purchase Returns</th>
+              <th scope="col">Avg. Purchase Schedule</th>
+              <th scope="col">Delivery Rating</th>
+              <th scope="col">Delivery Rating </th>
+              <th scope="col">Quality Rating</th>
+              <th scope="col">Q1 Purchase</th>
+              <th scope="col">Q1 purchase Return</th>
+              <th scope="col">Q1 Delivery Rating</th>
+              <th scope="col">Q1 Quality Rating</th>
+              <th scope="col">Q2 Purchase</th>
+              <th scope="col">Q2 purchase Return</th>
+              <th scope="col">Q2 Delivery Rating</th>
+              <th scope="col">Q2 Quality Rating</th>
+              <th scope="col">Q3 Purchase</th>
+              <th scope="col">Q3 purchase Return</th>
+              <th scope="col">Q3 Delivery Rating</th>
+              <th scope="col">Q3 Quality Rating</th>
+              <th scope="col">Q4 Purchase</th>
+              <th scope="col">Q4 purchase Return</th>
+              <th scope="col">Q4 Delivery Rating</th>
+              <th scope="col">Q4 Quality Rating</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="Tabledata.length !=0">
+            <tr *ngFor="let data of Tabledata;">
+              <!-- <td style="text-align: left;">{{datamonth}}</td> -->
+              <td scope="col">{{data.AC_NAME}}</td>
+              <td scope="col">{{data.PRVYR_GRN_QTY}}</td>
+              <td scope="col"></td>
+              <td scope="col"></td>
+              <td scope="col" style="text-align: right;">{{data.PRVYR_DELV_RATE1}}</td>
+              <td scope="col" style="text-align: right;">{{data.PRVYR_DELV_RATE2}} </td>
+              <td scope="col" style="text-align: right;">{{data.PRVYR_QUAL_RATE}} </td>
+              <td scope="col" style="text-align: right;">{{data.Q1_GRN_QTY}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q1_CR_QTY}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q1_DEVL_RATE}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q1_QUAL_RATE}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q2_GRN_QTY}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q2_CR_QTY}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q2_DEVL_RATE}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q2_QUAL_RATE}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q3_GRN_QTY}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q3_CR_QTY}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q3_DEVL_RATE}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q3_QUAL_RATE}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q4_GRN_QTY}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q4_CR_QTY}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q4_DEVL_RATE}}</td>
+              <td scope="col" style="text-align: right;">{{data.Q4_QUAL_RATE}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+        <!-- </smart-table> -->
+      </div>
+    </div>
 
 
-                
-       
-            
-            
-
-<select class="form-control" style="width: 120px;
+  </div>
+</div>
+<!-- <select class="form-control" style="width: 120px;
     height: 30px;
     font-size: 10px;
     margin-top: 3px;
@@ -62,11 +143,11 @@
     <option selected>Export Type </option>
     <option>CSV</option>
     <option>PDF</option>
-</select>
+  </select> -->
 
 <!-- <smart-table #table class="table-hover table-bordered" id="table" [dataSource]="dataSource" [sortMode]="sortMode" [paging]="true" [columns]="columns" [columnMenu]="true" [filtering]="true" [columnReorder]="true" [columnResize]="true" [columnSizeMode]="columnSizeMode" [selection]="true" [selectionMode]="'one'">
 
 </smart-table> -->
 
-<smart-table #table id="table" [dataSource]="dataSource" [grouping]="grouping" [keyboardNavigation]="keyboardNavigation"
-    [columns]="columns"></smart-table>
+<!-- <smart-table #table id="table" [dataSource]="dataSource" [grouping]="grouping"
+    [keyboardNavigation]="keyboardNavigation" [columns]="columns"></smart-table> -->

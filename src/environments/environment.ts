@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  base_url: 'http://localhost:3000',
+  // base_url: 'http://localhost:3000',
+  // base_url: 'http://ERP36:3000',
+  base_url: 'http://192.168.1.152:3000',
 
   production: false,
   defaultauth: 'fackbackend',
@@ -18,7 +20,7 @@ export const environment = {
     measurementId: ''
   }
 };
-
+// ng build --output-path DASHBOARD --base-href /DASHBOARD/ 
 
 
 /*

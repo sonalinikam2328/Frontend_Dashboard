@@ -22,8 +22,13 @@ export class DevelopmentCostDetailsComponent implements OnInit {
 
   angForm: FormGroup;
   branch = [];
-  showBranch: boolean = true
+  Tabledata = [];
 
+  showBranch: boolean = true
+  showtable: boolean = false
+  isLoading1: boolean = false;
+  isLoading: boolean = false;
+  BRANCH: boolean = false;
   maxDate: Date;
   maxDatet: Date;
   minDate: Date;
@@ -80,8 +85,8 @@ export class DevelopmentCostDetailsComponent implements OnInit {
     this.angForm = this.fb.group({
       FROM: ["", [Validators.required]], // control name
       TO: ["", [Validators.required]],
-      BRANCH_NAME: ["", Validators.required],
-      
+      BRANCH_NAME: [""],
+
 
 
     });
@@ -89,15 +94,16 @@ export class DevelopmentCostDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.isLoading1 = true
     this._AppComponentService.branchList().subscribe((res) => {
-      console.log(res.List)
       if (res.List.length > 1) {
+        this.BRANCH = true
         this.showBranch = true;
         let obj = {
           ADDRESS1: "",
           ADDRESS2: null,
           CITY_NAME: "",
-          CODE: "100",
+          CODE: "0",
           EMAIL_ID: null,
           NAME: "ALL",
           PHONE_NO: "",
@@ -106,36 +112,44 @@ export class DevelopmentCostDetailsComponent implements OnInit {
         }
         res.List.unshift(obj);
         this.branch = res.List
+        this.isLoading1 = false
+
       } else {
+        this.BRANCH = false;
         this.showBranch = false;
-        this.branch = res.List
+        this.branch = res.List;
+        this.isLoading1 = false;
+        this.selectedBrach = this.branch[0]['CODE']
       }
-    });
-    this._PaymentService.companylist().subscribe(response => {
-      this.dataSource = response.List
     });
 
   }
 
   loadData() {
+    this.isLoading = true;
+    this.Tabledata = []
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
 
     const formVal = this.angForm.value;
     let objdata = {
-      FROM: moment(this.fromdate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
-      TO: moment(this.todate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
-      BRANCH_NAME: this.selectedBrach
+      FROM: moment(this.fromdate, 'YYYY-MM-DD').format('YYYYMMDD'),
+      TO: moment(this.todate, 'YYYY-MM-DD').format('YYYYMMDD'),
+      BRANCH_NAME: this.selectedBrach,
+      CODE: result.COMPANY_ID
+
     }
+
     if (this.angForm.valid) {
-      this._DevelopmentcostdetailsService.findAll(objdata).subscribe((newdata) => {
+      this._DevelopmentcostdetailsService.findAll(objdata).subscribe((res) => {
+        this.showtable = true
+        this.Tabledata = res.List
+        this.isLoading = false;
 
-      }, err => {
-        Swal.fire('Warning', err, 'info')
-      })
+      });
     } else {
-
-      Swal.fire('Warning', 'Please fill from and to date', 'info')
+      this.isLoading = false;
+      Swal.fire('Warning', 'Please fill All Details Properly', 'info')
     }
 
 

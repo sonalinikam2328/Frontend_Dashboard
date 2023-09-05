@@ -18,12 +18,16 @@ import { AppComponentService } from 'src/app/app-component.service';
 })
 export class MonthlyValueAdditionTargetVsActualComponent {
   branch = [];
+  finyear = [];
   selectedBrach;
   selectedYear;
   angForm: FormGroup;
   showBranch: boolean = true
-  
- 
+  showtable: boolean = false
+  isLoading1: boolean = false;
+  isLoading: boolean = false;
+  BRANCH: boolean = false;
+
   constructor(
     private _monthlayvalueadditionservice: monthlayvalueadditionservice,
     private _AppComponentService: AppComponentService,
@@ -40,16 +44,13 @@ export class MonthlyValueAdditionTargetVsActualComponent {
   createForm() {
     this.angForm = this.fb.group({
 
-      BRANCH_NAME: ["", Validators.required],
+      BRANCH_NAME: [""],
       YEAR_NAME: ["", Validators.required],
-      
-
 
     });
   }
 
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
-
 
   grouping: boolean = true;
 
@@ -59,7 +60,6 @@ export class MonthlyValueAdditionTargetVsActualComponent {
     virtualDataSource: function (resultCallbackFunction: any, details: any) {
       const sqlQuery = details;
       const queryData = details.query;
-
       sqlQuery.query = JSON.stringify(queryData);
       // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
       //   console.log(data)
@@ -82,7 +82,6 @@ export class MonthlyValueAdditionTargetVsActualComponent {
       'CR_DAYS: number',
       'CREDIT_DAYS: number',
       'SUB_GLACNO: number',
-
     ]
   });
   filtering = true;
@@ -110,15 +109,16 @@ export class MonthlyValueAdditionTargetVsActualComponent {
   ngOnInit(): void {
     // onInit code.
     this.createForm();
+    this.isLoading1 = true
     this._AppComponentService.branchList().subscribe((res) => {
-      console.log(res.List)
       if (res.List.length > 1) {
+        this.BRANCH = true
         this.showBranch = true;
         let obj = {
           ADDRESS1: "",
           ADDRESS2: null,
           CITY_NAME: "",
-          CODE: "100",
+          CODE: "0",
           EMAIL_ID: null,
           NAME: "ALL",
           PHONE_NO: "",
@@ -127,10 +127,19 @@ export class MonthlyValueAdditionTargetVsActualComponent {
         }
         res.List.unshift(obj);
         this.branch = res.List
+        this.isLoading1 = false
+
       } else {
+        this.BRANCH = false;
         this.showBranch = false;
-        this.branch = res.List
+        this.branch = res.List;
+        this.isLoading1 = false;
+        this.selectedBrach = this.branch[0]['CODE']
       }
+    });
+
+    this._AppComponentService.financialYear().subscribe((res) => {
+      this.finyear = res.List
     });
   }
 
@@ -144,31 +153,68 @@ export class MonthlyValueAdditionTargetVsActualComponent {
     // init code.
     const table = this.table;
 
-    table.addGroup('CREDIT_DAYS');
+    // table.addGroup('CREDIT_DAYS');
   }
 
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
   }
+  Headers = [];
+  Tabledata = [];
+  Keyarray = [];
+
   loadData() {
+    this.Tabledata = []
+    this.Keyarray = []
+    this.isLoading = true;
+
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
-
+    let tempmonth = []
     const formVal = this.angForm.value;
+
     let objdata = {
-
       BRANCH_NAME: this.selectedBrach,
-      YEAR_NAME: this.selectedYear
+      FINANCIAL_YEAR: this.selectedYear,
+      CODE: result.COMPANY_ID
     }
+
     if (this.angForm.valid) {
-      this._monthlayvalueadditionservice.findAll(objdata).subscribe((newdata) => {
 
-      }, err => {
-        Swal.fire('Warning', err, 'info')
-      })
+      this._monthlayvalueadditionservice.findAll(objdata).subscribe((res) => {
+
+        this.showtable = true
+        if (res.List.length != 0) {
+          this.Headers = res.Headers
+          let obj = { VALUE: 'Month' }
+          this.Headers.unshift(obj);
+          for (let i = 0; i <= res.List.length - 1; i++) {
+            const propertyValues = Object.values(res.List[i]);
+            propertyValues.shift()
+            // tempmonth.push(propertyValues[0])
+            // propertyValues.shift()
+            this.Keyarray.push(propertyValues)
+          }
+          // this.montharray = tempmonth
+          this.Tabledata = this.Keyarray
+          this.isLoading = false;
+
+        } else {
+          this.isLoading = false;
+          Swal.fire('Warning', 'No Data Found', 'info')
+        }
+
+      });
     } else {
+      this.isLoading = false;
+      if (this.selectedBrach == null && this.selectedYear == null) {
+        Swal.fire('Warning', 'Please select branch and financial year', 'info')
+      } else if (this.selectedBrach == null) {
+        Swal.fire('Warning', 'Please select branch', 'info')
+      } else if (this.selectedYear == null) {
+        Swal.fire('Warning', 'Please select financial year', 'info')
+      }
 
-      Swal.fire('Warning', 'Please fill from and to date', 'info')
     }
 
 
