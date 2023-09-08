@@ -142,6 +142,7 @@ export class MonthlySalesAndTargetComponent {
     });
 
     this._AppComponentService.financialYear().subscribe((res) => {
+      console.log('Financial Year Response:', res);
       this.finyear = res.List
       this.selectedYear = this.finyear[0]['DATEVALUE']
 
@@ -187,7 +188,7 @@ export class MonthlySalesAndTargetComponent {
     if (this.angForm.valid) {
 
       this._monthlysalesservice.findAll(objdata).subscribe((res) => {
-
+        console.log('Data from Database:', res); 
         this.showtable = true
         if (res.List.length != 0) {
           this.Headers = res.Headers
