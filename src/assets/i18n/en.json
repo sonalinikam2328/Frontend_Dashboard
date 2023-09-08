@@ -13,8 +13,8 @@
       "TEXT": "Sales",
       "LIST": {
         "PAYMENTCOLLECTION": "Payment Collection Plan",
-        "DEVELOPMENTCOSTDETAILS": "Developent Cost Details",
-        "SCHUDLEADHERENCEFORTHEMONTH": "schedule adherence for the month",
+        "DEVELOPMENTCOSTDETAILS": "Development Cost Details",
+        "SCHUDLEADHERENCEFORTHEMONTH": "Schedule Adherence for the Month",
         "CUSTOMERWISEPLANVS.ACTUALSALE": " Customer wise Plan Vs. Actual Sale",
         "MONTHLYVALUEADDITIONTARGETV/SACTUAL": "Monthly Value Addition target V/s Actual",
         "MONTHLYSALESANDTARGET": "Monthly Sales and Target"

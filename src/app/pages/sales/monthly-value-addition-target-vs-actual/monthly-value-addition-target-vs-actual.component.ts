@@ -218,7 +218,7 @@ export class MonthlyValueAdditionTargetVsActualComponent {
         Swal.fire('Warning', 'Please select branch', 'info')
       } else if (this.selectedYear == null) {
         Swal.fire('Warning', 'Please select financial year', 'info')
-      }
+      } 
 
     }
 
