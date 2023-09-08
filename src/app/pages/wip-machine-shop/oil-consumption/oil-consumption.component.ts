@@ -78,6 +78,7 @@ export class OilConsumptionComponent implements OnInit {
         res.List.unshift(obj);
         this.branch = res.List
         this.isLoading1 = false
+        this.selectedBrach = this.branch[0]['CODE']
       } else {
         this.BRANCH = false
         this.showBranch = false;
@@ -90,6 +91,7 @@ export class OilConsumptionComponent implements OnInit {
 
     this._AppComponentService.financialYear().subscribe((res) => {
       this.finyear = res.List
+      this.selectedYear = this.finyear[0]['DATEVALUE']
     });
 
   }

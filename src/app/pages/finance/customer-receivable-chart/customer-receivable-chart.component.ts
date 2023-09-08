@@ -42,9 +42,10 @@ export class CustomerReceivableChartComponent {
   ) {
     this.minDate = new Date();
     this.maxDate = new Date();
-    this.minDate.setDate(this.minDate.getDate() - 1);
-    this.maxDate.setDate(this.maxDate.getDate() - 1);
+    this.minDate.setDate(this.minDate.getDate() );
+    this.maxDate.setDate(this.maxDate.getDate() - 7);
     this.fromdate = this.maxDate
+    this.todate = this.minDate
   }
   onFocus(ele: NgSelectComponent) {
     ele.open();

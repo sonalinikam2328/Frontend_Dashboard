@@ -129,6 +129,8 @@ export class MonthlySalesAndTargetComponent {
         res.List.unshift(obj);
         this.branch = res.List
         this.isLoading1 = false
+        this.selectedBrach = this.branch[0]['CODE']
+
 
       } else {
         this.BRANCH = false;
@@ -141,6 +143,8 @@ export class MonthlySalesAndTargetComponent {
 
     this._AppComponentService.financialYear().subscribe((res) => {
       this.finyear = res.List
+      this.selectedYear = this.finyear[0]['DATEVALUE']
+
     });
   }
 
@@ -197,7 +201,9 @@ export class MonthlySalesAndTargetComponent {
             this.Keyarray.push(propertyValues)
           }
           // this.montharray = tempmonth
+          let obj1 = {}
           this.Tabledata = this.Keyarray
+          this.Tabledata.unshift(obj1)
           this.isLoading = false;
 
         } else {

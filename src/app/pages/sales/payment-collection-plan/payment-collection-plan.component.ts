@@ -42,7 +42,7 @@ export class PaymentCollectionPlanComponent {
 
       BRANCH_NAME: [""],
       YEAR_NAME: ["", Validators.required],
-      CUTOMER_TYPE: ["", Validators.required],
+      CUTOMER_TYPE: ["0", Validators.required],
       // MONTH_NAME: ["", Validators.required],
 
 
@@ -75,7 +75,7 @@ export class PaymentCollectionPlanComponent {
         res.List.unshift(obj);
         this.branch = res.List
         this.isLoading1 = false
-
+        this.selectedBrach = this.branch[0]['CODE']
       } else {
         this.showBranch = false;
         this.BRANCH = false
@@ -87,12 +87,15 @@ export class PaymentCollectionPlanComponent {
 
     this._AppComponentService.financialYear().subscribe((res) => {
       this.finyear = res.List
+      this.selectedYear = this.finyear[0]['DATEVALUE']
     });
   }
 
   Tabledata = []
+  FooterData = []
   loadData() {
     this.Tabledata = []
+    this.FooterData = []
     this.isLoading = true;
 
     let data: any = localStorage.getItem('user');
@@ -112,10 +115,15 @@ export class PaymentCollectionPlanComponent {
     if (this.angForm.valid) {
 
       this._PaymentService.findAll(objdata).subscribe((res) => {
-
+        debugger
+        let obj = {}
         this.showtable = true
+        this.FooterData.push(res.List[res.List.length - 1])
         this.Tabledata = res.List
+        this.Tabledata.unshift(obj)
+        this.Tabledata.pop()
         this.isLoading = false;
+
 
 
       });

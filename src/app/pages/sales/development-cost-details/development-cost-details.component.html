@@ -7,11 +7,11 @@
   </div>
   <form [formGroup]="angForm">
     <div class="card-block">
-      <div class="form-group row justify-content-md-center" style="margin: 2%;" *ngIf="showBranch">
-        <div class="col-sm-2">
+      <div class="row" style="margin: 1%;">
+        <div class="col-sm-2" *ngIf="showBranch">
           <label>Select Branch <sub class="required">* </sub></label>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2" *ngIf="showBranch">
           <div class="form-group form-primary form-static-label">
             <span class="border-lable-flt">
               <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" #BRANCH_NAME [(ngModel)]="selectedBrach"
@@ -22,12 +22,12 @@
             </span>
           </div>
         </div>
-      </div>
-      <div class="form-group row justify-content-md-center" style="margin: 2%;">
+        <!-- </div>
+      <div class="form-group row justify-content-md-center" style="margin: 1%;"> -->
         <div class="col-sm-2">
           <label>Select Dates <sub class="required">* </sub></label>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group input-group">
             <span class="border-lable-flt">
               <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control"
@@ -42,9 +42,9 @@
               This field is required
             </div>
           </div>
-          <!-- </div>
-        <div class="col-sm-3"> -->
-          <div class="form-group input-group" style="margin-top: 2%;">
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group input-group" style="margin-top: 1%;">
             <span class="border-lable-flt">
               <input type="text" placeholder="dd/mm/yyyy" name="tdate" id="tdate" class="form-control"
                 [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [minDate]="fromdate" [(ngModel)]="todate" bsDatepicker
@@ -59,9 +59,9 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="form-group row justify-content-md-center" style="margin: 2%;">
-        <div class="col-sm text-center">
+        <!-- </div>
+      <div class="form-group row justify-content-md-center" style="margin: 1%;"> -->
+        <div class="col-sm">
           <button class="btn btn-primary sm" (click)="loadData()">Go <i class="fa"
               [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
         </div>
@@ -69,46 +69,43 @@
     </div>
   </form>
 </div>
-<div class="container-fluid">
-  <div class="form-group row justify-content-md-center" *ngIf="showtable">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="row" id="r1" style="margin-top: 1%;margin-bottom: 30%;">
-          <div class="col-md-12">
-            <div class="table-responsive">
-              <div class="table-fixed">
-                <!-- <smart-table #table id="table"> -->
-                <table class="table table-striped table-bordered table-hover compact">
-                  <thead>
-                    <tr>
-                      <th scope="col">Customer Name</th>
-                      <th scope="col">Part Name</th>
-                      <th scope="col">Development P.O.No/Referance</th>
-                      <th scope="col">Approved Development Cost in INR</th>
-                      <th scope="col">1st 50% Debit note/Invoice No.</th>
-                      <th scope="col">Balance 50% Debit note/Invoice No.</th>
-                      <th scope="col">Development cost received in INR</th>
-                      <th scope="col">Balanced D.C. in INR to be received</th>
-                    </tr>
-                  </thead>
-                  <tbody *ngIf="Tabledata.length !=0">
-                    <tr *ngFor="let data of Tabledata">
-                      <td>{{data.SR_NO}}</td>
-                      <td>{{data.AC_NAME}}</td>
-                      <td>{{data.RECEIPT_QTY}}</td>
-                      <td>{{data.CR_QTY}}</td>
-                      <td>{{data.RECEIPT_WT}}</td>
-                      <td>{{data.CR_WT}}</td>
-                      <td>{{data.CR_PERCENT}}</td>
-                      <td>{{data.REJ_DETAILS}}</td>
-                    </tr>
-                  <tbody *ngIf="Tabledata.length ==0">
-                    <td>No Data</td>
-                  </tbody>
-                </table>
-                <!-- </smart-table> -->
-              </div>
-            </div>
+
+<div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable">
+  <div class="col-12">
+    <div class="table-responsive">
+      <div class="table-fixed">
+        <div class="card">
+          <div class="card-block">
+            <table class="table table-striped table-bordered table-hover compact">
+              <thead style="position: sticky; top: 0; text-align: center;">
+                <tr>
+                  <th class="td_left" style="width: 20%;">Customer Name</th>
+                  <th class="td_left">Part Name</th>
+                  <th class="td_Right">Development P.O.No/Referance</th>
+                  <th class="td_right">Approved Development Cost In INR</th>
+                  <th class="td_left">1st 50% Debit Note/Invoice No.</th>
+                  <th class="td_left">Balance 50% Debit Note/Invoice No.</th>
+                  <th class="td_right">Development Cost Received In INR</th>
+                  <th class="td_right">Balanced D.C. In INR to be Received</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="Tabledata.length !=0">
+                <tr *ngFor="let data of Tabledata;let indexOfelement = index">
+                  <td class="td_left">{{data?.CUSTOMER_NAME}}</td>
+                  <td class="td_left"> {{data?.MAT_NAME}}</td>
+                  <td class="td_right">{{data?.PO_NO}}</td>
+                  <td class="td_right">{{data?.ORDER_AMT}}</td>
+                  <td class="td_left">{{data?.PROFORMA_INV_DETAILS}}</td>
+                  <td  class="td_left">{{data?.SALE_INV_DETAILS}}</td>
+                  <td class="td_right">{{data?.INVOICE_AMT}}</td>
+                  <td class="td_right">{{data?.DIFF_AMT}}</td>
+                </tr>
+              <tbody *ngIf="Tabledata.length ==0">
+                <tr>
+                  <td>No Data</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

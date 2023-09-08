@@ -75,7 +75,7 @@ export class Top5SuppliersCRPercentComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.isLoading1 = true
-    
+
     this._AppComponentService.branchList().subscribe((res) => {
       if (res.List.length > 1) {
         this.showBranch = true;
@@ -94,6 +94,7 @@ export class Top5SuppliersCRPercentComponent implements OnInit {
         res.List.unshift(obj);
         this.branch = res.List
         this.isLoading1 = false
+        this.selectedBrach = this.branch[0]['CODE']
 
       } else {
         this.BRANCH = false
@@ -145,12 +146,15 @@ export class Top5SuppliersCRPercentComponent implements OnInit {
     }
     if (this.angForm.valid) {
 
-    this._Top5Service.findAll(objdata).subscribe((res) => {
-      this.showtable = true
-      this.Tabledata = res.List
-      this.isLoading = false;
+      this._Top5Service.findAll(objdata).subscribe((res) => {
+        this.showtable = true
+        let obj = {}
+        this.Tabledata = res.List
+        this.Tabledata.unshift(obj)
+        this.Tabledata.unshift(obj)
+        this.isLoading = false;
 
-    });
+      });
 
     } else {
       this.isLoading = false;

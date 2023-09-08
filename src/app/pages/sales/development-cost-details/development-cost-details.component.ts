@@ -46,13 +46,15 @@ export class DevelopmentCostDetailsComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
   ) {
+    let dt = new Date()
     this.minDate = new Date();
-    this.maxDate = new Date();
-    this.minDate.setDate(this.minDate.getDate() - 1);
-    this.maxDate.setDate(this.maxDate.getDate() - 1);
-    // this.minDatet.setDate(this.maxDate.getDate() + 1);
+    this.maxDate = new Date(dt.getFullYear(), dt.getMonth(), 1);;
+    this.minDatet = new Date();
+    this.minDate.setDate(this.minDate.getDate());
+    this.maxDate.setDate(this.maxDate.getDate());
+    this.minDatet.setDate(this.maxDate.getDate() + 1);
     this.fromdate = this.maxDate
-    // this.todate = this.minDatet
+    this.todate = this.minDate
 
   }
 
@@ -113,7 +115,7 @@ export class DevelopmentCostDetailsComponent implements OnInit {
         res.List.unshift(obj);
         this.branch = res.List
         this.isLoading1 = false
-
+        this.selectedBrach = this.branch[0]['CODE']
       } else {
         this.BRANCH = false;
         this.showBranch = false;
@@ -142,8 +144,12 @@ export class DevelopmentCostDetailsComponent implements OnInit {
 
     if (this.angForm.valid) {
       this._DevelopmentcostdetailsService.findAll(objdata).subscribe((res) => {
+        let obj = {}
+        debugger
         this.showtable = true
         this.Tabledata = res.List
+        this.Tabledata.unshift(obj)
+        this.Tabledata.unshift(obj)
         this.isLoading = false;
 
       });

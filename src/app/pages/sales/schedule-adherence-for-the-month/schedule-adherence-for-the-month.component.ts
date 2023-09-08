@@ -137,6 +137,7 @@ export class ScheduleAdherenceForTheMonthComponent {
         res.List.unshift(obj);
         this.branch = res.List
         this.isLoading1 = false
+        this.selectedBrach = this.branch[0]['CODE']
 
       } else {
         this.showBranch = false;
@@ -149,6 +150,8 @@ export class ScheduleAdherenceForTheMonthComponent {
 
     this._AppComponentService.financialYear().subscribe((res) => {
       this.finyear = res.List
+      this.selectedYear = this.finyear[0]['DATEVALUE']
+
     });
   }
 
@@ -191,9 +194,19 @@ export class ScheduleAdherenceForTheMonthComponent {
       this._scheduleadherenceservice.findAll(objdata).subscribe((res) => {
 
         this.showtable = true
-        this.Tabledata = res.List
-        this.isLoading = false;
-     
+        let obj = {}
+        debugger
+        if (res.List.length != 0) {
+          this.Tabledata = res.List
+          this.Tabledata.unshift(obj)
+          this.Tabledata.unshift(obj)
+          this.isLoading = false;
+        } else {
+          this.Tabledata = res.List
+          this.isLoading = false;
+        }
+
+
 
       });
     } else {

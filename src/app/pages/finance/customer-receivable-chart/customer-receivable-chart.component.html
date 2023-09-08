@@ -5,14 +5,13 @@
   <div class="card-header">
     <h5>Customer Receivable Chart</h5>
   </div>
-
   <div class="card-block">
     <form [formGroup]="angForm">
-      <div class="form-group row justify-content-md-center" style="margin: 2%;" *ngIf="showBranch">
-        <div class="col-sm-3">
+      <div class="row" style="margin: 1%;">
+        <div class="col-sm-2" *ngIf="showBranch">
           <label>Select Branch <sub class="required">* </sub></label>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2" *ngIf="showBranch">
           <div class="form-group form-primary form-static-label">
             <span class="border-lable-flt">
               <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" #BRANCH_NAME [(ngModel)]="selectedBrach"
@@ -23,13 +22,10 @@
             </span>
           </div>
         </div>
-      </div>
-
-      <div class="form-group row justify-content-md-center" style="margin: 2%;">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <label>Select Dates <sub class="required">* </sub></label>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group input-group">
             <span class="border-lable-flt">
               <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control"
@@ -44,9 +40,9 @@
               This field is required
             </div>
           </div>
-          <!-- </div>
-        <div class="col-sm-4"> -->
-          <div class="form-group input-group" style="margin: 2%;">
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group input-group">
             <span class="border-lable-flt">
               <input type="text" placeholder="dd/mm/yyyy" name="tdate" id="tdate" class="form-control"
                 [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [minDate]="fromdate" [(ngModel)]="todate" bsDatepicker
@@ -61,15 +57,11 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="form-group row justify-content-md-center" style="margin: 2%;">
-        <div class="col-sm text-center">
+        <div class="col-sm">
           <button class="btn btn-primary sm" (click)="loadData()">Go <i class="fa"
               [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
         </div>
       </div>
-
     </form>
   </div>
 </div>
@@ -83,9 +75,9 @@
 
 
 <!-- <select class="form-control" style="width: 120px;
-    height: 30px;
+    height: 20px;
     font-size: 10px;
-    margin-top: 3px;
+    margin-top: 2px;
     float: right;" (change)="handleClick($event, 'csv')">
   <option selected>Export Type </option>
   <option>CSV</option>

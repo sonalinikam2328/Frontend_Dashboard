@@ -140,6 +140,8 @@ export class CustomerWisePlanVsActualSaleComponent {
         }
         res.List.unshift(obj);
         this.branch = res.List
+        this.selectedBrach = this.branch[0]['CODE']
+
         this.isLoading1 = false
 
       } else {
@@ -154,6 +156,8 @@ export class CustomerWisePlanVsActualSaleComponent {
 
     this._AppComponentService.financialYear().subscribe((res) => {
       this.finyear = res.List
+      this.selectedYear = this.finyear[0]['DATEVALUE']
+
     });
   }
 
@@ -190,7 +194,10 @@ export class CustomerWisePlanVsActualSaleComponent {
     if (this.angForm.valid) {
       this._CustomerService.findAll(objdata).subscribe((res) => {
         this.showtable = true
+        let obj = {}
         this.Tabledata = res.List
+        this.Tabledata.unshift(obj)
+        this.Tabledata.unshift(obj)
         this.isLoading = false;
 
       });

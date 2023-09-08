@@ -157,6 +157,8 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
 
     this._AppComponentService.financialYear().subscribe((res) => {
       this.finyear = res.List
+      this.selectedYear = this.finyear[0]['DATEVALUE']
+
     });
   }
 
@@ -192,8 +194,11 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
     if (this.angForm.valid) {
       this._SupplierwisePurchaseService.findAll(objdata).subscribe((newdata) => {
         this.showtable = true
+        let obj = {}
 
         this.Tabledata = newdata.List
+        this.Tabledata.unshift(obj)
+        this.Tabledata.unshift(obj)
         this.isLoading = false;
 
       }, err => {

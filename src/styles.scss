@@ -41,7 +41,7 @@
 
 .card-header {
   padding: 0;
-  height: 35px;
+  height: 25px;
   background-image: -webkit-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
 
 }
@@ -56,6 +56,10 @@ tr:nth-child(even) {
 
 tfoot {
   background-color: #f1f2f4;
+}
+
+.card {
+  margin-top: -30px !important;
 }
 
 .card-body {
@@ -73,7 +77,7 @@ tfoot {
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  height: 50px !important;
+  height: 45px !important;
   padding: 0 calc(24px * 0.5) 0 0;
 }
 
@@ -113,4 +117,58 @@ body[data-sidebar=dark] .navbar-brand-box {
   position: fixed;
   top: 48px !important;
   box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+}
+
+h5,
+.h5 {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #04408C !important;
+  text-align: center !important;
+  line-height: 0.2 !important;
+}
+
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: -0.53rem !important;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-gray-700);
+  background-color: var(--bs-custom-white);
+  background-clip: padding-box;
+  border: 1px solid var(--bs-input-border-color);
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.table-fixed {
+  display: block;
+  height: 450px;
+  overflow: auto;
+}
+
+table tr.highlight {
+  background-color: #dee2e6 !important;
+  color: black;
+  font-weight: bold;
+}
+
+table td.newhighlight {
+  font-size: 90%;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.td_right{
+  text-align: right;
+}
+.td_left{
+  text-align: left;
 }
