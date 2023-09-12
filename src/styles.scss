@@ -59,7 +59,7 @@ tr:nth-child(even) {
 
 
 tfoot {
-  background-color: #f1f2f4;
+  background-color: black;
 }
 
 .card {
@@ -69,8 +69,8 @@ tfoot {
 .card-body {
   flex: 1 1 auto;
   padding: 3px !important;
-  color: var(--bs-card-color);
 
+  color: white(--bs-card-color);
 }
 
 .table> :not(caption)>*>* {
@@ -85,10 +85,11 @@ tfoot {
   margin: 0 auto;
   height: 45px !important;
   padding: 0 calc(24px * 0.5) 0 0;
+
 }
 
 body[data-sidebar=dark] .navbar-brand-box {
-  background: #2a3042;
+  background: white !important;
   height: 60px !important;
 
   // width:9000px
@@ -96,7 +97,7 @@ body[data-sidebar=dark] .navbar-brand-box {
 }
 
 .ng-select .ng-select-container {
-  color: #333;
+  color: white !important;
   background-color: #fff;
   border-radius: 4px;
   border: 1px solid #ccc;
@@ -107,6 +108,8 @@ body[data-sidebar=dark] .navbar-brand-box {
 
 .ng-select.ng-select-single .ng-select-container {
   height: 30px !important;
+  width: 100px;
+  background-color: white;
 }
 
 .page-content {
@@ -121,14 +124,15 @@ body[data-sidebar=dark] .navbar-brand-box {
 .vertical-menu {
   width: 250px !important;
   z-index: 1001;
-  background: #ffffff;
+  background: white !important;
   bottom: 0;
   margin-top: 0;
   position: fixed;
   top: 48px !important;
-  box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+  box-shadow: white !important;
 }
 
+//<<<<<<< Updated upstream
 h5,
 .h5 {
   font-size: 12px !important;
@@ -147,6 +151,7 @@ h5,
   line-height: 1.5;
   color: var(--bs-gray-700);
   --bs-table-hover-color: white;
+  color: white(--bs-gray-700);
   background-color: var(--bs-custom-white);
   background-clip: padding-box;
   border: 1px solid var(--bs-input-border-color);
@@ -245,4 +250,23 @@ html {
   border-style: solid none solid;
   border-color: #93B5D2;
   border-width: 1px medium 1px;
+}
+
+
+body {
+  overflow: hidden;
+  //>>>>>> Stashed changes
+}
+
+.simplebar-content-wrapper {
+  background-color: white;
+}
+
+body[data-sidebar=dark] #sidebar-menu ul li a {
+  color: black !important;
+}
+
+
+.footer {
+  background-color: #c7dcee !important;
 }
