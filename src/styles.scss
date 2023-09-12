@@ -159,7 +159,7 @@ h5,
 
 .table-fixed {
   display: block;
-  height: 450px;
+  height: 500px;
   overflow: auto;
 }
 
@@ -234,4 +234,15 @@ body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu>ul ul {
 
   --bs-table-hover-bg: #a7a3a3 !important;
 
+}
+
+html {
+  margin-left: 3px;
+  margin-right: 3px;
+  overflow: auto;
+  overflow-x: hidden;
+  background: url(./assets/images/bg.jpg) repeat-x scroll left bottom transparent;
+  border-style: solid none solid;
+  border-color: #93B5D2;
+  border-width: 1px medium 1px;
 }
