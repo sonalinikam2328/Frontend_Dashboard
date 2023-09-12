@@ -94,6 +94,7 @@ body[data-sidebar=dark] .navbar-brand-box {
   border: 1px solid #ccc;
   min-height: 30px !important;
   align-items: center;
+
 }
 
 .ng-select.ng-select-single .ng-select-container {
@@ -110,7 +111,7 @@ body[data-sidebar=dark] .navbar-brand-box {
 }
 
 .vertical-menu {
-  width: 250px;
+  width: 250px !important;
   z-index: 1001;
   background: #ffffff;
   bottom: 0;
@@ -128,7 +129,6 @@ h5,
   text-align: center !important;
   line-height: 0.2 !important;
 }
-
 
 .form-control {
   display: block;
@@ -168,18 +168,54 @@ table td.newhighlight {
 }
 
 .td_right {
-  text-align: right;
-}
+  .bold {
+    font-weight: bold;
+  }
 
-.td_left {
-  text-align: left;
+  .td_right {
+    text-align: right;
+  }
+
+  .td_left {
+    text-align: left;
+
+    body {
+      overflow: hidden;
+    }
+
+  }
 
   body {
     overflow: hidden;
   }
 
+  body {
+    overflow: hidden;
+  }
 }
 
-body {
-  overflow: hidden;
+.layout-wrapper {
+  max-width: 100px;
+
+}
+
+body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu>ul ul {
+  background-color: white !important;
+  width: 350px !important;
+}
+
+.is-parent {
+  width: 420px !important;
+}
+
+body[data-sidebar=dark] #sidebar-menu ul li a {
+  color: black !important;
+}
+
+body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>a {
+  background: white !important;
+}
+
+body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu ul li.mm-active .active {
+  color: blue !important;
 }
