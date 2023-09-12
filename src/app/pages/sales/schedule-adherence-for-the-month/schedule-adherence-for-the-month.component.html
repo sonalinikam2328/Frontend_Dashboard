@@ -7,6 +7,7 @@
     <div class="card-header">
         <h5>Schedule Adherence For The Month</h5>
     </div>
+    </div>
     <form [formGroup]="angForm">
         <div class="card-block">
             <div class="form-group row justify-content-md-center" style="margin: 1%;">
@@ -64,14 +65,12 @@
 
         <div class="form-group row justify-content-md-center" style="margin: 2%;"> -->
                 <div class="col-sm">
-                    <button class="btn btn-primary sm"[disabled]="isLoading" (click)="loadData()">Go <i class="fa"
+                    <button class="btn btn-primary sm" [disabled]="isLoading" (click)="loadData()">Go <i class="fa"
                             [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
                 </div>
             </div>
         </div>
     </form>
-
-</div>
 <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable">
     <div class="col-12">
         <div class="table-responsive">

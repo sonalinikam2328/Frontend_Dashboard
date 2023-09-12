@@ -157,6 +157,20 @@ export const MENU: MenuItem[] = [
 
             }
         ]
+    },
+    {
+        id:41,
+        icon: 'bxs-bar-chart-alt-2',
+        label:'MENUITEMS.SUBCONTRACT.TEXT',
+        subItems: [
+            {
+                id:42,
+                label:'MENUITEMS.SUBCONTRACT.LIST.SUPPLIERWISEBORINGRECOVERYDETAILS',
+                link:'/subcontract/supplierwiseboringrecoverydetails',
+                parentId:41
+
+            }
+        ]
     }
 
 

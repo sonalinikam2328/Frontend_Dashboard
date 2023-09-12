@@ -7,6 +7,7 @@
   <div class="card-header">
     <h5>Customer Receivable Chart</h5>
   </div>
+  </div>
   <div class="card-block">
     <form [formGroup]="angForm">
       <div class="row" style="margin: 1%;">
@@ -60,13 +61,13 @@
           </div>
         </div>
         <div class="col-sm">
-          <button class="btn btn-primary sm"[disabled]="isLoading" (click)="loadData()">Go <i class="fa"
+          <button class="btn btn-primary sm" [disabled]="isLoading" (click)="loadData()">Go <i class="fa"
               [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
         </div>
       </div>
     </form>
   </div>
-</div>
+
 
 
 

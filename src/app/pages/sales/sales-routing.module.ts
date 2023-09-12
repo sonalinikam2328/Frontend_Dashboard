@@ -10,6 +10,7 @@ import { CustomerWisePlanVsActualSaleComponent } from './customer-wise-plan-vs.-
 
 import { MonthlyValueAdditionTargetVsActualComponent } from './monthly-value-addition-target-vs-actual/monthly-value-addition-target-vs-actual.component';
 import { ScheduleAdherenceForTheMonthComponent } from './schedule-adherence-for-the-month/schedule-adherence-for-the-month.component';
+
 const routes: Routes = [
   {
     path: 'paymentCollectionPlan',

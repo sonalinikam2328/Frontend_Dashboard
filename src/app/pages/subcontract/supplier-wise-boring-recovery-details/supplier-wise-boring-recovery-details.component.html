@@ -1,1 +1,102 @@
-<p>supplier-wise-boring-recovery-details works!</p>
+
+<div class="text-center">
+  <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;" ></i>
+</div>
+
+<div class="card" *ngIf="!isLoading1">
+  <div class="card-header">
+    <h5>Supplierwise Boring Recovery Details</h5>
+  </div>
+  </div>
+  <form [formGroup]="angForm">
+    <div class="card-block">
+      <div class="row" style="margin: 1%;">
+        <div class="col-sm-2" *ngIf="showBranch">
+          <label>Select Branch <sub class="required">* </sub></label>
+        </div>
+        <div class="col-sm-2"  *ngIf="showBranch">
+          <div class="form-group form-primary form-static-label">
+            <span class="border-lable-flt">
+              <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" #BRANCH_NAME [(ngModel)]="selectedBrach"
+                formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true' [required]="BRANCH">
+                <ng-option *ngFor="let values of branch" [value]="values">
+                  {{values.NAME}}</ng-option>
+              </ng-select>
+            </span>
+          </div>
+        </div>
+        <!-- </div>
+      <div class="form-group row justify-content-md-center" style="margin: 1%;"> -->
+        <div class="col-sm-2">
+          <label>Select Dates <sub class="required">* </sub></label>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group input-group">
+            <span class="border-lable-flt">
+              <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control"
+                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [(ngModel)]="fromdate" [maxDate]="maxDate" bsDatepicker
+                formControlName="FROM" required>
+            </span>
+          </div>
+          <div class="form-group form-primary form-static-label"
+            *ngIf="angForm.controls['FROM'].invalid && (angForm.controls['FROM'].dirty || angForm.controls['FROM'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="angForm.controls['FROM'].errors?.required">
+              This field is required
+            </div>
+          </div>
+        </div>
+      
+      <!-- <div class="form-group row justify-content-md-center" style="margin: 1%;">  -->
+        <div class="col-sm">
+          <button class="btn btn-primary sm" [disabled]="isLoading" (click)="loadData()">Go <i class="fa"
+              [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
+        </div>
+      
+        
+    </div>
+    </div>
+  </form>
+
+
+ <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable">
+   <div class="col-12">
+    <div class="table-responsive">
+      <div class="table-fixed">
+        <div class="card">
+          <div class="card-block">
+            <table class="table table-striped table-bordered table-hover compact">
+              <thead style="position: sticky; top: 0; text-align: center;">
+                <tr>
+                  <th class="td_right" style="width: 20%;">SN</th>
+                  <th class="td_left">partyName</th>
+                  <th class="td_right">BALANCE Boring of Feb 23</th>
+                  <th class="td_right">Boring Genretion as per GRN date 09.03.2023</th>
+                  <th class="td_right">Total collection plan as per GRN 08.03.2023</th>
+                  <th class="td_right">Actual Collection of Mar 2023</th>
+                  <th class="td_right">Balance</th>
+                  <th class="td_left">Supplier PHONE NO</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="Tabledata.length !=0">
+                <tr *ngFor="let data of Tabledata;let indexOfelement = index">
+                  <td class="td_right">{{data?.SR_NO }}</td>
+                  <td class="td_left">{{data?.SUBGL_LONGNAME}}</td>
+                  <td class="td_right"> {{data?.BORING_BAL}}</td>
+                  <td class="td_right">{{data?.EXPECTED_BORING}}</td>
+                  <td class="td_right">{{data?.TOTAL_BORING}}</td>
+                  <td class="td_right">{{data?.ACTUAL_RCPT}}</td>
+                  <td  class="td_right">{{data?.NET_BAL}}</td>
+                  <td class="td_right">{{data?.CONTACT_PHONENO }}</td>
+                  
+                 
+                </tr>
+             
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
