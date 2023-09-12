@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CustomerCIGradePerKgRateRealizationComponent } from './customer-ci-grade-per-kg-rate-realization/customer-ci-grade-per-kg-rate-realization.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PaymentCollectionPlanComponent } from './payment-collection-plan/payment-collection-plan.component';
 import { TurnOverComponent } from './turn-over/turn-over.component';
@@ -42,6 +43,12 @@ const routes: Routes = [
     path: 'scheduleadherenceforthemonth',
     component:ScheduleAdherenceForTheMonthComponent
   },
+  
+  {
+    path: 'CustomerCIGradePerKgRateRealizationComponent',
+    component:CustomerCIGradePerKgRateRealizationComponent
+  },
+ 
   
 ];
 

@@ -84,7 +84,7 @@ tfoot {
 body[data-sidebar=dark] .navbar-brand-box {
   background: #2a3042;
   height: 60px !important;
-  
+
 }
 
 .ng-select .ng-select-container {
@@ -120,7 +120,6 @@ body[data-sidebar=dark] .navbar-brand-box {
   box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
 }
 
-<<<<<<< Updated upstream
 h5,
 .h5 {
   font-size: 12px !important;
@@ -164,17 +163,23 @@ table td.newhighlight {
   font-size: 90%;
 }
 
-.bold{
+.bold {
   font-weight: bold;
 }
 
-.td_right{
+.td_right {
   text-align: right;
 }
-.td_left{
+
+.td_left {
   text-align: left;
-=======
+
+  body {
+    overflow: hidden;
+  }
+
+}
+
 body {
-  overflow: hidden; 
->>>>>>> Stashed changes
+  overflow: hidden;
 }

@@ -23,6 +23,9 @@ import { MonthlyValueAdditionTargetVsActualComponent } from './monthly-value-add
 import { ScheduleAdherenceForTheMonthComponent } from './schedule-adherence-for-the-month/schedule-adherence-for-the-month.component';
 
 
+import { CustomerCIGradePerKgRateRealizationComponent } from './customer-ci-grade-per-kg-rate-realization/customer-ci-grade-per-kg-rate-realization.component';
+
+
 @NgModule({
   declarations: [
     PaymentCollectionPlanComponent,
@@ -33,7 +36,9 @@ import { ScheduleAdherenceForTheMonthComponent } from './schedule-adherence-for-
     CustomerWisePlanVsActualSaleComponent,
 
     MonthlyValueAdditionTargetVsActualComponent,
-    ScheduleAdherenceForTheMonthComponent
+    ScheduleAdherenceForTheMonthComponent,
+  
+    CustomerCIGradePerKgRateRealizationComponent
   ],
   imports: [
     CommonModule,

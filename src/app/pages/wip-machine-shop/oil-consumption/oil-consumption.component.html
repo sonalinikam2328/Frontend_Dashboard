@@ -1,6 +1,15 @@
-<div class="text-center">
-    <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
-</div>
+
+
+
+<div class="text-center"> 
+    <i class="fa " [ngClass]="{'d-flex justify-content-center': isLoading1}" style="font-size:46px;"></i>
+
+    <i class="fa loader" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i> 
+
+ </div> 
+
+
+
 <div class="card" *ngIf="!isLoading1">
     <div class="card-header">
         <h5>Oil Consumption</h5>
@@ -45,7 +54,7 @@
 
         <div class="form-group row justify-content-md-center" style="margin: 2%;"> -->
                 <div class="col-sm">
-                    <button class="btn btn-primary sm" (click)="loadData()">Go <i class="fa"
+                    <button class="btn btn-primary sm" [disabled]="isLoading" (click)="loadData()">Go <i class="fa"
                             [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
                 </div>
             </div>

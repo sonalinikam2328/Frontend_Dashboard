@@ -93,6 +93,13 @@ export const MENU: MenuItem[] = [
                 label: 'MENUITEMS.SALES.LIST.SCHUDLEADHERENCEFORTHEMONTH',
                 link: '/sales/scheduleadherenceforthemonth',
                 parentId: 1
+            },
+            
+            {
+                id:11,
+                label: 'MENUITEMS.SALES.LIST.CUSTOMERCIGRADEPERKGRATEREALIZATION',
+                link: '/sales/CustomerCIGradePerKgRateRealizationComponent',
+                parentId:1
             }
 
         ]
