@@ -47,7 +47,8 @@
 }
 
 thead {
-  background-image: -webkit-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
+  // background-image: -webkit-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
+  background: #b8cfee;
 }
 
 tr:nth-child(even) {
@@ -59,7 +60,7 @@ tr:nth-child(even) {
 
 
 tfoot {
-  background-color: black;
+  background-color: #f1f2f4;
 }
 
 .card {
@@ -69,8 +70,8 @@ tfoot {
 .card-body {
   flex: 1 1 auto;
   padding: 3px !important;
+  color: var(--bs-card-color);
 
-  color: white(--bs-card-color);
 }
 
 .table> :not(caption)>*>* {
@@ -85,31 +86,26 @@ tfoot {
   margin: 0 auto;
   height: 45px !important;
   padding: 0 calc(24px * 0.5) 0 0;
-
 }
 
 body[data-sidebar=dark] .navbar-brand-box {
-  background: white !important;
+  background: #2a3042;
   height: 60px !important;
-
   // width:9000px
 
 }
 
 .ng-select .ng-select-container {
-  color: white !important;
+  color: #333;
   background-color: #fff;
   border-radius: 4px;
   border: 1px solid #ccc;
   min-height: 30px !important;
   align-items: center;
-
 }
 
 .ng-select.ng-select-single .ng-select-container {
   height: 30px !important;
-  width: 100px;
-  background-color: white;
 }
 
 .page-content {
@@ -122,9 +118,9 @@ body[data-sidebar=dark] .navbar-brand-box {
 }
 
 .vertical-menu {
-  width: 250px !important;
+  width: 250px;
   z-index: 1001;
-  background: white !important;
+  background: #ffffff;
   bottom: 0;
   margin-top: 0;
   position: fixed;
@@ -132,7 +128,6 @@ body[data-sidebar=dark] .navbar-brand-box {
   box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
 }
 
-//<<<<<<< Updated upstream
 h5,
 .h5 {
   font-size: 12px !important;
@@ -141,6 +136,7 @@ h5,
   text-align: center !important;
   line-height: 0.2 !important;
 }
+
 
 .form-control {
   display: block;
@@ -151,7 +147,6 @@ h5,
   line-height: 1.5;
   color: var(--bs-gray-700);
   --bs-table-hover-color: white;
-  color: white(--bs-gray-700);
   background-color: var(--bs-custom-white);
   background-clip: padding-box;
   border: 1px solid var(--bs-input-border-color);
@@ -164,7 +159,7 @@ h5,
 
 .table-fixed {
   display: block;
-  height: 500px;
+  height: 450px;
   overflow: auto;
 }
 
@@ -182,62 +177,29 @@ table td.newhighlight {
   font-weight: bold;
 }
 
-
 .td_right {
   text-align: right;
 }
 
 .td_left {
   text-align: left;
+}
 
+th,
+td {
+  vertical-align: middle;
 }
 
 
 
-body {
-  overflow: hidden;
-}
-
-
-.layout-wrapper {
-  max-width: 100px;
-
-}
-
-body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu>ul ul {
-  background-color: white !important;
-  width: 350px !important;
-}
-
-.is-parent {
-  width: 420px !important;
-}
-
-body[data-sidebar=dark] #sidebar-menu ul li a {
-  color: black !important;
-}
-
-body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>a {
-  background: white !important;
-}
-
-body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu ul li.mm-active .active {
-  color: blue !important;
-
-  .td_left {
-    text-align: left;
-  }
-}
-
-
-body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu>ul ul {
-  background-color: #2a3042;
-  width: 1000px !important
-}
+// body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu > ul ul {
+//   background-color: #2a3042;
+//   width: 200000px;
+// }
 
 .table {
 
-  --bs-table-hover-bg: #a7a3a3 !important;
+  --bs-table-hover-bg: gray !important;
 
 }
 
@@ -250,23 +212,4 @@ html {
   border-style: solid none solid;
   border-color: #93B5D2;
   border-width: 1px medium 1px;
-}
-
-
-body {
-  overflow: hidden;
-  //>>>>>> Stashed changes
-}
-
-.simplebar-content-wrapper {
-  background-color: white;
-}
-
-body[data-sidebar=dark] #sidebar-menu ul li a {
-  color: black !important;
-}
-
-
-.footer {
-  background-color: #c7dcee !important;
 }

@@ -1,7 +1,5 @@
 <div class="text-center">
-  <i class="fa " [ngClass]="{'d-flex justify-content-center': isLoading1}" style="font-size:46px;"></i>
-
-  <i class="fa loader" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i> 
+  <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
 </div>
 <div class="card" *ngIf="!isLoading1">
   <div class="card-header">
@@ -35,7 +33,7 @@
             <span class="border-lable-flt">
               <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control"
                 [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [(ngModel)]="fromdate" [maxDate]="maxDate" bsDatepicker
-                formControlName="FROM" required>
+                formControlName="FROM" required style="min-width: 80px;">
             </span>
           </div>
           <div class="form-group form-primary form-static-label"
@@ -65,7 +63,7 @@
         <!-- </div>
       <div class="form-group row justify-content-md-center" style="margin: 1%;"> -->
         <div class="col-sm">
-          <button class="btn btn-primary sm"[disabled]="isLoading" (click)="loadData()">Go <i class="fa"
+          <button class="btn btn-primary sm" [disabled]="isLoading" (click)="loadData()">Go <i class="fa"
               [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
         </div>
       </div>
@@ -99,28 +97,15 @@
                   <td class="td_right">{{data?.PO_NO}}</td>
                   <td class="td_right">{{data?.ORDER_AMT}}</td>
                   <td class="td_left">{{data?.PROFORMA_INV_DETAILS}}</td>
-                  <td class="td_left">{{data?.SALE_INV_DETAILS}}</td>
+                  <td  class="td_left">{{data?.SALE_INV_DETAILS}}</td>
                   <td class="td_right">{{data?.INVOICE_AMT}}</td>
                   <td class="td_right">{{data?.DIFF_AMT}}</td>
                 </tr>
-              </tbody>
-              <tbody *ngIf="Tabledata.length == 0">
+              <tbody *ngIf="Tabledata.length ==0">
                 <tr>
                   <td>No Data</td>
                 </tr>
               </tbody>
-              <tfoot style="position: sticky; bottom: 0; text-align: center;">
-                <tr>
-                  <td class="td_left" style="font-weight: bold;">Total</td>
-                  <td class="td_left"> </td>
-                  <td class="td_right"></td>
-                  <td class="td_right" style="font-weight: bold;">{{totalDevelopmentCost}}</td>
-                  <td class="td_left"></td>
-                  <td class="td_left"></td>
-                  <td class="td_right">{{totalDevelopmentCostReceived}}</td>
-                  <td class="td_right">{{totalBalanceDcinReceived}}</td>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

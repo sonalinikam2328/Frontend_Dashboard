@@ -25,12 +25,12 @@ export class TopbarComponent implements OnInit {
   countryName;
   valueset;
   username;
-
+  companyname;
   constructor(@Inject(DOCUMENT) private document: any, private router: Router, private authService: AuthenticationService,
-              private authFackservice: AuthfakeauthenticationService,
-              public languageService: LanguageService,
-              public translate: TranslateService,
-              public _cookiesService: CookieService) {
+    private authFackservice: AuthfakeauthenticationService,
+    public languageService: LanguageService,
+    public translate: TranslateService,
+    public _cookiesService: CookieService) {
   }
 
   listLang = [
@@ -52,7 +52,12 @@ export class TopbarComponent implements OnInit {
     let result = JSON.parse(data);
 
     this.username = result.NAME
-    
+
+    let data1: any = localStorage.getItem('companyList');
+    let result1 = JSON.parse(data1);
+
+    this.companyname = result1.COMPANY_NAME
+
     this.openMobileMenu = false;
     this.element = document.documentElement;
 

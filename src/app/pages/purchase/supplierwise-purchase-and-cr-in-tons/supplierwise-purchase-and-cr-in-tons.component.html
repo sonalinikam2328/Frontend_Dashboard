@@ -1,56 +1,55 @@
 <div class="text-center">
-  <i class="fa " [ngClass]="{'d-flex justify-content-center': isLoading1}" style="font-size:46px;"></i>
-
-  <i class="fa loader" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
+  <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
 </div>
 <div class="card" *ngIf="!isLoading1">
   <div class="card-header">
     <h5>Supplierwise Purchase and CR in Tons</h5>
   </div>
-</div>
-<form [formGroup]="angForm">
-  <div class="card-block">
-    <div class="row" style="margin: 1%;">
-      <div class="col-sm-2" *ngIf="showBranch">
-        <label>Select Branch <sub class="required"> * </sub></label>
-      </div>
-      <div class="col-sm-2" *ngIf="showBranch">
-        <div class="form-group form-primary form-static-label">
-          <span class="border-lable-flt">
-            <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" #BRANCH_NAME [(ngModel)]="selectedBrach"
-              formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true' [required]="BRANCH">
-              <ng-option *ngFor="let values of branch" [value]="values">
-                {{values.NAME}}</ng-option>
-            </ng-select>
-          </span>
+  </div>
+  <form [formGroup]="angForm">
+    <div class="card-block">
+      <div class="row" style="margin: 1%;">
+        <div class="col-sm-2" *ngIf="showBranch">
+          <label>Select Branch <sub class="required"> * </sub></label>
         </div>
-      </div>
-      <!-- </div>
+        <div class="col-sm-2" *ngIf="showBranch">
+          <div class="form-group form-primary form-static-label">
+            <span class="border-lable-flt">
+              <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" #BRANCH_NAME [(ngModel)]="selectedBrach"
+                formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true' [required]="BRANCH">
+                <ng-option *ngFor="let values of branch" [value]="values">
+                  {{values.NAME}}</ng-option>
+              </ng-select>
+            </span>
+          </div>
+        </div>
+        <!-- </div>
       <div class="form-group row justify-content-md-center" style="margin: 2%;"> -->
-      <div class="col-sm-2">
-        <label>Select Finacial year <sub class="required"> * </sub></label>
-      </div>
-      <div class="col-sm-2">
-        <div class="form-group form-primary form-static-label">
-          <span class="border-lable-flt">
-            <ng-select id="YEAR_NAME" bindValue="DATEVALUE" bindLabel="DATEDESC" required #YEAR_NAME
-              [(ngModel)]="selectedYear" formControlName="YEAR_NAME" (focus)="onFocus(YEAR_NAME)" [selectOnTab]='true'>
-              <ng-option *ngFor="let values of finyear" [value]="values">
-                {{values.DATEDESC}}</ng-option>
-            </ng-select>
-          </span>
+        <div class="col-sm-2">
+          <label>Select Finacial year <sub class="required"> * </sub></label>
         </div>
-      </div>
-      <!-- </div>
+        <div class="col-sm-2">
+          <div class="form-group form-primary form-static-label">
+            <span class="border-lable-flt">
+              <ng-select id="YEAR_NAME" bindValue="DATEVALUE" bindLabel="DATEDESC" required #YEAR_NAME
+                [(ngModel)]="selectedYear" formControlName="YEAR_NAME" (focus)="onFocus(YEAR_NAME)"
+                [selectOnTab]='true'>
+                <ng-option *ngFor="let values of finyear" [value]="values">
+                  {{values.DATEDESC}}</ng-option>
+              </ng-select>
+            </span>
+          </div>
+        </div>
+        <!-- </div>
     </div>
     <div class="form-group row justify-content-md-center" style="margin: 2%;"> -->
-      <div class="col-sm">
-        <button class="btn btn-primary sm" [disabled]="isLoading" (click)="loadData()">Go <i class="fa"
-            [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
+        <div class="col-sm">
+          <button class="btn btn-primary sm" [disabled]="isLoading" (click)="loadData()">Go <i class="fa"
+              [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
+        </div>
       </div>
     </div>
-  </div>
-</form>
+  </form>
 
 <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable">
   <div class="col-12">

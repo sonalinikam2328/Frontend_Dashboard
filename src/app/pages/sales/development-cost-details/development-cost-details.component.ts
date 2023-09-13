@@ -127,9 +127,6 @@ export class DevelopmentCostDetailsComponent implements OnInit {
 
   }
 
-  totalDevelopmentCost = 0
-  totalDevelopmentCostReceived = 0
-  totalBalanceDcinReceived = 0
   loadData() {
     this.isLoading = true;
     this.Tabledata = []
@@ -147,29 +144,12 @@ export class DevelopmentCostDetailsComponent implements OnInit {
 
     if (this.angForm.valid) {
       this._DevelopmentcostdetailsService.findAll(objdata).subscribe((res) => {
-        this.totalDevelopmentCost = 0
-        this.totalDevelopmentCostReceived = 0
-        this.totalBalanceDcinReceived = 0
         let obj = {}
         debugger
         this.showtable = true
         this.Tabledata = res.List
-        let first = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.ORDER_AMT;
-        }, 0);
-        this.totalDevelopmentCost = first
-        let second = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.INVOICE_AMT;
-        }, 0);
-        second = this.totalDevelopmentCostReceived
-        let third = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.DIFF_AMT;
-        }, 0);
-        this.totalBalanceDcinReceived = third
-        
         this.Tabledata.unshift(obj)
         this.Tabledata.unshift(obj)
-
         this.isLoading = false;
 
       });
