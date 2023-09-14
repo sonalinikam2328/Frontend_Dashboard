@@ -217,3 +217,22 @@ body {
   overflow: hidden;
 }
 
+<<<<<<< Updated upstream
+=======
+.is-parent {
+  width: 420px !important;
+}
+
+body[data-sidebar=dark] #sidebar-menu ul li a {
+  color: black !important;
+}
+
+body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>a {
+  background: white !important;
+}
+
+body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu ul li.mm-active .active {
+  color: blue !important;
+}
+                                                                    
+>>>>>>> Stashed changes

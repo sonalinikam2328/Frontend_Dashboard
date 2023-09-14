@@ -3,7 +3,7 @@
 </div>
 <div class="card" *ngIf="!isLoading1">
   <div class="card-header">
-    <h5>Payment Collection Plan</h5>
+  <h5 >Payment Collection Plan</h5>
   </div>
   </div>
   <form [formGroup]="angForm">
@@ -115,13 +115,13 @@
                   <td class="td_right"> {{data.INVOICE_AMT != null ? data.INVOICE_AMT : '-'}}</td>
                   <td class="td_right">{{data.RECEIPT_AMT != null ? data.RECEIPT_AMT : '-'}}</td>
                   <td class="td_right">{{data.RECV_PERCENT != null ? data.RECV_PERCENT + '%' : data.RECV_PERCENT}} </td>
-                  <td class="td_right">{{data.CREDIT_DAYS != null ? data.CREDIT_DAYS : '-'}}</td>
-                  <td class="td_right">{{data.CR_DAYS != null ? data.CR_DAYS : '-'}}</td>
-                  <td class="td_right">{{data.CR_DAYS1 != null ? data.CR_DAYS1 : '-'}}</td>
-                  <td class="td_right">{{data.CR_DAYS2 != null ? data.CR_DAYS2 : '-'}}</td>
-                  <td class="td_right">{{data.CR_DAYS3 != null ? data.CR_DAYS3 : '-'}}</td>
-                  <td class="td_right">{{data.CR_DAYS4 != null ? data.CR_DAYS4 : '-'}}</td>
-                  <td class="td_right">{{data.CR_DAYS5 != null ? data.CR_DAYS5 : '-'}}</td>
+                  <td class="td_right">{{data.CREDIT_DAYS != 0 ? data.CREDIT_DAYS : ''}}</td>
+                  <td class="td_right">{{data.CR_DAYS !=  0 ? data.CR_DAYS : ''}}</td>
+                  <td class="td_right">{{data.CR_DAYS1 != 0 ? data.CR_DAYS1 : ''}}</td>
+                  <td class="td_right">{{data.CR_DAYS2 != 0 ? data.CR_DAYS2 : ''}}</td>
+                  <td class="td_right">{{data.CR_DAYS3 != 0 ? data.CR_DAYS3 : ''}}</td>
+                  <td class="td_right">{{data.CR_DAYS4 != 0 ? data.CR_DAYS4 : ''}}</td>
+                  <td class="td_right">{{data.CR_DAYS5 != 0 ? data.CR_DAYS5 : ''}}</td>
                 </tr>
               </tfoot>
             </table>
@@ -197,3 +197,4 @@
     </div>
   </div>
 </div> -->
+

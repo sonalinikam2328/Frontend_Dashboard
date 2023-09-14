@@ -95,6 +95,24 @@ export const MENU: MenuItem[] = [
                 parentId: 1
             },
             
+<<<<<<< Updated upstream
+=======
+            {
+                id:10,
+                label: 'MENUITEMS.SALES.LIST.CUSTOMERCIGRADEPERKGRATEREALIZATION',
+                link: '/sales/CustomerCIGradePerKgRateRealizationComponent',
+                parentId:1
+            },
+              
+            {
+                id:11,
+                label: 'MENUITEMS.SALES.LIST.ENQUIRYREGISTER',
+                link: '/sales/EnquiryRegisterComponent',
+                parentId:1
+            }
+
+
+>>>>>>> Stashed changes
         ]
     },
     {

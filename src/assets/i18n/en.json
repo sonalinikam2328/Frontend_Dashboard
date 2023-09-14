@@ -17,8 +17,14 @@
         "SCHUDLEADHERENCEFORTHEMONTH": "Schedule Adherence for the Month",
         "CUSTOMERWISEPLANVS.ACTUALSALE": " Customer wise Plan Vs. Actual Sale",
         "MONTHLYVALUEADDITIONTARGETV/SACTUAL": "Monthly Value Addition target V/s Actual",
+<<<<<<< Updated upstream
         "MONTHLYSALESANDTARGET": "Monthly Sales and Target"
 
+=======
+        "MONTHLYSALESANDTARGET": "Monthly Sales and Target",
+        "CUSTOMERCIGRADEPERKGRATEREALIZATION":"Customer CI Per Kg Rate Realization",
+        "ENQUIRYREGISTER": "Enquiry Register"
+>>>>>>> Stashed changes
       }
     },
     "FINANCE": {

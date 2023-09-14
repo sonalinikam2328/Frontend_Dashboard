@@ -23,6 +23,13 @@ import { MonthlyValueAdditionTargetVsActualComponent } from './monthly-value-add
 import { ScheduleAdherenceForTheMonthComponent } from './schedule-adherence-for-the-month/schedule-adherence-for-the-month.component';
 
 
+<<<<<<< Updated upstream
+=======
+import { CustomerCIGradePerKgRateRealizationComponent } from './customer-ci-grade-per-kg-rate-realization/customer-ci-grade-per-kg-rate-realization.component';
+import { EnquiryRegisterComponent } from './enquiry-register/enquiry-register.component';
+
+
+>>>>>>> Stashed changes
 @NgModule({
   declarations: [
     PaymentCollectionPlanComponent,
@@ -35,6 +42,11 @@ import { ScheduleAdherenceForTheMonthComponent } from './schedule-adherence-for-
     MonthlyValueAdditionTargetVsActualComponent,
     ScheduleAdherenceForTheMonthComponent,
   
+<<<<<<< Updated upstream
+=======
+    CustomerCIGradePerKgRateRealizationComponent,
+        EnquiryRegisterComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     CommonModule,

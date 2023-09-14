@@ -37,6 +37,8 @@ export class PaymentCollectionPlanComponent {
     private http: HttpClient,
     private router: Router,) { }
 
+    
+
   createForm() {
     this.angForm = this.fb.group({
 
@@ -55,6 +57,7 @@ export class PaymentCollectionPlanComponent {
   ngOnInit(): void {
     // onInit code.
     this.isLoading1 = true
+   
 
     this.createForm();
     this._AppComponentService.branchList().subscribe((res) => {

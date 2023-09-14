@@ -5,6 +5,7 @@ import { LayoutComponent } from './layouts/layout.component';
 import { CyptolandingComponent } from './cyptolanding/cyptolanding.component';
 import { Page404Component } from './extrapages/page404/page404.component';
 import { LoginComponent } from './account/auth/login/login.component';
+import { PaymentCollectionPlanComponent } from './pages/sales/payment-collection-plan/payment-collection-plan.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   { path: 'pages', loadChildren: () => import('./extrapages/extrapages.module').then(m => m.ExtrapagesModule) },
   { path: 'crypto-ico-landing', component: CyptolandingComponent },
   { path: '**', component: LoginComponent },
+  
+  
+
+  
 ];
 
 @NgModule({
