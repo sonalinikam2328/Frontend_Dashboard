@@ -187,7 +187,7 @@ export class CustomerReceivableChartComponent {
     // init code.
     const table = this.table;
 
-    table.addGroup('CUSTOMER_NAME');
+   // table.addGroup('CUSTOMER_NAME');
   }
 
   handleClick(event: Event, type: String) {

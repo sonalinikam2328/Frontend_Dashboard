@@ -117,7 +117,6 @@ export class CustomerCIGradePerKgRateRealizationComponent {
           debugger
           let obj = {}
           this.showtable = true
-          this.FooterData.push(res.List[res.List.length - 1])
           this.Tabledata = res.List
           this.Tabledata.unshift(obj)
           this.Tabledata.pop()
