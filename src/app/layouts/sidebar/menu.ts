@@ -94,25 +94,18 @@ export const MENU: MenuItem[] = [
                 link: '/sales/scheduleadherenceforthemonth',
                 parentId: 1
             },
-            
-<<<<<<< Updated upstream
-=======
             {
-                id:10,
+                id: 10,
                 label: 'MENUITEMS.SALES.LIST.CUSTOMERCIGRADEPERKGRATEREALIZATION',
-                link: '/sales/CustomerCIGradePerKgRateRealizationComponent',
-                parentId:1
+                link: '/sales/customercigradeperkgraterealization',
+                parentId: 1
             },
-              
             {
-                id:11,
+                id: 11,
                 label: 'MENUITEMS.SALES.LIST.ENQUIRYREGISTER',
-                link: '/sales/EnquiryRegisterComponent',
-                parentId:1
-            }
-
-
->>>>>>> Stashed changes
+                link: '/sales/enquiryregister',
+                parentId: 1
+            },
         ]
     },
     {
@@ -156,29 +149,29 @@ export const MENU: MenuItem[] = [
         ]
     },
     {
-        id:31,
+        id: 31,
         icon: 'bxs-bar-chart-alt-2',
-        label:'MENUITEMS.WIPMACHINESHOP.TEXT',
+        label: 'MENUITEMS.WIPMACHINESHOP.TEXT',
         subItems: [
             {
-                id:32,
-                label:'MENUITEMS.WIPMACHINESHOP.LIST.OILCONSUMPTION',
-                link:'/wipmachineshop/oilconsumption',
-                parentId:31
+                id: 32,
+                label: 'MENUITEMS.WIPMACHINESHOP.LIST.OILCONSUMPTION',
+                link: '/wipmachineshop/oilconsumption',
+                parentId: 31
 
             }
         ]
     },
     {
-        id:41,
+        id: 41,
         icon: 'bxs-bar-chart-alt-2',
-        label:'MENUITEMS.SUBCONTRACT.TEXT',
+        label: 'MENUITEMS.SUBCONTRACT.TEXT',
         subItems: [
             {
-                id:42,
-                label:'MENUITEMS.SUBCONTRACT.LIST.SUPPLIERWISEBORINGRECOVERYDETAILS',
-                link:'/subcontract/supplierwiseboringrecoverydetails',
-                parentId:41
+                id: 42,
+                label: 'MENUITEMS.SUBCONTRACT.LIST.SUPPLIERWISEBORINGRECOVERYDETAILS',
+                link: '/subcontract/supplierwiseboringrecoverydetails',
+                parentId: 41
 
             }
         ]

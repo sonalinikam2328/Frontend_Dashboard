@@ -1,10 +1,11 @@
 <div class="text-center">
-    <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
+    <i class="fa " [ngClass]="{'d-flex justify-content-center': isLoading1}" style="font-size:46px;"></i>
+
+    <i class="fa loader" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
 </div>
 <div class="card" *ngIf="!isLoading1">
     <div class="card-header">
         <h5>Schedule Adherence For The Month</h5>
-    </div>
     </div>
     <form [formGroup]="angForm">
         <div class="card-block">
@@ -41,24 +42,23 @@
                         </span>
                     </div>
                 </div>
-                <!-- </div> -->
-                <!-- <div class="row" style="margin: 2%;">
-                <div class="col-sm-3">
-                    <label>Select Month *</label>
+
+                <div class="col-sm-2">
+                    <label>Select Month <sub class="required">* </sub></label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <div class="form-group form-primary form-static-label">
                         <span class="border-lable-flt">
-                            <ng-select id="MONTH_NAME" bindValue="CODE" bindLabel="NAME" required #MONTH_NAME
+                            <ng-select id="MONTH_NAME" bindValue="DateValue" bindLabel="DateDesc" required #MONTH_NAME
                                 [(ngModel)]=" selectedMonth" formControlName="MONTH_NAME" (focus)="onFocus(MONTH_NAME)"
                                 [selectOnTab]='true'>
-                                <ng-option *ngFor="let values of branch" [value]="values">
-                                    {{values.NAME}}</ng-option>
+                                <ng-option *ngFor="let values of month" [value]="values">
+                                    {{values.DateDesc}}</ng-option>
                             </ng-select>
                         </span>
                     </div>
                 </div>
-            </div> -->
+
                 <!-- </div>
 
         <div class="form-group row justify-content-md-center" style="margin: 2%;"> -->
@@ -69,6 +69,8 @@
             </div>
         </div>
     </form>
+</div>
+
 <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable">
     <div class="col-12">
         <div class="table-responsive">
@@ -93,6 +95,7 @@
                                     <td class="td_right">{{data.SALE_QTY}}</td>
                                     <td class="td_right">{{data.ADHERENCE}}</td>
                                 </tr>
+                            </tbody>
                             <tbody *ngIf="Tabledata.length ==0">
                                 <td>No Data</td>
                             </tbody>

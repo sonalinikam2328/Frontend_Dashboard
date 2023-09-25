@@ -9,11 +9,9 @@ import { CustomerWisePlanVsActualSaleComponent } from './customer-wise-plan-vs.-
 
 import { MonthlyValueAdditionTargetVsActualComponent } from './monthly-value-addition-target-vs-actual/monthly-value-addition-target-vs-actual.component';
 import { ScheduleAdherenceForTheMonthComponent } from './schedule-adherence-for-the-month/schedule-adherence-for-the-month.component';
-<<<<<<< Updated upstream
-
-=======
+import { CustomerCIGradePerKgRateRealizationComponent } from './customer-ci-grade-per-kg-rate-realization/customer-ci-grade-per-kg-rate-realization.component';
 import { EnquiryRegisterComponent } from './enquiry-register/enquiry-register.component';
->>>>>>> Stashed changes
+
 const routes: Routes = [
   {
     path: 'paymentCollectionPlan',
@@ -41,25 +39,21 @@ const routes: Routes = [
   },
   {
     path: 'monthlayvalueadditiontargetvsactual',
-    component:MonthlyValueAdditionTargetVsActualComponent
+    component: MonthlyValueAdditionTargetVsActualComponent
   },
   {
     path: 'scheduleadherenceforthemonth',
-    component:ScheduleAdherenceForTheMonthComponent
-  },
-  
-<<<<<<< Updated upstream
-=======
-  {
-    path: 'CustomerCIGradePerKgRateRealizationComponent',
-    component:CustomerCIGradePerKgRateRealizationComponent
+    component: ScheduleAdherenceForTheMonthComponent
   },
   {
-    path: 'EnquiryRegisterComponent',
-    component:EnquiryRegisterComponent
+    path: 'customercigradeperkgraterealization',
+    component: CustomerCIGradePerKgRateRealizationComponent,
   },
->>>>>>> Stashed changes
-  
+  {
+    path: 'enquiryregister',
+    component: EnquiryRegisterComponent,
+  },
+
 ];
 
 @NgModule({

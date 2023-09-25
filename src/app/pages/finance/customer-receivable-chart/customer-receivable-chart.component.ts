@@ -31,7 +31,7 @@ export class CustomerReceivableChartComponent {
 
   angForm: FormGroup;
   isLoading1: boolean = false;
-  isLoading = false;
+  isLoading :boolean=false;
 
   constructor(
     private _CustomerService: CustomerService,
@@ -147,8 +147,12 @@ export class CustomerReceivableChartComponent {
     // onInit code.
     this.createForm();
     this.isLoading1 = true
-
-    this._AppComponentService.branchList().subscribe((res) => {
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+    let obj = {
+      CODE: result.COMPANY_ID
+    }
+    this._AppComponentService.branchList(obj).subscribe((res) => {
       if (res.List.length > 1) {
         this.showBranch = true;
         this.BRANCH = true
@@ -178,6 +182,7 @@ export class CustomerReceivableChartComponent {
   }
 
   ngAfterViewInit(): void {
+
     // afterViewInit code.
     this.init();
     const table = document.querySelector('smart-table');
@@ -187,7 +192,7 @@ export class CustomerReceivableChartComponent {
     // init code.
     const table = this.table;
 
-   // table.addGroup('CUSTOMER_NAME');
+    // table.addGroup('CUSTOMER_NAME');
   }
 
   handleClick(event: Event, type: String) {

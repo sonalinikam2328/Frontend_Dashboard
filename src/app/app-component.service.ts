@@ -12,12 +12,16 @@ export class AppComponentService {
     constructor(private http: HttpClient) { }
     [x: string]: any;
 
-    branchList(): Observable<any> {
-        return this.http.get(this.url + '/branchList').pipe(catchError(this.handleError));
+    branchList(data): Observable<any> {
+        return this.http.post(this.url + '/branchList', data).pipe(catchError(this.handleError));
     }
 
-    financialYear(): Observable<any> {
-        return this.http.get(this.url + '/financialYear').pipe(catchError(this.handleError));
+    financialYear(data): Observable<any> {
+        return this.http.post(this.url + '/financialYear', data).pipe(catchError(this.handleError));
+    }
+
+    month(data): Observable<any> {
+        return this.http.post(this.url + '/month', data).pipe(catchError(this.handleError));
     }
 
 }

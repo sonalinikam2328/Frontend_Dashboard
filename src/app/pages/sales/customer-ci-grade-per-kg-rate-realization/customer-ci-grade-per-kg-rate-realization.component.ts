@@ -55,7 +55,12 @@ export class CustomerCIGradePerKgRateRealizationComponent {
       this.isLoading1 = true
   
       this.createForm();
-      this._AppComponentService.branchList().subscribe((res) => {
+      let data: any = localStorage.getItem('user');
+      let result = JSON.parse(data);
+      let obj = {
+        CODE: result.COMPANY_ID
+      }
+      this._AppComponentService.branchList(obj).subscribe((res) => {
         if (res.List.length > 1) {
           this.showBranch = true;
           this.BRANCH = true
@@ -83,7 +88,7 @@ export class CustomerCIGradePerKgRateRealizationComponent {
         }
       });
   
-      this._AppComponentService.financialYear().subscribe((res) => {
+      this._AppComponentService.financialYear(obj).subscribe((res) => {
         this.finyear = res.List
         this.selectedYear = this.finyear[0]['DATEVALUE']
       });
@@ -117,6 +122,7 @@ export class CustomerCIGradePerKgRateRealizationComponent {
           debugger
           let obj = {}
           this.showtable = true
+          this.FooterData.push(res.List[res.List.length - 1])
           this.Tabledata = res.List
           this.Tabledata.unshift(obj)
           this.Tabledata.pop()

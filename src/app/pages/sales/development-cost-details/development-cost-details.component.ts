@@ -16,7 +16,7 @@ import { AppComponentService } from 'src/app/app-component.service';
   styleUrls: ['./development-cost-details.component.scss']
 })
 export class DevelopmentCostDetailsComponent implements OnInit {
-
+  @ViewChild('FROM', { static: false }) FROM: NgSelectComponent;
   dataSource = []
   freezeHeader: boolean = true;
 
@@ -61,6 +61,16 @@ export class DevelopmentCostDetailsComponent implements OnInit {
   onFocus(ele: NgSelectComponent) {
     ele.open();
   }
+
+  ngAfterViewInit(): void {
+    // afterViewInit code
+    // const table = document.querySelector('smart-table');
+    if (this.FROM) {
+      this.FROM.focus();
+    }
+  }
+
+
   onValueChange(value: Date): void {
     this.maxDatet = new Date();
 
@@ -94,10 +104,16 @@ export class DevelopmentCostDetailsComponent implements OnInit {
     });
   }
 
+
   ngOnInit() {
     this.createForm();
     this.isLoading1 = true
-    this._AppComponentService.branchList().subscribe((res) => {
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+    let obj = {
+      CODE: result.COMPANY_ID
+    }
+    this._AppComponentService.branchList(obj).subscribe((res) => {
       if (res.List.length > 1) {
         this.BRANCH = true
         this.showBranch = true;
@@ -126,7 +142,9 @@ export class DevelopmentCostDetailsComponent implements OnInit {
     });
 
   }
-
+  totalDevelopmentCost
+  totalDevelopmentCostReceived
+  totalBalanceDcinReceived
   loadData() {
     this.isLoading = true;
     this.Tabledata = []
@@ -144,12 +162,29 @@ export class DevelopmentCostDetailsComponent implements OnInit {
 
     if (this.angForm.valid) {
       this._DevelopmentcostdetailsService.findAll(objdata).subscribe((res) => {
+        this.totalDevelopmentCost = 0
+        this.totalDevelopmentCostReceived = 0
+        this.totalBalanceDcinReceived = 0
         let obj = {}
         debugger
         this.showtable = true
         this.Tabledata = res.List
+        let first = this.Tabledata.reduce((accumulator, object) => {
+          return accumulator + object.ORDER_AMT;
+        }, 0);
+        this.totalDevelopmentCost = parseFloat(first).toFixed(2)
+        let second = this.Tabledata.reduce((accumulator, object) => {
+          return accumulator + object.INVOICE_AMT;
+        }, 0);
+        this.totalDevelopmentCostReceived = parseFloat(second).toFixed(2)
+        let third = this.Tabledata.reduce((accumulator, object) => {
+          return accumulator + object.DIFF_AMT;
+        }, 0);
+        this.totalBalanceDcinReceived = parseFloat(third).toFixed(2)
+
         this.Tabledata.unshift(obj)
         this.Tabledata.unshift(obj)
+
         this.isLoading = false;
 
       });

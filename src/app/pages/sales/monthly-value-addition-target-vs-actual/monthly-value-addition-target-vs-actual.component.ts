@@ -18,6 +18,7 @@ import { AppComponentService } from 'src/app/app-component.service';
 })
 export class MonthlyValueAdditionTargetVsActualComponent {
   branch = [];
+  @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   finyear = [];
   selectedBrach;
   selectedYear;
@@ -110,7 +111,12 @@ export class MonthlyValueAdditionTargetVsActualComponent {
     // onInit code.
     this.createForm();
     this.isLoading1 = true
-    this._AppComponentService.branchList().subscribe((res) => {
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+    let obj = {
+      CODE: result.COMPANY_ID
+    }
+    this._AppComponentService.branchList(obj).subscribe((res) => {
       if (res.List.length > 1) {
         this.BRANCH = true
         this.showBranch = true;
@@ -139,17 +145,21 @@ export class MonthlyValueAdditionTargetVsActualComponent {
       }
     });
 
-    this._AppComponentService.financialYear().subscribe((res) => {
+    this._AppComponentService.financialYear(obj).subscribe((res) => {
       this.finyear = res.List
       this.selectedYear = this.finyear[0]['DATEVALUE']
 
     });
   }
 
+  
   ngAfterViewInit(): void {
-    // afterViewInit code.
-    this.init();
+    // afterViewInit code
+    
     const table = document.querySelector('smart-table');
+    if (this.YEAR_NAME) {
+      this.YEAR_NAME.focus();
+    }
   }
 
   init(): void {

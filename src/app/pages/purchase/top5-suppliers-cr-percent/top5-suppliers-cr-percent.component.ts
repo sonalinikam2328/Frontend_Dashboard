@@ -17,7 +17,7 @@ import { AppComponentService } from 'src/app/app-component.service';
   styleUrls: ['./top5-suppliers-cr-percent.component.scss']
 })
 export class Top5SuppliersCRPercentComponent implements OnInit {
-
+  @ViewChild('FROM', { static: false }) FROM: NgSelectComponent;
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 
   branch = [];
@@ -75,8 +75,12 @@ export class Top5SuppliersCRPercentComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.isLoading1 = true
-
-    this._AppComponentService.branchList().subscribe((res) => {
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+    let obj = {
+      CODE: result.COMPANY_ID
+    }
+    this._AppComponentService.branchList(obj).subscribe((res) => {
       if (res.List.length > 1) {
         this.showBranch = true;
         this.BRANCH = true
@@ -219,8 +223,10 @@ export class Top5SuppliersCRPercentComponent implements OnInit {
   // ];
   ngAfterViewInit(): void {
     // afterViewInit code.
-    this.init();
     const table = document.querySelector('smart-table');
+    if (this.FROM) {
+      this.FROM.focus();
+    }
   }
 
   init(): void {

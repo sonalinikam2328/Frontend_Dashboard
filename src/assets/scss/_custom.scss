@@ -131,15 +131,21 @@
 .ng-dropdown-panel{
     border-color: $input-border-color;
     background-color: var(--#{$prefix}custom-white);
+    
 }
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option{
     background-color: var(--#{$prefix}custom-white);
     color: var(--#{$prefix}body-color);
+   
 }
+    
 
 .ng-dropdown-panel.ng-select-bottom{
     border-top-color: $input-border-color;
+    //  z-index: 0 !important;
+    // position:relative!important;
 }
+
 
 .ng-dropdown-panel.ng-select-top{
     border-bottom-color: $input-border-color;

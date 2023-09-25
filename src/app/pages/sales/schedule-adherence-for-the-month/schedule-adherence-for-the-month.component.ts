@@ -18,8 +18,10 @@ import { AppComponentService } from 'src/app/app-component.service';
   styleUrls: ['./schedule-adherence-for-the-month.component.scss']
 })
 export class ScheduleAdherenceForTheMonthComponent {
+  @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   branch = []
   finyear = [];
+  month = [];
   selectedBrach;
   selectedYear;
   selectedMonth;
@@ -44,7 +46,7 @@ export class ScheduleAdherenceForTheMonthComponent {
 
       BRANCH_NAME: [""],
       YEAR_NAME: ["", Validators.required],
-      // MONTH_NAME: ["", Validators.required],
+      MONTH_NAME: ["", Validators.required],
 
 
     });
@@ -117,9 +119,14 @@ export class ScheduleAdherenceForTheMonthComponent {
   ngOnInit(): void {
     // onInit code.
     this.isLoading1 = true
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+    let obj = {
+      CODE: result.COMPANY_ID
+    }
 
     this.createForm();
-    this._AppComponentService.branchList().subscribe((res) => {
+    this._AppComponentService.branchList(obj).subscribe((res) => {
       if (res.List.length > 1) {
         this.showBranch = true;
         this.BRANCH = true
@@ -148,17 +155,25 @@ export class ScheduleAdherenceForTheMonthComponent {
       }
     });
 
-    this._AppComponentService.financialYear().subscribe((res) => {
+    this._AppComponentService.financialYear(obj).subscribe((res) => {
       this.finyear = res.List
       this.selectedYear = this.finyear[0]['DATEVALUE']
+
+    });
+
+    this._AppComponentService.month(obj).subscribe((res) => {
+      this.month = res.List
+      this.selectedMonth = this.month[0]['DateValue']
 
     });
   }
 
   ngAfterViewInit(): void {
     // afterViewInit code.
-    this.init();
     const table = document.querySelector('smart-table');
+    if (this.YEAR_NAME) {
+      this.YEAR_NAME.focus();
+    }
   }
 
   init(): void {
@@ -186,6 +201,7 @@ export class ScheduleAdherenceForTheMonthComponent {
     let objdata = {
       BRANCH_NAME: this.selectedBrach,
       FINANCIAL_YEAR: this.selectedYear,
+      MONTH:this.selectedMonth,
       CODE: result.COMPANY_ID
     }
 

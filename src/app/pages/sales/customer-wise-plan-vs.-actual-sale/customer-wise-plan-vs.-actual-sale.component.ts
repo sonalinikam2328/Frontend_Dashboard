@@ -21,9 +21,11 @@ import { AppComponentService } from 'src/app/app-component.service';
   styleUrls: ['./customer-wise-plan-vs.-actual-sale.component.scss']
 })
 export class CustomerWisePlanVsActualSaleComponent {
+  @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   branch = []
   Tabledata = [];
   finyear = [];
+  month = [];
 
   showtable: boolean = false
   isLoading1: boolean = false;
@@ -49,7 +51,7 @@ export class CustomerWisePlanVsActualSaleComponent {
 
       BRANCH_NAME: [""],
       YEAR_NAME: ["", Validators.required],
-      // MONTH_NAME: ["", Validators.required],
+      MONTH_NAME: ["", Validators.required],
 
     });
   }
@@ -122,8 +124,12 @@ export class CustomerWisePlanVsActualSaleComponent {
     // onInit code.
     this.createForm();
     this.isLoading1 = true
-
-    this._AppComponentService.branchList().subscribe((res) => {
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+    let obj = {
+      CODE: result.COMPANY_ID
+    }
+    this._AppComponentService.branchList(obj).subscribe((res) => {
       if (res.List.length > 1) {
         this.BRANCH = true
         this.showBranch = true;
@@ -154,23 +160,31 @@ export class CustomerWisePlanVsActualSaleComponent {
       }
     });
 
-    this._AppComponentService.financialYear().subscribe((res) => {
+    this._AppComponentService.financialYear(obj).subscribe((res) => {
       this.finyear = res.List
       this.selectedYear = this.finyear[0]['DATEVALUE']
+
+    });
+
+    this._AppComponentService.month(obj).subscribe((res) => {
+      this.month = res.List
+      this.selectedMonth = this.month[0]['DateValue']
 
     });
   }
 
   ngAfterViewInit(): void {
     // afterViewInit code.
-    this.init();
     const table = document.querySelector('smart-table');
+    if (this.YEAR_NAME) {
+      this.YEAR_NAME.focus();
+    }
   }
 
   init(): void {
     // init code.
     const table = this.table;
-
+   
     // table.addGroup('CREDIT_DAYS');
   }
 

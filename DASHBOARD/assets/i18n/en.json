@@ -13,30 +13,38 @@
       "TEXT": "Sales",
       "LIST": {
         "PAYMENTCOLLECTION": "Payment Collection Plan",
-        "DEVELOPMENTCOSTDETAILS": "Developent Cost Details",
-        "SCHUDLEADHERENCEFORTHEMONTH": "schedule adherence for the month",
-        "CUSTOMERWISEPLANVS.ACTUALSALE": " Customer wise Plan Vs. Actual Sale",
-        "MONTHLYVALUEADDITIONTARGETV/SACTUAL": "Monthly Value Addition target V/s Actual",
-        "MONTHLYSALESANDTARGET": "Monthly Sales and Target"
+        "DEVELOPMENTCOSTDETAILS": "Development Cost Details",
+        "SCHUDLEADHERENCEFORTHEMONTH": "Schedule Adherence For The Month",
+        "CUSTOMERWISEPLANVS.ACTUALSALE": " Customer Wise Plan Vs. Actual Sale",
+        "MONTHLYVALUEADDITIONTARGETV/SACTUAL": "Monthly Value Addition Target V/s Actual",
+        "MONTHLYSALESANDTARGET": "Monthly Sales and Target",
+        "CUSTOMERCIGRADEPERKGRATEREALIZATION": "Customer CI Grade Per KG Rate Realization",
+        "ENQUIRYREGISTER": "Enquiry Register"
       }
     },
     "FINANCE": {
       "TEXT": "Finance",
       "LIST": {
-        "CUSTOMERRECEIVABLECHART": "Customer receivable chart"
+        "CUSTOMERRECEIVABLECHART": "Customer Receivable Chart"
       }
     },
     "PURCHASE": {
       "TEXT": "Purchase",
       "LIST": {
-        "SUPPLIERWISEPURCHASEANDCRNTONS": "Supplierwise purchase and CR in Tons",
+        "SUPPLIERWISEPURCHASEANDCRNTONS": "Supplierwise Purchase And CR In Tons",
         "TOP5SUPPLIERSCRPERCENT": "Top5 Suppliers Cr Percent"
       }
     },
     "WIPMACHINESHOP": {
       "TEXT": "wip-machine-shop",
       "LIST": {
-        "OILCONSUMPTION": "oil consumption"
+        "OILCONSUMPTION": "Oil Consumption"
+      }
+    },
+    "SUBCONTRACT": {
+      "TEXT": "subcontract",
+      "LIST": {
+        "SUPPLIERWISEBORINGRECOVERYDETAILS": "Supplier Wise Boring Recovery Details"
       }
     }
   }

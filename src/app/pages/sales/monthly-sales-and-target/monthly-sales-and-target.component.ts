@@ -10,12 +10,14 @@ import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 import { MonthlySalesService } from './monthly-sales.service';
 import { AppComponentService } from 'src/app/app-component.service';
+import { AfterViewInit } from '@angular/core';
 @Component({
   selector: 'app-monthly-sales-and-target',
   templateUrl: './monthly-sales-and-target.component.html',
   styleUrls: ['./monthly-sales-and-target.component.scss']
 })
-export class MonthlySalesAndTargetComponent {
+export class MonthlySalesAndTargetComponent implements AfterViewInit {
+  @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   branch = [];
   finyear = [];
   selectedBrach;
@@ -111,7 +113,12 @@ export class MonthlySalesAndTargetComponent {
   ngOnInit(): void {
     this.createForm();
     this.isLoading1 = true
-    this._AppComponentService.branchList().subscribe((res) => {
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+    let obj = {
+      CODE: result.COMPANY_ID
+    }
+    this._AppComponentService.branchList(obj).subscribe((res) => {
       if (res.List.length > 1) {
         this.BRANCH = true
         this.showBranch = true;
@@ -141,8 +148,8 @@ export class MonthlySalesAndTargetComponent {
       }
     });
 
-    this._AppComponentService.financialYear().subscribe((res) => {
-      console.log('Financial Year Response:', res);
+    this._AppComponentService.financialYear(obj).subscribe((res) => {
+     // console.log('Financial Year Response:', res);
       this.finyear = res.List
       this.selectedYear = this.finyear[0]['DATEVALUE']
 
@@ -151,8 +158,11 @@ export class MonthlySalesAndTargetComponent {
 
   ngAfterViewInit(): void {
     // afterViewInit code.
-    this.init();
+  
     const table = document.querySelector('smart-table');
+    if (this.YEAR_NAME) {
+      this.YEAR_NAME.focus();
+    }
   }
 
   init(): void {

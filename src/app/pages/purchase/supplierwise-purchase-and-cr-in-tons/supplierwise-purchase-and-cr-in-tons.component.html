@@ -1,10 +1,10 @@
 <div class="text-center">
-  <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
+  <i class="fa " [ngClass]="{'d-flex justify-content-center': isLoading1}" style="font-size:46px;"></i>
+  <i class="fa loader" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
 </div>
 <div class="card" *ngIf="!isLoading1">
   <div class="card-header">
     <h5>Supplierwise Purchase and CR in Tons</h5>
-  </div>
   </div>
   <form [formGroup]="angForm">
     <div class="card-block">
@@ -50,6 +50,7 @@
       </div>
     </div>
   </form>
+</div>
 
 <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable">
   <div class="col-12">
@@ -60,57 +61,81 @@
             <table class="table table-striped table-bordered table-hover compact">
               <thead style="position: sticky; top: 0; text-align: center;">
                 <tr>
-                  <th scope="col">Supplier Name</th>
-                  <th scope="col" style="text-align: right;">Avg. Purchase</th>
-                  <th scope="col" style="text-align: right;">Avg. Purchase Return</th>
-                  <th scope="col" style="text-align: right;">Avg. Purchase Schedule</th>
-                  <th scope="col" style="text-align: right;">Delivery Rating</th>
-                  <th scope="col" style="text-align: right;">Delivery Rating </th>
-                  <th scope="col" style="text-align: right;">Quality Rating</th>
-                  <th scope="col" style="text-align: right;">Q1 Purchase</th>
-                  <th scope="col" style="text-align: right;">Q1 Purchase Return</th>
-                  <th scope="col" style="text-align: right;">Q1 Delivery Rating</th>
-                  <th scope="col" style="text-align: right;">Q1 Quality Rating</th>
-                  <th scope="col" style="text-align: right;">Q2 Purchase</th>
-                  <th scope="col" style="text-align: right;">Q2 Purchase Return</th>
-                  <th scope="col" style="text-align: right;">Q2 Delivery Rating</th>
-                  <th scope="col" style="text-align: right;">Q2 Quality Rating</th>
-                  <th scope="col" style="text-align: right;">Q3 Purchase</th>
-                  <th scope="col" style="text-align: right;">Q3 Purchase Return</th>
-                  <th scope="col" style="text-align: right;">Q3 Delivery Rating</th>
-                  <th scope="col" style="text-align: right;">Q3 Quality Rating</th>
-                  <th scope="col" style="text-align: right;">Q4 Purchase</th>
-                  <th scope="col" style="text-align: right;">Q4 Purchase Return</th>
-                  <th scope="col" style="text-align: right;">Q4 Delivery Rating</th>
-                  <th scope="col" style="text-align: right;">Q4 Quality Rating</th>
+                  <th style="width: 20%;">Supplier Name</th>
+                  <th style="text-align: right;">Avg. Purchase</th>
+                  <th style="text-align: right;">Avg. Purchase Returns</th>
+                  <th style="text-align: right;">Avg. Purchase Schedule</th>
+                  <th style="text-align: right;">Delivery Rating</th>
+                  <th style="text-align: right;">Delivery Rating </th>
+                  <th style="text-align: right;">Quality Rating</th>
+                  <th style="text-align: right;">Q1 Purchase</th>
+                  <th style="text-align: right;">Q1 purchase Return</th>
+                  <th style="text-align: right;">Q1 Delivery Rating</th>
+                  <th style="text-align: right;">Q1 Quality Rating</th>
+                  <th style="text-align: right;">Q2 Purchase</th>
+                  <th style="text-align: right;">Q2 purchase Return</th>
+                  <th style="text-align: right;">Q2 Delivery Rating</th>
+                  <th style="text-align: right;">Q2 Quality Rating</th>
+                  <th style="text-align: right;">Q3 Purchase</th>
+                  <th style="text-align: right;">Q3 purchase Return</th>
+                  <th style="text-align: right;">Q3 Delivery Rating</th>
+                  <th style="text-align: right;">Q3 Quality Rating</th>
+                  <th style="text-align: right;">Q4 Purchase</th>
+                  <th style="text-align: right;">Q4 purchase Return</th>
+                  <th style="text-align: right;">Q4 Delivery Rating</th>
+                  <th style="text-align: right;">Q4 Quality Rating</th>
                 </tr>
               </thead>
               <tbody *ngIf="Tabledata.length !=0">
                 <tr *ngFor="let data of Tabledata;">
                   <!-- <td style="text-align: left;">{{datamonth}}</td> -->
-                  <td scope="col">{{data.AC_NAME}}</td>
-                  <td scope="col" style="text-align: right;">{{data.PRVYR_GRN_QTY}}</td>
-                  <td scope="col"></td>
-                  <td scope="col"></td>
-                  <td scope="col" style="text-align: right;">{{data.PRVYR_DELV_RATE1}}</td>
-                  <td scope="col" style="text-align: right;">{{data.PRVYR_DELV_RATE2}} </td>
-                  <td scope="col" style="text-align: right;">{{data.PRVYR_QUAL_RATE}} </td>
-                  <td scope="col" style="text-align: right;">{{data.Q1_GRN_QTY}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q1_CR_QTY}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q1_DEVL_RATE}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q1_QUAL_RATE}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q2_GRN_QTY}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q2_CR_QTY}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q2_DEVL_RATE}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q2_QUAL_RATE}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q3_GRN_QTY}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q3_CR_QTY}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q3_DEVL_RATE}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q3_QUAL_RATE}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q4_GRN_QTY}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q4_CR_QTY}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q4_DEVL_RATE}}</td>
-                  <td scope="col" style="text-align: right;">{{data.Q4_QUAL_RATE}}</td>
+                  <td>{{data.AC_NAME}}</td>
+                  <td style="text-align: right;">{{data.PRVYR_GRN_QTY}}</td>
+                  <td></td>
+                  <td></td>
+                  <td style="text-align: right;">{{data.PRVYR_DELV_RATE1}}</td>
+                  <td style="text-align: right;">{{data.PRVYR_DELV_RATE2}} </td>
+                  <td style="text-align: right;">{{data.PRVYR_QUAL_RATE}} </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(1)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q1_GRN_QTY}}</a></td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(1)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q1_CR_QTY}}</a></td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(1)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q1_DEVL_RATE}}</a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(1)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q1_QUAL_RATE}}</a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(2)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q2_GRN_QTY}}</a></td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(2)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q2_CR_QTY}}</a></td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(2)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q2_DEVL_RATE}}</a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(2)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q2_QUAL_RATE}}</a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(3)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q3_GRN_QTY}}</a></td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(3)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q3_CR_QTY}}</a></td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(3)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q3_DEVL_RATE}}</a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(3)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q3_QUAL_RATE}}</a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(4)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q4_GRN_QTY}}</a></td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(4)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q4_CR_QTY}}</a></td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(4)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q4_DEVL_RATE}}</a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(4)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q4_QUAL_RATE}}</a>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -118,5 +143,272 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable1">
+  <div class="col-12">
+    <div class="table-responsive">
+      <div class="table-fixed">
+        <div class="card">
+          <div class="card-block">
+            <table class="table table-striped table-bordered table-hover compact">
+              <thead style="position: sticky; top: 0; text-align: center;">
+                <tr>
+                  <th style="width: 20%;">Supplier Name</th>
+                  <th style="text-align: right;">Avg. Purchase</th>
+                  <th style="text-align: right;">Avg. Purchase Returns</th>
+                  <th style="text-align: right;">Avg. Purchase Schedule</th>
+                  <th style="text-align: right;">Delivery Rating</th>
+                  <th style="text-align: right;">Quality Rating</th>
+                  <th style="text-align: right;" *ngIf="Jan">Jan. GRN</th>
+                  <th style="text-align: right;" *ngIf="Jan">Jan. CR</th>
+                  <th style="text-align: right;" *ngIf="Jan">Jan. Sch.</th>
+                  <th style="text-align: right;" *ngIf="Jan">Jan. Delv Rate1</th>
+                  <th style="text-align: right;" *ngIf="Jan">Jan. Delv Rate2</th>
+                  <th style="text-align: right;" *ngIf="Jan">Jan. Quality</th>
+                  <th style="text-align: right;" *ngIf="Feb">Feb. GRN</th>
+                  <th style="text-align: right;" *ngIf="Feb">Feb. CR</th>
+                  <th style="text-align: right;" *ngIf="Feb">Feb. Sch.</th>
+                  <th style="text-align: right;" *ngIf="Feb">Feb. Delv Rate1</th>
+                  <th style="text-align: right;" *ngIf="Feb">Feb. Delv Rate2</th>
+                  <th style="text-align: right;" *ngIf="Feb">Feb. Quality</th>
+                  <th style="text-align: right;" *ngIf="March">March GRN</th>
+                  <th style="text-align: right;" *ngIf="March">March CR</th>
+                  <th style="text-align: right;" *ngIf="March">March Sch.</th>
+                  <th style="text-align: right;" *ngIf="March">March Delv Rate1</th>
+                  <th style="text-align: right;" *ngIf="March">March Delv Rate2</th>
+                  <th style="text-align: right;" *ngIf="March">March Quality</th>
+                  <th style="text-align: right;" *ngIf="Apr">Apr. GRN</th>
+                  <th style="text-align: right;" *ngIf="Apr">Apr. CR</th>
+                  <th style="text-align: right;" *ngIf="Apr">Apr. Sch.</th>
+                  <th style="text-align: right;" *ngIf="Apr">Apr. Delv Rate1</th>
+                  <th style="text-align: right;" *ngIf="Apr">Apr. Delv Rate2</th>
+                  <th style="text-align: right;" *ngIf="Apr">Apr. Quality</th>
+                  <th style="text-align: right;" *ngIf="May">May GRN</th>
+                  <th style="text-align: right;" *ngIf="May">May CR</th>
+                  <th style="text-align: right;" *ngIf="May">May Sch.</th>
+                  <th style="text-align: right;" *ngIf="May">May Delv Rate1</th>
+                  <th style="text-align: right;" *ngIf="May">May Delv Rate2</th>
+                  <th style="text-align: right;" *ngIf="May">May Quality</th>
+                  <th style="text-align: right;" *ngIf="June">June GRN</th>
+                  <th style="text-align: right;" *ngIf="June">June CR</th>
+                  <th style="text-align: right;" *ngIf="June">June Sch.</th>
+                  <th style="text-align: right;" *ngIf="June">June Delv Rate1</th>
+                  <th style="text-align: right;" *ngIf="June">June Delv Rate2</th>
+                  <th style="text-align: right;" *ngIf="June">June Quality</th>
+                  <th style="text-align: right;" *ngIf="July">July GRN</th>
+                  <th style="text-align: right;" *ngIf="July">July CR</th>
+                  <th style="text-align: right;" *ngIf="July">July Sch.</th>
+                  <th style="text-align: right;" *ngIf="July">July Delv Rate1</th>
+                  <th style="text-align: right;" *ngIf="July">July Delv Rate2</th>
+                  <th style="text-align: right;" *ngIf="July">July Quality</th>
+                  <th style="text-align: right;" *ngIf="Aug">Aug. GRN</th>
+                  <th style="text-align: right;" *ngIf="Aug">Aug. CR</th>
+                  <th style="text-align: right;" *ngIf="Aug">Aug. Sch.</th>
+                  <th style="text-align: right;" *ngIf="Aug">Aug. Delv Rate1</th>
+                  <th style="text-align: right;" *ngIf="Aug">Aug. Delv Rate2</th>
+                  <th style="text-align: right;" *ngIf="Aug">Aug. Quality</th>
+                  <th style="text-align: right;" *ngIf="sept">sept. GRN</th>
+                  <th style="text-align: right;" *ngIf="sept">sept. CR</th>
+                  <th style="text-align: right;" *ngIf="sept">sept. Sch.</th>
+                  <th style="text-align: right;" *ngIf="sept">sept. Delv Rate1</th>
+                  <th style="text-align: right;" *ngIf="sept">sept. Delv Rate2</th>
+                  <th style="text-align: right;" *ngIf="sept">sept. Quality</th>
+                  <th style="text-align: right;" *ngIf="Oct">Oct GRN</th>
+                  <th style="text-align: right;" *ngIf="Oct">Oct CR</th>
+                  <th style="text-align: right;" *ngIf="Oct">Oct Sch.</th>
+                  <th style="text-align: right;" *ngIf="Oct">Oct Delv Rate1</th>
+                  <th style="text-align: right;" *ngIf="Oct">Oct Delv Rate2</th>
+                  <th style="text-align: right;" *ngIf="Oct">Oct Quality</th>
+                  <th style="text-align: right;" *ngIf="Nov">Nov. GRN</th>
+                  <th style="text-align: right;" *ngIf="Nov">Nov. CR</th>
+                  <th style="text-align: right;" *ngIf="Nov">Nov. Sch.</th>
+                  <th style="text-align: right;" *ngIf="Nov">Nov. Delv Rate1</th>
+                  <th style="text-align: right;" *ngIf="Nov">Nov. Delv Rate2</th>
+                  <th style="text-align: right;" *ngIf="Nov">Nov. Quality</th>
+                  <th style="text-align: right;" *ngIf="Dec">Dec. GRN</th>
+                  <th style="text-align: right;" *ngIf="Dec">Dec. CR</th>
+                  <th style="text-align: right;" *ngIf="Dec">Dec. Sch.</th>
+                  <th style="text-align: right;" *ngIf="Dec">Dec. Delv Rate1</th>
+                  <th style="text-align: right;" *ngIf="Dec">Dec. Delv Rate2</th>
+                  <th style="text-align: right;" *ngIf="Dec">Dec. Quality</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="Tabledata.length !=0">
+                <tr *ngFor="let data of Tabledata;">
+                  <td style="width: 20%;">{{data.AC_NAME}}</td>
+                  <td style="text-align: right;">{{data.PRVYR_GRN_QTY}}</td>
+                  <td style="text-align: right;"></td>
+                  <td style="text-align: right;"></td>
+                  <td style="text-align: right;">{{data.PRVYR_DELV_RATE1}}</td>
+                  <td style="text-align: right;">{{data.PRVYR_QUAL_RATE}}</td>
+                  <td style="text-align: right;" *ngIf="Jan">{{data.JAN_GRN_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Jan">{{data.JAN_CR_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Jan">{{data.JAN_SCH_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Jan">{{data.JAN_DELV_RATE1}}</td>
+                  <td style="text-align: right;" *ngIf="Jan">{{data.JAN_DEVL_RATE2}}</td>
+                  <td style="text-align: right;" *ngIf="Feb">{{data.JAN_QUAL_RATE}}</td>
+                  <td style="text-align: right;" *ngIf="Feb">{{data.FEB_GRN_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Feb">{{data.FEB_CR_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Feb">{{data.FEB_SCH_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Feb">{{data.FEB_DELV_RATE1}}</td>
+                  <td style="text-align: right;" *ngIf="Feb">{{data.FEB_DEVL_RATE2}}</td>
+                  <td style="text-align: right;" *ngIf="Feb">{{data.FEB_QUAL_RATE}}</td>
+                  <td style="text-align: right;" *ngIf="March">{{data.MAR_GRN_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="March">{{data.MAR_CR_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="March">{{data.MAR_SCH_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="March">{{data.MAR_DELV_RATE1}}</td>
+                  <td style="text-align: right;" *ngIf="March">{{data.MAR_DEVL_RATE2}}</td>
+                  <td style="text-align: right;" *ngIf="March">{{data.MAR_QUAL_RATE}}</td>
+                  <td style="text-align: right;" *ngIf="Apr">{{data.APR_GRN_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Apr">{{data.APR_CR_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Apr">{{data.APR_SCH_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Apr">{{data.APR_DELV_RATE1}}</td>
+                  <td style="text-align: right;" *ngIf="Apr">{{data.APR_DEVL_RATE2}}</td>
+                  <td style="text-align: right;" *ngIf="Apr">{{data.APR_QUAL_RATE}}</td>
+                  <td style="text-align: right;" *ngIf="May">{{data.MAY_GRN_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="May">{{data.MAY_CR_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="May">{{data.MAY_SCH_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="May">{{data.MAY_DELV_RATE1}}</td>
+                  <td style="text-align: right;" *ngIf="May">{{data.MAY_DEVL_RATE2}}</td>
+                  <td style="text-align: right;" *ngIf="May">{{data.MAY_QUAL_RATE}}</td>
+                  <td style="text-align: right;" *ngIf="June">{{data.JUNE_GRN_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="June">{{data.JUNE_CR_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="June">{{data.JUNE_SCH_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="June">{{data.JUNE_DELV_RATE1}}</td>
+                  <td style="text-align: right;" *ngIf="June">{{data.JUNE_DEVL_RATE2}}</td>
+                  <td style="text-align: right;" *ngIf="June">{{data.JUNE_QUAL_RATE}}</td>
+                  <td style="text-align: right;" *ngIf="July">{{data.JULY_GRN_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="July">{{data.JULY_CR_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="July">{{data.JULY_SCH_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="July">{{data.JULY_DELV_RATE1}}</td>
+                  <td style="text-align: right;" *ngIf="July">{{data.JULY_DEVL_RATE2}}</td>
+                  <td style="text-align: right;" *ngIf="July">{{data.JULY_QUAL_RATE}}</td>
+                  <td style="text-align: right;" *ngIf="Aug">{{data.AUG_GRN_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Aug">{{data.AUG_CR_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Aug">{{data.AUG_SCH_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Aug">{{data.AUG_DELV_RATE1}}</td>
+                  <td style="text-align: right;" *ngIf="Aug">{{data.AUG_DEVL_RATE2}}</td>
+                  <td style="text-align: right;" *ngIf="Aug">{{data.AUG_QUAL_RATE}}</td>
+                  <td style="text-align: right;" *ngIf="sept">{{data.SEPT_GRN_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="sept">{{data.SEPT_CR_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="sept">{{data.SEPT_SCH_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="sept">{{data.SEPT_DELV_RATE1}}</td>
+                  <td style="text-align: right;" *ngIf="sept">{{data.SEPT_DEVL_RATE2}}</td>
+                  <td style="text-align: right;" *ngIf="sept">{{data.SEPT_QUAL_RATE}}</td>
+                  <td style="text-align: right;" *ngIf="Oct">{{data.OCT_GRN_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Oct">{{data.OCT_CR_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Oct">{{data.OCT_SCH_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Oct">{{data.OCT_DELV_RATE1}}</td>
+                  <td style="text-align: right;" *ngIf="Oct">{{data.OCT_DEVL_RATE2}}</td>
+                  <td style="text-align: right;" *ngIf="Oct">{{data.OCT_QUAL_RATE}}</td>
+                  <td style="text-align: right;" *ngIf="Nov">{{data.NOV_GRN_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Nov">{{data.NOV_CR_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Nov">{{data.NOV_SCH_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Nov">{{data.NOV_DELV_RATE1}}</td>
+                  <td style="text-align: right;" *ngIf="Nov">{{data.NOV_DEVL_RATE2}}</td>
+                  <td style="text-align: right;" *ngIf="Nov">{{data.NOV_QUAL_RATE}}</td>
+                  <td style="text-align: right;" *ngIf="Dec">{{data.DEC_GRN_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Dec">{{data.DEC_CR_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Dec">{{data.DEC_SCH_QTY}}</td>
+                  <td style="text-align: right;" *ngIf="Dec">{{data.DEC_DELV_RATE1}}</td>
+                  <td style="text-align: right;" *ngIf="Dec">{{data.DEC_DEVL_RATE2}}</td>
+                  <td style="text-align: right;" *ngIf="Dec">{{data.DEC_QUAL_RATE}}</td>
+                </tr>
+              </tbody>
+              <tfoot style="position: sticky; bottom: 0; text-align: center;">
+                <tr>
+                  <th style="width: 20%;"> Total</th>
+                  <th style="text-align: right;"></th>
+                  <th style="text-align: right;"></th>
+                  <th style="text-align: right;"></th>
+                  <th style="text-align: right;"></th>
+                  <th style="text-align: right;"></th>
+                  <th style="text-align: right;" *ngIf="Jan">{{TOTAL_JAN_GRN_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Jan">{{TOTAL_JAN_CR_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Jan">{{TOTAL_JAN_SCH_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Jan">{{TOTAL_JAN_DELV_RATE1}}</th>
+                  <th style="text-align: right;" *ngIf="Jan">{{TOTAL_JAN_DEVL_RATE2}}</th>
+                  <th style="text-align: right;" *ngIf="Feb">{{TOTAL_JAN_QUAL_RATE}}</th>
+                  <th style="text-align: right;" *ngIf="Feb">{{TOTAL_FEB_GRN_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Feb">{{TOTAL_FEB_CR_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Feb">{{TOTAL_FEB_SCH_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Feb">{{TOTAL_FEB_DELV_RATE1}}</th>
+                  <th style="text-align: right;" *ngIf="Feb">{{TOTAL_FEB_DEVL_RATE2}}</th>
+                  <th style="text-align: right;" *ngIf="Feb">{{TOTAL_FEB_QUAL_RATE}}</th>
+                  <th style="text-align: right;" *ngIf="March">{{TOTAL_MAR_GRN_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="March">{{TOTAL_MAR_CR_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="March">{{TOTAL_MAR_SCH_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="March">{{TOTAL_MAR_DELV_RATE1}}</th>
+                  <th style="text-align: right;" *ngIf="March">{{TOTAL_MAR_DEVL_RATE2}}</th>
+                  <th style="text-align: right;" *ngIf="March">{{TOTAL_MAR_QUAL_RATE}}</th>
+                  <th style="text-align: right;" *ngIf="Apr">{{TOTAL_APR_GRN_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Apr">{{TOTAL_APR_CR_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Apr">{{TOTAL_APR_SCH_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Apr">{{TOTAL_APR_DELV_RATE1}}</th>
+                  <th style="text-align: right;" *ngIf="Apr">{{TOTAL_APR_DEVL_RATE2}}</th>
+                  <th style="text-align: right;" *ngIf="Apr">{{TOTAL_APR_QUAL_RATE}}</th>
+                  <th style="text-align: right;" *ngIf="May">{{TOTAL_MAY_GRN_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="May">{{TOTAL_MAY_CR_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="May">{{TOTAL_MAY_SCH_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="May">{{TOTAL_MAY_DELV_RATE1}}</th>
+                  <th style="text-align: right;" *ngIf="May">{{TOTAL_MAY_DEVL_RATE2}}</th>
+                  <th style="text-align: right;" *ngIf="May">{{TOTAL_MAY_QUAL_RATE}}</th>
+                  <th style="text-align: right;" *ngIf="June">{{TOTAL_JUNE_GRN_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="June">{{TOTAL_JUNE_CR_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="June">{{TOTAL_JUNE_SCH_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="June">{{TOTAL_JUNE_DELV_RATE1}}</th>
+                  <th style="text-align: right;" *ngIf="June">{{TOTAL_JUNE_DEVL_RATE2}}</th>
+                  <th style="text-align: right;" *ngIf="June">{{TOTAL_JUNE_QUAL_RATE}}</th>
+                  <th style="text-align: right;" *ngIf="July">{{TOTAL_JULY_GRN_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="July">{{TOTAL_JULY_CR_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="July">{{TOTAL_JULY_SCH_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="July">{{TOTAL_JULY_DELV_RATE1}}</th>
+                  <th style="text-align: right;" *ngIf="July">{{TOTAL_JULY_DEVL_RATE2}}</th>
+                  <th style="text-align: right;" *ngIf="July">{{TOTAL_JULY_QUAL_RATE}}</th>
+                  <th style="text-align: right;" *ngIf="Aug">{{TOTAL_AUG_GRN_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Aug">{{TOTAL_AUG_CR_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Aug">{{TOTAL_AUG_SCH_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Aug">{{TOTAL_AUG_DELV_RATE1}}</th>
+                  <th style="text-align: right;" *ngIf="Aug">{{TOTAL_AUG_DEVL_RATE2}}</th>
+                  <th style="text-align: right;" *ngIf="Aug">{{TOTAL_AUG_QUAL_RATE}}</th>
+                  <th style="text-align: right;" *ngIf="sept">{{TOTAL_SEPT_GRN_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="sept">{{TOTAL_SEPT_CR_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="sept">{{TOTAL_SEPT_SCH_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="sept">{{TOTAL_SEPT_DELV_RATE1}}</th>
+                  <th style="text-align: right;" *ngIf="sept">{{TOTAL_SEPT_DEVL_RATE2}}</th>
+                  <th style="text-align: right;" *ngIf="sept">{{TOTAL_SEPT_QUAL_RATE}}</th>
+                  <th style="text-align: right;" *ngIf="Oct">{{TOTAL_OCT_GRN_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Oct">{{TOTAL_OCT_CR_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Oct">{{TOTAL_OCT_SCH_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Oct">{{TOTAL_OCT_DELV_RATE1}}</th>
+                  <th style="text-align: right;" *ngIf="Oct">{{TOTAL_OCT_DEVL_RATE2}}</th>
+                  <th style="text-align: right;" *ngIf="Oct">{{TOTAL_OCT_QUAL_RATE}}</th>
+                  <th style="text-align: right;" *ngIf="Nov">{{TOTAL_NOV_GRN_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Nov">{{TOTAL_NOV_CR_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Nov">{{TOTAL_NOV_SCH_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Nov">{{TOTAL_NOV_DELV_RATE1}}</th>
+                  <th style="text-align: right;" *ngIf="Nov">{{TOTAL_NOV_DEVL_RATE2}}</th>
+                  <th style="text-align: right;" *ngIf="Nov">{{TOTAL_NOV_QUAL_RATE}}</th>
+                  <th style="text-align: right;" *ngIf="Dec">{{TOTAL_DEC_GRN_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Dec">{{TOTAL_DEC_CR_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Dec">{{TOTAL_DEC_SCH_QTY}}</th>
+                  <th style="text-align: right;" *ngIf="Dec">{{TOTAL_DEC_DELV_RATE1}}</th>
+                  <th style="text-align: right;" *ngIf="Dec">{{TOTAL_DEC_DEVL_RATE2}}</th>
+                  <th style="text-align: right;" *ngIf="Dec">{{TOTAL_DEC_QUAL_RATE}}</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group row justify-content-md-center">
+  <div class="col-sm text-center">
+    <button class="btn btn-primary sm" (click)="back()" *ngIf="showtable1">Back</button>
   </div>
 </div>

@@ -1,11 +1,11 @@
 <div class="text-center">
   <i class="fa " [ngClass]="{'d-flex justify-content-center': isLoading1}" style="font-size:46px;"></i>
 
-  <i class="fa loader" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i> 
+  <i class="fa loader" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
 </div>
 <div class="card" *ngIf="!isLoading1">
   <div class="card-header">
-    <h5>Enquiry Register</h5>
+    <h5 (click)="reload()">Enquiry Register</h5>
   </div>
   <form [formGroup]="angForm">
     <div class="card-block">
@@ -57,18 +57,19 @@
       </div>
       <div class="form-group row justify-content-md-center">
         <div class="col-sm-1">
-          <button class="btn btn-primary sm"[disabled]="isLoading" (click)="loadData()">Go <i class="fa"
+          <button class="btn btn-primary sm" [disabled]="isLoading" (click)="loadData()">Go <i class="fa"
               [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
         </div>
       </div>
     </div>
   </form>
- <!-- <tbody *ngIf="Tabledata.length ==0">
-    <tr>
-      <td>No Data</td>
-    </tr>
-  </tbody> -->
-  
+
+  <!-- <tbody *ngIf="Tabledata.length ==0">
+      <tr>
+        <td>No Data</td>
+      </tr>
+    </tbody> -->
+
   <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable">
     <div class="col-12">
       <div class="table-responsive">
@@ -78,19 +79,19 @@
               <table class="table table-striped table-bordered table-hover compact">
                 <thead style="position: sticky; top: 0; text-align: center;">
                   <tr>
-                    <th class="td_left" style="width: 20%;">(Sr.No.)</th>
-                    <th class="td_right">(Enquiry Number)</th>
-                    <th class="td_right">(Date)</th>
-                    <th class="td_right">(Customer)</th>
-                    <th class="td_right">(Part Name)</th>
-                    <th class="td_right">(Material)</th>
-                    <th class="td_right">(Oty.)</th>
-                    <th class="td_right">(Remark)</th>
+                    <th class="td_left" style="width: 20%;">Sr.No.</th>
+                    <th class="td_right">Enquiry Number</th>
+                    <th class="td_right">Date</th>
+                    <th class="td_right">Customer</th>
+                    <th class="td_right">Part Name</th>
+                    <th class="td_right">Material</th>
+                    <th class="td_right">Oty.</th>
+                    <th class="td_right">Remark</th>
 
-                    
+
                     <!-- <th class="td_left">Balance 50% Debit Note/Invoice No.</th>
-                    <th class="td_right">Development Cost Received In INR</th>
-                    <th class="td_right">Balanced D.C. In INR to be Received</th> -->
+                      <th class="td_right">Development Cost Received In INR</th>
+                      <th class="td_right">Balanced D.C. In INR to be Received</th> -->
                   </tr>
                 </thead>
                 <tbody *ngIf="Tabledata.length !=0">
@@ -99,7 +100,7 @@
                     <td class="td_right"> {{data?.TRAN_NO}}</td>
                     <td class="td_right">{{data?.TRAN_DATE}}</td>
                     <td class="td_left">{{data?.CUSTOMER_NAME}}</td>
-                    <td class="td_left">{{data?.QUOT_TRANNO	}}</td>
+                    <td class="td_left">{{data?.QUOT_TRANNO }}</td>
                     <td class="td_left">{{data?.MATERIAL_NAME}}</td>
                     <td class="td_left">{{data?.PART_CODE}}</td>
                     <td class="td_left">{{data?.QTY}}</td>
@@ -107,9 +108,10 @@
 
 
                     <!-- <td  class="td_left">{{data?.SALE_INV_DETAILS}}</td>
-                    <td class="td_right">{{data?.INVOICE_AMT}}</td>
-                    <td class="td_right">{{data?.DIFF_AMT}}</td> -->
+                      <td class="td_right">{{data?.INVOICE_AMT}}</td>
+                      <td class="td_right">{{data?.DIFF_AMT}}</td> -->
                   </tr>
+                </tbody>
                 <tbody *ngIf="Tabledata.length ==0">
                   <tr>
                     <td>No Data</td>

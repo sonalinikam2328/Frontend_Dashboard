@@ -1,14 +1,14 @@
 <div class="text-center">
-  <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
+  <i class="fa " [ngClass]="{'d-flex justify-content-center': isLoading1}" style="font-size:46px;"></i>
+  <i class="fa loader" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
 </div>
 <div class="card" *ngIf="!isLoading1">
   <div class="card-header">
-  <h5 >Payment Collection Plan</h5>
-  </div>
+    <h5>Payment Collection Plan</h5>
   </div>
   <form [formGroup]="angForm">
     <div class="card-block">
-      <div class="form-group row justify-content-md-center" style="margin: 1%;"> <!--  *ngIf="showBranch" -->
+      <div class="row" style="margin: 1%;"> <!--  *ngIf="showBranch" -->
         <div class="col-sm-2" *ngIf="showBranch">
           <label>Select Branch <sub class="required">* </sub></label>
         </div>
@@ -41,7 +41,7 @@
         <div class="col-sm-2">
           <label>Customer Type <sub class="required"> * </sub></label>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="CUTOMER_TYPE" id="inlineRadio1" value="0"
               formControlName="CUTOMER_TYPE">
@@ -62,8 +62,7 @@
       </div>
     </div>
   </form>
-
-
+</div>
 <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable">
   <div class="col-12">
     <div class="table-responsive">
@@ -73,18 +72,18 @@
             <table class="table table-striped table-bordered table-hover compact">
               <thead style="position: sticky; top: 0; text-align: center;">
                 <tr>
-                  <th class="td_right">SR. NO.</th>
-                  <th class="td_left">NAME OF CUSTOMER</th>
-                  <th class="td_right">PAYMENT AMOUNT PLAN FOR THE MONTH Rs.</th>
-                  <th class="td_right">AMOUNT RECEIVED Rs.</th>
-                  <th class="td_right">% OF RECOVERY</th>
-                  <th class="td_right">CREDIT DAYS</th>
-                  <th class="td_right">AVG. PAYMENT RECEIPT DAYS</th>
-                  <th class="td_right">AVG. PAYMENT RECEIPT DAYS</th>
-                  <th class="td_right">AVG. PAYMENT RECEIPT DAYS</th>
-                  <th class="td_right">AVG. PAYMENT RECEIPT DAYS</th>
-                  <th class="td_right">AVG. PAYMENT RECEIPT DAYS</th>
-                  <th class="td_right">AVG. PAYMENT RECEIPT DAYS</th>
+                  <th class="td_right">Sr. No.</th>
+                  <th class="td_left">Name of Customer</th>
+                  <th class="td_right">Payment Amount Plan For The Month Rs.</th>
+                  <th class="td_right">Amount Received Rs.</th>
+                  <th class="td_right">% of Recovery</th>
+                  <th class="td_right">Credit Days</th>
+                  <th class="td_right">Avg Payment Receipt Days</th>
+                  <th class="td_right">Avg Payment Receipt Days</th>
+                  <th class="td_right">Avg Payment Receipt Days</th>
+                  <th class="td_right">Avg Payment Receipt Days</th>
+                  <th class="td_right">Avg Payment Receipt Days</th>
+                  <th class="td_right">Avg Payment Receipt Days</th>
                 </tr>
               </thead>
               <tbody *ngIf="Tabledata.length !=0">
@@ -116,7 +115,7 @@
                   <td class="td_right">{{data.RECEIPT_AMT != null ? data.RECEIPT_AMT : '-'}}</td>
                   <td class="td_right">{{data.RECV_PERCENT != null ? data.RECV_PERCENT + '%' : data.RECV_PERCENT}} </td>
                   <td class="td_right">{{data.CREDIT_DAYS != 0 ? data.CREDIT_DAYS : ''}}</td>
-                  <td class="td_right">{{data.CR_DAYS !=  0 ? data.CR_DAYS : ''}}</td>
+                  <td class="td_right">{{data.CR_DAYS != 0 ? data.CR_DAYS : ''}}</td>
                   <td class="td_right">{{data.CR_DAYS1 != 0 ? data.CR_DAYS1 : ''}}</td>
                   <td class="td_right">{{data.CR_DAYS2 != 0 ? data.CR_DAYS2 : ''}}</td>
                   <td class="td_right">{{data.CR_DAYS3 != 0 ? data.CR_DAYS3 : ''}}</td>
@@ -197,4 +196,3 @@
     </div>
   </div>
 </div> -->
-

@@ -1,13 +1,14 @@
 <div class="text-center">
-  <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
+  <i class="fa " [ngClass]="{'d-flex justify-content-center': isLoading1}" style="font-size:46px;"></i>
+  <i class="fa loader" [ngClass]="{'fa-spin fa-spinner': isLoading1}" style="font-size:46px;"></i>
 </div>
+
 <div class="card" *ngIf="!isLoading1">
   <div class="card-header">
     <h5>Customer Receivable Chart</h5>
   </div>
-  </div>
-  <div class="card-block">
-    <form [formGroup]="angForm">
+  <form [formGroup]="angForm">
+    <div class="card-block">
       <div class="row" style="margin: 1%;">
         <div class="col-sm-2" *ngIf="showBranch">
           <label>Select Branch <sub class="required">* </sub></label>
@@ -31,7 +32,7 @@
             <span class="border-lable-flt">
               <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control"
                 [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [(ngModel)]="fromdate" [maxDate]="maxDate" bsDatepicker
-                formControlName="FROM" required>
+                formControlName="FROM" required style="max-width: 100px;">
             </span>
           </div>
           <div class="form-group form-primary form-static-label"
@@ -47,7 +48,7 @@
             <span class="border-lable-flt">
               <input type="text" placeholder="dd/mm/yyyy" name="tdate" id="tdate" class="form-control"
                 [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [minDate]="fromdate" [(ngModel)]="todate" bsDatepicker
-                formControlName="TO" required appTheme>
+                formControlName="TO" required appTheme style="max-width: 100px;">
             </span>
           </div>
           <div class="form-group form-primary form-static-label"
@@ -63,8 +64,10 @@
               [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
         </div>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>
+
 
 
 

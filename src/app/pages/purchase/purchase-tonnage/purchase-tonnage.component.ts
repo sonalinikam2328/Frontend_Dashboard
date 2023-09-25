@@ -36,8 +36,12 @@ export class PurchaseTonnageComponent {
 
   ngOnInit(): void {
     this.createForm();
-
-    this._AppComponentService.branchList().subscribe((res) => {
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+    let obj = {
+      CODE: result.COMPANY_ID
+    }
+    this._AppComponentService.branchList(obj).subscribe((res) => {
       console.log(res.List)
       if (res.List.length > 1) {
         this.showBranch = true;

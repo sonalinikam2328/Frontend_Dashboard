@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { PaymentService } from './payment.service';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
@@ -16,8 +16,8 @@ import { AppComponentService } from 'src/app/app-component.service';
   templateUrl: './payment-collection-plan.component.html',
   styleUrls: ['./payment-collection-plan.component.scss']
 })
-export class PaymentCollectionPlanComponent {
-
+export class PaymentCollectionPlanComponent  implements AfterViewInit,OnInit{
+  @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   // @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
   branch = []
   finyear = [];
@@ -30,14 +30,13 @@ export class PaymentCollectionPlanComponent {
   isLoading1: boolean = false;
   BRANCH: boolean = false;
   isLoading = false;
+  Loading: any;
 
   constructor(private _PaymentService: PaymentService,
     private _AppComponentService: AppComponentService,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,) { }
-
-    
 
   createForm() {
     this.angForm = this.fb.group({
@@ -54,13 +53,27 @@ export class PaymentCollectionPlanComponent {
   onFocus(ele: NgSelectComponent) {
     ele.open();
   }
+  ngAfterViewInit(): void {
+    // afterViewInit code
+    
+    const table = document.querySelector('smart-table');
+    if (this.YEAR_NAME) {
+      this.YEAR_NAME.focus();
+    }
+  }
+  init() {
+    throw new Error('Method not implemented.');
+  }
   ngOnInit(): void {
     // onInit code.
     this.isLoading1 = true
-   
-
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+    let obj = {
+      CODE: result.COMPANY_ID
+    }
     this.createForm();
-    this._AppComponentService.branchList().subscribe((res) => {
+    this._AppComponentService.branchList(obj).subscribe((res) => {
       if (res.List.length > 1) {
         this.showBranch = true;
         this.BRANCH = true
@@ -88,7 +101,7 @@ export class PaymentCollectionPlanComponent {
       }
     });
 
-    this._AppComponentService.financialYear().subscribe((res) => {
+    this._AppComponentService.financialYear(obj).subscribe((res) => {
       this.finyear = res.List
       this.selectedYear = this.finyear[0]['DATEVALUE']
     });

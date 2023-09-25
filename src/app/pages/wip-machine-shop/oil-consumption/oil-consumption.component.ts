@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
@@ -18,7 +18,7 @@ import { AppComponentService } from '../../../app-component.service';
 })
 export class OilConsumptionComponent implements OnInit {
 
-
+  @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 
   branch = [];
@@ -58,9 +58,14 @@ export class OilConsumptionComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.isLoading1 = true
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+    let obj = {
+      CODE: result.COMPANY_ID
+    }
 
     // onInit code.
-    this._AppComponentService.branchList().subscribe((res) => {
+    this._AppComponentService.branchList(obj).subscribe((res) => {
       if (res.List.length > 1) {
         this.BRANCH = true
         this.showBranch = true;
@@ -89,7 +94,7 @@ export class OilConsumptionComponent implements OnInit {
       }
     });
 
-    this._AppComponentService.financialYear().subscribe((res) => {
+    this._AppComponentService.financialYear(obj).subscribe((res) => {
       this.finyear = res.List
       this.selectedYear = this.finyear[0]['DATEVALUE']
     });
@@ -146,6 +151,9 @@ export class OilConsumptionComponent implements OnInit {
     // afterViewInit code.
     this.init();
     const table = document.querySelector('smart-table');
+    if (this.YEAR_NAME) {
+      this.YEAR_NAME.focus();
+    }
   }
 
   init(): void {
