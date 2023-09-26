@@ -48,6 +48,7 @@ import { WIPMachineShopModule } from './wip-machine-shop/wip-machine-shop.module
 
 
 
+
 @NgModule({
   declarations: [CalendarComponent, ChatComponent, FilemanagerComponent],
   imports: [

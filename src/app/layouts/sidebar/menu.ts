@@ -175,6 +175,19 @@ export const MENU: MenuItem[] = [
 
             }
         ]
+    },
+    {
+        id: 51,
+        icon: 'bxs-bar-chart-alt-2',
+        label: 'MENUITEMS.QUALITYCONTROL.TEXT',
+        subItems: [
+            {
+                id:52,
+                label:'MENUITEMS.QUALITYCONTROL.LIST.CUSTOMERWISECOMPLAINTSRECEIVED',
+                link:'/qualitycontrol/customerwisecomplaintsreceived',
+                parentId:51
+            }
+        ]
     }
 
 
