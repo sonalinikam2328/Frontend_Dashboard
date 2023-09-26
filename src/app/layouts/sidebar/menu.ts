@@ -139,12 +139,12 @@ export const MENU: MenuItem[] = [
                 link: '/purchase/top5supplierscrpercentcomponent',
                 parentId: 21
             },
-            // {
-            //     id: 24,
-            //     label: 'MENUITEMS.PURCHASE.LIST.PURCHASETONNAGE',
-            //     link: '/purchase/PurchaseTonnage',
-            //     parentId: 21
-            // }
+            {
+                id: 24,
+                label: 'MENUITEMS.PURCHASE.LIST.PURCHASETONNAGE',
+                link: '/purchase/PurchaseTonnage',
+                parentId: 21
+            }
 
         ]
     },

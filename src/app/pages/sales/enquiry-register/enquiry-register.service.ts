@@ -13,7 +13,7 @@ export class EnquiryRegisterService {
   [x: string]: any;
 
   findAll(data): Observable<any> {
-    return this.http.post(this.url + '/paymentcollectionplan/paymentcollectionplanData/', data).pipe(catchError(this.handleError));
+    return this.http.post(this.url + '/enquiry-register/enquiryRegister/', data).pipe(catchError(this.handleError));
   }
 
 

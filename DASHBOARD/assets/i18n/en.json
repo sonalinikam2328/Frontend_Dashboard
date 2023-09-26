@@ -32,7 +32,8 @@
       "TEXT": "Purchase",
       "LIST": {
         "SUPPLIERWISEPURCHASEANDCRNTONS": "Supplierwise Purchase And CR In Tons",
-        "TOP5SUPPLIERSCRPERCENT": "Top5 Suppliers Cr Percent"
+        "TOP5SUPPLIERSCRPERCENT": "Top5 Suppliers Cr Percent",
+        "PURCHASETONNAGE": "Purchase Tonnage"
       }
     },
     "WIPMACHINESHOP": {
