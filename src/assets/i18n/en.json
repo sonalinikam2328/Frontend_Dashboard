@@ -32,8 +32,7 @@
       "TEXT": "Purchase",
       "LIST": {
         "SUPPLIERWISEPURCHASEANDCRNTONS": "Supplierwise Purchase And CR In Tons",
-        "TOP5SUPPLIERSCRPERCENT": "Top5 Suppliers Cr Percent",
-        "PURCHASETONNAGE": "Purchase Tonnage"
+        "TOP5SUPPLIERSCRPERCENT": "Top5 Suppliers Cr Percent"
       }
     },
     "WIPMACHINESHOP": {
@@ -43,17 +42,10 @@
       }
     },
     "SUBCONTRACT": {
-      "TEXT": "subcontract",
+      "TEXT": "Subcontract",
       "LIST": {
         "SUPPLIERWISEBORINGRECOVERYDETAILS": "Supplier Wise Boring Recovery Details"
       }
-    },
-    "QUALITYCONTROL":{
-      "TEXT":"Quatity Control",
-      "LIST": {
-        "CUSTOMERWISECOMPLAINTSRECEIVED":"Customer Wise Complaints Received"
-      }
     }
-    
   }
 }

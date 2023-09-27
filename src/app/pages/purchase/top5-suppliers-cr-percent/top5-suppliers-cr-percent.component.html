@@ -4,7 +4,7 @@
 </div>
 <div class="card" *ngIf="!isLoading1">
   <div class="card-header">
-    <h5>Top5 Suppliers Cr Percent</h5>
+    <h5>Top5-Suppliers-Cr-Percent</h5>
   </div>
   <form [formGroup]="angForm">
     <div class="card-block">
@@ -31,7 +31,7 @@
         <div class="col-sm-2">
           <div class="form-group input-group">
             <span class="border-lable-flt">
-              <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate"  class="form-control"
+              <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" appTheme class="form-control"
                 (focus)="onFocus(FROM)" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [(ngModel)]="fromdate"
                 [maxDate]="maxDate" formControlName="FROM" required bsDatepicker style="max-width: 100px;">
             </span>
@@ -50,7 +50,7 @@
             <span class="border-lable-flt">
               <input type="text" placeholder="dd/mm/yyyy" name="tdate" id="tdate" class="form-control"
                 [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [(ngModel)]="todate" formControlName="TO" required
-                 bsDatepicker style="max-width: 100px;">
+                appTheme bsDatepicker style="max-width: 100px;">
             </span>
           </div>
           <div class="form-group form-primary form-static-label"
@@ -127,18 +127,6 @@
               <tbody *ngIf="Tabledata.length ==0">
                 <td>No Data</td>
               </tbody>
-              <tfoot style="position: sticky; bottom: 0; text-align: center;">
-                <tr>
-                  <th> Total</th>
-                  <th> </th>
-                  <th> {{TOTAL_RECEIPT_QTY}}</th>
-                  <th> {{TOTAL_CR_QTY}}</th>
-                  <th> {{TOTAL_RECEIPT_WT}}</th>
-                  <th> {{TOTAL_CR_WT}}</th>
-                  <th> {{TOTAL_CR_PERCENT}}</th>
-                  <th> </th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

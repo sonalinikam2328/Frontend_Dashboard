@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 import { NgSelectComponent } from "@ng-select/ng-select";
 import { Top5Service } from './top5.service';
 import { AppComponentService } from 'src/app/app-component.service';
-import { tableData } from '../../tables/advancedtable/data';
 
 @Component({
   selector: 'app-top5-suppliers-cr-percent',
@@ -48,11 +47,7 @@ export class Top5SuppliersCRPercentComponent implements OnInit {
   columns
   isLoading1: boolean = false;
   isLoading = false;
-  TOTAL_RECEIPT_QTY
-  TOTAL_CR_QTY
-  TOTAL_RECEIPT_WT
-  TOTAL_CR_WT
-  TOTAL_CR_PERCENT
+
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
@@ -158,45 +153,11 @@ export class Top5SuppliersCRPercentComponent implements OnInit {
       this._Top5Service.findAll(objdata).subscribe((res) => {
         this.showtable = true
         let obj = {}
-       
-
-        for (let i = 0; i <= res.List.length - 1; i++) {
-          res.List[i]['RECEIPT_QTY'] =  parseFloat(res.List[i]['RECEIPT_QTY']).toFixed(2)
-          res.List[i]['CR_QTY'] =  parseFloat(res.List[i]['CR_QTY']).toFixed(2)
-          res.List[i]['RECEIPT_WT'] = parseFloat(res.List[i]['RECEIPT_WT']).toFixed(2)
-          res.List[i]['CR_WT'] =  parseFloat(res.List[i]['CR_WT']).toFixed(2)
-          res.List[i]['CR_PERCENT'] =  parseFloat(res.List[i]['CR_PERCENT']).toFixed(2)
-        }
         this.Tabledata = res.List
-
-        let first = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.RECEIPT_QTY;
-        }, 0);
-        this.TOTAL_RECEIPT_QTY = parseFloat(first).toFixed(2)
-
-        let second = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.CR_QTY;
-        }, 0);
-        this.TOTAL_CR_QTY = parseFloat(second).toFixed(2)
-
-        let third = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.RECEIPT_WT;
-        }, 0);
-        this.TOTAL_RECEIPT_WT = parseFloat(third).toFixed(2)
-
-        let forth = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.CR_WT;
-        }, 0);
-        this.TOTAL_CR_WT = parseFloat(forth).toFixed(2)
-
-        let fith = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.CR_PERCENT;
-        }, 0);
-        this.TOTAL_CR_PERCENT = parseFloat(fith).toFixed(2)
-
         this.Tabledata.unshift(obj)
         this.Tabledata.unshift(obj)
         this.isLoading = false;
+
       });
 
     } else {

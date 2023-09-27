@@ -26,7 +26,8 @@
           </a>
 
           <ul *ngIf="hasItems(item)" class="sub-menu" aria-expanded="false">
-            <li *ngFor="let subitem of item.subItems">
+            <li *ngFor="let subitem of item.subItems"  (click)="reloadsubitem(item.subItems)">
+              {{subitem.name}}
               <a routerLink="{{subitem.link}}" *ngIf="!hasItems(subitem)" class="side-nav-link-ref"
                 [attr.data-parent]="subitem.parentId" routerLinkActive="active">
                 {{ subitem.label | translate}}
@@ -38,7 +39,9 @@
                 {{ subitem.label | translate}}
               </a>
               <ul *ngIf="hasItems(subitem)" class="sub-menu mm-collapse" aria-expanded="false">
-                <li *ngFor="let subSubitem of subitem.subItems">
+                <li *ngFor="let subSubitem of subitem.subItems" >
+              <!-- <a (dblclick)="reloadsubitem(item.subitem)">
+                  {{subitem.name}}</a> -->
                   <a [attr.data-parent]="subSubitem.parentId" routerLink="{{subSubitem.link}}" routerLinkActive="active"
                     class="side-nav-link-ref">
                     {{ subSubitem.label | translate }}

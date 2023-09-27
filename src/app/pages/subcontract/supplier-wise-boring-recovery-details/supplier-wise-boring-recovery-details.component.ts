@@ -17,6 +17,7 @@ import { AppComponentService } from 'src/app/app-component.service';
   styleUrls: ['./supplier-wise-boring-recovery-details.component.scss']
 })
 export class SupplierWiseBoringRecoveryDetailsComponent {
+
   // @ViewChild('fdateInput', { static: false }) fdateInput: ElementRef;
   // @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
   @ViewChild('FROM', { static: false })FROM: NgSelectComponent;
