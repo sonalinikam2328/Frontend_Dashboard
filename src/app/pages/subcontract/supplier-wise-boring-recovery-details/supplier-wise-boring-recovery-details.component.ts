@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 
 import { SupplierWiseBoringService } from './supplier-wise-boring.service';
-import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
+import { TableComponent, TableColumn, } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
 import { NgSelectComponent } from "@ng-select/ng-select";
 import * as  moment from 'moment';
@@ -17,6 +17,21 @@ import { AppComponentService } from 'src/app/app-component.service';
   styleUrls: ['./supplier-wise-boring-recovery-details.component.scss']
 })
 export class SupplierWiseBoringRecoveryDetailsComponent {
+
+  selectedDate: Date;
+  previousDate: Date;
+  previousMonth:Date;
+  previousMonthDate: string;
+
+ updatePreviousDate() {
+    if (this.selectedDate) {
+      this.previousDate = new Date(this.selectedDate);
+      this.previousDate.setDate(this.selectedDate.getDate() - 1);
+       } else {
+      this.previousDate = null;
+    }
+  }
+ 
 
   // @ViewChild('fdateInput', { static: false }) fdateInput: ElementRef;
   // @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
@@ -46,6 +61,8 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   minDatet: Date;
   fromdate = null
   // todate = null
+  subdate:Date;
+  
   selectedBrach
    fdateInput: any;
 
@@ -57,6 +74,9 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
     private router: Router,
     
   ) {
+    this.selectedDate = new Date();
+
+    this.upmonth();
     let dt = new Date()
     this.minDate = new Date();
     this.maxDate = new Date(dt.getFullYear(), dt.getMonth(), 1);;
@@ -64,9 +84,19 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
     this.minDate.setDate(this.minDate.getDate());
     this.maxDate.setDate(this.maxDate.getDate());
     this.minDatet.setDate(this.maxDate.getDate() + 1);
+    //this.subdate.setDate(this.subdate.getDate()-1)
     this.fromdate = this.maxDate
+    
     // this.todate = this.minDate
 
+  }
+  upmonth(){
+    if (this.selectedDate) {
+      const selectedMoment = moment(this.selectedDate);
+      this.previousMonthDate = selectedMoment.subtract(1, 'months').format('YYYY-MM-DD');
+    } else {
+      this.previousMonthDate = null;
+    }
   }
   
   ngAfterViewInit(): void {
@@ -110,6 +140,7 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
       FROM: ["", [Validators.required]], // control name
      
       BRANCH_NAME: [""],
+      FormData:[""]
 
 
 
@@ -171,9 +202,13 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
     let result = JSON.parse(data);
 
     const formVal = this.angForm.value;
+
     let objdata = {
+      
       FROM: moment(this.fromdate, 'YYYY-MM-DD').format('YYYYMMDD'),
       // TO: moment(this.todate, 'YYYY-MM-DD').format('YYYYMMDD'),
+     //moment(this:fromdate, 'YYYY-MM-DD').subtract(1, 'days').calendar(),  // Yesterday at 12:25 PM
+
       BRANCH_NAME: this.selectedBrach,
       CODE: result.COMPANY_ID
 
