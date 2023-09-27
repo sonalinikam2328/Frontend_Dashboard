@@ -31,8 +31,6 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
       this.previousDate = null;
     }
   }
- 
-
   // @ViewChild('fdateInput', { static: false }) fdateInput: ElementRef;
   // @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
   @ViewChild('FROM', { static: false })FROM: NgSelectComponent;

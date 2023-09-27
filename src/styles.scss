@@ -50,6 +50,7 @@ thead {
   // background-image: -webkit-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
   background: #b8cfee;
   margin: -1% !important;
+  
 }
 
 tr:nth-child(even) {
@@ -77,6 +78,7 @@ tfoot {
 
 .table> :not(caption)>*>* {
   padding: 5px !important;
+  
 }
 
 
@@ -180,11 +182,16 @@ table td.newhighlight {
 }
 
 .td_right {
-  text-align: right;
+  text-align: left;
+  
+  
 }
 
 .td_left {
   text-align: left;
+  
+  
+
 }
 
 th,
@@ -202,6 +209,10 @@ td {
 .table {
 
   --bs-table-hover-bg: #dfe6ec !important;
+  table-layout: auto;
+  width: 100%; 
+  white-space: nowrap;
+  
 
 }
 
