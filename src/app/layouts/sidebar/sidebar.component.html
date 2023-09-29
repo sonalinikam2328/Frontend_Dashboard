@@ -26,11 +26,13 @@
           </a>
 
           <ul *ngIf="hasItems(item)" class="sub-menu" aria-expanded="false">
-            <li *ngFor="let subitem of item.subItems">
+            <li *ngFor="let subitem of item.subItems" (click)="reloadsubitem(item.subItems)">
+              {{subitem.name}}
               <a routerLink="{{subitem.link}}" *ngIf="!hasItems(subitem)" class="side-nav-link-ref"
                 [attr.data-parent]="subitem.parentId" routerLinkActive="active">
                 {{ subitem.label | translate}}
-                <span class="badge rounded-pill bg-{{subitem.badge.variant}} float-end" *ngIf="subitem.badge">{{subitem.badge.text |
+                <span class="badge rounded-pill bg-{{subitem.badge.variant}} float-end"
+                  *ngIf="subitem.badge">{{subitem.badge.text |
                   translate}}</span>
               </a>
               <a *ngIf="hasItems(subitem)" class="side-nav-link-a-ref has-arrow" href="javascript:void(0);"

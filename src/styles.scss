@@ -114,7 +114,7 @@ body[data-sidebar=dark] .navbar-brand-box {
 
 .page-content {
   padding: calc(34px + 24px) calc(14px * 0.75) 60px calc(16px * 0.75) !important;
-  
+
 }
 
 .required {
@@ -205,6 +205,9 @@ td {
 .table {
 
   --bs-table-hover-bg: #dfe6ec !important;
+  table-layout: auto;
+  width: 100%;
+  white-space: nowrap;
 
 }
 
@@ -227,7 +230,7 @@ html {
 }
 
 .ng-dropdown-panel .scroll-host {
- 
+
   position: fixed !important;
   width: fit-content !important;
 
@@ -235,9 +238,9 @@ html {
 
 
 .card {
-  
-  --bs-card-bg:#ffffff !important;
- 
+
+  --bs-card-bg: #ffffff !important;
+
 }
 
 body {

@@ -37,10 +37,10 @@ const routes: Routes = [
   { path: 'jobs', loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule) },
   { path: 'finance', loadChildren: () => import('./finance/finance.module').then(m => m.FinanceModule) },
   { path: 'purchase', loadChildren: () => import('./purchase/purchase.module').then(m => m.PurchaseModule) },
-  { path: 'wipmachineshop',loadChildren: () => import('./wip-machine-shop/wip-machine-shop.module').then(m => m.WIPMachineShopModule)},
-  {path: 'subcontract',loadChildren: () => import('./subcontract/subcontract.module').then(m => m.SubcontractModule)},
- 
- {path: 'qualitycontrol',loadChildren: () => import('./quality-control/quality-control.module').then(m => m.QualityControlModule)},
+  { path: 'wipmachineshop', loadChildren: () => import('./wip-machine-shop/wip-machine-shop.module').then(m => m.WIPMachineShopModule) },
+  { path: 'subcontract', loadChildren: () => import('./subcontract/subcontract.module').then(m => m.SubcontractModule) },
+
+  { path: 'qualitycontrol', loadChildren: () => import('./quality-control/quality-control.module').then(m => m.QualityControlModule) },
 ];
 
 @NgModule({

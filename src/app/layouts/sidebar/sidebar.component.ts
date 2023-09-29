@@ -65,9 +65,9 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       if (document.getElementsByClassName("mm-active").length > 0) {
         const currentPosition = document.getElementsByClassName("mm-active")[0]['offsetTop'];
         if (currentPosition > 500)
-        if(this.scrollRef.SimpleBar !== null)
-          this.scrollRef.SimpleBar.getScrollElement().scrollTop =
-            currentPosition + 300;
+          if (this.scrollRef.SimpleBar !== null)
+            this.scrollRef.SimpleBar.getScrollElement().scrollTop =
+              currentPosition + 300;
       }
     }, 300);
   }
@@ -148,5 +148,19 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
    */
   hasItems(item: MenuItem) {
     return item.subItems !== undefined ? item.subItems.length > 0 : false;
+  }
+
+
+  reloadComponent() {
+    const currentUrl = this.router.url; // Get the current route URL
+    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
+      // Navigate back to the current route
+      this.router.navigate([currentUrl]);
+    });
+  }
+
+  reloadsubitem(subitem: any) {
+    console.log('Reloading subItem:', subitem);
+    this.reloadComponent(); // Call the reloadComponent method to reload the component
   }
 }

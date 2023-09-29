@@ -19,11 +19,11 @@ import { AppComponentService } from 'src/app/app-component.service';
 export class SupplierWiseBoringRecoveryDetailsComponent {
   // @ViewChild('fdateInput', { static: false }) fdateInput: ElementRef;
   // @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
-  @ViewChild('FROM', { static: false })FROM: NgSelectComponent;
+  @ViewChild('FROM', { static: false }) FROM: NgSelectComponent;
   onBranchNameFocus() {
     console.log('Branch Name Input Focused');
   }
-  onFROMFocus(){
+  onFROMFocus() {
     console.log('From  Input Focused');
   }
 
@@ -33,7 +33,10 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   angForm: FormGroup;
   branch = [];
   Tabledata = [];
-
+  selectedDate: Date;
+  previousDate: Date;
+  previousMonth: Date;
+  previousMonthDate: string;
   showBranch: boolean = true
   showtable: boolean = false
   isLoading1: boolean = false;
@@ -46,7 +49,7 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   fromdate = null
   // todate = null
   selectedBrach
-   fdateInput: any;
+  fdateInput: any;
 
   constructor(
     private _SupplierWiseBoringService: SupplierWiseBoringService,
@@ -54,8 +57,13 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    
+
   ) {
+
+    this.selectedDate = new Date();
+
+    this.upmonth();
+
     let dt = new Date()
     this.minDate = new Date();
     this.maxDate = new Date(dt.getFullYear(), dt.getMonth(), 1);;
@@ -67,7 +75,7 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
     // this.todate = this.minDate
 
   }
-  
+
   ngAfterViewInit(): void {
     // afterViewInit code.
     const table = document.querySelector('smart-table');
@@ -107,7 +115,7 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   createForm() {
     this.angForm = this.fb.group({
       FROM: ["", [Validators.required]], // control name
-     
+
       BRANCH_NAME: [""],
 
 
@@ -116,13 +124,13 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   }
 
   ngOnInit()
-  
+
   // {
   //   setTimeout(() => {
   //     this.fdateInput.nativeElement.focus();
   //   }, 1);
-    // this.fdateInput.nativeElement.focus();
-    {
+  // this.fdateInput.nativeElement.focus();
+  {
     this.createForm();
     this.isLoading1 = true
     let data: any = localStorage.getItem('user');
@@ -159,9 +167,9 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
     });
 
   }
-  refreshComponent(){
+  refreshComponent() {
     this.router.navigate([this.router.url])
- }
+  }
 
   loadData() {
     this.isLoading = true;
@@ -181,7 +189,7 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
     if (this.angForm.valid) {
       this._SupplierWiseBoringService.findAll(objdata).subscribe((res) => {
         let obj = {}
-        
+
         this.showtable = true
         this.Tabledata = res.List
         
@@ -196,5 +204,21 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
 
   }
 
+  updatePreviousDate() {
+    if (this.selectedDate) {
+      this.previousDate = new Date(this.selectedDate);
+      this.previousDate.setDate(this.selectedDate.getDate() - 1);
+    } else {
+      this.previousDate = null;
+    }
+  }
+  upmonth() {
+    if (this.selectedDate) {
+      const selectedMoment = moment(this.selectedDate);
+      this.previousMonthDate = selectedMoment.subtract(1, 'months').format('YYYY-MM-DD');
+    } else {
+      this.previousMonthDate = null;
+    }
+  }
 
 }
