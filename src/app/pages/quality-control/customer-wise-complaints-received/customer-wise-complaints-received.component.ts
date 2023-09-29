@@ -223,16 +223,10 @@ export class CustomerWiseComplaintsReceivedComponent {
       this._AppComponentService.findAll(objdata).subscribe((res) => {
 
         let obj = {}
-
-        if (res.List.recordsets != 0) {
-          this.showtable = true
-
-          console.log('list', res.List)
-          this.Tabledata = res.List.recordsets[0]
-          this.Headers = res.List.recordsets[1]
-          // this.Tabledata.unshift(obj)
-          this.Tabledata.unshift(obj)
-          this.Tabledata.unshift(obj)
+        debugger
+        if (res.List.length != 0) {
+          this.Tabledata = res.List
+        
           this.isLoading = false;
         } else {
           Swal.fire('Warning', 'No Data Found', 'info')

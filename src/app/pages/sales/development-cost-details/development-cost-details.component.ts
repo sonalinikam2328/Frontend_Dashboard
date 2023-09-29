@@ -182,8 +182,7 @@ export class DevelopmentCostDetailsComponent implements OnInit {
         }, 0);
         this.totalBalanceDcinReceived = parseFloat(third).toFixed(2)
 
-        this.Tabledata.unshift(obj)
-        this.Tabledata.unshift(obj)
+        
 
         this.isLoading = false;
 

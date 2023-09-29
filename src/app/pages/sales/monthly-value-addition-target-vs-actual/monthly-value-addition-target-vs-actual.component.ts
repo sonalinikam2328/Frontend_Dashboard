@@ -210,10 +210,15 @@ export class MonthlyValueAdditionTargetVsActualComponent {
           }
           // this.montharray = tempmonth
           let obj1 = {}
+
           this.Tabledata.unshift(obj1)
           this.Tabledata.unshift(obj1)
           this.Tabledata = this.Keyarray
  
+
+          this.Tabledata = this.Keyarray
+          
+
           this.isLoading = false;
 
         } else {

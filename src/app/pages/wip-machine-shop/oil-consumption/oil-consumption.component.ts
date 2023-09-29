@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 import { OilConsumptionService } from './oil-consumption.service';
 import { AppComponentService } from '../../../app-component.service';
 
-
 @Component({
   selector: 'app-oil-consumption',
   templateUrl: './oil-consumption.component.html',
@@ -44,9 +43,11 @@ export class OilConsumptionComponent implements OnInit {
   paging = true;
   columnSizeMode = 'default';
   columns
-
+  //searchQuery: string = '';
+  
+  
   constructor(
-
+    
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
@@ -63,6 +64,8 @@ export class OilConsumptionComponent implements OnInit {
     let obj = {
       CODE: result.COMPANY_ID
     }
+
+    
 
     // onInit code.
     this._AppComponentService.branchList(obj).subscribe((res) => {
@@ -92,12 +95,16 @@ export class OilConsumptionComponent implements OnInit {
         this.selectedBrach = this.branch[0]['CODE']
 
       }
+      
     });
 
     this._AppComponentService.financialYear(obj).subscribe((res) => {
       this.finyear = res.List
       this.selectedYear = this.finyear[0]['DATEVALUE']
     });
+
+    
+    
 
   }
 
@@ -111,6 +118,8 @@ export class OilConsumptionComponent implements OnInit {
       YEAR_NAME: ["", Validators.required],
     });
   }
+  
+  
 
 
   // dataSource = new window.Smart.DataAdapter({
@@ -155,11 +164,41 @@ export class OilConsumptionComponent implements OnInit {
       this.YEAR_NAME.focus();
     }
   }
+  
 
   init(): void {
     // init code.
     const table = this.table;
   }
+
+  // filterData() {
+  
+
+  //   const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
+  
+    
+  //   this.Tabledata = this.Keyarray.filter(item => {
+      
+  //     const values = Object.values(item);
+      
+     
+  //     return values.some(value => {
+  //       if (typeof value === 'string') {
+  //         return value.toLowerCase().includes(searchQueryLowerCase);
+          
+  //       } else if (typeof value === 'number') {
+  
+  //         return value.toString().includes(searchQueryLowerCase);
+  //       }
+       
+      
+  //       return false;
+  //     });
+  //   });
+  
+  //   console.log('Tabledata',this.Tabledata)
+  
+  // }
 
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
@@ -221,13 +260,9 @@ export class OilConsumptionComponent implements OnInit {
 
 
   }
+ 
+
 
 
 }
-
-
-
-
-
-
 

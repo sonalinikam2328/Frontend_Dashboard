@@ -210,8 +210,7 @@ export class CustomerWisePlanVsActualSaleComponent {
         this.showtable = true
         let obj = {}
         this.Tabledata = res.List
-        this.Tabledata.unshift(obj)
-        this.Tabledata.unshift(obj)
+       
         this.isLoading = false;
 
       });

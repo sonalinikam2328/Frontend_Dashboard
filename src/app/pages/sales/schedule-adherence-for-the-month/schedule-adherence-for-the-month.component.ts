@@ -214,8 +214,7 @@ export class ScheduleAdherenceForTheMonthComponent {
         
         if (res.List.length != 0) {
           this.Tabledata = res.List
-          this.Tabledata.unshift(obj)
-          this.Tabledata.unshift(obj)
+          
           this.isLoading = false;
         } else {
           this.Tabledata = res.List

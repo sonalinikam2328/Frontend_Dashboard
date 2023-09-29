@@ -88,7 +88,7 @@
               </thead>
               <tbody *ngIf="Tabledata.length !=0">
                 <tr *ngFor="let data of Tabledata;let indexOfelement = index">
-                  <td class="td_right"> {{indexOfelement }}</td>
+                  <td class="td_right"> {{indexOfelement +1 }}</td>
                   <td class="td_left">{{data.SUBGL_LONGNAME}} </td>
                   <td class="td_right"> {{data.INVOICE_AMT != null ? data.INVOICE_AMT : '-'}}</td>
                   <td class="td_right">{{data.RECEIPT_AMT != null ? data.RECEIPT_AMT : '-'}}</td>

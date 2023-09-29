@@ -214,10 +214,14 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
           // this.montharray = tempmonth
           let obj1 = {}
           this.Tabledata = this.Keyarray
+
           // this.Tabledata.unshift(obj1)
           // this.Tabledata.unshift(obj1)
           // this.Tabledata.unshift(obj1)
           // this.Tabledata.unshift(obj1)
+
+          
+
           this.isLoading = false;
 
         } else {

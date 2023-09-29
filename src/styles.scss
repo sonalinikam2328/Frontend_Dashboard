@@ -48,14 +48,17 @@
 
 thead {
   // background-image: -webkit-linear-gradient(top, #dae7f6, #cddef3 45%, #abc7ec 46%, #abc7ec 50%, #b8cfee 51%, #cbddf3);
-  background: #b8cfee;
+  background: #b8cfee !important;
   margin: -1% !important;
 }
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-
+// .Ahead th{
+//   background: #b8cfee !important;
+//   margin: -1% !important;
+// }
 
 
 
@@ -255,3 +258,11 @@ body {
   left: 55%;
   transform: translate(-50%, -50%);
 }
+
+table {
+  // caption-side: bottom !important;
+  // border-collapse: collapse !important;
+  // top: 65% !important;
+  // padding: 10px !important;
+  margin: 25px !important;
+  }

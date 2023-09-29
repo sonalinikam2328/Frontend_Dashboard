@@ -184,8 +184,7 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
         
         this.showtable = true
         this.Tabledata = res.List
-        this.Tabledata.unshift(obj)
-        this.Tabledata.unshift(obj)
+        
         this.isLoading = false;
 
       });

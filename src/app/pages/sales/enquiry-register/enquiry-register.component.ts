@@ -133,6 +133,9 @@ export class EnquiryRegisterComponent {
         this.Tabledata.unshift(obj)
         this.isLoading = false;
 
+       
+        this.Tabledata.pop()
+        
       });
     } else {
       this.isLoading = false;
