@@ -119,7 +119,7 @@ export class CustomerCIGradePerKgRateRealizationComponent {
       if (this.angForm.valid) {
   
         this._CustomerService.findAll(objdata).subscribe((res) => {
-          debugger
+          
           let obj = {}
           this.showtable = true
           this.FooterData.push(res.List[res.List.length - 1])

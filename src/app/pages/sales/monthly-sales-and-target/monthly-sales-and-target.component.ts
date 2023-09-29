@@ -202,8 +202,8 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
         this.showtable = true
         if (res.List.length != 0) {
           this.Headers = res.Headers
-          let obj = { VALUE: 'Month' }
-          this.Headers.unshift(obj);
+          // let obj = { VALUE: 'Month' }
+          // this.Headers.unshift(obj);
           for (let i = 0; i <= res.List.length - 1; i++) {
             const propertyValues = Object.values(res.List[i]);
             propertyValues.shift()
@@ -214,7 +214,10 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
           // this.montharray = tempmonth
           let obj1 = {}
           this.Tabledata = this.Keyarray
-          this.Tabledata.unshift(obj1)
+          // this.Tabledata.unshift(obj1)
+          // this.Tabledata.unshift(obj1)
+          // this.Tabledata.unshift(obj1)
+          // this.Tabledata.unshift(obj1)
           this.isLoading = false;
 
         } else {

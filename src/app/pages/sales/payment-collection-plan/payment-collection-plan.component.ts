@@ -131,7 +131,7 @@ export class PaymentCollectionPlanComponent  implements AfterViewInit,OnInit{
     if (this.angForm.valid) {
 
       this._PaymentService.findAll(objdata).subscribe((res) => {
-        debugger
+        
         let obj = {}
         this.showtable = true
         this.FooterData.push(res.List[res.List.length - 1])

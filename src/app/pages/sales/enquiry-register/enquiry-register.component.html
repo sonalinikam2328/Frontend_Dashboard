@@ -45,11 +45,11 @@
         <div class="col-sm-2">
           <div class="form-group form-primary form-static-label">
             <span class="border-lable-flt">
-              <ng-select id="YEAR_NAME" bindValue="DATEVALUE" bindLabel="DATEDESC" required #YEAR_NAME
-                [(ngModel)]="selectedYear" formControlName="YEAR_NAME" (focus)="onFocus(YEAR_NAME)"
+              <ng-select id="MONTH_NAME" bindValue="DateValue" bindLabel="DateDesc" required #MONTH_NAME
+                [(ngModel)]=" selectedMonth" formControlName="MONTH_NAME" (focus)="onFocus(MONTH_NAME)"
                 [selectOnTab]='true'>
-                <ng-option *ngFor="let values of finyear" [value]="values">
-                  {{values.DATEDESC}}</ng-option>
+                <ng-option *ngFor="let values of month" [value]="values">
+                  {{values.DateDesc}}</ng-option>
               </ng-select>
             </span>
           </div>
@@ -79,7 +79,7 @@
               <table class="table table-striped table-bordered table-hover compact">
                 <thead style="position: sticky; top: 0; text-align: center;">
                   <tr>
-                    <th class="td_left" style="width: 20%;">Sr.No.</th>
+                    <th class="td_left">Sr.No.</th>
                     <th class="td_right">Enquiry Number</th>
                     <th class="td_right">Date</th>
                     <th class="td_right">Customer</th>
@@ -87,11 +87,6 @@
                     <th class="td_right">Material</th>
                     <th class="td_right">Oty.</th>
                     <th class="td_right">Remark</th>
-
-
-                    <!-- <th class="td_left">Balance 50% Debit Note/Invoice No.</th>
-                      <th class="td_right">Development Cost Received In INR</th>
-                      <th class="td_right">Balanced D.C. In INR to be Received</th> -->
                   </tr>
                 </thead>
                 <tbody *ngIf="Tabledata.length !=0">

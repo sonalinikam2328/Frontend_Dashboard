@@ -211,7 +211,7 @@ export class ScheduleAdherenceForTheMonthComponent {
 
         this.showtable = true
         let obj = {}
-        debugger
+        
         if (res.List.length != 0) {
           this.Tabledata = res.List
           this.Tabledata.unshift(obj)

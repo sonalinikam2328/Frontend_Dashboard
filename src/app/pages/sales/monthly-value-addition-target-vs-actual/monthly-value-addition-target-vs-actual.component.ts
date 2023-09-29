@@ -199,8 +199,8 @@ export class MonthlyValueAdditionTargetVsActualComponent {
         this.showtable = true
         if (res.List.length != 0) {
           this.Headers = res.Headers
-          let obj = { VALUE: 'Month' }
-          this.Headers.unshift(obj);
+          // let obj = { VALUE: 'Month' }
+          // this.Headers.unshift(obj);
           for (let i = 0; i <= res.List.length - 1; i++) {
             const propertyValues = Object.values(res.List[i]);
             propertyValues.shift()
@@ -210,15 +210,16 @@ export class MonthlyValueAdditionTargetVsActualComponent {
           }
           // this.montharray = tempmonth
           let obj1 = {}
-          this.Tabledata = this.Keyarray
           this.Tabledata.unshift(obj1)
+          this.Tabledata.unshift(obj1)
+          this.Tabledata = this.Keyarray
+ 
           this.isLoading = false;
 
         } else {
           this.isLoading = false;
           Swal.fire('Warning', 'No Data Found', 'info')
         }
-
       });
     } else {
       this.isLoading = false;
@@ -231,8 +232,5 @@ export class MonthlyValueAdditionTargetVsActualComponent {
       } 
 
     }
-
-
   }
-
 }

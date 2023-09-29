@@ -28,15 +28,13 @@
       <div class="form-group row justify-content-md-center" style="margin: 1%;"> -->
         <div class="col-sm-2">
           <label>Select Dates <sub class="required">* </sub></label>
-
         </div>
         <div class="col-sm-2">
           <div class="form-group input-group">
             <span class="border-lable-flt">
               <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control"
-                (focus)="onFocus(FROM)" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [(ngModel)]="fromdate" [(ngModel)]="selectedDate" (ngModelChange)="updatePreviousDate()"  (ngModelChange)="upmonth()"
-                
-                  [maxDate]="maxDate" bsDatepicker formControlName="FROM" required style="max-width: 100px;"> 
+                (focus)="onFocus(FROM)" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [(ngModel)]="fromdate"
+                [maxDate]="maxDate" bsDatepicker formControlName="FROM" required style="max-width: 100px;">
             </span>
           </div>
           <div class="form-group form-primary form-static-label"
@@ -71,10 +69,10 @@
                 <tr>
                   <th class="td_right">SN</th>
                   <th class="td_left">Party Name</th>
-                  <th class="td_right">Balance Boring of {{previousMonthDate | date :'MMM yyyy'}}</th>
-                  <th class="td_right">Boring Genretion as per GRN {{ selectedDate | date:  'dd.MM.YYYY'}}</th>
-                  <th class="td_right">Total collection plan as per GRN {{previousDate | date: 'dd.MM.YYYY'}}</th>
-                  <th class="td_right">Actual Collection {{ selectedDate | date: 'MMM yyyy' }}</th>
+                  <th class="td_right">Balance Boring of Feb 23</th>
+                  <th class="td_right">Boring Genretion as per GRN date 09.03.2023</th>
+                  <th class="td_right">Total collection plan as per GRN 08.03.2023</th>
+                  <th class="td_right">Actual Collection of Mar 2023</th>
                   <th class="td_right">Balance</th>
                   <th class="td_left">Supplier PHONE NO</th>
                 </tr>

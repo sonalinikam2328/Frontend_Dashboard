@@ -166,7 +166,7 @@ export class DevelopmentCostDetailsComponent implements OnInit {
         this.totalDevelopmentCostReceived = 0
         this.totalBalanceDcinReceived = 0
         let obj = {}
-        debugger
+        
         this.showtable = true
         this.Tabledata = res.List
         let first = this.Tabledata.reduce((accumulator, object) => {

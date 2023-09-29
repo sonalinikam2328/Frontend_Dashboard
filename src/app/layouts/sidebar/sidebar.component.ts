@@ -19,12 +19,6 @@ import { TranslateService } from '@ngx-translate/core';
  * Sidebar component
  */
 export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
-  
-  reloadsubitem(subitem: any) {
-    console.log('Reloading subItem:', subitem);
-    this.reloadComponent(); // Call the reloadComponent method to reload the component
-  }
-  
   @ViewChild('componentRef') scrollRef;
   @Input() isCondensed = false;
   menu: any;
@@ -42,16 +36,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       }
     });
   }
-  
-  reloadComponent() {
-    const currentUrl = this.router.url; // Get the current route URL
-    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
-      // Navigate back to the current route
-      this.router.navigate([currentUrl]);
-    });
-  }
-  
-  
+
   ngOnInit() {
     this.initialize();
     this._scrollElement();

@@ -115,7 +115,7 @@ export class OilConsumptionComponent implements OnInit {
 
   // dataSource = new window.Smart.DataAdapter({
   //   virtualDataSource: function (resultCallbackFunction: any, details: any) {
-  //     debugger
+  //     
 
   //     const sqlQuery = details;
   //     const queryData = details.query;

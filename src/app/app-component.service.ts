@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/environment';
+import { environment } from 'src/environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs';
 
@@ -22,6 +22,10 @@ export class AppComponentService {
 
     month(data): Observable<any> {
         return this.http.post(this.url + '/month', data).pipe(catchError(this.handleError));
+    }
+
+    findAll(data): Observable<any> {
+        return this.http.post(this.url + '/comman', data).pipe(catchError(this.handleError));
     }
 
 }

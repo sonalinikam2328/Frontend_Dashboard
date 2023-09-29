@@ -139,12 +139,12 @@ export const MENU: MenuItem[] = [
                 link: '/purchase/top5supplierscrpercentcomponent',
                 parentId: 21
             },
-            // {
-            //     id: 24,
-            //     label: 'MENUITEMS.PURCHASE.LIST.PURCHASETONNAGE',
-            //     link: '/purchase/PurchaseTonnage',
-            //     parentId: 21
-            // }
+            {
+                id: 24,
+                label: 'MENUITEMS.PURCHASE.LIST.PURCHASETONNAGE',
+                link: '/purchase/PurchaseTonnage',
+                parentId: 21
+            }
 
         ]
     },
@@ -173,6 +173,19 @@ export const MENU: MenuItem[] = [
                 link: '/subcontract/supplierwiseboringrecoverydetails',
                 parentId: 41
 
+            }
+        ]
+    },
+    {
+        id: 51,
+        icon: 'bxs-bar-chart-alt-2',
+        label: 'MENUITEMS.QUALITYCONTROL.TEXT',
+        subItems: [
+            {
+                id:52,
+                label:'MENUITEMS.QUALITYCONTROL.LIST.CUSTOMERWISECOMPLAINTSRECEIVED',
+                link:'/qualitycontrol/customerwisecomplaintsreceived',
+                parentId:51
             }
         ]
     }
