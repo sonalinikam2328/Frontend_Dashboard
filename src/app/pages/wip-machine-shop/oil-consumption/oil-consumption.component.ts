@@ -43,7 +43,7 @@ export class OilConsumptionComponent implements OnInit {
   paging = true;
   columnSizeMode = 'default';
   columns
-  //searchQuery: string = '';
+  // searchQuery: string = '';
   
   
   constructor(

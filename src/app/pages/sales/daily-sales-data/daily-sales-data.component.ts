@@ -12,7 +12,8 @@ import { NgSelectComponent } from "@ng-select/ng-select";
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DailySalesService } from './daily-sales-data.service';
-
+import { AppComponentService } from 'src/app/app-component.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-daily-sales-data',
@@ -30,11 +31,17 @@ export class DailySalesDataComponent implements OnInit {
    minDate: Date;
    minDatet: Date;
    fromdate = null
-   todate = null
-   selectedBrach
- 
+   //todate = null
+   selectedBrach;
+   showBranch:boolean=true;
+   showtable: boolean= false;
+   isLoading1:boolean=false;
+   BRANCH:boolean=false;
+   isLoading=false;
+   //FROM: FormControl;
 
   constructor(
+    private _AppComponentService:AppComponentService,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
@@ -51,13 +58,48 @@ export class DailySalesDataComponent implements OnInit {
   createForm() {
     this.angForm = this.fb.group({
       FROM: ["", [Validators.required]], // control name
-      TO: ["", [Validators.required]],
+      //TO: ["", [Validators.required]],
       BRANCH_NAME: ["", [Validators.required]],
+      Customer_Select_Option: ["", [Validators.required]],
       });
     
   }
   ngOnInit(): void {
     this.createForm();
+    this.isLoading1 = true
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+    let obj = {
+      CODE: result.COMPANY_ID
+    }
+    this._AppComponentService.branchList(obj).subscribe((res) => {
+      if (res.List.length > 1) {
+        this.BRANCH = true
+        this.showBranch = true;
+        let obj = {
+          ADDRESS1: "",
+          ADDRESS2: null,
+          CITY_NAME: "",
+          CODE: "0",
+          EMAIL_ID: null,
+          NAME: "ALL",
+          PHONE_NO: "",
+          PINCODE: "",
+          PREFIX_NAME: null
+        }
+        res.List.unshift(obj);
+        this.branch = res.List
+        this.isLoading1 = false
+        this.selectedBrach = this.branch[0]['CODE']
+      } else {
+        this.BRANCH = false;
+        this.showBranch = false;
+        this.branch = res.List;
+        this.isLoading1 = false;
+        this.selectedBrach = this.branch[0]['CODE']
+      }
+    });
+
 
   }
   onFocus(ele: NgSelectComponent){
@@ -67,36 +109,48 @@ export class DailySalesDataComponent implements OnInit {
     this.maxDatet = new Date();
 
     this.maxDatet.setDate(this.maxDatet.getDate());
-    if (this.fromdate != null && this.todate != null) {
+    // if (this.fromdate != null && this.todate != null) {
 
-      let from = this.fromdate.getFullYear() + '/' + (this.fromdate.getMonth() + 1) + '/' + this.fromdate.getDate()
-      let to = this.todate.getFullYear() + '/' + (this.todate.getMonth() + 1) + '/' + this.todate.getDate()
+    //   let from = this.fromdate.getFullYear() + '/' + (this.fromdate.getMonth() + 1) + '/' + this.fromdate.getDate()
+    //   let to = this.todate.getFullYear() + '/' + (this.todate.getMonth() + 1) + '/' + this.todate.getDate()
 
-      if (from == to) {
-        Swal.fire('Error', 'From date and To date not be equal', 'error');
-        this.angForm.controls['TO'].reset()
-      }
+    //   if (from == to) {
+    //     Swal.fire('Error', 'From date and To date not be equal', 'error');
+    //     this.angForm.controls['TO'].reset()
+    //   }
 
-      if (from > to) {
-        Swal.fire('Error', 'To date is must be less than From date', 'error');
-        this.angForm.controls['TO'].reset()
-      }
+    //   if (from > to) {
+    //     Swal.fire('Error', 'To date is must be less than From date', 'error');
+    //     this.angForm.controls['TO'].reset()
+    //   }
 
-    }
+    //}
 
   }
+  // Tabledata= []
+  // FooterData=[]
   loadData() {
+    // this.Tabledata=[]
+    // this.FooterData=[]
+    this.isLoading=true;
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
     const formVal = this.angForm.value;
     let objdata = {
       FROM: moment(this.fromdate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
-      TO: moment(this.todate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
-      BRANCH_NAME: this.selectedBrach
+      //TO: moment(this.todate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
+      BRANCH_NAME: this.selectedBrach,
+      Customer_Select_Option: formVal.Customer_Select_Option,
     }
     if (this.angForm.valid) {
       
-      this._dailysalesService .findAll(objdata).subscribe((newdata) => {
+      this._dailysalesService .findAll(objdata).subscribe((res) => {
+        let obj ={}
+        this.showtable=true
+        // this.FooterData.push(res.List[res.List.length -1])
+        // this.Tabledata=res.List
+        // this.Tabledata.pop()
+        this.isLoading=false;
 
       }, err => {
         Swal.fire('Warning', err, 'info')
@@ -138,36 +192,36 @@ export class DailySalesDataComponent implements OnInit {
         });
       });
     },
-    dataFields: [
-      'SUBGL_LONGNAME: string',
-      'INVOICE_AMT: number',
-      'CR_DAYS: number',
-      'CREDIT_DAYS: number',
-      'SUB_GLACNO: number',
+    // dataFields: [
+    //   'SUBGL_LONGNAME: string',
+    //   'INVOICE_AMT: number',
+    //   'CR_DAYS: number',
+    //   'CREDIT_DAYS: number',
+    //   'SUB_GLACNO: number',
 
-    ]
+    //]
   });
   filtering = true;
   filterRow = true;
   sortMode = 'one';
   paging = true;
   columnSizeMode = 'default';
-  columns = [
-    {
-      label: 'SUBGL_LONGNAME', dataField: 'SUBGL_LONGNAME', formatFunction(settings: any) {
-      },
-    },
-    { label: 'INVOICE_AMT', dataField: 'INVOICE_AMT' },
-    { label: 'CR_DAYS', dataField: 'CR_DAYS' },
-    { label: 'CREDIT_DAYS', dataField: 'CREDIT_DAYS' },
+  // columns = [
+  //   {
+  //     label: 'SUBGL_LONGNAME', dataField: 'SUBGL_LONGNAME', formatFunction(settings: any) {
+  //     },
+  //   },
+  //   { label: 'INVOICE_AMT', dataField: 'INVOICE_AMT' },
+  //   { label: 'CR_DAYS', dataField: 'CR_DAYS' },
+  //   { label: 'CREDIT_DAYS', dataField: 'CREDIT_DAYS' },
 
-    {
-      label: 'SUB_GLACNO', dataField: 'SUB_GLACNO', formatFunction(settings: any) {
+  //   {
+  //     label: 'SUB_GLACNO', dataField: 'SUB_GLACNO', formatFunction(settings: any) {
 
-      },
-    },
+  //     },
+  //   },
 
-  ];
+  // ];
 
  
 

@@ -55,13 +55,16 @@
                 <div class="col-sm">
                     <button class="btn btn-primary sm" [disabled]="isLoading" (click)="loadData()">Go <i class="fa"
                             [ngClass]="{'fa-spin fa-spinner': isLoading}"></i></button>
+                            
                 </div>
+                
             </div>
+            
         </div>
     </form>
 </div>
-<!-- <input type="text" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search..."> -->
 
+<!-- <input type="text" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search..."> -->
 
 <!-- *ngIf="showtable" -->
 <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable">
