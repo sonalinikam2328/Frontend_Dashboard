@@ -16,7 +16,7 @@ import { AppComponentService } from 'src/app/app-component.service';
   templateUrl: './payment-collection-plan.component.html',
   styleUrls: ['./payment-collection-plan.component.scss']
 })
-export class PaymentCollectionPlanComponent  implements AfterViewInit,OnInit{
+export class PaymentCollectionPlanComponent implements AfterViewInit, OnInit {
   @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   // @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
   branch = []
@@ -31,12 +31,21 @@ export class PaymentCollectionPlanComponent  implements AfterViewInit,OnInit{
   BRANCH: boolean = false;
   isLoading = false;
   Loading: any;
+  month = [];
+  currentMonth
+  priviousOne
+  priviousTwo
+  priviousThree
+  priviousFour
+  priviousFive
+  MonthData
 
   constructor(private _PaymentService: PaymentService,
     private _AppComponentService: AppComponentService,
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router,) { }
+    private router: Router,) {
+  }
 
   createForm() {
     this.angForm = this.fb.group({
@@ -44,7 +53,7 @@ export class PaymentCollectionPlanComponent  implements AfterViewInit,OnInit{
       BRANCH_NAME: [""],
       YEAR_NAME: ["", Validators.required],
       CUTOMER_TYPE: ["0", Validators.required],
-      // MONTH_NAME: ["", Validators.required],
+      MONTH_NAME: ["", Validators.required],
 
 
     });
@@ -55,7 +64,7 @@ export class PaymentCollectionPlanComponent  implements AfterViewInit,OnInit{
   }
   ngAfterViewInit(): void {
     // afterViewInit code
-    
+
     const table = document.querySelector('smart-table');
     if (this.YEAR_NAME) {
       this.YEAR_NAME.focus();
@@ -105,6 +114,15 @@ export class PaymentCollectionPlanComponent  implements AfterViewInit,OnInit{
       this.finyear = res.List
       this.selectedYear = this.finyear[0]['DATEVALUE']
     });
+    this._AppComponentService.month(obj).subscribe((res) => {
+      this.month = res.List
+      this.selectedMonth = this.month[0]['DateValue']
+      let filteredUsers = this.month.filter((user) => {
+        return user.DateValue == this.selectedMonth;
+      });
+      this.MonthData = filteredUsers
+    });
+
   }
 
   Tabledata = []
@@ -117,31 +135,24 @@ export class PaymentCollectionPlanComponent  implements AfterViewInit,OnInit{
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
     const formVal = this.angForm.value;
-    // let objdata = [
-    //   this.selectedBrach,
-    //   this.selectedYear
-    // ]
+
     let objdata = {
       BRANCH_NAME: this.selectedBrach,
       FINANCIAL_YEAR: this.selectedYear,
       CODE: result.COMPANY_ID,
-      CUSTOMER_TYPE: formVal.CUTOMER_TYPE
+      CUSTOMER_TYPE: formVal.CUTOMER_TYPE,
+      MONTH: this.selectedMonth,
     }
 
     if (this.angForm.valid) {
-
       this._PaymentService.findAll(objdata).subscribe((res) => {
-        
+        this.upmonth()
         let obj = {}
         this.showtable = true
         this.FooterData.push(res.List[res.List.length - 1])
         this.Tabledata = res.List
-       
         this.Tabledata.pop()
         this.isLoading = false;
-
-
-
       });
     } else {
       this.isLoading = false;
@@ -152,10 +163,40 @@ export class PaymentCollectionPlanComponent  implements AfterViewInit,OnInit{
       } else if (this.selectedYear == null) {
         Swal.fire('Warning', 'Please select financial year', 'info')
       }
+    }
+  }
 
+  upmonth() {
+    let date;
+    let result1 = this.selectedYear.substr(0, 4);
+    let result2 = this.selectedYear.substr(4, 4);
+    this.MonthData
+    let result3 = this.selectedMonth.substr(0, 2);
+    let result4 = this.MonthData[0].DateDesc;
+
+    if (result3 > '03') {
+
+      date = result4 + ' ' + result2
+    } else {
+      date = result4 + ' ' + result1
     }
 
+    this.currentMonth = date
+    let checkdate = moment(this.currentMonth, 'MMM/YYYY').format('YYYY-MM-DD')
+    this.priviousOne = moment(checkdate,'YYYY-MM-DD').subtract(1, 'months').format('MMM-YYYY');
+    this.priviousTwo = moment(checkdate,'YYYY-MM-DD').subtract(2, 'months').format('MMM-YYYY');
+    this.priviousThree = moment(checkdate,'YYYY-MM-DD').subtract(3, 'months').format('MMM-YYYY');
+    this.priviousFour = moment(checkdate,'YYYY-MM-DD').subtract(4, 'months').format('MMM-YYYY');
+    this.priviousFive = moment(checkdate,'YYYY-MM-DD').subtract(5, 'months').format('MMM-YYYY');
 
+  }
+
+
+  getMonth() {
+    let filteredUsers = this.month.filter((user) => {
+      return user.DateValue == this.selectedMonth;
+    });
+    this.MonthData = filteredUsers
   }
 
 

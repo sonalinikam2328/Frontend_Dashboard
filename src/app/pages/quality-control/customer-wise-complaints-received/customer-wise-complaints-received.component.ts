@@ -223,7 +223,6 @@ export class CustomerWiseComplaintsReceivedComponent {
       this._AppComponentService.findAll(objdata).subscribe((res) => {
 
         let obj = {}
-        debugger
         if (res.List.length != 0) {
           this.Tabledata = res.List
         

@@ -55,6 +55,7 @@ thead {
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
 // .Ahead th{
 //   background: #b8cfee !important;
 //   margin: -1% !important;
@@ -262,10 +263,6 @@ body {
   transform: translate(-50%, -50%);
 }
 
-table {
-  // caption-side: bottom !important;
-  // border-collapse: collapse !important;
-  // top: 65% !important;
-  // padding: 10px !important;
+.marginTable {
   margin: 25px !important;
-  }
+}

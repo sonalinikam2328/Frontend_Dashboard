@@ -227,8 +227,8 @@ export class OilConsumptionComponent implements OnInit {
         this.showtable = true
         if (res.List.length != 0) {
           this.Headers = res.Headers
-          let obj = { MAT_NAME: 'Month' }
-          this.Headers.unshift(obj);
+          // let obj = { MAT_NAME: 'Month' }
+          // this.Headers.unshift(obj);
           for (let i = 0; i <= res.List.length - 1; i++) {
             const propertyValues = Object.values(res.List[i]);
             propertyValues.shift()

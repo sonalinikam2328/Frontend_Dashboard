@@ -47,6 +47,13 @@
       "LIST": {
         "SUPPLIERWISEBORINGRECOVERYDETAILS": "Supplier Wise Boring Recovery Details"
       }
+    },
+    "QUALITYCONTROL":{
+      "TEXT":"Quatity Control",
+      "LIST": {
+        "CUSTOMERWISECOMPLAINTSRECEIVED":"Customer Wise Complaints Received"
+      }
     }
+    
   }
 }
