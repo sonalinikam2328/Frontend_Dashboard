@@ -108,7 +108,7 @@
                   <th class="td_right">Payment Amount Plan For The Month Rs.</th>
                   <th class="td_right">Amount Received Rs.</th>
                   <th class="td_right">% of Recovery</th>
-                  <th class="td_right">Credit Days</th>
+                  <th class="td_right">Credit Day</th>
                   <th class="td_right">Avg Payment Receipt Days</th>
                   <th class="td_right">Avg Payment Receipt Days</th>
                   <th class="td_right">Avg Payment Receipt Days</th>
@@ -138,8 +138,15 @@
                   <td>No Data</td>
                 </tr>
               </tbody>
-              <tfoot style="position: sticky; bottom: 0; text-align: center;">
-                <tr *ngFor="let data of FooterData;let indexOfelement = index">
+
+              <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable"></div>
+              <div class="col-12"></div>
+               <div class="table-responsive"></div>
+                 <div class="table-fixed"></div>
+                   <div class="card"></div>
+                     <div class="card-block"></div> 
+                 <tfoot style="position: sticky; bottom: 0; text-align: center;">
+                 <tr *ngFor="let data of FooterData;let indexOfelement = index">
                   <td class="td_right"> </td>
                   <td class="td_left" style="font-weight: bold;">{{data.SUBGL_LONGNAME}} </td>
                   <td class="td_right"> {{data.INVOICE_AMT != null ? data.INVOICE_AMT : ''}}</td>
