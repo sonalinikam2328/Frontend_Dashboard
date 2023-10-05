@@ -19,7 +19,8 @@
         "MONTHLYVALUEADDITIONTARGETV/SACTUAL": "Monthly Value Addition Target V/s Actual",
         "MONTHLYSALESANDTARGET": "Monthly Sales and Target",
         "CUSTOMERCIGRADEPERKGRATEREALIZATION": "Customer CI Grade Per KG Rate Realization",
-        "ENQUIRYREGISTER": "Enquiry Register"
+        "ENQUIRYREGISTER": "Enquiry Register",
+        "DAILYSALESDATA":"Daily Sales Data"
       }
     },
     "FINANCE": {

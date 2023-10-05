@@ -81,15 +81,15 @@
                             <thead style="position: sticky; top: 0; text-align: center;">
                                 <tr>
                                     <th scope="col" class="td_left">Customer Name</th>
-                                    <th scope="col" class="td_left" *ngFor="let data of Headers">{{data.VALUE}}</th>
+                                    <th scope="col" class="td_right" *ngFor="let data of Headers">{{data.VALUE}}</th>
                                 </tr>
                             </thead>
                             <tbody *ngIf="Tabledata.length !=0">
                                 <tr *ngFor="let data of Tabledata;let indexOfelement = index">
-                                    <td class="td_left">{{data.AC_NAME}}</td>
-                                    <td class="td_right">{{data.SCH_QTY}}</td>
-                                    <td class="td_right">{{data.SALE_QTY}}</td>
-                                    <td class="td_right">{{data.ADHERENCE}}</td>
+                                    <td class="td_left">{{data[0]}}</td>
+
+                                    <td *ngFor="let datarec of data.slice(1)" style="text-align: right;">{{datarec !=
+                                        null ? datarec : 0}}</td>
                                 </tr>
                             </tbody>
                             <tbody *ngIf="Tabledata.length ==0">

@@ -194,8 +194,8 @@ export class Top5SuppliersCRPercentComponent implements OnInit {
         }, 0);
         this.TOTAL_CR_PERCENT = parseFloat(fith).toFixed(2)
 
-        this.Tabledata.unshift(obj)
-        this.Tabledata.unshift(obj)
+        // this.Tabledata.unshift(obj)
+        // this.Tabledata.unshift(obj)
         this.isLoading = false;
       });
 

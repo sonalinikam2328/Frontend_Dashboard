@@ -191,9 +191,12 @@ export class CustomerWiseComplaintsReceivedComponent {
   }
   Tabledata = []
   Headers = []
+  Keyarray = []
 
   loadData() {
     this.Tabledata = []
+    this.Headers = []
+    this.Keyarray = []
     this.isLoading = true;
 
     let data: any = localStorage.getItem('user');
@@ -206,16 +209,16 @@ export class CustomerWiseComplaintsReceivedComponent {
 
     let result3 = this.selectedMonth.substr(0, 2);
     let result4 = this.selectedMonth.substr(2, 2);
-
+    debugger
     if (result3 > '03') {
       date = result2 + result3 + result4
     } else {
       date = result1 + result3 + result4
     }
-
+    const endOfMonth = moment(date, 'YYYYMMDD').clone().endOf('month').format('YYYYMMDD');
     let objdata = {
       SP_NAME: 'Sel_DBCustwsComplaintsRecd',
-      PARAM: result.COMPANY_ID + ',' + this.selectedBrach + ',' + date,
+      PARAM: `'${result.COMPANY_ID}', '${this.selectedBrach}' ,'${date}'`,
     }
 
     if (this.angForm.valid) {
@@ -223,15 +226,36 @@ export class CustomerWiseComplaintsReceivedComponent {
       this._AppComponentService.findAll(objdata).subscribe((res) => {
 
         let obj = {}
-        if (res.List.length != 0) {
-          this.Tabledata = res.List
-        
-          this.isLoading = false;
-        } else {
-          Swal.fire('Warning', 'No Data Found', 'info')
-          this.isLoading = false;
-        }
+        // if (res.List.length != 0) {
+        //   this.Tabledata = res.List
 
+        //   this.isLoading = false;
+        // } else {
+        //   Swal.fire('Warning', 'No Data Found', 'info')
+        //   this.isLoading = false;
+        // }
+
+        this.showtable = true
+
+        if (res.List.recordsets.length != 0) {
+          this.Headers = res.List.recordsets[1]
+          // let obj = { MAT_NAME: 'Month' }
+          // this.Headers.unshift(obj);
+          for (let i = 0; i <= res.List.recordsets[0].length - 1; i++) {
+            const propertyValues = Object.values(res.List.recordsets[0][i]);
+            // propertyValues.shift()
+            // tempmonth.push(propertyValues[0])
+            // propertyValues.shift()
+            this.Keyarray.push(propertyValues)
+          }
+          // this.montharray = tempmonth
+          this.Tabledata = this.Keyarray
+          this.isLoading = false;
+
+        } else {
+          this.isLoading = false;
+          Swal.fire('Warning', 'No Data Found', 'info')
+        }
 
 
       });

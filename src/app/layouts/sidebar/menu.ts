@@ -52,12 +52,12 @@ export const MENU: MenuItem[] = [
                 link: '/sales/paymentCollectionPlan',
                 parentId: 1
             },
-            {
-                id: 3,
-                label: 'MENUITEMS.SALES.LIST.TURNOVER',
-                link: '/sales/turnOver',
-                parentId: 1
-            },
+            // {
+            //     id: 3,
+            //     label: 'MENUITEMS.SALES.LIST.TURNOVER',
+            //     link: '/sales/turnOver',
+            //     parentId: 1
+            // },
             {
                 id: 4,
                 label: 'MENUITEMS.SALES.LIST.DEVELOPMENTCOSTDETAILS',

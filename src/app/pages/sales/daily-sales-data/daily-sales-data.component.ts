@@ -1,10 +1,10 @@
-import { Component ,OnInit,ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Customer } from '../turn-over/customer';
-import { FormBuilder,FormGroup,Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -21,27 +21,32 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./daily-sales-data.component.scss']
 })
 export class DailySalesDataComponent implements OnInit {
-   // dataSource = []
-   freezeHeader: boolean = true;
+  // dataSource = []
+  freezeHeader: boolean = true;
 
-   angForm: FormGroup;
-   branch = [];
-   maxDate: Date;
-   maxDatet: Date;
-   minDate: Date;
-   minDatet: Date;
-   fromdate = null
-   //todate = null
-   selectedBrach;
-   showBranch:boolean=true;
-   showtable: boolean= false;
-   isLoading1:boolean=false;
-   BRANCH:boolean=false;
-   isLoading=false;
-   //FROM: FormControl;
-
+  angForm: FormGroup;
+  branch = [];
+  maxDate: Date;
+  maxDatet: Date;
+  minDate: Date;
+  minDatet: Date;
+  fromdate = null
+  //todate = null
+  selectedBrach;
+  showBranch: boolean = true;
+  showtable: boolean = false;
+  showtable1: boolean = false;
+  isLoading1: boolean = false;
+  BRANCH: boolean = false;
+  isLoading = false;
+  //FROM: FormControl;
+  Tabledata = []
+  Tabledata1 = []
+  todate
+  cdate
+  pdate
   constructor(
-    private _AppComponentService:AppComponentService,
+    private _AppComponentService: AppComponentService,
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
@@ -50,19 +55,18 @@ export class DailySalesDataComponent implements OnInit {
     this.minDate = new Date();
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate() - 1);
-    this.maxDate.setDate(this.maxDate.getDate() - 1);
-   // this.minDatet.setDate(this.maxDate.getDate() + 1);
+    this.maxDate.setDate(this.maxDate.getDate());
+    // this.minDatet.setDate(this.maxDate.getDate() + 1);
     this.fromdate = this.maxDate
-    //this.todate = this.minDatet
+    this.todate = this.minDate
   }
   createForm() {
     this.angForm = this.fb.group({
       FROM: ["", [Validators.required]], // control name
-      //TO: ["", [Validators.required]],
-      BRANCH_NAME: ["", [Validators.required]],
-      Customer_Select_Option: ["", [Validators.required]],
-      });
-    
+      BRANCH_NAME: [""],
+      Customer_Select_Option: ["0"],
+    });
+
   }
   ngOnInit(): void {
     this.createForm();
@@ -102,7 +106,7 @@ export class DailySalesDataComponent implements OnInit {
 
 
   }
-  onFocus(ele: NgSelectComponent){
+  onFocus(ele: NgSelectComponent) {
     ele.open();
   }
   onValueChange(value: Date): void {
@@ -130,40 +134,58 @@ export class DailySalesDataComponent implements OnInit {
   // Tabledata= []
   // FooterData=[]
   loadData() {
-    // this.Tabledata=[]
-    // this.FooterData=[]
-    this.isLoading=true;
+    this.isLoading = true;
+
     let data: any = localStorage.getItem('user');
     let result = JSON.parse(data);
     const formVal = this.angForm.value;
-    let objdata = {
-      FROM: moment(this.fromdate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
-      //TO: moment(this.todate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
-      BRANCH_NAME: this.selectedBrach,
-      Customer_Select_Option: formVal.Customer_Select_Option,
-    }
-    if (this.angForm.valid) {
-      
-      this._dailysalesService .findAll(objdata).subscribe((res) => {
-        let obj ={}
-        this.showtable=true
-        // this.FooterData.push(res.List[res.List.length -1])
-        // this.Tabledata=res.List
-        // this.Tabledata.pop()
-        this.isLoading=false;
+    let newdata = ''
+    let filteredUsers = this.Tabledata.filter((user) => {
+      return user.checked == true;
+    });
+    if (formVal.Customer_Select_Option != 0) {
+      for (let i = 0; i <= filteredUsers.length - 1; i++) {
+        newdata = newdata + filteredUsers[i].CODE
+      }
 
-      }, err => {
-        Swal.fire('Warning', err, 'info')
-      })
     } else {
-     
-
-      Swal.fire('Warning', 'Please fill from and to date', 'info')
+      newdata = '0'
+      filteredUsers.push(newdata)
     }
+    if (filteredUsers.length != 0) {
+      let objdata = {
+        SP_NAME: 'Sel_DBDailySales',
+        PARAM: result.COMPANY_ID + ',' + this.selectedBrach + ',' + newdata + ',' + moment(this.fromdate, 'YYYY-MM-DD').format('YYYYMMDD'),
 
+
+
+
+        // FROM: moment(this.fromdate, 'YYYY-MM-DD').format('YYYYMMDD'),
+        // SUPPLIER: newdata,
+        // BRANCH_NAME: this.selectedBrach,
+        // CODE: result.COMPANY_ID
+      }
+      if (this.angForm.valid) {
+
+        this._AppComponentService.findAll(objdata).subscribe((res) => {
+          this.showtable = false
+          this.showtable1 = true
+
+          this.Tabledata1 = res.List
+          this.isLoading = false;
+        });
+
+      } else {
+        this.isLoading = false;
+
+        Swal.fire('Warning', 'Please fill All Fields', 'info')
+      }
+    } else {
+      Swal.fire('Warning', 'Please Select Customer', 'info')
+    }
 
   }
-  
+
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 
 
@@ -223,7 +245,7 @@ export class DailySalesDataComponent implements OnInit {
 
   // ];
 
- 
+
 
   ngAfterViewInit(): void {
     // afterViewInit code.
@@ -235,11 +257,38 @@ export class DailySalesDataComponent implements OnInit {
     // init code.
     const table = this.table;
 
-    table.addGroup('CREDIT_DAYS');
+    // table.addGroup('CREDIT_DAYS');
   }
 
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
+  }
+
+  check(val) {
+
+
+    this.cdate = moment(this.fromdate, 'YYYY-MM-DD').format('DD/MM/YYYY')
+    this.pdate = moment(this.todate, 'YYYY-MM-DD').format('DD/MM/YYYY')
+    let data: any = localStorage.getItem('user');
+    let result = JSON.parse(data);
+    let objdata = {
+      CODE: result.COMPANY_ID
+    }
+    if (val == '0') {
+      this.showtable = false
+      this.showtable1 = false
+
+    } else {
+      this._AppComponentService.customerList(objdata).subscribe((res) => {
+        this.showtable = true
+        this.showtable1 = false
+        this.Tabledata = res.List
+        for (let i = 0; i < this.Tabledata.length - 1; i++) {
+          this.Tabledata[i]['checked'] = false
+        }
+      });
+
+    }
   }
 
 }

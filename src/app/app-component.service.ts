@@ -24,6 +24,10 @@ export class AppComponentService {
         return this.http.post(this.url + '/month', data).pipe(catchError(this.handleError));
     }
 
+    customerList(data): Observable<any> {
+        return this.http.post(this.url + '/customerList', data).pipe(catchError(this.handleError));
+    }
+
     findAll(data): Observable<any> {
         return this.http.post(this.url + '/comman', data).pipe(catchError(this.handleError));
     }
