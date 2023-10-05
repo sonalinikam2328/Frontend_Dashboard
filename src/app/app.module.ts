@@ -31,6 +31,7 @@ import { FakeBackendInterceptor } from './core/helpers/fake-backend';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 
+
 if (environment.defaultauth === 'firebase') {
   initFirebaseBackend(environment.firebaseConfig);
 } else {
@@ -46,6 +47,7 @@ export function createTranslateLoader(http: HttpClient): any {
   declarations: [
     AppComponent,
     CyptolandingComponent,
+  
   ],
   imports: [
     BrowserModule,

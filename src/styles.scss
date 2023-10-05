@@ -161,12 +161,10 @@ h5,
 }
 
 
-.table-fixed {
-  display: block;
-  height: 450px;
-  overflow: auto;
-  
-}
+ .table-fixed {
+    display: block;
+    height: 450px;
+   }
 
 table tr.highlight {
   background-color: #dee2e6 !important;
@@ -199,10 +197,10 @@ td {
 
 
 
-// body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu > ul ul {
-//   background-color: #2a3042;
-//   width: 200000px;
-// }
+//  body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu > ul ul {
+//    background-color: #2a3042;
+//    width: 200000px;
+//  }
 
 .table {
 
@@ -213,18 +211,18 @@ td {
 
 }
 
-html {
-  margin-left: 3px;
-  margin-right: 3px;
-  overflow: auto;
-  overflow-x: hidden;
-  background: url(./assets/images/bg.jpg) repeat-x scroll left bottom transparent;
-  border-style: solid none solid;
-  border-color: #93B5D2;
-  border-width: 1px medium 1px;
-  // position: relative !important;
-  //   z-index: 0 !important;
-}
+// html {
+//   margin-left: 3px;
+//   margin-right: 3px;
+//   overflow: auto;
+//   overflow-x: hidden;
+//   background: url(./assets/images/bg.jpg) repeat-x scroll left bottom transparent;
+//   border-style: solid none solid;
+//   border-color: #93B5D2;
+//   border-width: 1px medium 1px;
+//   // position: relative !important;
+//   //   z-index: 0 !important;
+// }
 
 .ng-select .ng-clear-wrapper {
   display: none !important;
@@ -267,4 +265,7 @@ body {
 .marginTable {
   margin: 25px !important;
   }
+
+
   
+ 

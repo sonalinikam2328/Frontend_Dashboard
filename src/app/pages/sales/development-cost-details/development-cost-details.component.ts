@@ -16,6 +16,8 @@ import { AppComponentService } from 'src/app/app-component.service';
   styleUrls: ['./development-cost-details.component.scss']
 })
 export class DevelopmentCostDetailsComponent implements OnInit {
+
+  
   @ViewChild('FROM', { static: false }) FROM: NgSelectComponent;
   dataSource = []
   freezeHeader: boolean = true;
