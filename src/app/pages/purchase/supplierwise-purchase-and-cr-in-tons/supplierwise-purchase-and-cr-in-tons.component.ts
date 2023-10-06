@@ -628,8 +628,8 @@ Keyarray=[];
         this.TOTAL_DEC_QUAL_RATE = parseFloat(sixth11).toFixed(2)
 
 
-        this.Tabledata.unshift(obj)
-        this.Tabledata.unshift(obj)
+        // this.Tabledata.unshift(obj)
+        // this.Tabledata.unshift(obj)
         this.isLoading = false;
 
       }, err => {
