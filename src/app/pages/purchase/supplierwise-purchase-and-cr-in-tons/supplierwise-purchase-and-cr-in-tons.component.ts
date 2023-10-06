@@ -23,6 +23,8 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
   branch = [];
   Tabledata = [];
   finyear = [];
+Keyarray=[];
+  searchQuery: string = '';
   Jan: boolean = false
   Feb: boolean = false
   March: boolean = false
@@ -270,6 +272,22 @@ export class SupplierwisePurchaseAndCRInTonsComponent {
 
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
+  }
+
+  filterData() {
+    const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
+    this.Tabledata = this.Keyarray.filter(item => {
+      const values = Object.values(item);
+      return values.some(value => {
+        if (typeof value === 'string') {
+          return value.toLowerCase().includes(searchQueryLowerCase);
+        } else if (typeof value === 'number') {
+          return value.toString().includes(searchQueryLowerCase);
+        }
+        return false;
+      });
+    });
+    console.log('Tabledata', this.Tabledata);
   }
   loadData() {
     this.isLoading = true;

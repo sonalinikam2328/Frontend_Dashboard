@@ -10,6 +10,7 @@ import { UIModule } from '../../shared/ui/ui.module';
 import { TableModule } from '@smart-webcomponents-angular/table';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     SupplierWiseBoringRecoveryDetailsComponent
@@ -19,7 +20,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     SubcontractRoutingModule,
     ReactiveFormsModule,
     CommonModule,
-    
+    FormsModule,
     UIModule,
     NgApexchartsModule,
     ChartsModule,

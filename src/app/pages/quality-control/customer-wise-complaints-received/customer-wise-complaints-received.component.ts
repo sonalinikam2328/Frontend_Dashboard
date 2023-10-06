@@ -30,6 +30,8 @@ export class CustomerWiseComplaintsReceivedComponent {
   isLoading1: boolean = false;
   BRANCH: boolean = false;
   isLoading = false;
+  Keyarray=[];
+  searchQuery: string = '';
 
   constructor(
     private _AppComponentService: AppComponentService,
@@ -179,6 +181,22 @@ export class CustomerWiseComplaintsReceivedComponent {
     }
   }
 
+  filterData() {
+    const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
+    this.Tabledata = this.Keyarray.filter(item => {
+      const values = Object.values(item);
+      return values.some(value => {
+        if (typeof value === 'string') {
+          return value.toLowerCase().includes(searchQueryLowerCase);
+        } else if (typeof value === 'number') {
+          return value.toString().includes(searchQueryLowerCase);
+        }
+        return false;
+      });
+    });
+    console.log('Tabledata', this.Tabledata);
+  }
+
   init(): void {
     // init code.
     const table = this.table;
@@ -191,7 +209,7 @@ export class CustomerWiseComplaintsReceivedComponent {
   }
   Tabledata = []
   Headers = []
-  Keyarray = []
+  
 
   loadData() {
     this.Tabledata = []

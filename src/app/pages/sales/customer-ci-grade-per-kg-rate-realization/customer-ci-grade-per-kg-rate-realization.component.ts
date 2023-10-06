@@ -27,6 +27,9 @@ export class CustomerCIGradePerKgRateRealizationComponent {
   isLoading1: boolean = false;
   BRANCH: boolean = false;
   isLoading = false;
+  Keyarray=[];
+  searchQuery: string = '';
+  
 
   constructor(private _CustomerService:CustomerService,
     private _AppComponentService: AppComponentService,
@@ -50,6 +53,8 @@ export class CustomerCIGradePerKgRateRealizationComponent {
     onFocus(ele: NgSelectComponent) {
       ele.open();
     }
+
+   
     ngOnInit(): void {
       // onInit code.
       this.isLoading1 = true
@@ -96,6 +101,21 @@ export class CustomerCIGradePerKgRateRealizationComponent {
   
     Tabledata = []
     FooterData = []
+    filterData() {
+      const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
+      this.Tabledata = this.Keyarray.filter(item => {
+        const values = Object.values(item);
+        return values.some(value => {
+          if (typeof value === 'string') {
+            return value.toLowerCase().includes(searchQueryLowerCase);
+          } else if (typeof value === 'number') {
+            return value.toString().includes(searchQueryLowerCase);
+          }
+          return false;
+        });
+      });
+      console.log('Tabledata', this.Tabledata);
+    }
     loadData() {
       this.Tabledata = []
       this.FooterData = []

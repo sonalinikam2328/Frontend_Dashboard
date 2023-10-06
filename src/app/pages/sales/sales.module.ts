@@ -25,6 +25,7 @@ import { ScheduleAdherenceForTheMonthComponent } from './schedule-adherence-for-
 import { CustomerCIGradePerKgRateRealizationComponent } from './customer-ci-grade-per-kg-rate-realization/customer-ci-grade-per-kg-rate-realization.component';
 import { EnquiryRegisterComponent } from './enquiry-register/enquiry-register.component';
 
+
 @NgModule({
   declarations: [
     PaymentCollectionPlanComponent,

@@ -102,6 +102,13 @@
                 </tr>
               </thead>
               <thead style="position: sticky; top: 0; text-align: center;">
+                <tr>                               
+                </tr>                              
+                <th colspan="6">
+                    <div class="search-container">
+                        <input type="text" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search...">
+                    </div>
+                </th>
                 <tr>
                   <th class="td_right">Sr. No.</th>
                   <th class="td_left">Name of Customer</th>

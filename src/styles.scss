@@ -244,7 +244,7 @@ td {
 }
 
 body {
-  overflow: hidden;
+  //overflow: hidden;
   background-color: white !important;
 }
 
@@ -269,3 +269,28 @@ body {
 
   
  
+// table {
+ 
+//   margin: 25px !important;
+  
+//   }
+
+  .search-container {
+    display: flex !important;
+    
+    align-items: center !important;
+    background-color:#f2f2f2 !important;
+    
+  }
+  
+  .search-container input {
+    color: black !important;
+    padding: 1px 3px 1px 3px !important;
+    background: white repeat-x 0 0 !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: #b5b8c8 !important;
+    width: 300px !important;
+  }
+
+  

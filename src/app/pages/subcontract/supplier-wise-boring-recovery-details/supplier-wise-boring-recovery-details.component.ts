@@ -31,6 +31,7 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   freezeHeader: boolean = true;
 
   angForm: FormGroup;
+  Keyarray = [];
   branch = [];
   Tabledata = [];
   selectedDate: Date;
@@ -50,7 +51,7 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   // todate = null
   selectedBrach
   fdateInput: any;
-
+  searchQuery: string = '';
   constructor(
     private _SupplierWiseBoringService: SupplierWiseBoringService,
     private _AppComponentService: AppComponentService,
@@ -86,6 +87,27 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   init() {
     throw new Error('Method not implemented.');
   }
+  
+
+  filterData() {
+    const searchQuery = this.searchQuery.trim().toLowerCase(); // Convert search query to lowercase
+  
+    this.Tabledata = this.Keyarray.filter(item => {
+      const values = Object.values(item);
+      return values.some(value => {
+        if (typeof value === 'string') {
+          const lowerCaseValue = value.toLowerCase(); // Convert value to lowercase
+          return lowerCaseValue.includes(searchQuery);
+        } else if (typeof value === 'number') {
+          const valueAsString = value.toString();
+          return valueAsString.includes(searchQuery);
+        }
+        return false;
+      });
+    });
+    console.log('Tabledata', this.Tabledata);
+  }
+
   onFocus(ele: NgSelectComponent) {
     // console.log('Element focused:', Element);
     ele.open();
@@ -170,6 +192,7 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   refreshComponent() {
     this.router.navigate([this.router.url])
   }
+  
 
   loadData() {
     this.isLoading = true;

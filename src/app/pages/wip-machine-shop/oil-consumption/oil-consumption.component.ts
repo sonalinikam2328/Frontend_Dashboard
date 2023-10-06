@@ -43,7 +43,7 @@ export class OilConsumptionComponent implements OnInit {
   paging = true;
   columnSizeMode = 'default';
   columns
-  // searchQuery: string = '';
+  searchQuery: string = '';
   
   
   constructor(
@@ -104,7 +104,7 @@ export class OilConsumptionComponent implements OnInit {
     });
 
     
-    
+    console.log('Keyarray:', this.Keyarray);
 
   }
 
@@ -170,35 +170,24 @@ export class OilConsumptionComponent implements OnInit {
     // init code.
     const table = this.table;
   }
-
-  // filterData() {
+  filterData() {
+    const searchQuery = this.searchQuery.trim().toLowerCase(); // Convert search query to lowercase
   
-
-  //   const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
+    this.Tabledata = this.Keyarray.filter(item => {
+      const values = Object.values(item);
+      return values.some(value => {
+        if (typeof value === 'string') {
+          const lowerCaseValue = value.toLowerCase(); // Convert value to lowercase
+          return lowerCaseValue.includes(searchQuery);
+        } else if (typeof value === 'number') {
+          const valueAsString = value.toString();
+          return valueAsString.includes(searchQuery);
+        }
+        return false;
+      });
+    });
+  }
   
-    
-  //   this.Tabledata = this.Keyarray.filter(item => {
-      
-  //     const values = Object.values(item);
-      
-     
-  //     return values.some(value => {
-  //       if (typeof value === 'string') {
-  //         return value.toLowerCase().includes(searchQueryLowerCase);
-          
-  //       } else if (typeof value === 'number') {
-  
-  //         return value.toString().includes(searchQueryLowerCase);
-  //       }
-       
-      
-  //       return false;
-  //     });
-  //   });
-  
-  //   console.log('Tabledata',this.Tabledata)
-  
-  // }
 
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
