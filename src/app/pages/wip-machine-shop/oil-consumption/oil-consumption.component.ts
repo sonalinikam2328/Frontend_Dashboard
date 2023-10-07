@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { NgSelectComponent ,} from '@ng-select/ng-select';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
@@ -16,9 +16,13 @@ import { AppComponentService } from '../../../app-component.service';
   styleUrls: ['./oil-consumption.component.scss']
 })
 export class OilConsumptionComponent implements OnInit {
-
+  filterValues: string[] = new Array(Headers.length).fill('');
+  columnOptions: any[] = []; 
+  showColumnDropdown: boolean = true;
   @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
+  filterInputValue = '';
+  selectedColumn:any;
 
   branch = [];
   finyear = [];
@@ -46,6 +50,23 @@ export class OilConsumptionComponent implements OnInit {
   searchQuery: string = '';
   
   
+  showFilterInput(event: MouseEvent) {
+    const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
+    if (filterInput) {
+        filterInput.classList.add('show');
+    }
+}
+
+// Method to hide filter input
+hideFilterInput(event: MouseEvent) {
+    const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
+    if (filterInput) {
+        filterInput.classList.remove('show');
+    }
+}
+onFilterInputChange(value: string) {
+ 
+}
   constructor(
     
     private fb: FormBuilder,
@@ -54,8 +75,6 @@ export class OilConsumptionComponent implements OnInit {
     private _AppComponentService: AppComponentService,
     private _OilConsumptionService: OilConsumptionService,
   ) { }
-
-
   ngOnInit(): void {
     this.createForm();
     this.isLoading1 = true

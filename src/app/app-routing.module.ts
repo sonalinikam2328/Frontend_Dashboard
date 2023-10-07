@@ -6,6 +6,7 @@ import { CyptolandingComponent } from './cyptolanding/cyptolanding.component';
 import { Page404Component } from './extrapages/page404/page404.component';
 import { LoginComponent } from './account/auth/login/login.component';
 import { SupplierWiseBoringRecoveryDetailsComponent } from './pages/subcontract/supplier-wise-boring-recovery-details/supplier-wise-boring-recovery-details.component';
+import { PaymentCollectionPlanComponent } from './pages/sales/payment-collection-plan/payment-collection-plan.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'crypto-ico-landing', component: CyptolandingComponent },
 
   { path: '**', component: LoginComponent },
+  
 ];
 
 @NgModule({

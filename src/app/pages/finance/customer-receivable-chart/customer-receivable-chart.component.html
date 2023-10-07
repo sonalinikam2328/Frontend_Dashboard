@@ -30,9 +30,9 @@
         <div class="col-sm-2">
           <div class="form-group input-group">
             <span class="border-lable-flt">
-              <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control"
+              <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control" 
                 [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [(ngModel)]="fromdate" [maxDate]="maxDate" bsDatepicker
-                formControlName="FROM" required style="max-width: 100px;">
+                formControlName="FROM" required style="max-width: 100px;"   #fdateInput>
             </span>
           </div>
           <div class="form-group form-primary form-static-label"

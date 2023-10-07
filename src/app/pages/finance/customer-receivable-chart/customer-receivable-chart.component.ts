@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit,ElementRef,Renderer2 } from '@angular/core';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -16,7 +16,9 @@ import { AppComponentService } from 'src/app/app-component.service';
   templateUrl: './customer-receivable-chart.component.html',
   styleUrls: ['./customer-receivable-chart.component.scss']
 })
-export class CustomerReceivableChartComponent {
+export class CustomerReceivableChartComponent  implements OnInit{
+  @ViewChild('fdateInput') fdateInput: ElementRef;
+  @ViewChild('FROM', { static: false }) FROM: NgSelectComponent;
   maxDate: Date;
   maxDatet: Date;
   minDate: Date;
@@ -32,6 +34,7 @@ export class CustomerReceivableChartComponent {
   angForm: FormGroup;
   isLoading1: boolean = false;
   isLoading :boolean=false;
+  
 
   constructor(
     private _CustomerService: CustomerService,
@@ -39,6 +42,7 @@ export class CustomerReceivableChartComponent {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
+    private renderer: Renderer2
   ) {
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -178,7 +182,11 @@ export class CustomerReceivableChartComponent {
         this.isLoading1 = false
         this.selectedBrach = this.branch[0]['CODE']
       }
+      setTimeout(() => {
+        this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+      }, 100);
     });
+    
   }
 
   ngAfterViewInit(): void {
@@ -186,6 +194,7 @@ export class CustomerReceivableChartComponent {
     // afterViewInit code.
     this.init();
     const table = document.querySelector('smart-table');
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
   }
 
   init(): void {

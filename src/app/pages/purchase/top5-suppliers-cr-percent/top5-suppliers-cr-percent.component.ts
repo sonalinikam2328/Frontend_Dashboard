@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef, Renderer2,AfterViewInit } from '@angular/core';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -17,11 +17,13 @@ import { tableData } from '../../tables/advancedtable/data';
   templateUrl: './top5-suppliers-cr-percent.component.html',
   styleUrls: ['./top5-suppliers-cr-percent.component.scss']
 })
-export class Top5SuppliersCRPercentComponent implements OnInit {
+export class Top5SuppliersCRPercentComponent implements OnInit,AfterViewInit{
   @ViewChild('FROM', { static: false }) FROM: NgSelectComponent;
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
 Keyarray=[];
 searchQuery: string = '';
+
+  @ViewChild('fdateInput') fdateInput: ElementRef;
   branch = [];
   finyear = [];
   Headers = [];
@@ -60,6 +62,7 @@ searchQuery: string = '';
     private router: Router,
     private _AppComponentService: AppComponentService,
     private _Top5Service: Top5Service,
+    private renderer: Renderer2,
   ) {
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -114,7 +117,11 @@ searchQuery: string = '';
         this.selectedBrach = this.branch[0]['CODE']
 
       }
+      setTimeout(() => {
+        this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+      }, 100);
     });
+    
   }
 
   onFocus(ele: NgSelectComponent) {
@@ -264,9 +271,7 @@ searchQuery: string = '';
   ngAfterViewInit(): void {
     // afterViewInit code.
     const table = document.querySelector('smart-table');
-    if (this.FROM) {
-      this.FROM.focus();
-    }
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
   }
 
   filterData() {

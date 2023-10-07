@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild,OnInit,Renderer2 } from '@angular/core';
 
 import { SupplierWiseBoringService } from './supplier-wise-boring.service';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
@@ -17,16 +17,10 @@ import { AppComponentService } from 'src/app/app-component.service';
   styleUrls: ['./supplier-wise-boring-recovery-details.component.scss']
 })
 export class SupplierWiseBoringRecoveryDetailsComponent {
-  // @ViewChild('fdateInput', { static: false }) fdateInput: ElementRef;
-  // @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
-  @ViewChild('FROM', { static: false }) FROM: NgSelectComponent;
-  onBranchNameFocus() {
-    console.log('Branch Name Input Focused');
-  }
-  onFROMFocus() {
-    console.log('From  Input Focused');
-  }
-
+ 
+  @ViewChild('FROM', { static: false })FROM: NgSelectComponent;
+ 
+  @ViewChild('fdateInput') fdateInput: ElementRef;
   dataSource = []
   freezeHeader: boolean = true;
 
@@ -50,7 +44,6 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   fromdate = null
   // todate = null
   selectedBrach
-  fdateInput: any;
   searchQuery: string = '';
   constructor(
     private _SupplierWiseBoringService: SupplierWiseBoringService,
@@ -58,7 +51,8 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-
+    private renderer: Renderer2,
+    
   ) {
 
     this.selectedDate = new Date();
@@ -80,9 +74,7 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   ngAfterViewInit(): void {
     // afterViewInit code.
     const table = document.querySelector('smart-table');
-    if (this.FROM) {
-      this.FROM.focus();
-    }
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
   }
   init() {
     throw new Error('Method not implemented.');
@@ -145,14 +137,7 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
     });
   }
 
-  ngOnInit()
-
-  // {
-  //   setTimeout(() => {
-  //     this.fdateInput.nativeElement.focus();
-  //   }, 1);
-  // this.fdateInput.nativeElement.focus();
-  {
+  ngOnInit() {
     this.createForm();
     this.isLoading1 = true
     let data: any = localStorage.getItem('user');
@@ -186,13 +171,11 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
         this.isLoading1 = false;
         this.selectedBrach = this.branch[0]['CODE']
       }
+      setTimeout(() => {
+        this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+      }, 100);
     });
-
   }
-  refreshComponent() {
-    this.router.navigate([this.router.url])
-  }
-  
 
   loadData() {
     this.isLoading = true;

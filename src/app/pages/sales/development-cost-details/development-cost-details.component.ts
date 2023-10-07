@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit,Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { PaymentService } from '../payment-collection-plan/payment.service';
 import * as  moment from 'moment';
 import { HttpClient } from '@angular/common/http';
@@ -19,6 +19,7 @@ export class DevelopmentCostDetailsComponent implements OnInit {
 
   
   @ViewChild('FROM', { static: false }) FROM: NgSelectComponent;
+  @ViewChild('fdateInput') fdateInput: ElementRef;
   dataSource = []
   freezeHeader: boolean = true;
 
@@ -40,6 +41,7 @@ export class DevelopmentCostDetailsComponent implements OnInit {
   selectedBrach
   searchQuery: string = '';
   Keyarray=[];
+ 
 
   constructor(
     private _PaymentService: PaymentService,
@@ -49,6 +51,7 @@ export class DevelopmentCostDetailsComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
+    private renderer: Renderer2,
   ) {
     let dt = new Date()
     this.minDate = new Date();
@@ -67,11 +70,9 @@ export class DevelopmentCostDetailsComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    // afterViewInit code
-    // const table = document.querySelector('smart-table');
-    if (this.FROM) {
-      this.FROM.focus();
-    }
+   
+    const table = document.querySelector('smart-table');
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
   }
 
 
@@ -159,6 +160,9 @@ export class DevelopmentCostDetailsComponent implements OnInit {
         this.isLoading1 = false;
         this.selectedBrach = this.branch[0]['CODE']
       }
+      setTimeout(() => {
+        this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+      }, 100);
     });
 
   }

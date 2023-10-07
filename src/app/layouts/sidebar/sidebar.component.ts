@@ -2,9 +2,7 @@ import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input, OnChang
 import MetisMenu from 'metismenujs';
 import { EventService } from '../../core/services/event.service';
 import { Router, NavigationEnd } from '@angular/router';
-
 import { HttpClient } from '@angular/common/http';
-
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
 import { TranslateService } from '@ngx-translate/core';
@@ -15,17 +13,19 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./sidebar.component.scss']
 })
 
-/**
- * Sidebar component
- */
 export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
+  activeSubitem: MenuItem = null;
+
+
+  
+  
   @ViewChild('componentRef') scrollRef;
   @Input() isCondensed = false;
   menu: any;
   data: any;
 
   menuItems = [];
-
+  isActive?: boolean;
   @ViewChild('sideMenu') sideMenu: ElementRef;
 
   constructor(private eventService: EventService, private router: Router, public translate: TranslateService, private http: HttpClient) {
@@ -36,11 +36,23 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       }
     });
   }
+  
 
-  ngOnInit() {
-    this.initialize();
-    this._scrollElement();
-  }
+  
+  
+  ngOnInit() 
+    {
+      // Initialize the active state for the initially selected menu item
+      const currentUrl = this.router.url;
+      const selectedItem = this.menuItems.find(item => item.link === currentUrl);
+      if (selectedItem) {
+        selectedItem.isActive = true;
+      }
+    
+      this.initialize();
+      this._scrollElement();
+    }
+  
 
   ngAfterViewInit() {
     this.menu = new MetisMenu(this.sideMenu.nativeElement);
@@ -81,11 +93,13 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
       els[0].classList.remove(className);
     }
   }
-
+  
+  
   /**
    * Activate the parent dropdown
    */
   _activateMenuDropdown() {
+
     this._removeAllClass('mm-active');
     this._removeAllClass('mm-show');
     const links = document.getElementsByClassName('side-nav-link-ref');
@@ -151,6 +165,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
 
+
   reloadComponent() {
     const currentUrl = this.router.url; // Get the current route URL
     this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
@@ -163,4 +178,5 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     console.log('Reloading subItem:', subitem);
     this.reloadComponent(); // Call the reloadComponent method to reload the component
   }
+
 }
