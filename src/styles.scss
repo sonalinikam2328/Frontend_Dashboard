@@ -282,6 +282,74 @@ body {
   }
 
 
+  .filter-container {
+    display: inline-block !important;
+  }
+  
+.filter-label {
+    font-weight: bold !important;
+    margin-right: 10px !important;
+  }
+  
+.filter-toggle {
+    cursor: pointer!important;
+    display: inline-block!important;
+    padding: 0 5px!important;
+    border: 1px solid #ccc!important;
+    border-radius: 4px!important;
+  }
+  
+.filter-icon {
+    display: inline-block!important;
+    vertical-align: middle!important;
+    margin-left: 5px!important;
+    transform: rotate(0deg)!important;
+    transition: transform 0.2s ease!important;
+  }
+  
+.filter-options {
+    display: none!important;
+    position: absolute!important;
+    background-color: #fff!important;
+    border: 1px solid #ccc!important;
+    border-top: none!important;
+    border-radius: 0 0 4px 4px!important;
+    z-index: 1!important;
+  }
+  
+.show-filter-options {
+    display: block!important;
+  }
+  
+.filter-option {
+    padding: 4px!important;
+    cursor: pointer!important;
+    transition: background-color 0.2s ease!important;
+    width: 100px!important;
+    border: 1px solid #ccc!important;
+    border-radius: 4px!important;
+    display: inline-block!important;
+   
+  }
+  
+.filter-option:hover {
+    background-color: #f0f0f0!important;
+  }
+
+.input-box {
+    display: inline-block!important;
+    border: 1px solid #ccc!important;
+    border-radius: 4px!important;
+    margin-top: 2px!important;
+    padding: 3px!important;
+   
+  }
+  
+.show-input {
+    display: inline-block!important;
+  }
+
+
   
  
 // table {

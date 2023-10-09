@@ -45,6 +45,28 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   // todate = null
   selectedBrach
   searchQuery: string = '';
+
+
+  tableColumns = ['SN', 'Party Name','Balance Boring of','Boring Genretion as per GRN ','Total collection plan as per GRN','Actual Collection','Balance','Supplier PHONE NO']; 
+  isFilterOpen: { [key: string]: boolean } = {};
+  isFilterInputOpen: { [key: string]: boolean } = {};
+column: any;
+values: any;
+
+  toggleFilter(column: string) {
+    this.isFilterOpen[column] = !this.isFilterOpen[column];
+    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+  }
+
+  applyFilter(column: string, filterOption: string) {
+    // Implement your filtering logic here based on the column and filterOption
+    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+  }
+
+  toggleFilterInput(column: string) {
+    this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
+  }
+
   constructor(
     private _SupplierWiseBoringService: SupplierWiseBoringService,
     private _AppComponentService: AppComponentService,
