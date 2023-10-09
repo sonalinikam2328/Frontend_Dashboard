@@ -141,18 +141,20 @@
                                     </th>
 
                                     <tr>
-                                        <th class="td_left">Supplier Name</th>
-                                        <th class="td_right"> Purchase Qty</th>
-                                        <th class="td_right"> Purchase Weight</th>
-                                        <th class="td_right"> Purchase Amt</th>
-                                        <th class="td_right"> Rate Diff Amt</th>
-                                        <th class="td_right"> Total Purchase Amt</th>
-                                        <th class="td_right"> Rejection Qty</th>
-                                        <th class="td_right"> Rejection Weight</th>
-                                        <th class="td_right"> Rejection Amt</th>
-                                        <th class="td_right"> Net Pur Qty</th>
-                                        <th class="td_right"> Net Pur Weight</th>
-                                        <th class="td_right"> Net Pur Amt</th>
+                                        <th class="td_left" *ngFor="let column of tableColumns">
+                                            {{ column }}
+                                            <div class="filter-container">
+                                              <div class="filter-toggle" (click)="toggleFilter(column)">
+                                                <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                              </div>
+                                              <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen[column]}">
+                                                <div class="filter-option" (click)="applyFilter(column, 'Option 1')">Filter</div>
+                                                <div class="input-box" [class.show-input]="isFilterInputOpen[column]">
+                                                  <input type="text" placeholder=" " (blur)="toggleFilterInput(column)">
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </th>
 
                                     </tr>
                                 </thead>

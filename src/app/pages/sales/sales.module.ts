@@ -24,6 +24,7 @@ import { MonthlyValueAdditionTargetVsActualComponent } from './monthly-value-add
 import { ScheduleAdherenceForTheMonthComponent } from './schedule-adherence-for-the-month/schedule-adherence-for-the-month.component';
 import { CustomerCIGradePerKgRateRealizationComponent } from './customer-ci-grade-per-kg-rate-realization/customer-ci-grade-per-kg-rate-realization.component';
 import { EnquiryRegisterComponent } from './enquiry-register/enquiry-register.component';
+import { FormModule } from '../form/form.module';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { EnquiryRegisterComponent } from './enquiry-register/enquiry-register.co
     BsDatepickerModule,
     ReactiveFormsModule,
     FormsModule
-  ],
+ ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  
 })
 export class SalesModule { }

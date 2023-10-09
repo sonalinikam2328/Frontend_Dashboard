@@ -47,8 +47,39 @@ export class OilConsumptionComponent implements OnInit {
   paging = true;
   columnSizeMode = 'default';
   columns
+
   searchQuery: string = '';
+
   
+
+
+   
+  
+
+
+
+  //searchQuery: string = '';
+
+   isFilterOpen: { [key: string]: boolean } = {};
+   isFilterInputOpen: { [key: string]: boolean } = {};
+data: any;
+column: any;
+currentlyOpenInputBox: string | null = null;
+
+   toggleFilter(column: string) {
+    this.isFilterOpen[column] = !this.isFilterOpen[column];
+    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+   }
+
+   applyFilter(column: string, filterOption: string) {
+     // Implement your filtering logic here based on the column and filterOption
+     console.log(`Filter applied for ${column} with option: ${filterOption}`);
+   }
+
+ toggleFilterInput(column: string) {
+      this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
+   }
+
   
   showFilterInput(event: MouseEvent) {
     const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
@@ -75,6 +106,9 @@ onFilterInputChange(value: string) {
     private _AppComponentService: AppComponentService,
     private _OilConsumptionService: OilConsumptionService,
   ) { }
+  
+
+
   ngOnInit(): void {
     this.createForm();
     this.isLoading1 = true
@@ -83,7 +117,8 @@ onFilterInputChange(value: string) {
     let obj = {
       CODE: result.COMPANY_ID
     }
-
+  
+   
     
 
     // onInit code.
@@ -102,6 +137,8 @@ onFilterInputChange(value: string) {
           PINCODE: "",
           PREFIX_NAME: null
         }
+
+
         res.List.unshift(obj);
         this.branch = res.List
         this.isLoading1 = false
@@ -114,6 +151,14 @@ onFilterInputChange(value: string) {
         this.selectedBrach = this.branch[0]['CODE']
 
       }
+      fetchData() ;{
+        // Simulating an API response
+        const res = {
+          List: [{}, {}], // Sample data
+          Headers: [] // Sample headers
+        };
+      }
+  
       
     });
 
@@ -272,5 +317,9 @@ onFilterInputChange(value: string) {
 
 
 
+}
+
+function fetchData() {
+  throw new Error('Function not implemented.');
 }
 

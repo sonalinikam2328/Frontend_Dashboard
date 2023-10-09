@@ -84,13 +84,11 @@
                                     </div>
                                 </th>
                                 <tr *ngIf="Headers.length !=0">
-                                    <th class="td_left" >Month</th>
-                                    <th *ngFor="let data of Headers"
-                                        style="text-align: right;">
+                                    <th *ngFor="let data of Headers" style="text-align: right;">
                                         {{data.MAT_NAME}}
                                     </th>
                                 </tr>
-
+                                
                             </thead>
                             <tbody *ngIf="Tabledata.length !=0">
                                 <tr *ngFor="let data of Tabledata;">

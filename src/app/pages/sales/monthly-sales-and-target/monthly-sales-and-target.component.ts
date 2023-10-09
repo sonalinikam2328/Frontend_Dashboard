@@ -20,6 +20,8 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
   @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   branch = [];
   finyear = [];
+  Headers =[];
+  
   selectedBrach;
   selectedYear;
   angForm: FormGroup;
@@ -30,6 +32,29 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
   BRANCH: boolean = false;
   searchQuery: string = '';
   Keyarray=[];
+
+  
+
+
+  //my code
+  isFilterOpen: { [key: string]: boolean } = {};
+  isFilterInputOpen: { [key: string]: boolean } = {};
+  data: any;
+  column: any;
+
+  toggleFilter(column: string) {
+   this.isFilterOpen[column] = !this.isFilterOpen[column];
+   this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+  }
+
+  applyFilter(column: string, filterOption: string) {
+    // Implement your filtering logic here based on the column and filterOption
+    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+  }
+
+toggleFilterInput(column: string) {
+     this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
+  }
 
   constructor(
     private _AppComponentService: AppComponentService,
@@ -191,7 +216,7 @@ filterData() {
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
   }
-  Headers = [];
+  
   Tabledata = [];
   
 

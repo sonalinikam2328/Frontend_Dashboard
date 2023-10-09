@@ -121,6 +121,30 @@ Keyarray=[];
   BRANCH: boolean = false
   showtable: boolean = false
 
+  tableColumns = ['Supplier Name', 'Avg. Purchase','Avg. Purchase Returns','Avg. Purchase Schedule',
+  'Delivery Rating','Delivery Rating','Quality Rating','Q1 Purchase','Q1 purchase Return','Q1 Delivery Rating',
+  'Q1 Quality Rating','Q2 Purchase','Q2 purchase Return','Q2 Delivery Rating','Q2 Quality Rating','Q3 Purchase',
+  'Q3 purchase Return','Q3 Delivery Rating','Q3 Quality Rating','Q4 Purchase','Q4 purchase Return',
+  'Q4 Delivery Rating','Q4 Quality Rating']; 
+  isFilterOpen: { [key: string]: boolean } = {};
+  isFilterInputOpen: { [key: string]: boolean } = {};
+ column: any;
+ values: any;
+
+  toggleFilter(column: string) {
+    this.isFilterOpen[column] = !this.isFilterOpen[column];
+    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+  }
+
+  applyFilter(column: string, filterOption: string) {
+    // Implement your filtering logic here based on the column and filterOption
+    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+  }
+
+  toggleFilterInput(column: string) {
+    this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
+  }
+
 
   constructor(
     private _SupplierwisePurchaseService: SupplierwisePurchaseService,

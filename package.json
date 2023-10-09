@@ -48,6 +48,7 @@
     "@schematics/angular": "^16.0.0",
     "@smart-webcomponents-angular/button": "^15.0.23",
     "@smart-webcomponents-angular/table": "^15.2.2",
+    "ag-grid-community": "^30.2.0",
     "angular-archwizard": "^7.0.0",
     "angular-datatables": "^15.0.1",
     "angularx-flatpickr": "^7.0.0",

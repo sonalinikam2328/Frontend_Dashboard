@@ -31,6 +31,26 @@ export class CustomerCIGradePerKgRateRealizationComponent {
   searchQuery: string = '';
   
 
+  tableColumns = ['Customer Name', 'Quarter 01','Quarter 02','Quarter 03','Quarter 04']; 
+  isFilterOpen: { [key: string]: boolean } = {};
+  isFilterInputOpen: { [key: string]: boolean } = {};
+column: any;
+values: any;
+
+  toggleFilter(column: string) {
+    this.isFilterOpen[column] = !this.isFilterOpen[column];
+    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+  }
+
+  applyFilter(column: string, filterOption: string) {
+    // Implement your filtering logic here based on the column and filterOption
+    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+  }
+
+  toggleFilterInput(column: string) {
+    this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
+  }
+
   constructor(private _CustomerService:CustomerService,
     private _AppComponentService: AppComponentService,
     private fb: FormBuilder,

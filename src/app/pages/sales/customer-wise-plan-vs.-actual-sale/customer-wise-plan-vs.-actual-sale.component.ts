@@ -38,6 +38,29 @@ export class CustomerWisePlanVsActualSaleComponent {
   angForm: FormGroup;
   searchQuery: string = '';
   Keyarray=[];
+  
+  tableColumns = ['Customer Name', 'VA %','Planned Sale','Actual Sale',
+  'Difference','VA Effect']; 
+  isFilterOpen: { [key: string]: boolean } = {};
+  isFilterInputOpen: { [key: string]: boolean } = {};
+column: any;
+values: any;
+
+  toggleFilter(column: string) {
+    this.isFilterOpen[column] = !this.isFilterOpen[column];
+    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+  }
+
+  applyFilter(column: string, filterOption: string) {
+    // Implement your filtering logic here based on the column and filterOption
+    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+  }
+
+  toggleFilterInput(column: string) {
+    this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
+  }
+
+
   constructor(
     private _AppComponentService: AppComponentService,
     private _CustomerService: CustomerService,

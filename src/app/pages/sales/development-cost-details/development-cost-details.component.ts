@@ -3,10 +3,11 @@ import { PaymentService } from '../payment-collection-plan/payment.service';
 import * as  moment from 'moment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators,} from "@angular/forms";
 import { NgSelectComponent } from "@ng-select/ng-select";
 import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
+
 
 import { DevelopmentcostdetailsService } from './developmentcostdetails.service';
 import { AppComponentService } from 'src/app/app-component.service';
@@ -18,6 +19,7 @@ import { AppComponentService } from 'src/app/app-component.service';
 export class DevelopmentCostDetailsComponent implements OnInit {
 
   
+
   @ViewChild('FROM', { static: false }) FROM: NgSelectComponent;
   @ViewChild('fdateInput') fdateInput: ElementRef;
   dataSource = []
@@ -26,6 +28,7 @@ export class DevelopmentCostDetailsComponent implements OnInit {
   angForm: FormGroup;
   branch = [];
   Tabledata = [];
+  Headers= ['month','Date'];
 
   showBranch: boolean = true
   showtable: boolean = false
@@ -43,9 +46,31 @@ export class DevelopmentCostDetailsComponent implements OnInit {
   Keyarray=[];
  
 
+  tableColumns = ['Customer Name', 'Part Name','Development P.O.No/Referance','Approved Development Cost In INR',
+  '1st 50% Debit Note/Invoice No.','Balance 50% Debit Note/Invoice No.',
+  'Development Cost Received In INR','Balanced D.C. In INR to be Received']; 
+  isFilterOpen: { [key: string]: boolean } = {};
+  isFilterInputOpen: { [key: string]: boolean } = {};
+column: any;
+values: any;
+
+  toggleFilter(column: string) {
+    this.isFilterOpen[column] = !this.isFilterOpen[column];
+    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+  }
+
+  applyFilter(column: string, filterOption: string) {
+    // Implement your filtering logic here based on the column and filterOption
+    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+  }
+
+  toggleFilterInput(column: string) {
+    this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
+  }
+  
+  
   constructor(
     private _PaymentService: PaymentService,
-
     private _DevelopmentcostdetailsService: DevelopmentcostdetailsService,
     private _AppComponentService: AppComponentService,
     private fb: FormBuilder,
@@ -64,8 +89,7 @@ export class DevelopmentCostDetailsComponent implements OnInit {
     this.todate = this.minDate
 
   }
-
-  onFocus(ele: NgSelectComponent) {
+ onFocus(ele: NgSelectComponent) {
     ele.open();
   }
 
@@ -74,6 +98,7 @@ export class DevelopmentCostDetailsComponent implements OnInit {
     const table = document.querySelector('smart-table');
     this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
   }
+  
 
 
   onValueChange(value: Date): void {
