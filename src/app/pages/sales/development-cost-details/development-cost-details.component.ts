@@ -17,9 +17,7 @@ import { AppComponentService } from 'src/app/app-component.service';
   styleUrls: ['./development-cost-details.component.scss']
 })
 export class DevelopmentCostDetailsComponent implements OnInit {
-
   
-
   @ViewChild('FROM', { static: false }) FROM: NgSelectComponent;
   @ViewChild('fdateInput') fdateInput: ElementRef;
   dataSource = []
@@ -135,7 +133,7 @@ values: any;
   }
   filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
-    this.Tabledata = this.Keyarray.filter(item => {
+    this.Tabledata = this.tempdata.filter(item => {
       const values = Object.values(item);
       return values.some(value => {
         if (typeof value === 'string') {
@@ -194,6 +192,7 @@ values: any;
   totalDevelopmentCost
   totalDevelopmentCostReceived
   totalBalanceDcinReceived
+  tempdata = []
   loadData() {
     this.isLoading = true;
     this.Tabledata = []
@@ -215,9 +214,15 @@ values: any;
         this.totalDevelopmentCostReceived = 0
         this.totalBalanceDcinReceived = 0
         let obj = {}
-        
+
         this.showtable = true
+        for (let i = 0; i <= res.List.length - 1; i++) {
+          res.List[i]['ORDER_AMT'] = parseFloat(res.List[i]['ORDER_AMT']).toFixed(2)
+          res.List[i]['INVOICE_AMT'] = parseFloat(res.List[i]['INVOICE_AMT']).toFixed(2)
+          res.List[i]['DIFF_AMT'] = parseFloat(res.List[i]['DIFF_AMT']).toFixed(2)
+        }
         this.Tabledata = res.List
+        this.tempdata = res.List
         let first = this.Tabledata.reduce((accumulator, object) => {
           return accumulator + object.ORDER_AMT;
         }, 0);
@@ -231,7 +236,7 @@ values: any;
         }, 0);
         this.totalBalanceDcinReceived = parseFloat(third).toFixed(2)
 
-        
+
 
         this.isLoading = false;
 

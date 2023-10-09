@@ -37,14 +37,14 @@ export class CustomerWisePlanVsActualSaleComponent {
   showBranch: boolean = true
   angForm: FormGroup;
   searchQuery: string = '';
-  Keyarray=[];
-  
-  tableColumns = ['Customer Name', 'VA %','Planned Sale','Actual Sale',
-  'Difference','VA Effect']; 
+  Keyarray = [];
+
+  tableColumns = ['Customer Name', 'VA %', 'Planned Sale', 'Actual Sale',
+    'Difference', 'VA Effect'];
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
-column: any;
-values: any;
+  column: any;
+  values: any;
 
   toggleFilter(column: string) {
     this.isFilterOpen[column] = !this.isFilterOpen[column];
@@ -206,7 +206,7 @@ values: any;
   }
   filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
-    this.Tabledata = this.Keyarray.filter(item => {
+    this.Tabledata = this.tempdata.filter(item => {
       const values = Object.values(item);
       return values.some(value => {
         if (typeof value === 'string') {
@@ -222,14 +222,15 @@ values: any;
   init(): void {
     // init code.
     const table = this.table;
-   
+
     // table.addGroup('CREDIT_DAYS');
   }
 
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
   }
-  
+
+  tempdata = []
   loadData() {
     this.isLoading = true;
     this.Tabledata = []
@@ -248,7 +249,8 @@ values: any;
         this.showtable = true
         let obj = {}
         this.Tabledata = res.List
-       
+        this.tempdata = res.List
+
         this.isLoading = false;
 
       });

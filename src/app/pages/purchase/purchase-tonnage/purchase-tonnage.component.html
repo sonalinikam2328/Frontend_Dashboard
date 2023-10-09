@@ -32,7 +32,7 @@
                         <span class="border-lable-flt">
                             <input type="text" placeholder="dd/mm/yyyy" name="fdate" id="fdate" class="form-control"
                                 [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" [(ngModel)]="fromdate" [maxDate]="maxDate"
-                                formControlName="FROM" required bsDatepicker style="max-width: 100px;">
+                                formControlName="FROM" required bsDatepicker style="max-width: 100px;" #fdateInput>
                         </span>
                     </div>
                 </div>
@@ -98,8 +98,8 @@
                             <table class="table table-striped table-bordered table-hover compact">
                                 <thead style="position: sticky; top: 0; text-align: center;">
 
-                                   
-                                    
+
+
                                     <tr>
                                         <th class="td_right"></th>
                                         <th class="td_left">Supplier Name</th>
@@ -132,11 +132,12 @@
                             <table class="table table-striped table-bordered table-hover compact marginTable">
                                 <thead style="position: sticky; top: 0; text-align: center;">
 
-                                    <tr>                               
-                                    </tr>                              
+                                    <tr>
+                                    </tr>
                                     <th colspan="12">
                                         <div class="search-container">
-                                            <input type="text" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search...">
+                                            <input type="text" [(ngModel)]="searchQuery" (input)="filterData()"
+                                                placeholder="Search...">
                                         </div>
                                     </th>
 
@@ -144,17 +145,21 @@
                                         <th class="td_left" *ngFor="let column of tableColumns">
                                             {{ column }}
                                             <div class="filter-container">
-                                              <div class="filter-toggle" (click)="toggleFilter(column)">
-                                                <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
-                                              </div>
-                                              <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen[column]}">
-                                                <div class="filter-option" (click)="applyFilter(column, 'Option 1')">Filter</div>
-                                                <div class="input-box" [class.show-input]="isFilterInputOpen[column]">
-                                                  <input type="text" placeholder=" " (blur)="toggleFilterInput(column)">
+                                                <div class="filter-toggle" (click)="toggleFilter(column)">
+                                                    <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                                                 </div>
-                                              </div>
+                                                <div class="filter-options"
+                                                    [ngClass]="{'show-filter-options': isFilterOpen[column]}">
+                                                    <div class="filter-option"
+                                                        (click)="applyFilter(column, 'Option 1')">Filter</div>
+                                                    <div class="input-box"
+                                                        [class.show-input]="isFilterInputOpen[column]">
+                                                        <input type="text" placeholder=" "
+                                                            (blur)="toggleFilterInput(column)">
+                                                    </div>
+                                                </div>
                                             </div>
-                                          </th>
+                                        </th>
 
                                     </tr>
                                 </thead>

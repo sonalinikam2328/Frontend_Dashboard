@@ -38,7 +38,7 @@
       }
     },
     "WIPMACHINESHOP": {
-      "TEXT": "wip-machine-shop",
+      "TEXT": "Wip Machine Shop",
       "LIST": {
         "OILCONSUMPTION": "Oil Consumption"
       }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -33,18 +33,19 @@ export class PurchaseTonnageComponent {
   showtable1: boolean = false;
   selectedBrach;
   selectedCategory
+  @ViewChild('fdateInput') fdateInput: ElementRef;
 
-  Keyarray=[];
+  Keyarray = [];
   searchQuery: string = '';
 
 
-  tableColumns = ['Supplier Name','Purchase Qty','Purchase Weight','Purchase Amt','Rate Diff Amt',
-  'Total Purchase Amt','Rejection Qty','Rejection Weight',' Rejection Amt','Net Pur Qty','Net Pur Weight',
-  ' Net Pur Amt']; 
+  tableColumns = ['Supplier Name', 'Purchase Qty', 'Purchase Weight', 'Purchase Amt', 'Rate Diff Amt',
+    'Total Purchase Amt', 'Rejection Qty', 'Rejection Weight', ' Rejection Amt', 'Net Pur Qty', 'Net Pur Weight',
+    ' Net Pur Amt'];
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
-column: any;
-values: any;
+  column: any;
+  values: any;
 
   toggleFilter(column: string) {
     this.isFilterOpen[column] = !this.isFilterOpen[column];
@@ -69,6 +70,8 @@ values: any;
     private router: Router,
     private _AppComponentService: AppComponentService,
     private _PurchaseTonnageService: PurchaseTonnageService,
+    private renderer: Renderer2,
+
   ) {
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -114,6 +117,9 @@ values: any;
         this.selectedBrach = this.branch[0]['CODE']
 
       }
+      setTimeout(() => {
+        this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+      }, 100);
     });
 
     this._PurchaseTonnageService.suppliCate(obj).subscribe((res) => {
@@ -157,9 +163,11 @@ values: any;
     // }
 
   }
+
+  tempdata = []
   filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
-    this.Tabledata = this.Keyarray.filter(item => {
+    this.Tabledata1 = this.tempdata.filter(item => {
       const values = Object.values(item);
       return values.some(value => {
         if (typeof value === 'string') {
@@ -209,8 +217,9 @@ values: any;
           let obj = {}
 
           this.Tabledata1 = res.List
-          this.Tabledata1.unshift(obj)
-          this.Tabledata1.unshift(obj)
+          this.tempdata = res.List
+          // this.Tabledata1.unshift(obj)
+          // this.Tabledata1.unshift(obj)
           this.isLoading = false;
         });
 
@@ -249,5 +258,10 @@ values: any;
 
   onFocus(ele: NgSelectComponent) {
     ele.open();
+  }
+
+  ngAfterViewInit(): void {
+    // afterViewInit code.
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
   }
 }

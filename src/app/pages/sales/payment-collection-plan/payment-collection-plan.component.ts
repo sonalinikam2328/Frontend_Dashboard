@@ -21,7 +21,7 @@ export class PaymentCollectionPlanComponent implements AfterViewInit, OnInit {
   // @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
   branch = []
   finyear = [];
-  Keyarray=[];
+  Keyarray = [];
   selectedBrach;
   selectedYear;
   selectedMonth;
@@ -42,11 +42,11 @@ export class PaymentCollectionPlanComponent implements AfterViewInit, OnInit {
   MonthData
   searchQuery: string = '';
 
-  tableColumns = ['Sr. No.', 'Name of Customer','Payment Amount Plan For The Month Rs.','Amount Received Rs.','% of Recovery','Credit Day','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days']; 
+  tableColumns = ['Sr. No.', 'Name of Customer', 'Payment Amount Plan For The Month Rs.', 'Amount Received Rs.', '% of Recovery', 'Credit Day', 'Avg Payment Receipt Days', 'Avg Payment Receipt Days', 'Avg Payment Receipt Days', 'Avg Payment Receipt Days', 'Avg Payment Receipt Days', 'Avg Payment Receipt Days'];
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
-column: any;
-values: any;
+  column: any;
+  values: any;
 
   toggleFilter(column: string) {
     this.isFilterOpen[column] = !this.isFilterOpen[column];
@@ -148,7 +148,7 @@ values: any;
   }
   filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
-    this.Tabledata = this.Keyarray.filter(item => {
+    this.Tabledata = this.temparray.filter(item => {
       const values = Object.values(item);
       return values.some(value => {
         if (typeof value === 'string') {
@@ -163,6 +163,7 @@ values: any;
   }
   Tabledata = []
   FooterData = []
+  temparray = []
   loadData() {
     this.Tabledata = []
     this.FooterData = []
@@ -187,6 +188,7 @@ values: any;
         this.showtable = true
         this.FooterData.push(res.List[res.List.length - 1])
         this.Tabledata = res.List
+        this.temparray = res.List
         this.Tabledata.pop()
         this.isLoading = false;
       });
@@ -219,11 +221,11 @@ values: any;
 
     this.currentMonth = date
     let checkdate = moment(this.currentMonth, 'MMM/YYYY').format('YYYY-MM-DD')
-    this.priviousOne = moment(checkdate,'YYYY-MM-DD').subtract(1, 'months').format('MMM-YYYY');
-    this.priviousTwo = moment(checkdate,'YYYY-MM-DD').subtract(2, 'months').format('MMM-YYYY');
-    this.priviousThree = moment(checkdate,'YYYY-MM-DD').subtract(3, 'months').format('MMM-YYYY');
-    this.priviousFour = moment(checkdate,'YYYY-MM-DD').subtract(4, 'months').format('MMM-YYYY');
-    this.priviousFive = moment(checkdate,'YYYY-MM-DD').subtract(5, 'months').format('MMM-YYYY');
+    this.priviousOne = moment(checkdate, 'YYYY-MM-DD').subtract(1, 'months').format('MMM-YYYY');
+    this.priviousTwo = moment(checkdate, 'YYYY-MM-DD').subtract(2, 'months').format('MMM-YYYY');
+    this.priviousThree = moment(checkdate, 'YYYY-MM-DD').subtract(3, 'months').format('MMM-YYYY');
+    this.priviousFour = moment(checkdate, 'YYYY-MM-DD').subtract(4, 'months').format('MMM-YYYY');
+    this.priviousFive = moment(checkdate, 'YYYY-MM-DD').subtract(5, 'months').format('MMM-YYYY');
 
   }
 

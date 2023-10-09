@@ -43,6 +43,7 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
   column: any;
 
   toggleFilter(column: string) {
+    debugger
    this.isFilterOpen[column] = !this.isFilterOpen[column];
    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
   }
@@ -53,6 +54,7 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
   }
 
 toggleFilterInput(column: string) {
+  debugger
      this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
   }
 

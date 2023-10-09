@@ -300,7 +300,7 @@ Keyarray=[];
 
   filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
-    this.Tabledata = this.Keyarray.filter(item => {
+    this.Tabledata = this.tempData.filter(item => {
       const values = Object.values(item);
       return values.some(value => {
         if (typeof value === 'string') {
@@ -313,6 +313,9 @@ Keyarray=[];
     });
     console.log('Tabledata', this.Tabledata);
   }
+
+  tempData = []
+
   loadData() {
     this.isLoading = true;
     this.Tabledata = []
@@ -332,6 +335,7 @@ Keyarray=[];
         let obj = {}
 
         this.Tabledata = newdata.List
+        this.tempData = this.Tabledata
         // jan
         let first = this.Tabledata.reduce((accumulator, object) => {
           return accumulator + object.JAN_GRN_QTY;

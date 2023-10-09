@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
 import { Observable, throwError } from 'rxjs';
@@ -22,6 +22,9 @@ import { FormControl } from '@angular/forms';
 })
 export class DailySalesDataComponent implements OnInit {
   // dataSource = []
+
+  @ViewChild('fdateInput') fdateInput: ElementRef;
+
   freezeHeader: boolean = true;
 
   angForm: FormGroup;
@@ -50,7 +53,9 @@ export class DailySalesDataComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private _dailysalesService: DailySalesService
+    private _dailysalesService: DailySalesService,
+    private renderer: Renderer2,
+
   ) {
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -102,6 +107,9 @@ export class DailySalesDataComponent implements OnInit {
         this.isLoading1 = false;
         this.selectedBrach = this.branch[0]['CODE']
       }
+      setTimeout(() => {
+        this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+      }, 100);
     });
 
 
@@ -172,6 +180,7 @@ export class DailySalesDataComponent implements OnInit {
           this.showtable1 = true
 
           this.Tabledata1 = res.List
+          this.tempdata = res.List
           this.isLoading = false;
         });
 
@@ -246,6 +255,7 @@ export class DailySalesDataComponent implements OnInit {
   // ];
 
 Keyarray=[];
+tempdata=[];
 searchQuery: string = '';
  
 
@@ -253,10 +263,12 @@ searchQuery: string = '';
     // afterViewInit code.
     this.init();
     const table = document.querySelector('smart-table');
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+
   }
   filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
-    this.Tabledata = this.Keyarray.filter(item => {
+    this.Tabledata1 = this.tempdata.filter(item => {
       const values = Object.values(item);
       return values.some(value => {
         if (typeof value === 'string') {

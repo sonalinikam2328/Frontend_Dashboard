@@ -198,9 +198,10 @@ values: any;
       this.YEAR_NAME.focus();
     }
   }
+  tempdata = []
   filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
-    this.Tabledata = this.Keyarray.filter(item => {
+    this.Tabledata = this.tempdata.filter(item => {
       const values = Object.values(item);
       return values.some(value => {
         if (typeof value === 'string') {
@@ -253,6 +254,7 @@ values: any;
         
         if (res.List.length != 0) {
           this.Tabledata = res.List
+          this.tempdata = res.List
           
           this.isLoading = false;
         } else {

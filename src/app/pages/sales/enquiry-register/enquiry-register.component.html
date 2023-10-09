@@ -79,15 +79,15 @@
               <table class="table table-striped table-bordered table-hover compact marginTable">
                 <thead style="position: sticky; top: 0; text-align: center;">
 
-                  <tr>                               
-                  </tr>                              
+                  <tr>
+                  </tr>
                   <th colspan="10">
-                      <div class="search-container">
-                          <input type="text" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search...">
-                      </div>
+                    <div class="search-container">
+                      <input type="text" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search...">
+                    </div>
                   </th>
                   <tr>
-                    <th class="td_left" *ngFor="let column of tableColumns">
+                    <!-- <th class="td_left" *ngFor="let column of tableColumns">
                       {{ column }}
                       <div class="filter-container">
                         <div class="filter-toggle" (click)="toggleFilter(column)">
@@ -101,20 +101,136 @@
                         </div>
                       </div>
                     </th>
-                    
-  
-                    </tr>
+                    </tr> -->
+                    <th class="td_right">Sr.No.
+                      <div class="filter-container">
+                        <div class="filter-toggle" (click)="toggleFilter('SrNo')">
+                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                        </div>
+                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SrNo']}">
+                          <div class="filter-option" (click)="applyFilter('SrNo', 'Option 1')">Filter</div>
+                          <div class="input-box" [class.show-input]="isFilterInputOpen['SrNo']">
+                            <input type="text" placeholder=" " (blur)="toggleFilterInput('SrNo')">
+                          </div>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="td_left">Enquiry Number
+                      <div class="filter-container">
+                        <div class="filter-toggle" (click)="toggleFilter('EnquiryNumber')">
+                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                        </div>
+                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['EnquiryNumber']}">
+                          <div class="filter-option" (click)="applyFilter('EnquiryNumber', 'Option 1')">Filter</div>
+                          <div class="input-box" [class.show-input]="isFilterInputOpen['EnquiryNumber']">
+                            <input type="text" placeholder=" " (blur)="toggleFilterInput('EnquiryNumber')">
+                          </div>
+                        </div>
+                      </div>
+                    </th>
+                    <th>Date
+                      <div class="filter-container">
+                        <div class="filter-toggle" (click)="toggleFilter('Date')">
+                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                        </div>
+                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Date']}">
+                          <div class="filter-option" (click)="applyFilter('Date', 'Option 1')">Filter</div>
+                          <div class="input-box" [class.show-input]="isFilterInputOpen['Date']">
+                            <input type="text" placeholder=" " (blur)="toggleFilterInput('Date')">
+                          </div>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="td_left">Customer
+                      <div class="filter-container">
+                        <div class="filter-toggle" (click)="toggleFilter('Customer')">
+                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                        </div>
+                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Customer']}">
+                          <div class="filter-option" (click)="applyFilter('Customer', 'Option 1')">Filter</div>
+                          <div class="input-box" [class.show-input]="isFilterInputOpen['Customer']">
+                            <input type="text" placeholder=" " (blur)="toggleFilterInput('Customer')">
+                          </div>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="td_left">RFQ.No./Ref.
+                      <div class="filter-container">
+                        <div class="filter-toggle" (click)="toggleFilter('RFQNoRef')">
+                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                        </div>
+                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['RFQNoRef']}">
+                          <div class="filter-option" (click)="applyFilter('RFQNoRef', 'Option 1')">Filter</div>
+                          <div class="input-box" [class.show-input]="isFilterInputOpen['RFQNoRef']">
+                            <input type="text" placeholder=" " (blur)="toggleFilterInput('RFQNoRef')">
+                          </div>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="td_left">Material
+                      <div class="filter-container">
+                        <div class="filter-toggle" (click)="toggleFilter('Material')">
+                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                        </div>
+                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Material']}">
+                          <div class="filter-option" (click)="applyFilter('Material', 'Option 1')">Filter</div>
+                          <div class="input-box" [class.show-input]="isFilterInputOpen['Material']">
+                            <input type="text" placeholder=" " (blur)="toggleFilterInput('Material')">
+                          </div>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="td_left">Part Code
+                      <div class="filter-container">
+                        <div class="filter-toggle" (click)="toggleFilter('PartCode')">
+                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                        </div>
+                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['PartCode']}">
+                          <div class="filter-option" (click)="applyFilter('PartCode', 'Option 1')">Filter</div>
+                          <div class="input-box" [class.show-input]="isFilterInputOpen['PartCode']">
+                            <input type="text" placeholder=" " (blur)="toggleFilterInput('PartCode')">
+                          </div>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="td_right">Oty
+                      <div class="filter-container">
+                        <div class="filter-toggle" (click)="toggleFilter('Oty')">
+                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                        </div>
+                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Oty']}">
+                          <div class="filter-option" (click)="applyFilter('Oty', 'Option 1')">Filter</div>
+                          <div class="input-box" [class.show-input]="isFilterInputOpen['Oty']">
+                            <input type="text" placeholder=" " (blur)="toggleFilterInput('Oty')">
+                          </div>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="td_left">Remark
+                      <div class="filter-container">
+                        <div class="filter-toggle" (click)="toggleFilter('Remark')">
+                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                        </div>
+                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Remark']}">
+                          <div class="filter-option" (click)="applyFilter('Remark', 'Option 1')">Filter</div>
+                          <div class="input-box" [class.show-input]="isFilterInputOpen['Remark']">
+                            <input type="text" placeholder=" " (blur)="toggleFilterInput('Remark')">
+                          </div>
+                        </div>
+                      </div>
+                    </th>
+                  </tr>
                 </thead>
                 <tbody *ngIf="Tabledata.length !=0">
                   <tr *ngFor="let data of Tabledata;let indexOfelement = index">
-                    <td class="td_left">{{data?.SR_NO}}</td>
-                    <td class="td_right"> {{data?.TRAN_NO}}</td>
-                    <td class="td_right">{{data?.TRAN_DATE}}</td>
+                    <td class="td_right">{{data?.SR_NO}}</td>
+                    <td class="td_left"> {{data?.TRAN_NO}}</td>
+                    <td>{{data?.TRAN_DATE}}</td>
                     <td class="td_left">{{data?.CUSTOMER_NAME}}</td>
                     <td class="td_left">{{data?.QUOT_TRANNO }}</td>
                     <td class="td_left">{{data?.MATERIAL_NAME}}</td>
                     <td class="td_left">{{data?.PART_CODE}}</td>
-                    <td class="td_left">{{data?.QTY}}</td>
+                    <td class="td_right">{{data?.QTY}}</td>
                     <td class="td_left">{{data?.SHORT_NARRTN}}</td>
 
 

@@ -106,7 +106,7 @@ values: any;
   filterData() {
     const searchQuery = this.searchQuery.trim().toLowerCase(); // Convert search query to lowercase
   
-    this.Tabledata = this.Keyarray.filter(item => {
+    this.Tabledata = this.tempdata.filter(item => {
       const values = Object.values(item);
       return values.some(value => {
         if (typeof value === 'string') {
@@ -198,7 +198,7 @@ values: any;
       }, 100);
     });
   }
-
+  tempdata = []
   loadData() {
     this.isLoading = true;
     this.Tabledata = []
@@ -220,6 +220,7 @@ values: any;
 
         this.showtable = true
         this.Tabledata = res.List
+        this.tempdata = res.List
         
         this.isLoading = false;
 

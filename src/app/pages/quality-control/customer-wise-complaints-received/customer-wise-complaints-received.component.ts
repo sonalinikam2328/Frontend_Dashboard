@@ -227,7 +227,7 @@ export class CustomerWiseComplaintsReceivedComponent {
 
     let result3 = this.selectedMonth.substr(0, 2);
     let result4 = this.selectedMonth.substr(2, 2);
-    debugger
+    
     if (result3 > '03') {
       date = result2 + result3 + result4
     } else {
@@ -236,7 +236,7 @@ export class CustomerWiseComplaintsReceivedComponent {
     const endOfMonth = moment(date, 'YYYYMMDD').clone().endOf('month').format('YYYYMMDD');
     let objdata = {
       SP_NAME: 'Sel_DBCustwsComplaintsRecd',
-      PARAM: `'${result.COMPANY_ID}', '${this.selectedBrach}' ,'${date}'`,
+      PARAM: `'${result.COMPANY_ID}', '${this.selectedBrach}' ,'${endOfMonth}'`,
     }
 
     if (this.angForm.valid) {

@@ -136,7 +136,7 @@
                   <td class="td_right">{{data.RECEIPT_WT}}</td>
                   <td class="td_right">{{data.CR_WT}}</td>
                   <td class="td_right">{{data.CR_PERCENT}}</td>
-                  <td class="td_left">{{data.REJ_DETAILS}}</td>
+                  <td class="td_left" style=" white-space: pre-wrap;">{{data.REJ_DETAILS}}</td>
                 </tr>
               <tbody *ngIf="Tabledata.length ==0">
                 <tr>
@@ -154,11 +154,11 @@
                 <tr>
                   <th> Total</th>
                   <th> </th>
-                  <th> {{TOTAL_RECEIPT_QTY}}</th>
-                  <th> {{TOTAL_CR_QTY}}</th>
-                  <th> {{TOTAL_RECEIPT_WT}}</th>
-                  <th> {{TOTAL_CR_WT}}</th>
-                  <th> {{TOTAL_CR_PERCENT}}</th>
+                  <th class="td_right"> {{TOTAL_RECEIPT_QTY}}</th>
+                  <th class="td_right"> {{TOTAL_CR_QTY}}</th>
+                  <th class="td_right"> {{TOTAL_RECEIPT_WT}}</th>
+                  <th class="td_right"> {{TOTAL_CR_WT}}</th>
+                  <th class="td_right"> {{TOTAL_CR_PERCENT}}</th>
                   <th> </th>
                 </tr>
               </tfoot>

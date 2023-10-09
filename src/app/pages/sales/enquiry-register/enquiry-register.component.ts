@@ -32,15 +32,16 @@ export class EnquiryRegisterComponent {
   BRANCH: boolean = false;
   isLoading = false;
 
-  tableColumns = ['Sr.No.', 'Enquiry Number','Date','Customer','Part Name','Material','Oty.','Remark']; 
+  tableColumns = ['Sr.No.', 'Enquiry Number','Date','Customer','Part Name','Material','Oty.','Remark', 'part name']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
 column: any;
 values: any;
 
   toggleFilter(column: string) {
+    debugger
     this.isFilterOpen[column] = !this.isFilterOpen[column];
-    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+     this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
   }
 
   applyFilter(column: string, filterOption: string) {
@@ -127,7 +128,7 @@ values: any;
   }
   filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
-    this.Tabledata = this.Keyarray.filter(item => {
+    this.Tabledata = this.tempdata.filter(item => {
       const values = Object.values(item);
       return values.some(value => {
         if (typeof value === 'string') {
@@ -144,6 +145,7 @@ values: any;
   searchQuery: string = '';
   Tabledata = []
   FooterData = []
+  tempdata = []
   loadData() {
     this.Tabledata = []
     this.FooterData = []
@@ -167,11 +169,12 @@ values: any;
         let obj = {}
         this.showtable = true
         this.Tabledata = res.List
-        this.Tabledata.unshift(obj)
+        this.tempdata = res.List
+        //this.Tabledata.unshift(obj)
         this.isLoading = false;
 
        
-        this.Tabledata.pop()
+      //  this.Tabledata.pop()
         
       });
     } else {

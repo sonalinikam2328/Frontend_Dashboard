@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild,ElementRef, Renderer2,AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -17,11 +17,11 @@ import { tableData } from '../../tables/advancedtable/data';
   templateUrl: './top5-suppliers-cr-percent.component.html',
   styleUrls: ['./top5-suppliers-cr-percent.component.scss']
 })
-export class Top5SuppliersCRPercentComponent implements OnInit,AfterViewInit{
+export class Top5SuppliersCRPercentComponent implements OnInit, AfterViewInit {
   @ViewChild('FROM', { static: false }) FROM: NgSelectComponent;
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
-Keyarray=[];
-searchQuery: string = '';
+  Keyarray = [];
+  searchQuery: string = '';
 
   @ViewChild('fdateInput') fdateInput: ElementRef;
   branch = [];
@@ -56,13 +56,13 @@ searchQuery: string = '';
   TOTAL_RECEIPT_WT
   TOTAL_CR_WT
   TOTAL_CR_PERCENT
-  
-  tableColumns = ['Sr.No.', 'Supplier Name','Receipt Qty','CR Qty','Receipt Tonnage','CR Tonnage',
-  'CR % On Tonnage','Rejection Details']; 
+
+  tableColumns = ['Sr.No.', 'Supplier Name', 'Receipt Qty', 'CR Qty', 'Receipt Tonnage', 'CR Tonnage',
+    'CR % On Tonnage', 'Rejection Details'];
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
-column: any;
-values: any;
+  column: any;
+  values: any;
 
   toggleFilter(column: string) {
     this.isFilterOpen[column] = !this.isFilterOpen[column];
@@ -144,7 +144,7 @@ values: any;
         this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
       }, 100);
     });
-    
+
   }
 
   onFocus(ele: NgSelectComponent) {
@@ -172,6 +172,7 @@ values: any;
   //   // }
 
   // }
+  temPTable = []
   loadData() {
     this.isLoading = true;
 
@@ -189,39 +190,40 @@ values: any;
       this._Top5Service.findAll(objdata).subscribe((res) => {
         this.showtable = true
         let obj = {}
-       
+
 
         for (let i = 0; i <= res.List.length - 1; i++) {
-          res.List[i]['RECEIPT_QTY'] =  parseFloat(res.List[i]['RECEIPT_QTY']).toFixed(2)
-          res.List[i]['CR_QTY'] =  parseFloat(res.List[i]['CR_QTY']).toFixed(2)
+          res.List[i]['RECEIPT_QTY'] = parseFloat(res.List[i]['RECEIPT_QTY']).toFixed(2)
+          res.List[i]['CR_QTY'] = parseFloat(res.List[i]['CR_QTY']).toFixed(2)
           res.List[i]['RECEIPT_WT'] = parseFloat(res.List[i]['RECEIPT_WT']).toFixed(2)
-          res.List[i]['CR_WT'] =  parseFloat(res.List[i]['CR_WT']).toFixed(2)
-          res.List[i]['CR_PERCENT'] =  parseFloat(res.List[i]['CR_PERCENT']).toFixed(2)
+          res.List[i]['CR_WT'] = parseFloat(res.List[i]['CR_WT']).toFixed(2)
+          res.List[i]['CR_PERCENT'] = parseFloat(res.List[i]['CR_PERCENT']).toFixed(2)
         }
         this.Tabledata = res.List
-
+        this.temPTable = this.Tabledata
+        debugger
         let first = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.RECEIPT_QTY;
+          return Number(accumulator) + Number(object.RECEIPT_QTY);
         }, 0);
         this.TOTAL_RECEIPT_QTY = parseFloat(first).toFixed(2)
 
         let second = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.CR_QTY;
+          return Number(accumulator) + Number(object.CR_QTY);
         }, 0);
         this.TOTAL_CR_QTY = parseFloat(second).toFixed(2)
 
         let third = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.RECEIPT_WT;
+          return Number(accumulator) + Number(object.RECEIPT_WT);
         }, 0);
         this.TOTAL_RECEIPT_WT = parseFloat(third).toFixed(2)
 
         let forth = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.CR_WT;
+          return Number(accumulator) + Number(object.CR_WT);
         }, 0);
         this.TOTAL_CR_WT = parseFloat(forth).toFixed(2)
 
         let fith = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.CR_PERCENT;
+          return Number(accumulator) + Number(object.CR_PERCENT);
         }, 0);
         this.TOTAL_CR_PERCENT = parseFloat(fith).toFixed(2)
 
@@ -299,7 +301,7 @@ values: any;
 
   filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
-    this.Tabledata = this.Keyarray.filter(item => {
+    this.Tabledata = this.temPTable.filter(item => {
       const values = Object.values(item);
       return values.some(value => {
         if (typeof value === 'string') {

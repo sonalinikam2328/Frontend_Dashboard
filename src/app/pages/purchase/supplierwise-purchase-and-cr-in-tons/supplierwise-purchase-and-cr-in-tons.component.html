@@ -61,12 +61,12 @@
             <table class="table table-striped table-bordered table-hover compact marginTable">
               <thead style="position: sticky; top: 0; text-align: center;">
 
-                <tr>                               
-                </tr>                              
+                <tr>
+                </tr>
                 <th colspan="24">
-                    <div class="search-container">
-                        <input type="text" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search...">
-                    </div>
+                  <div class="search-container">
+                    <input type="text" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search...">
+                  </div>
                 </th>
                 <tr>
                   <th class="td_left" *ngFor="let column of tableColumns">
@@ -97,44 +97,52 @@
                   <td style="text-align: right;">{{data.PRVYR_DELV_RATE2}} </td>
                   <td style="text-align: right;">{{data.PRVYR_QUAL_RATE}} </td>
                   <td style="text-align: right;"><a (click)="checkhyperlink(1)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q1_GRN_QTY}}</a></td>
-                  <td style="text-align: right;"><a (click)="checkhyperlink(1)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q1_CR_QTY}}</a></td>
-                  <td style="text-align: right;"><a (click)="checkhyperlink(1)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q1_DEVL_RATE}}</a>
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q1_GRN_QTY}}</u></a>
                   </td>
                   <td style="text-align: right;"><a (click)="checkhyperlink(1)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q1_QUAL_RATE}}</a>
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q1_CR_QTY}}</u></a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(1)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q1_DEVL_RATE}}</u></a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(1)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q1_QUAL_RATE}}</u></a>
                   </td>
                   <td style="text-align: right;"><a (click)="checkhyperlink(2)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q2_GRN_QTY}}</a></td>
-                  <td style="text-align: right;"><a (click)="checkhyperlink(2)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q2_CR_QTY}}</a></td>
-                  <td style="text-align: right;"><a (click)="checkhyperlink(2)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q2_DEVL_RATE}}</a>
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q2_GRN_QTY}}</u></a>
                   </td>
                   <td style="text-align: right;"><a (click)="checkhyperlink(2)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q2_QUAL_RATE}}</a>
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q2_CR_QTY}}</u></a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(2)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q2_DEVL_RATE}}</u></a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(2)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q2_QUAL_RATE}}</u></a>
                   </td>
                   <td style="text-align: right;"><a (click)="checkhyperlink(3)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q3_GRN_QTY}}</a></td>
-                  <td style="text-align: right;"><a (click)="checkhyperlink(3)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q3_CR_QTY}}</a></td>
-                  <td style="text-align: right;"><a (click)="checkhyperlink(3)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q3_DEVL_RATE}}</a>
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q3_GRN_QTY}}</u></a>
                   </td>
                   <td style="text-align: right;"><a (click)="checkhyperlink(3)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q3_QUAL_RATE}}</a>
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q3_CR_QTY}}</u></a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(3)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q3_DEVL_RATE}}</u></a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(3)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q3_QUAL_RATE}}</u></a>
                   </td>
                   <td style="text-align: right;"><a (click)="checkhyperlink(4)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q4_GRN_QTY}}</a></td>
-                  <td style="text-align: right;"><a (click)="checkhyperlink(4)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q4_CR_QTY}}</a></td>
-                  <td style="text-align: right;"><a (click)="checkhyperlink(4)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q4_DEVL_RATE}}</a>
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q4_GRN_QTY}}</u></a>
                   </td>
                   <td style="text-align: right;"><a (click)="checkhyperlink(4)"
-                      style="cursor: pointer;color: blue;text-decoration: underline blue;">{{data.Q4_QUAL_RATE}}</a>
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q4_CR_QTY}}</u></a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(4)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q4_DEVL_RATE}}</u></a>
+                  </td>
+                  <td style="text-align: right;"><a (click)="checkhyperlink(4)"
+                      style="cursor: pointer;color: blue;text-decoration: underline blue;"><u>{{data.Q4_QUAL_RATE}}</u></a>
                   </td>
                 </tr>
               </tbody>
