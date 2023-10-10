@@ -410,11 +410,11 @@ body[data-sidebar="dark"] {
     }
 
     // Enlarge menu
-
-    
+    &.vertical-collpsed {
+        min-height: 1760px;
 
         // Side menu
-        
+        .vertical-menu {
 
             // Sidebar Menu
             #sidebar-menu {
@@ -469,7 +469,7 @@ body[data-sidebar="dark"] {
 
 
         }
-    
+    }
 
     .mm-active {
         color: black !important;
@@ -498,7 +498,7 @@ body[data-sidebar="dark"] {
     .menu-title {
         color: black;
     }
-
+}
 
 
 body[data-layout="horizontal"] {

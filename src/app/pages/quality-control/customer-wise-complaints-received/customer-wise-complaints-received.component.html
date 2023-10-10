@@ -16,7 +16,7 @@
                 <div class="col-sm-2" *ngIf="showBranch">
                     <div class="form-group form-primary form-static-label">
                         <span class="border-lable-flt">
-                            <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" #BRANCH_NAME
+                            <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME"  required #BRANCH_NAME
                                 [(ngModel)]="selectedBrach" formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)"
                                 [selectOnTab]='true' [required]="BRANCH">
                                 <ng-option *ngFor="let values of branch" [value]="values">
@@ -33,7 +33,7 @@
                 <div class="col-sm-2">
                     <div class="form-group form-primary form-static-label">
                         <span class="border-lable-flt">
-                            <ng-select id="YEAR_NAME" bindValue="DATEVALUE" bindLabel="DATEDESC" required #YEAR_NAME
+                            <ng-select id="YEAR_NAME" bindValue="DATEVALUE" bindLabel="DATEDESC" required #YEAR_NAME autofocus
                                 [(ngModel)]="selectedYear" formControlName="YEAR_NAME" (focus)="onFocus(YEAR_NAME)"
                                 [selectOnTab]='true'>
                                 <ng-option *ngFor="let values of finyear" [value]="values">

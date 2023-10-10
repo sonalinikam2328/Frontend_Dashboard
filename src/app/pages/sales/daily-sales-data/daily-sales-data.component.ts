@@ -21,9 +21,11 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./daily-sales-data.component.scss']
 })
 export class DailySalesDataComponent implements OnInit {
+  @ViewChild('fdateInput') fdateInput: ElementRef;
+  @ViewChild('FROM', { static: false }) FROM: NgSelectComponent;
   // dataSource = []
 
-  @ViewChild('fdateInput') fdateInput: ElementRef;
+
 
   freezeHeader: boolean = true;
 
@@ -109,11 +111,10 @@ export class DailySalesDataComponent implements OnInit {
       }
       setTimeout(() => {
         this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
-      }, 100);
+      }, 100)
     });
-
-
   }
+  
   onFocus(ele: NgSelectComponent) {
     ele.open();
   }
