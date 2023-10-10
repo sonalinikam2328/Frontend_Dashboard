@@ -121,11 +121,11 @@ Keyarray=[];
   BRANCH: boolean = false
   showtable: boolean = false
 
-  tableColumns = ['Supplier Name', 'Avg. Purchase','Avg. Purchase Returns','Avg. Purchase Schedule',
-  'Delivery Rating','Delivery Rating','Quality Rating','Q1 Purchase','Q1 purchase Return','Q1 Delivery Rating',
-  'Q1 Quality Rating','Q2 Purchase','Q2 purchase Return','Q2 Delivery Rating','Q2 Quality Rating','Q3 Purchase',
-  'Q3 purchase Return','Q3 Delivery Rating','Q3 Quality Rating','Q4 Purchase','Q4 purchase Return',
-  'Q4 Delivery Rating','Q4 Quality Rating']; 
+  //   tableColumns = ['Supplier Name', 'Avg. Purchase','Avg. Purchase Returns','Avg. Purchase Schedule',
+  //  'Delivery Rating','Delivery Rating','Quality Rating','Q1 Purchase','Q1 purchase Return','Q1 Delivery Rating',
+  //  'Q1 Quality Rating','Q2 Purchase','Q2 purchase Return','Q2 Delivery Rating','Q2 Quality Rating','Q3 Purchase',
+  //  'Q3 purchase Return','Q3 Delivery Rating','Q3 Quality Rating','Q4 Purchase','Q4 purchase Return',
+  //  'Q4 Delivery Rating','Q4 Quality Rating']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
  column: any;

@@ -48,23 +48,15 @@ export class OilConsumptionComponent implements OnInit {
   columnSizeMode = 'default';
   columns
 
-  searchQuery: string = '';
-
-  
-
-
-   
-  
-
-
-
-  //searchQuery: string = '';
-
-   isFilterOpen: { [key: string]: boolean } = {};
+  isFilterOpen: { [key: string]: boolean } = {};
    isFilterInputOpen: { [key: string]: boolean } = {};
 data: any;
 column: any;
 currentlyOpenInputBox: string | null = null;
+searchQuery: string = '';
+ //searchQuery: string = '';
+
+  
 
    toggleFilter(column: string) {
     this.isFilterOpen[column] = !this.isFilterOpen[column];

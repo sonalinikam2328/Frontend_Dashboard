@@ -140,28 +140,165 @@
                                                 placeholder="Search...">
                                         </div>
                                     </th>
-
                                     <tr>
-                                        <th class="td_left" *ngFor="let column of tableColumns">
-                                            {{ column }}
+                                        <th class="td_left">Supplier Name
                                             <div class="filter-container">
-                                                <div class="filter-toggle" (click)="toggleFilter(column)">
-                                                    <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                                                <div class="filter-toggle" (click)="toggleFilter('SupplierName')">
+                                                  <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
                                                 </div>
-                                                <div class="filter-options"
-                                                    [ngClass]="{'show-filter-options': isFilterOpen[column]}">
-                                                    <div class="filter-option"
-                                                        (click)="applyFilter(column, 'Option 1')">Filter</div>
-                                                    <div class="input-box"
-                                                        [class.show-input]="isFilterInputOpen[column]">
-                                                        <input type="text" placeholder=" "
-                                                            (blur)="toggleFilterInput(column)">
-                                                    </div>
+                                                <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SupplierName']}">
+                                                  <div class="filter-option" (click)="applyFilter('SupplierName', 'Option 1')">Filter</div>
+                                                  <div class="input-box" [class.show-input]="isFilterInputOpen['SupplierName']">
+                                                    <input type="text" placeholder=" " (blur)="toggleFilterInput('SupplierName')">
+                                                  </div>
                                                 </div>
-                                            </div>
+                                              </div>
                                         </th>
+                                        <th class="td_right"> Purchase Qty
+                                            <div class="filter-container">
+                                                <div class="filter-toggle" (click)="toggleFilter('PurchaseQty')">
+                                                  <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                                </div>
+                                                <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['PurchaseQty']}">
+                                                  <div class="filter-option" (click)="applyFilter('PurchaseQty', 'Option 1')">Filter</div>
+                                                  <div class="input-box" [class.show-input]="isFilterInputOpen['PurchaseQty']">
+                                                    <input type="text" placeholder=" " (blur)="toggleFilterInput('PurchaseQty')">
+                                                  </div>
+                                                </div>
+                                              </div>  
+                                        </th>
+                                        <th class="td_right"> Purchase Weight
+                                            <div class="filter-container">
+                                                <div class="filter-toggle" (click)="toggleFilter('PurchaseWeight')">
+                                                  <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                                </div>
+                                                <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['PurchaseWeight']}">
+                                                  <div class="filter-option" (click)="applyFilter('PurchaseWeight', 'Option 1')">Filter</div>
+                                                  <div class="input-box" [class.show-input]="isFilterInputOpen['PurchaseWeight']">
+                                                    <input type="text" placeholder=" " (blur)="toggleFilterInput('PurchaseWeight')">
+                                                  </div>
+                                                </div>
+                                              </div>    
+                                        </th>
+                                        <th class="td_right"> Purchase Amt
+                                            <div class="filter-container">
+                                                <div class="filter-toggle" (click)="toggleFilter('PurchaseAmt')">
+                                                  <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                                </div>
+                                                <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['PurchaseAmt']}">
+                                                  <div class="filter-option" (click)="applyFilter('PurchaseAmt', 'Option 1')">Filter</div>
+                                                  <div class="input-box" [class.show-input]="isFilterInputOpen['PurchaseAmt']">
+                                                    <input type="text" placeholder=" " (blur)="toggleFilterInput('PurchaseAmt')">
+                                                  </div>
+                                                </div>
+                                              </div>    
+                                        </th>
+                                        <th class="td_right"> Rate Diff Amt
+                                            <div class="filter-container">
+                                                <div class="filter-toggle" (click)="toggleFilter('RateDiffAmt')">
+                                                  <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                                </div>
+                                                <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['RateDiffAmt']}">
+                                                  <div class="filter-option" (click)="applyFilter('RateDiffAmt', 'Option 1')">Filter</div>
+                                                  <div class="input-box" [class.show-input]="isFilterInputOpen['RateDiffAmt']">
+                                                    <input type="text" placeholder=" " (blur)="toggleFilterInput('RateDiffAmt')">
+                                                  </div>
+                                                </div>
+                                              </div>    
+                                        </th>
+                                        <th class="td_right"> Total Purchase Amt
+                                            <div class="filter-container">
+                                                <div class="filter-toggle" (click)="toggleFilter('TotalPurchaseAmt')">
+                                                  <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                                </div>
+                                                <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['TotalPurchaseAmt']}">
+                                                  <div class="filter-option" (click)="applyFilter('TotalPurchaseAmt', 'Option 1')">Filter</div>
+                                                  <div class="input-box" [class.show-input]="isFilterInputOpen['TotalPurchaseAmt']">
+                                                    <input type="text" placeholder=" " (blur)="toggleFilterInput('TotalPurchaseAmt')">
+                                                  </div>
+                                                </div>
+                                              </div>     
+                                        </th>
+                                        <th class="td_right"> Rejection Qty
+                                            <div class="filter-container">
+                                                <div class="filter-toggle" (click)="toggleFilter('RejectionQty')">
+                                                  <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                                </div>
+                                                <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['RejectionQty']}">
+                                                  <div class="filter-option" (click)="applyFilter('RejectionQty', 'Option 1')">Filter</div>
+                                                  <div class="input-box" [class.show-input]="isFilterInputOpen['RejectionQty']">
+                                                    <input type="text" placeholder=" " (blur)="toggleFilterInput('RejectionQty')">
+                                                  </div>
+                                                </div>
+                                              </div>      
+                                        </th>
+                                        <th class="td_right"> Rejection Weight
+                                            <div class="filter-container">
+                                                <div class="filter-toggle" (click)="toggleFilter('RejectionWeight')">
+                                                  <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                                </div>
+                                                <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['RejectionWeight']}">
+                                                  <div class="filter-option" (click)="applyFilter('RejectionWeight', 'Option 1')">Filter</div>
+                                                  <div class="input-box" [class.show-input]="isFilterInputOpen['RejectionWeight']">
+                                                    <input type="text" placeholder=" " (blur)="toggleFilterInput('RejectionWeight')">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </th>
+                                        <th class="td_right"> Rejection Amt
+                                            <div class="filter-container">
+                                                <div class="filter-toggle" (click)="toggleFilter('RejectionAmt')">
+                                                  <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                                </div>
+                                                <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['RejectionAmt']}">
+                                                  <div class="filter-option" (click)="applyFilter('RejectionAmt', 'Option 1')">Filter</div>
+                                                  <div class="input-box" [class.show-input]="isFilterInputOpen['RejectionAmt']">
+                                                    <input type="text" placeholder=" " (blur)="toggleFilterInput('RejectionAmt')">
+                                                  </div>
+                                                </div>
+                                              </div> 
+                                        </th>
+                                        <th class="td_right"> Net Pur Qty
+                                            <div class="filter-container">
+                                                <div class="filter-toggle" (click)="toggleFilter('NetPurQty')">
+                                                  <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                                </div>
+                                                <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['NetPurQty']}">
+                                                  <div class="filter-option" (click)="applyFilter('NetPurQty', 'Option 1')">Filter</div>
+                                                  <div class="input-box" [class.show-input]="isFilterInputOpen['NetPurQty']">
+                                                    <input type="text" placeholder=" " (blur)="toggleFilterInput('NetPurQty')">
+                                                  </div>
+                                                </div>
+                                              </div> 
+                                        </th>
+                                        <th class="td_right"> Net Pur Weight
+                                           <div class="filter-container">
+                                            <div class="filter-toggle" (click)="toggleFilter('NetPurWeight')">
+                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                            </div>
+                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['NetPurWeight']}">
+                                              <div class="filter-option" (click)="applyFilter('NetPurWeight', 'Option 1')">Filter</div>
+                                              <div class="input-box" [class.show-input]="isFilterInputOpen['NetPurWeight']">
+                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('NetPurWeight')">
+                                              </div>
+                                            </div>
+                                          </div>   
+                                        </th>
+                                        <th class="td_right"> Net Pur Amt
+                                            <div class="filter-container">
+                                                <div class="filter-toggle" (click)="toggleFilter('NetPurAmt')">
+                                                  <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                                </div>
+                                                <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['NetPurAmt']}">
+                                                  <div class="filter-option" (click)="applyFilter('NetPurAmt', 'Option 1')">Filter</div>
+                                                  <div class="input-box" [class.show-input]="isFilterInputOpen['NetPurAmt']">
+                                                    <input type="text" placeholder=" " (blur)="toggleFilterInput('NetPurAmt')">
+                                                  </div>
+                                                </div>
+                                              </div>   
+                                             </th>
+                                            </tr>
 
-                                    </tr>
                                 </thead>
                                 <tbody *ngIf="Tabledata1.length !=0">
                                     <tr *ngFor="let data of Tabledata1 ; let indexOfelement = index">

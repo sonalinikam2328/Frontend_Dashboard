@@ -74,16 +74,106 @@
                     </div>
                 </th>
                 <tr>
-                  <th class="td_left" *ngFor="let column of tableColumns">
-                    {{ column }}
+                  <th class="td_right">SN
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter(column)">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('SN')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen[column]}">
-                        <div class="filter-option" (click)="applyFilter(column, 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen[column]">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput(column)">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SN']}">
+                        <div class="filter-option" (click)="applyFilter('SN', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['SN']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('SN')">
+                        </div>
+                      </div>
+                    </div>
+                  </th>
+                  <th class="td_left">Party Name
+                    <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('PartyName')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['PartyName']}">
+                        <div class="filter-option" (click)="applyFilter('PartyName', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['PartyName']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('PartyName')">
+                        </div>
+                      </div>
+                    </div>
+                  </th>
+                  <th class="td_right">Balance Boring of {{previousMonthDate | date :'MMM yyyy'}}
+                    <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('BalanceBoringof')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['BalanceBoringof']}">
+                        <div class="filter-option" (click)="applyFilter('BalanceBoringof', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['BalanceBoringof']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('BalanceBoringof')">
+                        </div>
+                      </div>
+                    </div>
+                  </th>
+                  <th class="td_right">Boring Genretion as per GRN {{ selectedDate | date:  'dd.MM.YYYY'}}
+                    <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('BoringGenretionasperGRN')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['BoringGenretionasperGRN']}">
+                        <div class="filter-option" (click)="applyFilter('BoringGenretionasperGRN', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['BoringGenretionasperGRN']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('BoringGenretionasperGRN')">
+                        </div>
+                      </div>
+                    </div>
+                  </th>
+                  <th class="td_right">Total collection plan as per GRN {{previousDate | date: 'dd.MM.YYYY'}}
+                    <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('TotalcollectionplanasperGRN')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['TotalcollectionplanasperGRN']}">
+                        <div class="filter-option" (click)="applyFilter('TotalcollectionplanasperGRN', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['TotalcollectionplanasperGRN']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('TotalcollectionplanasperGRN')">
+                        </div>
+                      </div>
+                    </div>
+                  </th>
+                  <th class="td_right">Actual Collection {{ selectedDate | date: 'MMM yyyy' }}
+                    <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('ActualCollection')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['ActualCollection']}">
+                        <div class="filter-option" (click)="applyFilter('ActualCollection ', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['ActualCollection']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('ActualCollection')">
+                        </div>
+                      </div>
+                    </div>
+                  </th>
+                  <th class="td_right">Balance
+                    <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('Balance')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Balance']}">
+                        <div class="filter-option" (click)="applyFilter('Balance ', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['Balance']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Balance')">
+                        </div>
+                      </div>
+                    </div>
+                  </th>
+                  <th class="td_left">Supplier PHONE NO
+                    <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('SupplierPHONENO')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SupplierPHONENO']}">
+                        <div class="filter-option" (click)="applyFilter('SupplierPHONENO ', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['SupplierPHONENO']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('SupplierPHONENO')">
                         </div>
                       </div>
                     </div>
@@ -101,7 +191,10 @@
                   <td class="td_right">{{data?.ACTUAL_RCPT}}</td>
                   <td class="td_right">{{data?.NET_BAL}}</td>
                   <td class="td_right">{{data?.CONTACT_PHONENO }}</td>
-                 </tr>
+
+
+                </tr>
+
             </table>
           </div>
         </div>

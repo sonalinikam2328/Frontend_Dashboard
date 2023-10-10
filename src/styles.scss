@@ -212,19 +212,23 @@ td {
   white-space: nowrap;
 
 }
-
-html {
-  margin-left: 3px;
-  margin-right: 3px;
-  overflow: auto;
-  overflow-x: hidden;
-  background: url(./assets/images/bg.jpg) repeat-x scroll left bottom transparent;
-  border-style: solid none solid;
-  border-color: #93B5D2;
-  border-width: 1px medium 1px;
-  // position: relative !important;
-  //   z-index: 0 !important;
+.marginTable{
+  margin: 25px !important;
+  //position: fixed !important;
 }
+
+// html {
+//   margin-left: 3px;
+//   margin-right: 3px;
+//   overflow: auto;
+//   overflow-x: hidden;
+//   background: url(./assets/images/bg.jpg) repeat-x scroll left bottom transparent;
+//   border-style: solid none solid;
+//   border-color: #93B5D2;
+//   border-width: 1px medium 1px;
+//   // position: relative !important;
+//   //   z-index: 0 !important;
+// }
 
 .ng-select .ng-clear-wrapper {
   display: none !important;

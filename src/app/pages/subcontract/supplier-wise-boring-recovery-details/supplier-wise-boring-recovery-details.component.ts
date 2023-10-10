@@ -47,7 +47,7 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
   searchQuery: string = '';
 
 
-  tableColumns = ['SN', 'Party Name','Balance Boring of','Boring Genretion as per GRN ','Total collection plan as per GRN','Actual Collection','Balance','Supplier PHONE NO']; 
+  // tableColumns = ['SN', 'Party Name','Balance Boring of','Boring Genretion as per GRN ','Total collection plan as per GRN','Actual Collection','Balance','Supplier PHONE NO']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
 column: any;

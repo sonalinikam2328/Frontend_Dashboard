@@ -56,9 +56,9 @@ export class Top5SuppliersCRPercentComponent implements OnInit, AfterViewInit {
   TOTAL_RECEIPT_WT
   TOTAL_CR_WT
   TOTAL_CR_PERCENT
-
-  tableColumns = ['Sr.No.', 'Supplier Name', 'Receipt Qty', 'CR Qty', 'Receipt Tonnage', 'CR Tonnage',
-    'CR % On Tonnage', 'Rejection Details'];
+  
+  // tableColumns = ['Sr.No.', 'Supplier Name','Receipt Qty','CR Qty','Receipt Tonnage','CR Tonnage',
+  // 'CR % On Tonnage','Rejection Details']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
   column: any;

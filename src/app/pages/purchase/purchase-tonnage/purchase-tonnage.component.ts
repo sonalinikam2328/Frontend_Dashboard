@@ -39,9 +39,9 @@ export class PurchaseTonnageComponent {
   searchQuery: string = '';
 
 
-  tableColumns = ['Supplier Name', 'Purchase Qty', 'Purchase Weight', 'Purchase Amt', 'Rate Diff Amt',
-    'Total Purchase Amt', 'Rejection Qty', 'Rejection Weight', ' Rejection Amt', 'Net Pur Qty', 'Net Pur Weight',
-    ' Net Pur Amt'];
+  // tableColumns = ['Supplier Name','Purchase Qty','Purchase Weight','Purchase Amt','Rate Diff Amt',
+  // 'Total Purchase Amt','Rejection Qty','Rejection Weight',' Rejection Amt','Net Pur Qty','Net Pur Weight',
+  // ' Net Pur Amt']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
   column: any;
