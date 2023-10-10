@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
-import { NgSelectComponent ,} from '@ng-select/ng-select';
+import { NgSelectComponent, } from '@ng-select/ng-select';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
@@ -17,12 +17,12 @@ import { AppComponentService } from '../../../app-component.service';
 })
 export class OilConsumptionComponent implements OnInit {
   filterValues: string[] = new Array(Headers.length).fill('');
-  columnOptions: any[] = []; 
+  columnOptions: any[] = [];
   showColumnDropdown: boolean = true;
   @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
   filterInputValue = '';
-  selectedColumn:any;
+  selectedColumn: any;
 
   branch = [];
   finyear = [];
@@ -48,57 +48,59 @@ export class OilConsumptionComponent implements OnInit {
   columnSizeMode = 'default';
   columns
 
+  searchQuery: string = '';
+
+  //searchQuery: string = '';
+
   isFilterOpen: { [key: string]: boolean } = {};
-   isFilterInputOpen: { [key: string]: boolean } = {};
-data: any;
-column: any;
-currentlyOpenInputBox: string | null = null;
-searchQuery: string = '';
- //searchQuery: string = '';
+  isFilterInputOpen: { [key: string]: boolean } = {};
+  data: any;
+  column: any;
+  currentlyOpenInputBox: string | null = null;
+  renderer: any;
+  fdateInput: any;
 
-  
-
-   toggleFilter(column: string) {
+  toggleFilter(column: string) {
     this.isFilterOpen[column] = !this.isFilterOpen[column];
     this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
-   }
+  }
 
-   applyFilter(column: string, filterOption: string) {
-     // Implement your filtering logic here based on the column and filterOption
-     console.log(`Filter applied for ${column} with option: ${filterOption}`);
-   }
+  applyFilter(column: string, filterOption: string) {
+    // Implement your filtering logic here based on the column and filterOption
+    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+  }
 
- toggleFilterInput(column: string) {
-      this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
-   }
+  toggleFilterInput(column: string) {
+    this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
+  }
 
-  
+
   showFilterInput(event: MouseEvent) {
     const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
     if (filterInput) {
-        filterInput.classList.add('show');
+      filterInput.classList.add('show');
     }
-}
+  }
 
-// Method to hide filter input
-hideFilterInput(event: MouseEvent) {
+  // Method to hide filter input
+  hideFilterInput(event: MouseEvent) {
     const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
     if (filterInput) {
-        filterInput.classList.remove('show');
+      filterInput.classList.remove('show');
     }
-}
-onFilterInputChange(value: string) {
- 
-}
+  }
+  onFilterInputChange(value: string) {
+
+  }
   constructor(
-    
+
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
     private _AppComponentService: AppComponentService,
     private _OilConsumptionService: OilConsumptionService,
   ) { }
-  
+
 
 
   ngOnInit(): void {
@@ -109,9 +111,9 @@ onFilterInputChange(value: string) {
     let obj = {
       CODE: result.COMPANY_ID
     }
-  
-   
-    
+
+
+
 
     // onInit code.
     this._AppComponentService.branchList(obj).subscribe((res) => {
@@ -143,15 +145,15 @@ onFilterInputChange(value: string) {
         this.selectedBrach = this.branch[0]['CODE']
 
       }
-      fetchData() ;{
+      fetchData(); {
         // Simulating an API response
         const res = {
           List: [{}, {}], // Sample data
           Headers: [] // Sample headers
         };
       }
-  
-      
+
+
     });
 
     this._AppComponentService.financialYear(obj).subscribe((res) => {
@@ -159,7 +161,7 @@ onFilterInputChange(value: string) {
       this.selectedYear = this.finyear[0]['DATEVALUE']
     });
 
-    
+
     console.log('Keyarray:', this.Keyarray);
 
   }
@@ -174,8 +176,8 @@ onFilterInputChange(value: string) {
       YEAR_NAME: ["", Validators.required],
     });
   }
-  
-  
+
+
 
 
   // dataSource = new window.Smart.DataAdapter({
@@ -214,23 +216,19 @@ onFilterInputChange(value: string) {
 
   ngAfterViewInit(): void {
     // afterViewInit code.
-    this.init();
-    const table = document.querySelector('smart-table');
-    if (this.YEAR_NAME) {
-      this.YEAR_NAME.focus();
-    }
+
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+
   }
-  
+
 
   init(): void {
     // init code.
     const table = this.table;
   }
-
-  
   filterData() {
     const searchQuery = this.searchQuery.trim().toLowerCase(); // Convert search query to lowercase
-  
+
     this.Tabledata = this.Keyarray.filter(item => {
       const values = Object.values(item);
       return values.some(value => {
@@ -244,15 +242,9 @@ onFilterInputChange(value: string) {
         return false;
       });
     });
-    console.log('Tabledata', this.Tabledata);
   }
 
-  
 
- 
-  
-
-  
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
   }
@@ -313,7 +305,7 @@ onFilterInputChange(value: string) {
 
 
   }
- 
+
 
 
 

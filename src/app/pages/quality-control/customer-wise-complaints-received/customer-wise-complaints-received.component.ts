@@ -17,7 +17,14 @@ import { AppComponentService } from 'src/app/app-component.service';
   styleUrls: ['./customer-wise-complaints-received.component.scss']
 })
 export class CustomerWiseComplaintsReceivedComponent {
+  filterValues: string[] = new Array(Headers.length).fill('');
+  columnOptions: any[] = []; 
+  showColumnDropdown: boolean = true;
+  @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
+  filterInputValue = '';
+  selectedColumn:any;
   @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
+
   branch = []
   finyear = [];
   month = [];
@@ -32,6 +39,8 @@ export class CustomerWiseComplaintsReceivedComponent {
   isLoading = false;
   Keyarray=[];
   searchQuery: string = '';
+  renderer: any;
+  fdateInput: any;
 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
@@ -39,19 +48,7 @@ data: any;
 column: any;
 currentlyOpenInputBox: string | null = null;
 
-  toggleFilter(column: string) {
-   this.isFilterOpen[column] = !this.isFilterOpen[column];
-   this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
-  }
-
-  applyFilter(column: string, filterOption: string) {
-    // Implement your filtering logic here based on the column and filterOption
-    console.log(`Filter applied for ${column} with option: ${filterOption}`);
-  }
-
-toggleFilterInput(column: string) {
-     this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
-  }
+  
 
 
 
@@ -81,9 +78,38 @@ toggleFilterInput(column: string) {
     ele.open();
   }
 
-  @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
+  toggleFilter(column: string) {
+    this.isFilterOpen[column] = !this.isFilterOpen[column];
+    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+   }
 
+   applyFilter(column: string, filterOption: string) {
+     // Implement your filtering logic here based on the column and filterOption
+     console.log(`Filter applied for ${column} with option: ${filterOption}`);
+   }
 
+ toggleFilterInput(column: string) {
+      this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
+   }
+
+  
+  showFilterInput(event: MouseEvent) {
+    const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
+    if (filterInput) {
+        filterInput.classList.add('show');
+    }
+}
+
+// Method to hide filter input
+hideFilterInput(event: MouseEvent) {
+    const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
+    if (filterInput) {
+        filterInput.classList.remove('show');
+    }
+}
+onFilterInputChange(value: string) {
+ 
+}
   grouping: boolean = true;
 
   keyboardNavigation: boolean = true;
@@ -198,10 +224,9 @@ toggleFilterInput(column: string) {
 
   ngAfterViewInit(): void {
     // afterViewInit code.
-    const table = document.querySelector('smart-table');
-    if (this.YEAR_NAME) {
-      this.YEAR_NAME.focus();
-    }
+  
+      this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+    
   }
 
   filterData() {

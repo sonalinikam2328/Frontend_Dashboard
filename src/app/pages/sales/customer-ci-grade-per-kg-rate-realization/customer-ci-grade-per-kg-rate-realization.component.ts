@@ -35,6 +35,8 @@ export class CustomerCIGradePerKgRateRealizationComponent {
   isFilterInputOpen: { [key: string]: boolean } = {};
   column: any;
   values: any;
+  renderer: any;
+  fdateInput: any;
 
   toggleFilter(column: string) {
     this.isFilterOpen[column] = !this.isFilterOpen[column];
@@ -73,7 +75,10 @@ export class CustomerCIGradePerKgRateRealizationComponent {
     ele.open();
   }
 
-
+  ngAfterViewInit(): void {
+    // afterViewInit code.
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+  }
   ngOnInit(): void {
     // onInit code.
     this.isLoading1 = true

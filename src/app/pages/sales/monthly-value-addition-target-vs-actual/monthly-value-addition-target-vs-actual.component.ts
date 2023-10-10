@@ -37,6 +37,8 @@ export class MonthlyValueAdditionTargetVsActualComponent {
 data: any;
 column: any;
 currentlyOpenInputBox: string | null = null;
+  renderer: any;
+  fdateInput: any;
 
   toggleFilter(column: string) {
    this.isFilterOpen[column] = !this.isFilterOpen[column];
@@ -175,16 +177,12 @@ toggleFilterInput(column: string) {
 
     });
   }
-
-  
   ngAfterViewInit(): void {
     // afterViewInit code
-    
-    const table = document.querySelector('smart-table');
-    if (this.YEAR_NAME) {
-      this.YEAR_NAME.focus();
-    }
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
   }
+  
+ 
   filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
     this.Tabledata = this.Keyarray.filter(item => {

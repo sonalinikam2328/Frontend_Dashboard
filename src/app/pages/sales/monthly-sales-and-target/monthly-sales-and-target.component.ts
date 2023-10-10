@@ -41,6 +41,8 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
   isFilterInputOpen: { [key: string]: boolean } = {};
   data: any;
   column: any;
+  renderer: any;
+  fdateInput: any;
 
   toggleFilter(column: string) {
     debugger
@@ -187,11 +189,7 @@ toggleFilterInput(column: string) {
 
   ngAfterViewInit(): void {
     // afterViewInit code.
-  
-    const table = document.querySelector('smart-table');
-    if (this.YEAR_NAME) {
-      this.YEAR_NAME.focus();
-    }
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
   }
 filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();

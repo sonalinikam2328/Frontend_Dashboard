@@ -130,6 +130,8 @@ Keyarray=[];
   isFilterInputOpen: { [key: string]: boolean } = {};
  column: any;
  values: any;
+  renderer: any;
+  fdateInput: any;
 
   toggleFilter(column: string) {
     this.isFilterOpen[column] = !this.isFilterOpen[column];
@@ -280,11 +282,8 @@ Keyarray=[];
 
   ngAfterViewInit(): void {
     // afterViewInit code.
-    this.init();
-    const table = document.querySelector('smart-table');
-    if (this.YEAR_NAME) {
-      this.YEAR_NAME.focus();
-    }
+      this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+    
   }
 
   init(): void {

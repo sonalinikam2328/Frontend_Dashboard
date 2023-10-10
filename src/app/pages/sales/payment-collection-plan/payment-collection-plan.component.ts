@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PaymentService } from './payment.service';
 import { TableComponent, TableColumn } from '@smart-webcomponents-angular/table';
 import { environment } from '../../../../environments/environment';
@@ -17,6 +17,7 @@ import { AppComponentService } from 'src/app/app-component.service';
   styleUrls: ['./payment-collection-plan.component.scss']
 })
 export class PaymentCollectionPlanComponent implements AfterViewInit, OnInit {
+  @ViewChild('fdateInput') fdateInput: ElementRef;
   @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   // @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
   branch = []
@@ -44,12 +45,9 @@ export class PaymentCollectionPlanComponent implements AfterViewInit, OnInit {
   // tableColumns = ['Sr. No.', 'Name of Customer','Payment Amount Plan For The Month Rs.','Amount Received Rs.','% of Recovery','Credit Day','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
-column: any;
-values: any;
-
- 
-
- 
+  column: any;
+  values: any;
+  renderer: any;
 
   toggleFilter(column: string) {
     this.isFilterOpen[column] = !this.isFilterOpen[column];
@@ -89,11 +87,7 @@ values: any;
   }
   ngAfterViewInit(): void {
     // afterViewInit code
-
-    const table = document.querySelector('smart-table');
-    if (this.YEAR_NAME) {
-      this.YEAR_NAME.focus();
-    }
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
   }
   init() {
     throw new Error('Method not implemented.');

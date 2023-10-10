@@ -40,6 +40,8 @@ export class ScheduleAdherenceForTheMonthComponent {
   isFilterInputOpen: { [key: string]: boolean } = {};
 column: any;
 values: any;
+  renderer: any;
+  fdateInput: any;
 
   toggleFilter(column: string) {
     this.isFilterOpen[column] = !this.isFilterOpen[column];
@@ -193,10 +195,8 @@ values: any;
 
   ngAfterViewInit(): void {
     // afterViewInit code.
-    const table = document.querySelector('smart-table');
-    if (this.YEAR_NAME) {
-      this.YEAR_NAME.focus();
-    }
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+    
   }
   tempdata = []
   filterData() {

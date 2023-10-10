@@ -17,7 +17,13 @@ import { AppComponentService } from 'src/app/app-component.service';
   styleUrls: ['./supplier-wise-boring-recovery-details.component.scss']
 })
 export class SupplierWiseBoringRecoveryDetailsComponent {
- 
+  filterValues: string[] = new Array(Headers.length).fill('');
+  columnOptions: any[] = []; 
+  showColumnDropdown: boolean = true;
+  @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
+  @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
+  filterInputValue = '';
+  selectedColumn:any;
   @ViewChild('FROM', { static: false })FROM: NgSelectComponent;
  
   @ViewChild('fdateInput') fdateInput: ElementRef;
@@ -53,20 +59,40 @@ export class SupplierWiseBoringRecoveryDetailsComponent {
 column: any;
 values: any;
 
-  toggleFilter(column: string) {
-    this.isFilterOpen[column] = !this.isFilterOpen[column];
-    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
-  }
+toggleFilter(column: string) {
+  this.isFilterOpen[column] = !this.isFilterOpen[column];
+  this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+ }
 
-  applyFilter(column: string, filterOption: string) {
-    // Implement your filtering logic here based on the column and filterOption
-    console.log(`Filter applied for ${column} with option: ${filterOption}`);
-  }
+ applyFilter(column: string, filterOption: string) {
+   // Implement your filtering logic here based on the column and filterOption
+   console.log(`Filter applied for ${column} with option: ${filterOption}`);
+ }
 
-  toggleFilterInput(column: string) {
+toggleFilterInput(column: string) {
     this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
-  }
+ }
 
+
+showFilterInput(event: MouseEvent) {
+  const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
+  if (filterInput) {
+      filterInput.classList.add('show');
+  }
+}
+
+// Method to hide filter input
+hideFilterInput(event: MouseEvent) {
+  const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
+  if (filterInput) {
+      filterInput.classList.remove('show');
+  }
+}
+onFilterInputChange(value: string) {
+
+}
+
+currentlyOpenInputBox: string | null = null;
   constructor(
     private _SupplierWiseBoringService: SupplierWiseBoringService,
     private _AppComponentService: AppComponentService,
@@ -95,11 +121,11 @@ values: any;
 
   ngAfterViewInit(): void {
     // afterViewInit code.
-    const table = document.querySelector('smart-table');
+
     this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
   }
   init() {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
   
 

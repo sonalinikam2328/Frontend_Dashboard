@@ -16,7 +16,7 @@
         <div class="col-sm-2" *ngIf="showBranch">
           <div class="form-group form-primary form-static-label">
             <span class="border-lable-flt">
-              <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" #BRANCH_NAME [(ngModel)]="selectedBrach"
+              <ng-select id="BRANCH_NAME" bindValue="CODE" bindLabel="NAME" #BRANCH_NAME [(ngModel)]="selectedBrach" required 
                 formControlName="BRANCH_NAME" (focus)="onFocus(BRANCH_NAME)" [selectOnTab]='true' [required]="BRANCH">
                 <ng-option *ngFor="let values of branch" [value]="values">
                   {{values.NAME}}</ng-option>
