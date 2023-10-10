@@ -287,7 +287,7 @@ export class OilConsumptionComponent implements OnInit {
 
         } else {
           this.isLoading = false;
-          Swal.fire('Warning', 'No Data Found', 'info')
+          //Swal.fire('Warning', 'No Data Found', 'info')
         }
 
       });

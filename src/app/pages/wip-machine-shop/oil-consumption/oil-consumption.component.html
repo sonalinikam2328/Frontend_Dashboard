@@ -65,6 +65,7 @@
 </div>
 
 <!-- *ngIf="showtable" -->
+
 <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable">
     <div class="col-12">
         <div class="table-responsive">
@@ -132,6 +133,9 @@
                                     <td *ngFor="let datarec of data.slice(1)" style="text-align: right;">{{datarec !=
                                         null ? datarec : 0}}</td>
                                 </tr>
+                            </tbody>
+                            <tbody *ngIf="Tabledata.length ==0" >
+                                <td>No Data</td>
                             </tbody>
                         </table>
                     </div>
