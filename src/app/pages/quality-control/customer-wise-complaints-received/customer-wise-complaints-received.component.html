@@ -88,8 +88,33 @@
                                     </div>
                                 </th>
                                 <tr>
-                                    <th scope="col" class="td_left">Customer Name</th>
-                                    <th scope="col" class="td_right" *ngFor="let data of Headers">{{data.VALUE}}</th>
+                                    <th scope="col" class="td_left">Customer Name
+                                        <div class="filter-container">
+                                            <div class="filter-toggle" (click)="toggleFilter('CustomerName')">
+                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                                            </div>
+                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['CustomerName']}">
+                                              <div class="filter-option" (click)="applyFilter('CustomerName', 'Option 1')">Filter</div>
+                                              <div class="input-box" [class.show-input]="isFilterInputOpen['CustomerName']">
+                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('CustomerName')">
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                    </th>
+                                    <th scope="col" class="td_left" *ngFor="let data of Headers" style="text-align: right;">{{data.VALUE}}
+                                        <div class="filter-container">
+                                          <div class="filter-toggle" (click)="toggleFilter(data.VALUE)">
+                                            <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                                          </div>
+                                          <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen[data.VALUE]}">
+                                            <div class="filter-option" (click)="applyFilter(column, 'Option 1')">Filter</div>
+                                            <div class="input-box" [class.show-input]="isFilterInputOpen[data.VALUE]">
+                                              <input type="text" placeholder=" " (blur)="toggleFilterInput(data.VALUE)">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </th>
                                 </tr>
                             </thead>
                             <tbody *ngIf="Tabledata.length !=0">

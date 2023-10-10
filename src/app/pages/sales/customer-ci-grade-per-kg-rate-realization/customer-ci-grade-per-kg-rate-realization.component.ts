@@ -30,8 +30,7 @@ export class CustomerCIGradePerKgRateRealizationComponent {
   Keyarray = [];
   searchQuery: string = '';
 
-
-  tableColumns = ['Customer Name', 'Quarter 01', 'Quarter 02', 'Quarter 03', 'Quarter 04'];
+  //tableColumns = ['Customer Name', 'Quarter 01','Quarter 02','Quarter 03','Quarter 04']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
   column: any;

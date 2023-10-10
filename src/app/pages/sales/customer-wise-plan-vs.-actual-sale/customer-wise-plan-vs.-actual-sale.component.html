@@ -84,28 +84,88 @@
                                     </div>
                                 </th>
                                 <tr>
-                                    <th class="td_left" style="width: 20%;">Customer Name</th>
-                                    <th class="td_right">VA %</th>
-                                    <th class="td_right">Planned Sale</th>
-                                    <th class="td_right">Actual Sale</th>
-                                    <th class="td_right">Difference</th>
-                                    <th class="td_right">VA Effect</th>
+                                    <th class="td_left" style="width: 20%;">Customer Name
+                                        <div class="filter-container">
+                                            <div class="filter-toggle" (click)="toggleFilter('CustomerName')">
+                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                                            </div>
+                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['CustomerName']}">
+                                              <div class="filter-option" (click)="applyFilter('CustomerName', 'Option 1')">Filter</div>
+                                              <div class="input-box" [class.show-input]="isFilterInputOpen['CustomerName']">
+                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('CustomerName')">
+                                              </div>
+                                            </div>
+                                          </div>
+                                    </th>
+                                    <th class="td_right">VA %
+                                        <div class="filter-container">
+                                            <div class="filter-toggle" (click)="toggleFilter('VA%')">
+                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                                            </div>
+                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['VA%']}">
+                                              <div class="filter-option" (click)="applyFilter('VA%', 'Option 1')">Filter</div>
+                                              <div class="input-box" [class.show-input]="isFilterInputOpen['VA%']">
+                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('VA%')">
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                    </th>
+                                    <th class="td_right">Planned Sale 
+                                        <div class="filter-container">
+                                            <div class="filter-toggle" (click)="toggleFilter('PlannedSale')">
+                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                                            </div>
+                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['PlannedSale']}">
+                                              <div class="filter-option" (click)="applyFilter('PlannedSale', 'Option 1')">Filter</div>
+                                              <div class="input-box" [class.show-input]="isFilterInputOpen['PlannedSale']">
+                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('PlannedSale')">
+                                              </div>
+                                            </div>
+                                          </div>
+                                    </th>
+                                    <th class="td_right">Actual Sale
+                                        <div class="filter-container">
+                                            <div class="filter-toggle" (click)="toggleFilter('ActualSale')">
+                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                                            </div>
+                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['ActualSale']}">
+                                              <div class="filter-option" (click)="applyFilter('ActualSale', 'Option 1')">Filter</div>
+                                              <div class="input-box" [class.show-input]="isFilterInputOpen['ActualSale']">
+                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('ActualSale')">
+                                              </div>
+                                            </div>
+                                          </div>
+                                    </th>
+                                    <th class="td_right">Difference
+                                        <div class="filter-container">
+                                            <div class="filter-toggle" (click)="toggleFilter('Difference')">
+                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                                            </div>
+                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Difference']}">
+                                              <div class="filter-option" (click)="applyFilter('Difference', 'Option 1')">Filter</div>
+                                              <div class="input-box" [class.show-input]="isFilterInputOpen['Difference']">
+                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('Difference')">
+                                              </div>
+                                            </div>
+                                          </div>
+                                    </th>
+                                    <th class="td_right">VA Effect 
+                                        <div class="filter-container">
+                                            <div class="filter-toggle" (click)="toggleFilter('VAEffect')">
+                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                                            </div>
+                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['VAEffect']}">
+                                              <div class="filter-option" (click)="applyFilter('VAEffect', 'Option 1')">Filter</div>
+                                              <div class="input-box" [class.show-input]="isFilterInputOpen['VAEffect']">
+                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('VAEffect')">
+                                              </div>
+                                            </div>
+                                          </div>
+                                    </th>
                                 </tr>
 
-                                    <!-- <th class="td_left" *ngFor="let column of tableColumns">
-                                      {{ column }}
-                                      <div class="filter-container">
-                                        <div class="filter-toggle" (click)="toggleFilter(column)">
-                                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
-                                        </div>
-                                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen[column]}">
-                                          <div class="filter-option" (click)="applyFilter(column, 'Option 1')">Filter</div>
-                                          <div class="input-box" [class.show-input]="isFilterInputOpen[column]">
-                                            <input type="text" placeholder=" " (blur)="toggleFilterInput(column)">
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </th> -->
+                                   
                                  </thead>
                             <tbody *ngIf="Tabledata.length !=0">
                                 <tr *ngFor="let data of Tabledata">

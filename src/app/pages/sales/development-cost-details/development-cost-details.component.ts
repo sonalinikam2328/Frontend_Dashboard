@@ -43,10 +43,9 @@ export class DevelopmentCostDetailsComponent implements OnInit {
   searchQuery: string = '';
   Keyarray = [];
 
-
-  tableColumns = ['Customer Name', 'Part Name', 'Development P.O.No/Referance', 'Approved Development Cost In INR',
-    '1st 50% Debit Note/Invoice No.', 'Balance 50% Debit Note/Invoice No.',
-    'Development Cost Received In INR', 'Balanced D.C. In INR to be Received'];
+ // tableColumns = ['Customer Name', 'Part Name','Development P.O.No/Referance','Approved Development Cost In INR',
+  //'1st 50% Debit Note/Invoice No.','Balance 50% Debit Note/Invoice No.',
+ // 'Development Cost Received In INR','Balanced D.C. In INR to be Received']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
   column: any;

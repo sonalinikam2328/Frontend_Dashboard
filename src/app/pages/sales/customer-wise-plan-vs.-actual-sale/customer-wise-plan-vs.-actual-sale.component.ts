@@ -37,10 +37,10 @@ export class CustomerWisePlanVsActualSaleComponent {
   showBranch: boolean = true
   angForm: FormGroup;
   searchQuery: string = '';
-  Keyarray = [];
-
-  tableColumns = ['Customer Name', 'VA %', 'Planned Sale', 'Actual Sale',
-    'Difference', 'VA Effect'];
+  Keyarray=[];
+  
+  //tableColumns = ['Customer Name', 'VA %','Planned Sale','Actual Sale',
+ // 'Difference','VA Effect']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
   column: any;

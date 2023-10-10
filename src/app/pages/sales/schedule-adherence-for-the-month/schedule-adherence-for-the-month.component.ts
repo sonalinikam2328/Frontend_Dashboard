@@ -35,7 +35,7 @@ export class ScheduleAdherenceForTheMonthComponent {
   searchQuery: string = '';
 
 
-  tableColumns = ['Sr.No', 'Customer','Sch. Qty	','Disp. Qty','Adherence']; 
+ // tableColumns = ['Sr.No', 'Customer','Sch. Qty	','Disp. Qty','Adherence']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
 column: any;

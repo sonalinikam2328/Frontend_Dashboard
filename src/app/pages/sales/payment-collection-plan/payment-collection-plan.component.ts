@@ -41,12 +41,15 @@ export class PaymentCollectionPlanComponent implements AfterViewInit, OnInit {
   priviousFive
   MonthData
   searchQuery: string = '';
-
-  tableColumns = ['Sr. No.', 'Name of Customer', 'Payment Amount Plan For The Month Rs.', 'Amount Received Rs.', '% of Recovery', 'Credit Day', 'Avg Payment Receipt Days', 'Avg Payment Receipt Days', 'Avg Payment Receipt Days', 'Avg Payment Receipt Days', 'Avg Payment Receipt Days', 'Avg Payment Receipt Days'];
+  // tableColumns = ['Sr. No.', 'Name of Customer','Payment Amount Plan For The Month Rs.','Amount Received Rs.','% of Recovery','Credit Day','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
-  column: any;
-  values: any;
+column: any;
+values: any;
+
+ 
+
+ 
 
   toggleFilter(column: string) {
     this.isFilterOpen[column] = !this.isFilterOpen[column];
