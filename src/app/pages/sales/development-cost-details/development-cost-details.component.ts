@@ -148,6 +148,9 @@ values: any;
   }
 
 
+  
+
+
 
   ngOnInit() {
     this.createForm();
@@ -187,6 +190,7 @@ values: any;
         this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
       }, 100);
     });
+    
 
   }
   totalDevelopmentCost
@@ -224,15 +228,15 @@ values: any;
         this.Tabledata = res.List
         this.tempdata = res.List
         let first = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.ORDER_AMT;
+          return Number(accumulator) + Number(object.ORDER_AMT);
         }, 0);
         this.totalDevelopmentCost = parseFloat(first).toFixed(2)
         let second = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.INVOICE_AMT;
+          return Number (accumulator) +Number (object.INVOICE_AMT);
         }, 0);
         this.totalDevelopmentCostReceived = parseFloat(second).toFixed(2)
         let third = this.Tabledata.reduce((accumulator, object) => {
-          return accumulator + object.DIFF_AMT;
+          return Number(accumulator) +Number( object.DIFF_AMT);
         }, 0);
         this.totalBalanceDcinReceived = parseFloat(third).toFixed(2)
 

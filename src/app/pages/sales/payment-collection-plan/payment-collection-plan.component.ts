@@ -161,6 +161,8 @@ export class PaymentCollectionPlanComponent implements AfterViewInit, OnInit {
     });
     console.log('Tabledata', this.Tabledata);
   }
+
+  
   Tabledata = []
   FooterData = []
   temparray = []

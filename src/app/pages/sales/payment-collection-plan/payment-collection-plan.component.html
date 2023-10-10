@@ -8,7 +8,8 @@
   </div>
   <form [formGroup]="angForm">
     <div class="card-block">
-      <div class="row" style="margin: 1%;"> <!--  *ngIf="showBranch" -->
+      <div class="row" style="margin: 1%;">
+        <!--  *ngIf="showBranch" -->
         <div class="col-sm-2" *ngIf="showBranch">
           <label>Select Branch <sub class="required">* </sub></label>
         </div>
@@ -24,12 +25,12 @@
           </div>
         </div>
         <div class="col-sm-2">
-          <label>Select Financial Year <sub class="required">* </sub></label>
+          <label>Select Finacial Year <sub class="required">* </sub></label>
         </div>
         <div class="col-sm-2">
           <div class="form-group form-primary form-static-label">
             <span class="border-lable-flt">
-              <ng-select id="YEAR_NAME" bindValue="DATEVALUE" bindLabel="DATEDESC" required #YEAR_NAME autofocus
+              <ng-select id="YEAR_NAME" bindValue="DATEVALUE" bindLabel="DATEDESC" required #YEAR_NAME
                 [(ngModel)]="selectedYear" formControlName="YEAR_NAME" (focus)="onFocus(YEAR_NAME)"
                 [selectOnTab]='true'>
                 <ng-option *ngFor="let values of finyear" [value]="values">
@@ -86,14 +87,16 @@
           <div class="card-block">
             <table class="table table-striped table-bordered table-hover compact marginTable">
               <thead style="position: sticky; top: 0; text-align: center;">
+
                 <tr>
                 </tr>
-                <th colspan="17">
-                  <div class="search-container">
-                    <input type="text" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search...">
-                  </div>
-                </th>
-
+                <tr>
+                  <th colspan="12">
+                    <div class="search-container">
+                      <input type="text" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search...">
+                    </div>
+                  </th>
+                </tr>
                 <tr>
                   <th class="td_right"></th>
                   <th class="td_left"></th>
@@ -108,30 +111,22 @@
                   <th class="td_right">{{priviousFour | date :'MMM yyyy'}}</th>
                   <th class="td_right">{{priviousFive | date :'MMM yyyy'}}</th>
                 </tr>
-              <!-- </thead>
-              <thead style="position: sticky; top: 0; text-align: center;">
-                <tr>
-                </tr> -->
-                <!-- <th colspan="6">
-                  <div class="search-container">
-                    <input type="text" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search...">
-                  </div>
-                </th> -->
-                <tr>
-                  <th class="td_left" *ngFor="let column of tableColumns">
-                    {{ column }}
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter(column)">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                      </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen[column]}">
-                        <div class="filter-option" (click)="applyFilter(column, 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen[column]">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput(column)">
-                        </div>
-                      </div>
-                    </div>
-                  </th>
+              <!-- </thead> -->
+              <!-- <thead style="position: sticky; top: 0; text-align: center;"> -->
+               
+                <tr class="sticky-header">
+                  <th class="td_right table-header">Sr. No.</th>
+                  <th class="td_left table-header">Name of Customer</th>
+                  <th class="td_right table-header">Payment Amount Plan For The Month Rs.</th>
+                  <th class="td_right table-header">Amount Received Rs.</th>
+                  <th class="td_right table-header">% of Recovery</th>
+                  <th class="td_right table-header">Credit Day</th>
+                  <th class="td_right table-header">Avg Payment Receipt Days</th>
+                  <th class="td_right table-header">Avg Payment Receipt Days</th>
+                  <th class="td_right table-header">Avg Payment Receipt Days</th>
+                  <th class="td_right table-header">Avg Payment Receipt Days</th>
+                  <th class="td_right table-header">Avg Payment Receipt Days</th>
+                  <th class="td_right table-header">Avg Payment Receipt Days</th>
                 </tr>
               </thead>
               <tbody *ngIf="Tabledata.length !=0">

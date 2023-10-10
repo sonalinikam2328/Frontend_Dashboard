@@ -121,7 +121,11 @@ values: any;
     });
     console.log('Tabledata', this.Tabledata);
   }
+  
+   
 
+
+ 
   onFocus(ele: NgSelectComponent) {
     // console.log('Element focused:', Element);
     ele.open();

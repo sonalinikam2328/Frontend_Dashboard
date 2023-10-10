@@ -234,6 +234,8 @@ onFilterInputChange(value: string) {
     // init code.
     const table = this.table;
   }
+
+  
   filterData() {
     const searchQuery = this.searchQuery.trim().toLowerCase(); // Convert search query to lowercase
   
@@ -250,9 +252,15 @@ onFilterInputChange(value: string) {
         return false;
       });
     });
+    console.log('Tabledata', this.Tabledata);
   }
+
   
 
+ 
+  
+
+  
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
   }

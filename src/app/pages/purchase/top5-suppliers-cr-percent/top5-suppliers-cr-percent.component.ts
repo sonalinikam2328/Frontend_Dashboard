@@ -316,6 +316,10 @@ export class Top5SuppliersCRPercentComponent implements OnInit, AfterViewInit {
   }
 
 
+  
+  
+
+
   init(): void {
     // init code.
     const table = this.table;
