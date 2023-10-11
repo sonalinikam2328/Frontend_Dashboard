@@ -20,8 +20,8 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
   @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   branch = [];
   finyear = [];
-  Headers =[];
-  
+  Headers = [];
+
   selectedBrach;
   selectedYear;
   angForm: FormGroup;
@@ -31,9 +31,9 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
   isLoading: boolean = false;
   BRANCH: boolean = false;
   searchQuery: string = '';
-  Keyarray=[];
+  Keyarray = [];
 
-  
+
 
 
   //my code
@@ -45,19 +45,19 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
   fdateInput: any;
 
   toggleFilter(column: string) {
-    debugger
-   this.isFilterOpen[column] = !this.isFilterOpen[column];
-   this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+
+    this.isFilterOpen[column] = !this.isFilterOpen[column];
+    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
   }
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
-    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+    //console.log(`Filter applied for ${column} with option: ${filterOption}`);
   }
 
-toggleFilterInput(column: string) {
-  debugger
-     this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
+  toggleFilterInput(column: string) {
+
+    this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
   }
 
   constructor(
@@ -96,7 +96,6 @@ toggleFilterInput(column: string) {
 
       sqlQuery.query = JSON.stringify(queryData);
       // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
-      //   console.log(data)
       // })
       new window.Smart.Ajax({
         // type:'post',
@@ -180,7 +179,6 @@ toggleFilterInput(column: string) {
     });
 
     this._AppComponentService.financialYear(obj).subscribe((res) => {
-     // console.log('Financial Year Response:', res);
       this.finyear = res.List
       this.selectedYear = this.finyear[0]['DATEVALUE']
 
@@ -190,8 +188,13 @@ toggleFilterInput(column: string) {
   ngAfterViewInit(): void {
     // afterViewInit code.
     this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+
+    const table = document.querySelector('smart-table');
+    if (this.YEAR_NAME) {
+      this.YEAR_NAME.focus();
+    }
   }
-filterData() {
+  filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
     this.Tabledata = this.Keyarray.filter(item => {
       const values = Object.values(item);
@@ -204,7 +207,6 @@ filterData() {
         return false;
       });
     });
-    console.log('Tabledata', this.Tabledata);
   }
   init(): void {
     // init code.
@@ -216,9 +218,11 @@ filterData() {
   handleClick(event: Event, type: String) {
     this.table.exportData(type, 'table');
   }
-  
+
   Tabledata = [];
-  
+  labels
+  datasets
+  options
 
   loadData() {
     this.Tabledata = []
@@ -239,31 +243,155 @@ filterData() {
     if (this.angForm.valid) {
 
       this._monthlysalesservice.findAll(objdata).subscribe((res) => {
-        console.log('Data from Database:', res); 
         this.showtable = true
+        let arr = []
+        let temparr = []
+        let arrdata = []
+        let arrdata1 = []
+        let arrdata2 = []
         if (res.List.length != 0) {
           this.Headers = res.Headers
-          // let obj = { VALUE: 'Month' }
-          // this.Headers.unshift(obj);
-          for (let i = 0; i <= res.List.length - 1; i++) {
-            const propertyValues = Object.values(res.List[i]);
-            propertyValues.shift()
-            // tempmonth.push(propertyValues[0])
-            // propertyValues.shift()
-            this.Keyarray.push(propertyValues)
+          let tempHeaders = res.Headers
+          for (let i = 0; i <= res.Headers.length - 1; i++) {
+
+            const propertyValues = Object.values(res.Headers[i]);
+            arr.push(propertyValues)
           }
-          // this.montharray = tempmonth
+
+          arr.pop()
+          arr.pop()
+          arr.splice(0, 1)[0]
+          arr.splice(0, 1)[0]
+
+          for (let i = 0; i <= res.List.length - 1; i++) {
+
+            const propertyValues = Object.values(res.List[i]);
+            this.Keyarray.push(propertyValues)
+            // temparr.push(propertyValues)
+
+
+          }
+
+          // arrdata = (temparr[temparr.length - 4])
+          // arrdata1 = (temparr[temparr.length - 2])
+          // arrdata2 = (temparr[temparr.length - 1])
+          // debugger
+          // let name = arrdata[1]
+          // arrdata.pop()
+          // arrdata.pop()
+          // arrdata.splice(0, 1)[0]
+          // arrdata.splice(0, 1)[0]
+          // let name2 = arrdata1[1]
+          // arrdata1.pop()
+          // arrdata1.splice(0, 1)[0]
+          // arrdata1.splice(0, 1)[0]
+          // let name3 = arrdata2[1]
+          // arrdata2.pop()
+          // arrdata2.splice(0, 1)[0]
+          // arrdata2.splice(0, 1)[0]
           let obj1 = {}
           this.Tabledata = this.Keyarray
-
-          // this.Tabledata.unshift(obj1)
-          // this.Tabledata.unshift(obj1)
-          // this.Tabledata.unshift(obj1)
-          // this.Tabledata.unshift(obj1)
-
-          
-
           this.isLoading = false;
+
+
+
+
+
+
+          this.labels = arr
+          this.datasets = [
+            {
+              // label: name,
+              fill: true,
+              lineTension: 0.5,
+              backgroundColor: 'rgba(85, 110, 230, 0.2)',
+              borderColor: '#556ee6',
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: '#556ee6',
+              pointBackgroundColor: '#fff',
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: '#556ee6',
+              pointHoverBorderColor: '#fff',
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data: arrdata
+            },
+            {
+              // label: name2,
+              fill: true,
+              lineTension: 0.5,
+              backgroundColor: 'rgba(235, 239, 242, 0.2)',
+              borderColor: '#34c38f',
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: '#34c38f',
+              pointBackgroundColor: '#fff',
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: '#34c38f',
+              pointHoverBorderColor: '#000',
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data: arrdata1
+            },
+            {
+              // label: name3,
+              fill: true,
+              lineTension: 0.5,
+              backgroundColor: 'rgba(52, 195, 143, 0.8)',
+              borderColor: '#ebeff2',
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: '#ebeff2',
+              pointBackgroundColor: '#fff',
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: '#ebeff2',
+              pointHoverBorderColor: '#eef0f2',
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data: arrdata2
+            }
+          ]
+          this.options = {
+            defaultFontColor: '#8791af',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              xAxes: [
+                {
+                  gridLines: {
+                    color: 'rgba(166, 176, 207, 0.1)',
+                  },
+                },
+              ],
+              yAxes: [
+                {
+                  ticks: {
+                    max: 100,
+                    min: 20,
+                    stepSize: 10,
+                  },
+                  gridLines: {
+                    color: 'rgba(166, 176, 207, 0.1)',
+                  },
+                },
+              ],
+            },
+
+          }
+
 
         } else {
           this.isLoading = false;

@@ -47,7 +47,7 @@ currentlyOpenInputBox: string | null = null;
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
-    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+    //console.log(`Filter applied for ${column} with option: ${filterOption}`);
   }
 
 toggleFilterInput(column: string) {
@@ -89,7 +89,6 @@ toggleFilterInput(column: string) {
       const queryData = details.query;
       sqlQuery.query = JSON.stringify(queryData);
       // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
-      //   console.log(data)
       // })
       new window.Smart.Ajax({
         // type:'post',
@@ -196,7 +195,6 @@ toggleFilterInput(column: string) {
         return false;
       });
     });
-    console.log('Tabledata', this.Tabledata);
   }
 
   init(): void {

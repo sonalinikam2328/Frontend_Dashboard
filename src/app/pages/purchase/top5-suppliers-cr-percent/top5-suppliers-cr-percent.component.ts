@@ -71,7 +71,7 @@ export class Top5SuppliersCRPercentComponent implements OnInit, AfterViewInit {
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
-    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+    //console.log(`Filter applied for ${column} with option: ${filterOption}`);
   }
 
   toggleFilterInput(column: string) {
@@ -201,7 +201,7 @@ export class Top5SuppliersCRPercentComponent implements OnInit, AfterViewInit {
         }
         this.Tabledata = res.List
         this.temPTable = this.Tabledata
-        debugger
+        
         let first = this.Tabledata.reduce((accumulator, object) => {
           return Number(accumulator) + Number(object.RECEIPT_QTY);
         }, 0);
@@ -249,7 +249,6 @@ export class Top5SuppliersCRPercentComponent implements OnInit, AfterViewInit {
 
   //     sqlQuery.query = JSON.stringify(queryData);
   //     // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
-  //     //   console.log(data)
   //     // })
   //     new window.Smart.Ajax({
   //       // type:'post',
@@ -312,7 +311,6 @@ export class Top5SuppliersCRPercentComponent implements OnInit, AfterViewInit {
         return false;
       });
     });
-    console.log('Tabledata', this.Tabledata);
   }
 
 

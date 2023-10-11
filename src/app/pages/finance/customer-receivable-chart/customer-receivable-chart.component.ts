@@ -101,9 +101,7 @@ export class CustomerReceivableChartComponent  implements OnInit{
       const queryData = details.query;
 
       sqlQuery.query = JSON.stringify(queryData);
-      // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
-      //   console.log(data)
-      // })
+
       new window.Smart.Ajax({
         // type:'post',
         url: environment.base_url + '/customerreceivablechart/customerreceivablechartData',
@@ -230,9 +228,7 @@ export class CustomerReceivableChartComponent  implements OnInit{
           const queryData = details.query;
 
           sqlQuery.query = JSON.stringify(queryData);
-          // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
-          //   console.log(data)
-          // })
+  
           new window.Smart.Ajax({
             // type:'post',
             url: environment.base_url + '/customerreceivablechart/customerreceivablechartData',

@@ -6,6 +6,12 @@ import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { ChartsModule } from 'ng2-charts';
+import { NgxChartistModule } from 'ngx-chartist';
+import { NgxEchartsModule } from 'ngx-echarts';
+
+import { UIModule } from '../../shared/ui/ui.module';
 @NgModule({
   declarations: [CustomerWiseComplaintsReceivedComponent],
   imports: [
@@ -13,7 +19,12 @@ import { FormsModule } from '@angular/forms';
     QualityControlRoutingModule,
     NgSelectModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgApexchartsModule,
+    ChartsModule,
+    UIModule,
+    NgxChartistModule,
+    NgxEchartsModule
   ],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
 })

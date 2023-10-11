@@ -140,7 +140,7 @@ Keyarray=[];
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
-    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+    //console.log(`Filter applied for ${column} with option: ${filterOption}`);
   }
 
   toggleFilterInput(column: string) {
@@ -190,7 +190,6 @@ Keyarray=[];
 
       sqlQuery.query = JSON.stringify(queryData);
       // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
-      //   console.log(data)
       // })
       new window.Smart.Ajax({
         // type:'post',
@@ -310,7 +309,6 @@ Keyarray=[];
         return false;
       });
     });
-    console.log('Tabledata', this.Tabledata);
   }
 
   tempData = []
@@ -331,6 +329,7 @@ Keyarray=[];
     if (this.angForm.valid) {
       this._SupplierwisePurchaseService.findAll(objdata).subscribe((newdata) => {
         this.showtable = true
+        this.showtable1 = false
         let obj = {}
 
         this.Tabledata = newdata.List
@@ -674,6 +673,7 @@ Keyarray=[];
   }
 
   checkhyperlink(val) {
+    debugger
     if (val == 1) {
       this.showtable1 = true
       this.showtable = false

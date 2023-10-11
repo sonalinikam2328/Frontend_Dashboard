@@ -54,7 +54,7 @@ export class PurchaseTonnageComponent {
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
-    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+    //console.log(`Filter applied for ${column} with option: ${filterOption}`);
   }
 
   toggleFilterInput(column: string) {
@@ -178,7 +178,6 @@ export class PurchaseTonnageComponent {
         return false;
       });
     });
-    console.log('Tabledata', this.Tabledata);
   }
 
   loadData() {

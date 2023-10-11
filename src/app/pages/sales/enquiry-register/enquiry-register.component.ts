@@ -41,14 +41,14 @@ values: any;
   fdateInput: any;
 
   toggleFilter(column: string) {
-    debugger
+    
     this.isFilterOpen[column] = !this.isFilterOpen[column];
      this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
   }
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
-    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+    //console.log(`Filter applied for ${column} with option: ${filterOption}`);
   }
 
   toggleFilterInput(column: string) {
@@ -145,7 +145,6 @@ values: any;
         return false;
       });
     });
-    console.log('Tabledata', this.Tabledata);
   }
   Keyarray=[];
   searchQuery: string = '';

@@ -50,7 +50,7 @@ values: any;
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
-    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+    //console.log(`Filter applied for ${column} with option: ${filterOption}`);
   }
 
   toggleFilterInput(column: string) {
@@ -96,7 +96,6 @@ values: any;
 
       sqlQuery.query = JSON.stringify(queryData);
       // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
-      //   console.log(data)
       // })
       new window.Smart.Ajax({
         // type:'post',
@@ -212,7 +211,6 @@ values: any;
         return false;
       });
     });
-    console.log('Tabledata', this.Tabledata);
   }
 
 

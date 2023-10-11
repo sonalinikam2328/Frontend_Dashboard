@@ -175,7 +175,6 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   reloadsubitem(subitem: any) {
-    console.log('Reloading subItem:', subitem);
     this.reloadComponent(); // Call the reloadComponent method to reload the component
   }
 

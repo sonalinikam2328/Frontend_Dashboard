@@ -65,14 +65,13 @@ export class OilConsumptionComponent implements OnInit {
     this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
   }
 
-  applyFilter(column: string, filterOption: string) {
-    // Implement your filtering logic here based on the column and filterOption
-    console.log(`Filter applied for ${column} with option: ${filterOption}`);
-  }
-
   toggleFilterInput(column: string) {
     this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
   }
+   applyFilter(column: string, filterOption: string) {
+     // Implement your filtering logic here based on the column and filterOption
+     //console.log(`Filter applied for ${column} with option: ${filterOption}`);
+   }
 
 
   showFilterInput(event: MouseEvent) {
@@ -161,8 +160,7 @@ export class OilConsumptionComponent implements OnInit {
       this.selectedYear = this.finyear[0]['DATEVALUE']
     });
 
-
-    console.log('Keyarray:', this.Keyarray);
+    
 
   }
 
@@ -189,7 +187,6 @@ export class OilConsumptionComponent implements OnInit {
 
   //     sqlQuery.query = JSON.stringify(queryData);
   //     // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
-  //     //   console.log(data)
   //     // })
   //     new window.Smart.Ajax({
   //       // type:'post',

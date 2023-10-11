@@ -55,7 +55,7 @@ export class CustomerWisePlanVsActualSaleComponent {
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
-    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+    //console.log(`Filter applied for ${column} with option: ${filterOption}`);
   }
 
   toggleFilterInput(column: string) {
@@ -101,7 +101,6 @@ export class CustomerWisePlanVsActualSaleComponent {
 
       sqlQuery.query = JSON.stringify(queryData);
       // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
-      //   console.log(data)
       // })
       new window.Smart.Ajax({
         // type:'post',
@@ -216,7 +215,6 @@ export class CustomerWisePlanVsActualSaleComponent {
         return false;
       });
     });
-    console.log('Tabledata', this.Tabledata);
   }
   init(): void {
     // init code.

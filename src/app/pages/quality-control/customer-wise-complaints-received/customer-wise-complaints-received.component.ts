@@ -37,7 +37,7 @@ export class CustomerWiseComplaintsReceivedComponent {
   isLoading1: boolean = false;
   BRANCH: boolean = false;
   isLoading = false;
-  Keyarray=[];
+  Keyarray = [];
   searchQuery: string = '';
   renderer: any;
   fdateInput: any;
@@ -121,7 +121,6 @@ onFilterInputChange(value: string) {
 
       sqlQuery.query = JSON.stringify(queryData);
       // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
-      //   console.log(data)
       // })
       new window.Smart.Ajax({
         // type:'post',
@@ -242,7 +241,6 @@ onFilterInputChange(value: string) {
         return false;
       });
     });
-    console.log('Tabledata', this.Tabledata);
   }
 
   init(): void {
@@ -257,8 +255,10 @@ onFilterInputChange(value: string) {
   }
   Tabledata = []
   Headers = []
-  
-
+  lineBarChart = {};
+  labels
+  options
+  datasets
   loadData() {
     this.Tabledata = []
     this.Headers = []
@@ -275,7 +275,7 @@ onFilterInputChange(value: string) {
 
     let result3 = this.selectedMonth.substr(0, 2);
     let result4 = this.selectedMonth.substr(2, 2);
-    
+
     if (result3 > '03') {
       date = result2 + result3 + result4
     } else {
@@ -302,26 +302,66 @@ onFilterInputChange(value: string) {
         // }
 
         this.showtable = true
+        let arr = []
+        let arrdata = []
 
         if (res.List.recordsets.length != 0) {
           this.Headers = res.List.recordsets[1]
-          // let obj = { MAT_NAME: 'Month' }
-          // this.Headers.unshift(obj);
+
           for (let i = 0; i <= res.List.recordsets[0].length - 1; i++) {
-            const propertyValues = Object.values(res.List.recordsets[0][i]);
-            // propertyValues.shift()
-            // tempmonth.push(propertyValues[0])
-            // propertyValues.shift()
+            
+            let propertyValues = Object.values(res.List.recordsets[0][i]);
+            arr.push(propertyValues.splice(1, 1)[0]);
+            arrdata.push(propertyValues[2])
             this.Keyarray.push(propertyValues)
           }
-          // this.montharray = tempmonth
+          
+
+
           this.Tabledata = this.Keyarray
           this.isLoading = false;
+          // this.lineBarChart = {
+          this.labels = arr,
+            this.datasets = [
+              {
+                label: 'Total',
+                backgroundColor: 'rgba(52, 195, 143, 0.8)',
+                borderColor: 'rgba(52, 195, 143, 0.8)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(52, 195, 143, 0.9)',
+                hoverBorderColor: 'rgba(52, 195, 143, 0.9)',
+                data: arrdata,
+                barPercentage: 0.2
+
+              },
+
+            ]
+          this.options = {
+            maintainAspectRatio: false,
+            scales: {
+              xAxes: [
+                {
+                  gridLines: {
+                    color: 'rgba(166, 176, 207, 0.1)'
+                  },
+                }
+              ],
+              yAxes: [
+                {
+                  gridLines: {
+                    color: 'rgba(166, 176, 207, 0.1)'
+                  }
+                }
+              ]
+            }
+          }
 
         } else {
           this.isLoading = false;
           Swal.fire('Warning', 'No Data Found', 'info')
         }
+
+
 
 
       });
@@ -338,6 +378,8 @@ onFilterInputChange(value: string) {
 
 
   }
+
+
 
 
 }

@@ -56,7 +56,7 @@ export class PaymentCollectionPlanComponent implements AfterViewInit, OnInit {
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
-    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+    //console.log(`Filter applied for ${column} with option: ${filterOption}`);
   }
 
   toggleFilterInput(column: string) {
@@ -156,10 +156,9 @@ export class PaymentCollectionPlanComponent implements AfterViewInit, OnInit {
         return false;
       });
     });
-    console.log('Tabledata', this.Tabledata);
   }
 
-  
+
   Tabledata = []
   FooterData = []
   temparray = []
@@ -185,6 +184,12 @@ export class PaymentCollectionPlanComponent implements AfterViewInit, OnInit {
         this.upmonth()
         let obj = {}
         this.showtable = true
+
+        for (let i = 0; i <= res.List.length - 1; i++) {
+          res.List[i]['INVOICE_AMT'] = parseFloat(res.List[i]['INVOICE_AMT']).toFixed(2)
+          res.List[i]['RECEIPT_AMT'] = parseFloat(res.List[i]['RECEIPT_AMT']).toFixed(2)
+          res.List[i]['RECV_PERCENT'] = parseFloat(res.List[i]['RECV_PERCENT']).toFixed(2) // check
+        }
         this.FooterData.push(res.List[res.List.length - 1])
         this.Tabledata = res.List
         this.temparray = res.List

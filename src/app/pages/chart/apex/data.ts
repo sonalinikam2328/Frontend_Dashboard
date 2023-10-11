@@ -152,7 +152,7 @@ const dashedLineChart: ChartType = {
     stroke: {
         width: [3, 4, 3],
         curve: 'straight',
-        dashArray: [0, 8, 5]
+        dashArray: [0, 0, 0]
     },
     series: [{
         name: 'Session Duration',
