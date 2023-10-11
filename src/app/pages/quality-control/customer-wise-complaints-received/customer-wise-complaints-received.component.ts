@@ -46,9 +46,31 @@ export class CustomerWiseComplaintsReceivedComponent {
   isFilterInputOpen: { [key: string]: boolean } = {};
 data: any;
 column: any;
-currentlyOpenInputBox: string | null = null;
-
+currentOpenFilter: string | null = null;
+ toggleFilter(column: string) {
+    if (this.currentOpenFilter !== column) {
+      // Close the previously open filter
+      if (this.currentOpenFilter) {
+        this.isFilterOpen[this.currentOpenFilter] = false;
+        this.isFilterInputOpen[this.currentOpenFilter] = false;
+      }
   
+      this.currentOpenFilter = column;
+    }
+  
+    this.isFilterOpen[column] = !this.isFilterOpen[column];
+    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+  }
+
+
+  applyFilter(column: string, filterOption: string) {
+    // Implement your filtering logic here based on the column and filterOption
+    console.log(`Filter applied for ${column} with option: ${filterOption}`);
+  }
+
+toggleFilterInput(column: string) {
+     this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
+  }
 
 
 
@@ -78,20 +100,7 @@ currentlyOpenInputBox: string | null = null;
     ele.open();
   }
 
-  toggleFilter(column: string) {
-    this.isFilterOpen[column] = !this.isFilterOpen[column];
-    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
-   }
-
-   applyFilter(column: string, filterOption: string) {
-     // Implement your filtering logic here based on the column and filterOption
-     console.log(`Filter applied for ${column} with option: ${filterOption}`);
-   }
-
- toggleFilterInput(column: string) {
-      this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
-   }
-
+ 
   
   showFilterInput(event: MouseEvent) {
     const filterInput = (event.currentTarget as Element).querySelector('.filter-input');

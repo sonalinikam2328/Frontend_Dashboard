@@ -40,11 +40,22 @@ values: any;
   renderer: any;
   fdateInput: any;
 
-  toggleFilter(column: string) {
-    
-    this.isFilterOpen[column] = !this.isFilterOpen[column];
-     this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
-  }
+currentOpenFilter: string | null = null;
+toggleFilter(column: string) {
+   if (this.currentOpenFilter !== column) {
+     // Close the previously open filter
+     if (this.currentOpenFilter) {
+       this.isFilterOpen[this.currentOpenFilter] = false;
+       this.isFilterInputOpen[this.currentOpenFilter] = false;
+     }
+ 
+     this.currentOpenFilter = column;
+   }
+ 
+   this.isFilterOpen[column] = !this.isFilterOpen[column];
+   this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+ }
+
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption

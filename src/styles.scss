@@ -322,8 +322,13 @@ body {
   border: 1px solid #ccc!important;
   border-radius: 4px!important;
   display: inline-block!important;
+  
  
 }
+.filter-option input {
+    float: left !important;
+  }
+
 
 // .filter-option:hover {
 //   background-color: #f0f0f0!important;

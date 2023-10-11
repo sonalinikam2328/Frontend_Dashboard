@@ -50,20 +50,30 @@ export class OilConsumptionComponent implements OnInit {
 
   searchQuery: string = '';
 
-  //searchQuery: string = '';
+//searchQuery: string = '';
 
-  isFilterOpen: { [key: string]: boolean } = {};
-  isFilterInputOpen: { [key: string]: boolean } = {};
-  data: any;
-  column: any;
-  currentlyOpenInputBox: string | null = null;
+   isFilterOpen: { [key: string]: boolean } = {};
+   isFilterInputOpen: { [key: string]: boolean } = {};
+   data: any;
+   column: any;
+   currentOpenFilter: string | null = null;
   renderer: any;
   fdateInput: any;
+   toggleFilter(column: string) {
+   if (this.currentOpenFilter !== column) {
+     // Close the previously open filter
+     if (this.currentOpenFilter) {
+       this.isFilterOpen[this.currentOpenFilter] = false;
+       this.isFilterInputOpen[this.currentOpenFilter] = false;
+     }
+ 
+     this.currentOpenFilter = column;
+   }
+ 
+   this.isFilterOpen[column] = !this.isFilterOpen[column];
+   this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+ }
 
-  toggleFilter(column: string) {
-    this.isFilterOpen[column] = !this.isFilterOpen[column];
-    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
-  }
 
   toggleFilterInput(column: string) {
     this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
