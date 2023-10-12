@@ -103,7 +103,7 @@ onFilterInputChange(value: string) {
 
 }
 
-currentlyOpenInputBox: string | null = null;
+
   constructor(
     private _SupplierWiseBoringService: SupplierWiseBoringService,
     private _AppComponentService: AppComponentService,
@@ -115,12 +115,10 @@ currentlyOpenInputBox: string | null = null;
   ) {
 
     this.selectedDate = new Date();
-
     this.upmonth();
-
     let dt = new Date()
     this.minDate = new Date();
-    this.maxDate = new Date(dt.getFullYear(), dt.getMonth(), 1);;
+    this.maxDate = new Date(dt.getFullYear(), dt.getMonth(), 1);
     this.minDatet = new Date();
     this.minDate.setDate(this.minDate.getDate());
     this.maxDate.setDate(this.maxDate.getDate());

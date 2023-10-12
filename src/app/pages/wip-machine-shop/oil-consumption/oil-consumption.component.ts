@@ -54,12 +54,12 @@ export class OilConsumptionComponent implements OnInit {
 
    isFilterOpen: { [key: string]: boolean } = {};
    isFilterInputOpen: { [key: string]: boolean } = {};
-   data: any;
-   column: any;
-   currentOpenFilter: string | null = null;
-  renderer: any;
+data: any;
+column: any;
+currentOpenFilter: string | null = null;
   fdateInput: any;
-   toggleFilter(column: string) {
+  renderer: any;
+toggleFilter(column: string) {
    if (this.currentOpenFilter !== column) {
      // Close the previously open filter
      if (this.currentOpenFilter) {
