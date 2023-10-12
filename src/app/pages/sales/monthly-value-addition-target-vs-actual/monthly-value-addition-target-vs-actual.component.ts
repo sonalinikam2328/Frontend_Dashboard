@@ -30,40 +30,40 @@ export class MonthlyValueAdditionTargetVsActualComponent {
   BRANCH: boolean = false;
 
   searchQuery: string = '';
-  Keyarray=[];
+  Keyarray = [];
 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
-data: any;
-column: any;
-currentOpenFilter: string | null = null;
+  data: any;
+  column: any;
+  currentOpenFilter: string | null = null;
   renderer: any;
   fdateInput: any;
- toggleFilter(column: string) {
+  toggleFilter(column: string) {
     if (this.currentOpenFilter !== column) {
       // Close the previously open filter
       if (this.currentOpenFilter) {
         this.isFilterOpen[this.currentOpenFilter] = false;
         this.isFilterInputOpen[this.currentOpenFilter] = false;
       }
-  
+
       this.currentOpenFilter = column;
     }
-  
+
     this.isFilterOpen[column] = !this.isFilterOpen[column];
     this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
   }
 
 
- 
+
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
     //console.log(`Filter applied for ${column} with option: ${filterOption}`);
   }
 
-toggleFilterInput(column: string) {
-     this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
+  toggleFilterInput(column: string) {
+    this.isFilterInputOpen[column] = !this.isFilterInputOpen[column];
   }
 
 
@@ -192,8 +192,8 @@ toggleFilterInput(column: string) {
     // afterViewInit code
     this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
   }
-  
- 
+
+
   filterData() {
     const searchQueryLowerCase = this.searchQuery.toLowerCase().trim();
     this.Tabledata = this.Keyarray.filter(item => {
@@ -221,7 +221,13 @@ toggleFilterInput(column: string) {
   }
   Headers = [];
   Tabledata = [];
-  
+  temparr = [];
+  labels
+  datasets
+  options
+  arrdata
+  arrdata1
+  arrdata2
 
   loadData() {
     this.Tabledata = []
@@ -242,32 +248,146 @@ toggleFilterInput(column: string) {
     if (this.angForm.valid) {
 
       this._monthlayvalueadditionservice.findAll(objdata).subscribe((res) => {
-
+        let arr = []
+        this.arrdata = []
+        this.arrdata1 = []
+        this.arrdata2 = []
         this.showtable = true
         if (res.List.length != 0) {
           this.Headers = res.Headers
-          // let obj = { VALUE: 'Month' }
-          // this.Headers.unshift(obj);
+          let tempHeaders = res.Headers
+          for (let i = 0; i <= res.Headers.length - 1; i++) {
+
+            const propertyValues = Object.values(res.Headers[i]);
+            arr.push(propertyValues)
+          }
+
+          arr.pop()
+          arr.pop()
+          arr.splice(0, 1)[0]
+          arr.splice(0, 1)[0]
+
           for (let i = 0; i <= res.List.length - 1; i++) {
             const propertyValues = Object.values(res.List[i]);
-            propertyValues.shift()
-            // tempmonth.push(propertyValues[0])
-            // propertyValues.shift()
             this.Keyarray.push(propertyValues)
+            this.temparr.push(propertyValues)
           }
-          // this.montharray = tempmonth
-          let obj1 = {}
 
-          this.Tabledata.unshift(obj1)
-          this.Tabledata.unshift(obj1)
+
+          this.arrdata = (this.temparr[this.temparr.length - 4])
+          this.arrdata1 = (this.temparr[this.temparr.length - 2])
+
+          this.arrdata2 = (this.temparr[this.temparr.length - 1])
+
+          let name = this.arrdata[1]
+
+          this.arrdata = this.arrdata.slice(4);
+          this.arrdata = this.arrdata.slice(0, -2);
+
+          let name2 = this.arrdata1[1]
+          this.arrdata1 = this.arrdata1.slice(4);
+          this.arrdata1 = this.arrdata1.slice(0, -2);
+
+          let name3 = this.arrdata2[1]
+          this.arrdata2 = this.arrdata2.slice(4);
+          this.arrdata2 = this.arrdata2.slice(0, -2);
+
           this.Tabledata = this.Keyarray
- 
-
-          this.Tabledata = this.Keyarray
-          
-
           this.isLoading = false;
 
+          this.labels = arr
+          this.datasets = [
+            {
+              label: name,
+              fill: true,
+              lineTension: 0.5,
+              // backgroundColor: 'rgba(85, 110, 230, 0.2)',
+              borderColor: '#556ee6',
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: '#556ee6',
+              // pointBackgroundColor: '#fff',
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              // pointHoverBackgroundColor: '#556ee6',
+              pointHoverBorderColor: '#fff',
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data: this.arrdata
+            },
+            {
+              label: name2,
+              fill: true,
+              lineTension: 0.5,
+              // backgroundColor: 'rgba(235, 239, 242, 0.2)',
+              borderColor: '#34c38f',
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: '#34c38f',
+              // pointBackgroundColor: '#fff',
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              // pointHoverBackgroundColor: '#34c38f',
+              pointHoverBorderColor: '#000',
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data: this.arrdata1
+            },
+            {
+              label: name3,
+              fill: true,
+              lineTension: 0.5,
+              // backgroundColor: 'rgba(52, 195, 143, 0.8)',
+              borderColor: '#ebeff2',
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: '#ebeff2',
+              // pointBackgroundColor: '#fff',
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              // pointHoverBackgroundColor: '#ebeff2',
+              pointHoverBorderColor: '#eef0f2',
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data: this.arrdata2
+            }
+          ]
+          this.options = {
+            defaultFontColor: '#8791af',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              xAxes: [
+                {
+                  gridLines: {
+                    color: 'rgba(166, 176, 207, 0.1)',
+                  },
+                },
+              ],
+              yAxes: [
+                {
+                  //   ticks: {
+                  //     max: 100,
+                  //     min: 20,
+                  //     stepSize: 10,
+                  //   },
+                  gridLines: {
+                    color: 'rgba(166, 176, 207, 0.1)',
+                  },
+                },
+              ],
+            },
+
+          }
         } else {
           this.isLoading = false;
           Swal.fire('Warning', 'No Data Found', 'info')
@@ -281,7 +401,7 @@ toggleFilterInput(column: string) {
         Swal.fire('Warning', 'Please select branch', 'info')
       } else if (this.selectedYear == null) {
         Swal.fire('Warning', 'Please select financial year', 'info')
-      } 
+      }
 
     }
   }

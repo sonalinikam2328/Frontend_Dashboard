@@ -206,14 +206,16 @@ toggleFilter(column: string) {
         // BRANCH_NAME: this.selectedBrach,
         // CODE: result.COMPANY_ID
       }
+
+      console.log('objdata', objdata)
       if (this.angForm.valid) {
 
         this._AppComponentService.findAll(objdata).subscribe((res) => {
           this.showtable = false
           this.showtable1 = true
 
-          this.Tabledata1 = res.List
-          this.tempdata = res.List
+          this.Tabledata1 = res.List.recordsets[0]
+          this.tempdata = res.List.recordsets[0]
           this.isLoading = false;
         });
 

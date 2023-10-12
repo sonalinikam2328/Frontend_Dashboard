@@ -37,10 +37,10 @@ export class CustomerWisePlanVsActualSaleComponent {
   showBranch: boolean = true
   angForm: FormGroup;
   searchQuery: string = '';
-  Keyarray=[];
-  
+  Keyarray = [];
+
   //tableColumns = ['Customer Name', 'VA %','Planned Sale','Actual Sale',
- // 'Difference','VA Effect']; 
+  // 'Difference','VA Effect']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
   column: any;
@@ -50,20 +50,20 @@ export class CustomerWisePlanVsActualSaleComponent {
 
   currentOpenFilter: string | null = null;
   toggleFilter(column: string) {
-     if (this.currentOpenFilter !== column) {
-       // Close the previously open filter
-       if (this.currentOpenFilter) {
-         this.isFilterOpen[this.currentOpenFilter] = false;
-         this.isFilterInputOpen[this.currentOpenFilter] = false;
-       }
-   
-       this.currentOpenFilter = column;
-     }
-   
-     this.isFilterOpen[column] = !this.isFilterOpen[column];
-     this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
-   }
- 
+    if (this.currentOpenFilter !== column) {
+      // Close the previously open filter
+      if (this.currentOpenFilter) {
+        this.isFilterOpen[this.currentOpenFilter] = false;
+        this.isFilterInputOpen[this.currentOpenFilter] = false;
+      }
+
+      this.currentOpenFilter = column;
+    }
+
+    this.isFilterOpen[column] = !this.isFilterOpen[column];
+    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
+  }
+
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
@@ -247,9 +247,24 @@ export class CustomerWisePlanVsActualSaleComponent {
     let result = JSON.parse(data);
 
     const formVal = this.angForm.value;
+    debugger
+
+    let date;
+    let result1 = this.selectedYear.substr(0, 4);
+    let result2 = this.selectedYear.substr(4, 4);
+
+    let result3 = this.selectedMonth.substr(0, 2);
+    let result4 = this.selectedMonth.substr(2, 2);
+
+    if (result3 > '03') {
+      date = result2 + result3 + result4
+    } else {
+      date = result1 + result3 + result4
+    }
+    const endOfMonth = moment(date, 'YYYYMMDD').clone().endOf('month').format('YYYYMMDD');
     let objdata = {
       BRANCH_NAME: this.selectedBrach,
-      FINANCIAL_YEAR: this.selectedYear,
+      FINANCIAL_YEAR: endOfMonth,
       CODE: result.COMPANY_ID
 
     }
