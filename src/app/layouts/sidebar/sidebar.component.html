@@ -41,11 +41,10 @@
                 {{ subitem.label | translate}}
               </a>
               <ul *ngIf="hasItems(subitem)" class="sub-menu mm-collapse" aria-expanded="false">
-<<<<<<< Updated upstream
-                <li *ngFor="let subSubitem of subitem.subItems" >
-=======
                 <li *ngFor="let subSubitem of subitem.subItems">
->>>>>>> Stashed changes
+
+                <li *ngFor="let subSubitem of subitem.subItems">
+                <li *ngFor="let subSubitem of subitem.subItems" >
                   <a [attr.data-parent]="subSubitem.parentId" routerLink="{{subSubitem.link}}" routerLinkActive="active"
                     class="side-nav-link-ref">
                     {{ subSubitem.label | translate }}
