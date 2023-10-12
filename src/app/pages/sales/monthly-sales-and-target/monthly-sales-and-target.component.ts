@@ -231,12 +231,16 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
   }
 
   Tabledata = [];
+  temparr = [];
   labels
   datasets
   options
-
+  arrdata = []
+  arrdata1 = []
+  arrdata2 = []
   loadData() {
     this.Tabledata = []
+    this.temparr = []
     this.Keyarray = []
     this.isLoading = true;
 
@@ -256,10 +260,9 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
       this._monthlysalesservice.findAll(objdata).subscribe((res) => {
         this.showtable = true
         let arr = []
-        let temparr = []
-        let arrdata = []
-        let arrdata1 = []
-        let arrdata2 = []
+        this.arrdata = []
+        this.arrdata1 = []
+        this.arrdata2 = []
         if (res.List.length != 0) {
           this.Headers = res.Headers
           let tempHeaders = res.Headers
@@ -275,104 +278,102 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
           arr.splice(0, 1)[0]
 
           for (let i = 0; i <= res.List.length - 1; i++) {
-
             const propertyValues = Object.values(res.List[i]);
             this.Keyarray.push(propertyValues)
-            // temparr.push(propertyValues)
+            this.temparr.push(propertyValues)
 
 
           }
 
-          // arrdata = (temparr[temparr.length - 4])
-          // arrdata1 = (temparr[temparr.length - 2])
-          // arrdata2 = (temparr[temparr.length - 1])
-          // debugger
-          // let name = arrdata[1]
-          // arrdata.pop()
-          // arrdata.pop()
-          // arrdata.splice(0, 1)[0]
-          // arrdata.splice(0, 1)[0]
-          // let name2 = arrdata1[1]
-          // arrdata1.pop()
-          // arrdata1.splice(0, 1)[0]
-          // arrdata1.splice(0, 1)[0]
-          // let name3 = arrdata2[1]
-          // arrdata2.pop()
-          // arrdata2.splice(0, 1)[0]
-          // arrdata2.splice(0, 1)[0]
-          let obj1 = {}
+          
+          this.arrdata = (this.temparr[this.temparr.length - 4])
+          this.arrdata1 = (this.temparr[this.temparr.length - 2])
+
+          this.arrdata2 = (this.temparr[this.temparr.length - 1])
+
+          let name = this.arrdata[1]
+          this.arrdata.pop()
+          this.arrdata.pop()
+          this.arrdata.splice(0, 1)[0]
+          this.arrdata.splice(0, 1)[0]
+
+          let name2 = this.arrdata1[1]
+          this.arrdata1.pop()
+          this.arrdata1.splice(0, 1)[0]
+          this.arrdata1.splice(0, 1)[0]
+
+          let name3 = this.arrdata2[1]
+          this.arrdata2.pop()
+          this.arrdata2.splice(0, 1)[0]
+          this.arrdata2.splice(0, 1)[0]
+
           this.Tabledata = this.Keyarray
           this.isLoading = false;
-
-
-
-
-
 
           this.labels = arr
           this.datasets = [
             {
-              // label: name,
+              label: name,
               fill: true,
               lineTension: 0.5,
-              backgroundColor: 'rgba(85, 110, 230, 0.2)',
+              // backgroundColor: 'rgba(85, 110, 230, 0.2)',
               borderColor: '#556ee6',
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: 'miter',
               pointBorderColor: '#556ee6',
-              pointBackgroundColor: '#fff',
+              // pointBackgroundColor: '#fff',
               pointBorderWidth: 1,
               pointHoverRadius: 5,
-              pointHoverBackgroundColor: '#556ee6',
+              // pointHoverBackgroundColor: '#556ee6',
               pointHoverBorderColor: '#fff',
               pointHoverBorderWidth: 2,
               pointRadius: 1,
               pointHitRadius: 10,
-              data: arrdata
+              data: this.arrdata
             },
             {
-              // label: name2,
+              label: name2,
               fill: true,
               lineTension: 0.5,
-              backgroundColor: 'rgba(235, 239, 242, 0.2)',
+              // backgroundColor: 'rgba(235, 239, 242, 0.2)',
               borderColor: '#34c38f',
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: 'miter',
               pointBorderColor: '#34c38f',
-              pointBackgroundColor: '#fff',
+              // pointBackgroundColor: '#fff',
               pointBorderWidth: 1,
               pointHoverRadius: 5,
-              pointHoverBackgroundColor: '#34c38f',
+              // pointHoverBackgroundColor: '#34c38f',
               pointHoverBorderColor: '#000',
               pointHoverBorderWidth: 2,
               pointRadius: 1,
               pointHitRadius: 10,
-              data: arrdata1
+              data: this.arrdata1
             },
             {
-              // label: name3,
+              label: name3,
               fill: true,
               lineTension: 0.5,
-              backgroundColor: 'rgba(52, 195, 143, 0.8)',
+              // backgroundColor: 'rgba(52, 195, 143, 0.8)',
               borderColor: '#ebeff2',
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: 'miter',
               pointBorderColor: '#ebeff2',
-              pointBackgroundColor: '#fff',
+              // pointBackgroundColor: '#fff',
               pointBorderWidth: 1,
               pointHoverRadius: 5,
-              pointHoverBackgroundColor: '#ebeff2',
+              // pointHoverBackgroundColor: '#ebeff2',
               pointHoverBorderColor: '#eef0f2',
               pointHoverBorderWidth: 2,
               pointRadius: 1,
               pointHitRadius: 10,
-              data: arrdata2
+              data: this.arrdata2
             }
           ]
           this.options = {
@@ -389,11 +390,11 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
               ],
               yAxes: [
                 {
-                  ticks: {
-                    max: 100,
-                    min: 20,
-                    stepSize: 10,
-                  },
+                  //   ticks: {
+                  //     max: 100,
+                  //     min: 20,
+                  //     stepSize: 10,
+                  //   },
                   gridLines: {
                     color: 'rgba(166, 176, 207, 0.1)',
                   },

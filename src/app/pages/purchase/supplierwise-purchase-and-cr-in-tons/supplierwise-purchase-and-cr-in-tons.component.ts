@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { TableComponent } from '@smart-webcomponents-angular/table';
 import { environment } from 'src/environments/environment';
 import * as  moment from 'moment';
@@ -120,18 +120,13 @@ Keyarray=[];
   isLoading1: boolean = false
   BRANCH: boolean = false
   showtable: boolean = false
+  @ViewChild('fdateInput') fdateInput: ElementRef;
 
-  //   tableColumns = ['Supplier Name', 'Avg. Purchase','Avg. Purchase Returns','Avg. Purchase Schedule',
-  //  'Delivery Rating','Delivery Rating','Quality Rating','Q1 Purchase','Q1 purchase Return','Q1 Delivery Rating',
-  //  'Q1 Quality Rating','Q2 Purchase','Q2 purchase Return','Q2 Delivery Rating','Q2 Quality Rating','Q3 Purchase',
-  //  'Q3 purchase Return','Q3 Delivery Rating','Q3 Quality Rating','Q4 Purchase','Q4 purchase Return',
-  //  'Q4 Delivery Rating','Q4 Quality Rating']; 
+ 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
  column: any;
  values: any;
-  renderer: any;
-  fdateInput: any;
 
   toggleFilter(column: string) {
     this.isFilterOpen[column] = !this.isFilterOpen[column];
@@ -140,7 +135,7 @@ Keyarray=[];
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
-    //console.log(`Filter applied for ${column} with option: ${filterOption}`);
+    console.log(`Filter applied for ${column} with option: ${filterOption}`);
   }
 
   toggleFilterInput(column: string) {
@@ -154,6 +149,8 @@ Keyarray=[];
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
+    private renderer: Renderer2,
+
   ) { }
 
 
@@ -190,6 +187,7 @@ Keyarray=[];
 
       sqlQuery.query = JSON.stringify(queryData);
       // this.http.post('http://localhost:3000',details).subscribe((data: any)=>{
+      //   console.log(data)
       // })
       new window.Smart.Ajax({
         // type:'post',
@@ -270,6 +268,9 @@ Keyarray=[];
         this.selectedBrach = this.branch[0]['CODE']
 
       }
+      setTimeout(() => {
+        this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+      }, 100);
     });
 
     this._AppComponentService.financialYear(obj).subscribe((res) => {
@@ -281,8 +282,13 @@ Keyarray=[];
 
   ngAfterViewInit(): void {
     // afterViewInit code.
-      this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
-    
+    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+
+    this.init();
+    const table = document.querySelector('smart-table');
+    if (this.YEAR_NAME) {
+      this.YEAR_NAME.focus();
+    }
   }
 
   init(): void {
@@ -309,6 +315,7 @@ Keyarray=[];
         return false;
       });
     });
+    console.log('Tabledata', this.Tabledata);
   }
 
   tempData = []
@@ -329,7 +336,6 @@ Keyarray=[];
     if (this.angForm.valid) {
       this._SupplierwisePurchaseService.findAll(objdata).subscribe((newdata) => {
         this.showtable = true
-        this.showtable1 = false
         let obj = {}
 
         this.Tabledata = newdata.List
@@ -673,7 +679,6 @@ Keyarray=[];
   }
 
   checkhyperlink(val) {
-    debugger
     if (val == 1) {
       this.showtable1 = true
       this.showtable = false

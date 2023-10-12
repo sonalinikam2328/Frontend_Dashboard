@@ -20,7 +20,7 @@
         "MONTHLYSALESANDTARGET": "Monthly Sales and Target",
         "CUSTOMERCIGRADEPERKGRATEREALIZATION": "Customer CI Grade Per KG Rate Realization",
         "ENQUIRYREGISTER": "Enquiry Register",
-        "DAILYSALESDATA":"Daily Sales Data"
+        "DAILYSALESDATA": "Daily Sales Data"
       }
     },
     "FINANCE": {
@@ -49,12 +49,21 @@
         "SUPPLIERWISEBORINGRECOVERYDETAILS": "Supplier Wise Boring Recovery Details"
       }
     },
-    "QUALITYCONTROL":{
-      "TEXT":"Quatity Control",
+    "QUALITYCONTROL": {
+      "TEXT": "Quatity Control",
       "LIST": {
-        "CUSTOMERWISECOMPLAINTSRECEIVED":"Customer Wise Complaints Received"
+        "CUSTOMERWISECOMPLAINTSRECEIVED": "Customer Wise Complaints Received"
+      }
+    },
+    "CHARTS": {
+      "TEXT": "Chart",
+      "LIST": {
+        "APEX": "Apex",
+        "CHARTJS" : "Chartjs",
+        "CHARTIST": "CHARTIST",
+        "ECHART": "ECHART"
+
       }
     }
-    
   }
 }

@@ -72,7 +72,7 @@
                   <th class="td_left" style="width: 20%;">Supplier Name
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('SupplierName')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SupplierName']}">
                         <div class="filter-option" (click)="applyFilter('SupplierName', 'Option 1')">Filter</div>
@@ -80,12 +80,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('SupplierName')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Avg. Purchase
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('Avg.Purchase')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Avg.Purchase']}">
                         <div class="filter-option" (click)="applyFilter('Avg.Purchase', 'Option 1')">Filter</div>
@@ -93,38 +93,41 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('Avg.Purchase')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Avg. Purchase Returns
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('Avg.PurchaseReturns')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Avg.PurchaseReturns']}">
+                      <div class="filter-options"
+                        [ngClass]="{'show-filter-options': isFilterOpen['Avg.PurchaseReturns']}">
                         <div class="filter-option" (click)="applyFilter('Avg.PurchaseReturns', 'Option 1')">Filter</div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['Avg.PurchaseReturns']">
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('Avg.PurchaseReturns')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Avg. Purchase Schedule
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('Avg.PurchaseSchedule')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Avg.PurchaseSchedule']}">
-                        <div class="filter-option" (click)="applyFilter('Avg.PurchaseSchedule', 'Option 1')">Filter</div>
+                      <div class="filter-options"
+                        [ngClass]="{'show-filter-options': isFilterOpen['Avg.PurchaseSchedule']}">
+                        <div class="filter-option" (click)="applyFilter('Avg.PurchaseSchedule', 'Option 1')">Filter
+                        </div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['Avg.PurchaseSchedule']">
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('Avg.PurchaseSchedule')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Delivery Rating
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('DeliveryRating')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DeliveryRating']}">
                         <div class="filter-option" (click)="applyFilter('DeliveryRating', 'Option 1')">Filter</div>
@@ -132,12 +135,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('DeliveryRating')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Delivery Rating
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('DeliveryRating1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DeliveryRating1']}">
                         <div class="filter-option" (click)="applyFilter('DeliveryRating1', 'Option 1')">Filter</div>
@@ -145,12 +148,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('DeliveryRating1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Quality Rating
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('QualityRating')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['QualityRating']}">
                         <div class="filter-option" (click)="applyFilter('QualityRating', 'Option 1')">Filter</div>
@@ -158,12 +161,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('QualityRating')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Q1 Purchase
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('Q1Purchase')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q1Purchase']}">
                         <div class="filter-option" (click)="applyFilter('Q1Purchase', 'Option 1')">Filter</div>
@@ -171,12 +174,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('Q1Purchase')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Q1 purchase Return
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('Q1PurchaseReturn')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q1PurchaseReturn']}">
                         <div class="filter-option" (click)="applyFilter('Q1PurchaseReturn', 'Option 1')">Filter</div>
@@ -184,12 +187,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('Q1PurchaseReturn')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Q1 Delivery Rating
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('Q1DeliveryRating')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q1DeliveryRating']}">
                         <div class="filter-option" (click)="applyFilter('Q1DeliveryRating', 'Option 1')">Filter</div>
@@ -201,113 +204,113 @@
                   </th>
                   <th style="text-align: right;">Q1 Quality Rating
                     <div class="filter-container">
-                    <div class="filter-toggle" (click)="toggleFilter('Q1QualityRating')">
-                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
-                    </div>
-                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q1QualityRating']}">
-                      <div class="filter-option" (click)="applyFilter('Q1QualityRating', 'Option 1')">Filter</div>
-                      <div class="input-box" [class.show-input]="isFilterInputOpen['Q1QualityRating']">
-                        <input type="text" placeholder=" " (blur)="toggleFilterInput('Q1QualityRating')">
+                      <div class="filter-toggle" (click)="toggleFilter('Q1QualityRating')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q1QualityRating']}">
+                        <div class="filter-option" (click)="applyFilter('Q1QualityRating', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['Q1QualityRating']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Q1QualityRating')">
+                        </div>
                       </div>
                     </div>
-                  </div>
                   </th>
                   <th style="text-align: right;">Q2 Purchase
                     <div class="filter-container">
-                    <div class="filter-toggle" (click)="toggleFilter('Q2Purchase')">
-                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
-                    </div>
-                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q2Purchase']}">
-                      <div class="filter-option" (click)="applyFilter('Q2Purchase', 'Option 1')">Filter</div>
-                      <div class="input-box" [class.show-input]="isFilterInputOpen['Q2Purchase']">
-                        <input type="text" placeholder=" " (blur)="toggleFilterInput('Q2Purchase')">
+                      <div class="filter-toggle" (click)="toggleFilter('Q2Purchase')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q2Purchase']}">
+                        <div class="filter-option" (click)="applyFilter('Q2Purchase', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['Q2Purchase']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Q2Purchase')">
+                        </div>
                       </div>
                     </div>
-                  </div>
                   </th>
-                  
+
                   <th style="text-align: right;">Q2 purchase Return
                     <div class="filter-container">
-                    <div class="filter-toggle" (click)="toggleFilter('Q2PurchaseReturn')">
-                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
-                    </div>
-                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q2PurchaseReturn']}">
-                      <div class="filter-option" (click)="applyFilter('Q2PurchaseReturn', 'Option 1')">Filter</div>
-                      <div class="input-box" [class.show-input]="isFilterInputOpen['Q2PurchaseReturn']">
-                        <input type="text" placeholder=" " (blur)="toggleFilterInput('Q2PurchaseReturn')">
+                      <div class="filter-toggle" (click)="toggleFilter('Q2PurchaseReturn')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q2PurchaseReturn']}">
+                        <div class="filter-option" (click)="applyFilter('Q2PurchaseReturn', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['Q2PurchaseReturn']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Q2PurchaseReturn')">
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </th>
+                  </th>
                   <th style="text-align: right;">Q2 Delivery Rating
                     <div class="filter-container">
-                    <div class="filter-toggle" (click)="toggleFilter('Q2DeliveryRating')">
-                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
-                    </div>
-                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q2DeliveryRating']}">
-                      <div class="filter-option" (click)="applyFilter('Q2DeliveryRating', 'Option 1')">Filter</div>
-                      <div class="input-box" [class.show-input]="isFilterInputOpen['Q2DeliveryRating']">
-                        <input type="text" placeholder=" " (blur)="toggleFilterInput('Q2DeliveryRating')">
+                      <div class="filter-toggle" (click)="toggleFilter('Q2DeliveryRating')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q2DeliveryRating']}">
+                        <div class="filter-option" (click)="applyFilter('Q2DeliveryRating', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['Q2DeliveryRating']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Q2DeliveryRating')">
+                        </div>
                       </div>
                     </div>
-                  </div>
                   </th>
                   <th style="text-align: right;">Q2 Quality Rating
                     <div class="filter-container">
-                    <div class="filter-toggle" (click)="toggleFilter('Q2QualityRating')">
-                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
-                    </div>
-                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q2QualityRating']}">
-                      <div class="filter-option" (click)="applyFilter('Q2QualityRating', 'Option 1')">Filter</div>
-                      <div class="input-box" [class.show-input]="isFilterInputOpen['Q2QualityRating']">
-                        <input type="text" placeholder=" " (blur)="toggleFilterInput('Q2QualityRating')">
+                      <div class="filter-toggle" (click)="toggleFilter('Q2QualityRating')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q2QualityRating']}">
+                        <div class="filter-option" (click)="applyFilter('Q2QualityRating', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['Q2QualityRating']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Q2QualityRating')">
+                        </div>
                       </div>
                     </div>
-                  </div>
                   </th>
                   <th style="text-align: right;">Q3 Purchase
                     <div class="filter-container">
-                    <div class="filter-toggle" (click)="toggleFilter('Q3Purchase')">
-                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
-                    </div>
-                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q3Purchase']}">
-                      <div class="filter-option" (click)="applyFilter('Q3Purchase', 'Option 1')">Filter</div>
-                      <div class="input-box" [class.show-input]="isFilterInputOpen['Q3Purchase']">
-                        <input type="text" placeholder=" " (blur)="toggleFilterInput('Q3Purchase')">
+                      <div class="filter-toggle" (click)="toggleFilter('Q3Purchase')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q3Purchase']}">
+                        <div class="filter-option" (click)="applyFilter('Q3Purchase', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['Q3Purchase']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Q3Purchase')">
+                        </div>
                       </div>
                     </div>
-                  </div>
                   </th>
                   <th style="text-align: right;">Q3 purchase Return
                     <div class="filter-container">
-                    <div class="filter-toggle" (click)="toggleFilter('Q3PurchaseReturn')">
-                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
-                    </div>
-                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q3PurchaseReturn']}">
-                      <div class="filter-option" (click)="applyFilter('Q3PurchaseReturn', 'Option 1')">Filter</div>
-                      <div class="input-box" [class.show-input]="isFilterInputOpen['Q3PurchaseReturn']">
-                        <input type="text" placeholder=" " (blur)="toggleFilterInput('Q3PurchaseReturn')">
+                      <div class="filter-toggle" (click)="toggleFilter('Q3PurchaseReturn')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q3PurchaseReturn']}">
+                        <div class="filter-option" (click)="applyFilter('Q3PurchaseReturn', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['Q3PurchaseReturn']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Q3PurchaseReturn')">
+                        </div>
                       </div>
                     </div>
-                  </div>
                   </th>
                   <th style="text-align: right;">Q3 Delivery Rating
                     <div class="filter-container">
-                    <div class="filter-toggle" (click)="toggleFilter('Q3DeliveryRating')">
-                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
-                    </div>
-                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q3DeliveryRating']}">
-                      <div class="filter-option" (click)="applyFilter('Q3DeliveryRating', 'Option 1')">Filter</div>
-                      <div class="input-box" [class.show-input]="isFilterInputOpen['Q3DeliveryRating']">
-                        <input type="text" placeholder=" " (blur)="toggleFilterInput('Q3DeliveryRating')">
+                      <div class="filter-toggle" (click)="toggleFilter('Q3DeliveryRating')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      </div>
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q3DeliveryRating']}">
+                        <div class="filter-option" (click)="applyFilter('Q3DeliveryRating', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['Q3DeliveryRating']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Q3DeliveryRating')">
+                        </div>
                       </div>
                     </div>
-                  </div>
                   </th>
                   <th style="text-align: right;">Q3 Quality Rating
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('Q3QualityRating')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q3QualityRating']}">
                         <div class="filter-option" (click)="applyFilter('Q3QualityRating', 'Option 1')">Filter</div>
@@ -320,7 +323,7 @@
                   <th style="text-align: right;">Q4 Purchase
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('Q4Purchase')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q4Purchase']}">
                         <div class="filter-option" (click)="applyFilter('Q4Purchase', 'Option 1')">Filter</div>
@@ -333,7 +336,7 @@
                   <th style="text-align: right;">Q4 purchase Return
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('Q4purchaseReturn')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q1PurchaseReturn']}">
                         <div class="filter-option" (click)="applyFilter('Q1PurchaseReturn', 'Option 1')">Filter</div>
@@ -346,7 +349,7 @@
                   <th style="text-align: right;">Q4 Delivery Rating
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('Q4DeliveryRating')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q4DeliveryRating']}">
                         <div class="filter-option" (click)="applyFilter('Q4DeliveryRating', 'Option 1')">Filter</div>
@@ -359,7 +362,7 @@
                   <th style="text-align: right;">Q4 Quality Rating
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('Q4QualityRating')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Q4QualityRating']}">
                         <div class="filter-option" (click)="applyFilter('Q4QualityRating', 'Option 1')">Filter</div>
@@ -368,18 +371,8 @@
                         </div>
                       </div>
                     </div>
-                </th>
-                  </thead>
-                
-               
-<!--                                           
-                <th colspan="24">
-                    <div class="search-container">
-                        <input type="text" [(ngModel)]="searchQuery" (input)="filterData()" placeholder="Search...">
-                    </div>
-                </th>
-                 -->
-              
+                  </th>
+              </thead>
               <tbody *ngIf="Tabledata.length !=0">
                 <tr *ngFor="let data of Tabledata;">
                   <!-- <td style="text-align: left;">{{datamonth}}</td> -->
@@ -446,7 +439,7 @@
       </div>
     </div>
   </div>
-
+</div>
 
 <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable1">
   <div class="col-12">
@@ -457,10 +450,10 @@
             <table class="table table-striped table-bordered table-hover compact marginTable">
               <thead style="position: sticky; top: 0; text-align: center;">
                 <tr>
-                  <th style="width: 20%;">Supplier Name 
+                  <th style="width: 20%;">Supplier Name
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('SupplierName')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SupplierName']}">
                         <div class="filter-option" (click)="applyFilter('SupplierName', 'Option 1')">Filter</div>
@@ -468,51 +461,53 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('SupplierName')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Avg. Purchase
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Avg.Purchase')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AvgPurchase')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Avg.Purchase']}">
-                        <div class="filter-option" (click)="applyFilter('Avg.Purchase', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Avg.Purchase']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Avg.Purchase')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AvgPurchase']}">
+                        <div class="filter-option" (click)="applyFilter('AvgPurchase', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AvgPurchase']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPurchase')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Avg. Purchase Returns
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Avg.PurchaseReturns')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AvgPurchaseReturns')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Avg.PurchaseReturns']}">
-                        <div class="filter-option" (click)="applyFilter('Avg.PurchaseReturns', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Avg.PurchaseReturns']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Avg.PurchaseReturns')">
+                      <div class="filter-options"
+                        [ngClass]="{'show-filter-options': isFilterOpen['AvgPurchaseReturns']}">
+                        <div class="filter-option" (click)="applyFilter('AvgPurchaseReturns', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AvgPurchaseReturns']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPurchaseReturns')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Avg. Purchase Schedule
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Avg.PurchaseSchedule')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AvgPurchaseSchedule')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Avg.PurchaseSchedule']}">
-                        <div class="filter-option" (click)="applyFilter('Avg.PurchaseSchedule', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Avg.PurchaseSchedule']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Avg.PurchaseSchedule')">
+                      <div class="filter-options"
+                        [ngClass]="{'show-filter-options': isFilterOpen['AvgPurchaseSchedule']}">
+                        <div class="filter-option" (click)="applyFilter('AvgPurchaseSchedule', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AvgPurchaseSchedule']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPurchaseSchedule')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Delivery Rating
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('DeliveryRating')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DeliveryRating']}">
                         <div class="filter-option" (click)="applyFilter('DeliveryRating', 'Option 1')">Filter</div>
@@ -520,12 +515,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('DeliveryRating')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;">Quality Rating
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('QualityRating')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['QualityRating']}">
                         <div class="filter-option" (click)="applyFilter('QualityRating', 'Option 1')">Filter</div>
@@ -533,168 +528,168 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('QualityRating')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Jan">Jan. GRN
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Jan.GRN')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('JanGRN')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Jan.GRN']}">
-                        <div class="filter-option" (click)="applyFilter('Jan.GRN', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Jan.GRN']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Jan.GRN')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JanGRN']}">
+                        <div class="filter-option" (click)="applyFilter('JanGRN', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['JanGRN']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('JanGRN')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Jan">Jan. CR
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Jan.CR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('JanCR')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Jan.CR']}">
-                        <div class="filter-option" (click)="applyFilter('Jan.CR', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Jan.CR']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Jan.CR')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JanCR']}">
+                        <div class="filter-option" (click)="applyFilter('JanCR', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['JanCR']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('JanCR')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Jan">Jan. Sch.
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Jan.Sch.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('JanSch')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Jan.Sch.']}">
-                        <div class="filter-option" (click)="applyFilter('Jan.Sch.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Jan.Sch.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Jan.Sch.')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JanSch']}">
+                        <div class="filter-option" (click)="applyFilter('JanSch', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['JanSch']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('JanSch')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Jan">Jan. Delv Rate1
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Jan.Delv Rate1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('JanDelvRate1')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Jan.Delv Rate1']}">
-                        <div class="filter-option" (click)="applyFilter('Jan.Delv Rate1', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Jan.DelvRate1']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Jan.DelvRate1')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JanDelvRate1']}">
+                        <div class="filter-option" (click)="applyFilter('JanDelvRate1', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['JanDelvRate1']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('JanDelvRate1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Jan">Jan. Delv Rate2
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Jan.DelvRate2')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('JanDelvRate2')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Jan.Delv Rate2']}">
-                        <div class="filter-option" (click)="applyFilter('Jan.DelvRate2', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Jan.DelvRate2']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Jan.DelvRate2')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JanDelvRate2']}">
+                        <div class="filter-option" (click)="applyFilter('JanDelvRate2', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['JanDelvRate2']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('JanDelvRate2')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Jan">Jan. Quality
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Jan.Quality')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('JanQuality')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Jan.Quality']}">
-                        <div class="filter-option" (click)="applyFilter('Jan.Quality', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Jan.Quality']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Jan.Quality')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JanQuality']}">
+                        <div class="filter-option" (click)="applyFilter('JanQuality', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['JanQuality']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('JanQuality')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Feb">Feb. GRN
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Feb.GRN')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('FebGRN')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Feb.GRN']}">
-                        <div class="filter-option" (click)="applyFilter('Feb.GRN', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Feb.GRN']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Feb.GRN')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['FebGRN']}">
+                        <div class="filter-option" (click)="applyFilter('FebGRN', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['FebGRN']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('FebGRN')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Feb">Feb. CR
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Feb.CR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('FebCR')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Feb.CR']}">
-                        <div class="filter-option" (click)="applyFilter('Feb.CR', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Feb.CR']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Feb.CR')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['FebCR']}">
+                        <div class="filter-option" (click)="applyFilter('FebCR', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['FebCR']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('FebCR')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Feb">Feb. Sch.
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Feb.Sch.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('FebSch')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Feb.Sch.']}">
-                        <div class="filter-option" (click)="applyFilter('Feb.Sch.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Feb.Sch.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Feb.Sch.')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['FebSch']}">
+                        <div class="filter-option" (click)="applyFilter('FebSch', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['FebSch']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('FebSch')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Feb">Feb. Delv Rate1
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Feb.DelvRate1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('FebDelvRate1')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Feb.DelvRate1.']}">
-                        <div class="filter-option" (click)="applyFilter('Feb.DelvRate1.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Feb.DelvRate1']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Feb.DelvRate1')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['FebDelvRate1']}">
+                        <div class="filter-option" (click)="applyFilter('FebDelvRate1', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['FebDelvRate1']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('FebDelvRate1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Feb">Feb. Delv Rate2
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Feb.DelvRate2')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('FebDelvRate2')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Feb.DelvRate2.']}">
-                        <div class="filter-option" (click)="applyFilter('Feb.DelvRate2.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Feb.DelvRate2']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Feb.DelvRate2')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['FebDelvRate2']}">
+                        <div class="filter-option" (click)="applyFilter('FebDelvRate2', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['FebDelvRate2']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('FebDelvRate2')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Feb">Feb. Quality
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Feb.Quality')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('FebQuality')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Feb.Quality']}">
-                        <div class="filter-option" (click)="applyFilter('Feb.Quality', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Feb.Quality']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Feb.Quality')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['FebQuality']}">
+                        <div class="filter-option" (click)="applyFilter('FebQuality', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['FebQuality']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('FebQuality')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="March">March GRN
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('MarchGRN')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MarchGRN']}">
                         <div class="filter-option" (click)="applyFilter('MarchGRN', 'Option 1')">Filter</div>
@@ -702,12 +697,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('MarchGRN')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="March">March CR
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('MarchCR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MarchCR']}">
                         <div class="filter-option" (click)="applyFilter('MarchCR', 'Option 1')">Filter</div>
@@ -715,25 +710,25 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('MarchCR')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="March">March Sch.
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('MarchSch.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('MarchSch')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MarchSch.']}">
-                        <div class="filter-option" (click)="applyFilter('MarchSch.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['MarchSch.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('MarchSch.')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MarchSch']}">
+                        <div class="filter-option" (click)="applyFilter('MarchSch', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['MarchSch']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('MarchSch')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="March">March Delv Rate1
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('MarchDelvRate1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MarchDelvRate1']}">
                         <div class="filter-option" (click)="applyFilter('MarchDelvRate1', 'Option 1')">Filter</div>
@@ -741,12 +736,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('MarchDelvRate1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="March">March Delv Rate2
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('MarchDelvRate2')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MarchDelvRate2']}">
                         <div class="filter-option" (click)="applyFilter('MarchDelvRate2', 'Option 1')">Filter</div>
@@ -754,12 +749,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('MarchDelvRate2')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="March">March Quality
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('MarchQuality')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MarchQuality']}">
                         <div class="filter-option" (click)="applyFilter('MarchQuality', 'Option 1')">Filter</div>
@@ -767,90 +762,90 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('MarchQuality')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Apr">Apr. GRN
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Apr.GRN')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AprGRN')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Apr.GRN']}">
-                        <div class="filter-option" (click)="applyFilter('Apr.GRN', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Apr.GRN']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Apr.GRN')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AprGRN']}">
+                        <div class="filter-option" (click)="applyFilter('AprGRN', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AprGRN']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AprGRN')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Apr">Apr. CR
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Apr.CR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AprCR')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Apr.CR']}">
-                        <div class="filter-option" (click)="applyFilter('Apr.CR', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Apr.CR']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Apr.CR')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AprCR']}">
+                        <div class="filter-option" (click)="applyFilter('AprCR', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AprCR']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AprCR')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Apr">Apr. Sch.
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Apr.Sch.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AprSch')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Apr.Sch.']}">
-                        <div class="filter-option" (click)="applyFilter('Apr.Sch.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Apr.Sch.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Apr.Sch.')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AprSch']}">
+                        <div class="filter-option" (click)="applyFilter('AprSch', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AprSch']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AprSch')">
                         </div>
                       </div>
-                    </div> 
-        
+                    </div>
+                  </th>
                   <th style="text-align: right;" *ngIf="Apr">Apr. Delv Rate1
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Apr.DelvRate1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AprDelvRate1')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Apr.DelvRate1']}">
-                        <div class="filter-option" (click)="applyFilter('Apr.DelvRate1', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Apr.DelvRate1']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Apr.DelvRate1')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AprDelvRate1']}">
+                        <div class="filter-option" (click)="applyFilter('AprDelvRate1', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AprDelvRate1']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AprDelvRate1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Apr">Apr. Delv Rate2
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Apr.DelvRate2')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AprDelvRate2')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Apr.DelvRate2']}">
-                        <div class="filter-option" (click)="applyFilter('Apr.DelvRate2', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Apr.DelvRate2']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Apr.DelvRate2')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AprDelvRate2']}">
+                        <div class="filter-option" (click)="applyFilter('AprDelvRate2', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AprDelvRate2']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AprDelvRate2')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Apr">Apr. Quality
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Apr.Quality')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AprQuality')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Apr.Quality']}">
-                        <div class="filter-option" (click)="applyFilter('Apr.Quality', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Apr.Quality']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Apr.Quality')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AprQuality']}">
+                        <div class="filter-option" (click)="applyFilter('AprQuality', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AprQuality']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AprQuality')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="May">May GRN
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('MayGRN')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MayGRN']}">
                         <div class="filter-option" (click)="applyFilter('MayGRN', 'Option 1')">Filter</div>
@@ -858,12 +853,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('MayGRN')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="May">May CR
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('MayCR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MayCR']}">
                         <div class="filter-option" (click)="applyFilter('MayCR', 'Option 1')">Filter</div>
@@ -871,25 +866,25 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('MayCR')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="May">May Sch.
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('MaySch.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('MaySch')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MaySch.']}">
-                        <div class="filter-option" (click)="applyFilter('MaySch.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['MaySch.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('MaySch.')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MaySch']}">
+                        <div class="filter-option" (click)="applyFilter('MaySch', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['MaySch']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('MaySch')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="May">May Delv Rate1
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('MayDelvRate1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MayDelvRate1']}">
                         <div class="filter-option" (click)="applyFilter('MayDelvRate1', 'Option 1')">Filter</div>
@@ -897,12 +892,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('MayDelvRate1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="May">May Delv Rate2
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('MayDelvRate2')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MayDelvRate2']}">
                         <div class="filter-option" (click)="applyFilter('MayDelvRate2', 'Option 1')">Filter</div>
@@ -910,12 +905,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('MayDelvRate2')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="May">May Quality
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('MayQuality')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['MayQuality']}">
                         <div class="filter-option" (click)="applyFilter('MayQuality', 'Option 1')">Filter</div>
@@ -923,12 +918,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('MayQuality')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="June">June GRN
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('JuneGRN')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JuneGRN']}">
                         <div class="filter-option" (click)="applyFilter('JuneGRN', 'Option 1')">Filter</div>
@@ -936,12 +931,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('JuneGRN')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="June">June CR
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('JuneCR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JuneCR']}">
                         <div class="filter-option" (click)="applyFilter('JuneCR', 'Option 1')">Filter</div>
@@ -949,25 +944,25 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('JuneCR')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="June">June Sch.
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('JuneSch.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('JuneSch')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JuneSch.']}">
-                        <div class="filter-option" (click)="applyFilter('JuneSch.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['JuneSch.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('JuneSch.')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JuneSch']}">
+                        <div class="filter-option" (click)="applyFilter('JuneSch', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['JuneSch']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('JuneSch')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="June">June Delv Rate1
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('JuneDelvRate1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JuneDelvRate1']}">
                         <div class="filter-option" (click)="applyFilter('JuneDelvRate1', 'Option 1')">Filter</div>
@@ -975,12 +970,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('JuneDelvRate1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="June">June Delv Rate2
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('JuneDelvRate2')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JuneDelvRate2']}">
                         <div class="filter-option" (click)="applyFilter('JuneDelvRate2', 'Option 1')">Filter</div>
@@ -988,12 +983,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('JuneDelvRate2')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="June">June Quality
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('JuneQuality')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JuneQuality']}">
                         <div class="filter-option" (click)="applyFilter('JuneQuality', 'Option 1')">Filter</div>
@@ -1001,12 +996,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('JuneQuality')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="July">July GRN
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('JulyGRN')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JulyGRN']}">
                         <div class="filter-option" (click)="applyFilter('JulyGRN', 'Option 1')">Filter</div>
@@ -1014,12 +1009,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('JulyGRN')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="July">July CR
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('JulyCR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JulyCR']}">
                         <div class="filter-option" (click)="applyFilter('JulyCR', 'Option 1')">Filter</div>
@@ -1027,25 +1022,25 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('JulyCR')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="July">July Sch.
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('JulySch.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('JulySch')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JulySch.']}">
-                        <div class="filter-option" (click)="applyFilter('JulySch.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['JulySch.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('JulySch.')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JulySch']}">
+                        <div class="filter-option" (click)="applyFilter('JulySch', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['JulySch']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('JulySch')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="July">July Delv Rate1
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('JulyDelvRate1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JulyDelvRate1']}">
                         <div class="filter-option" (click)="applyFilter('JulyDelvRate1', 'Option 1')">Filter</div>
@@ -1053,12 +1048,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('JulyDelvRate1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="July">July Delv Rate2
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('JulyDelvRate2')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JulyDelvRate2']}">
                         <div class="filter-option" (click)="applyFilter('JulyDelvRate2', 'Option 1')">Filter</div>
@@ -1066,12 +1061,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('JulyDelvRate2')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="July">July Quality
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('JulyQuality')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['JulyQuality']}">
                         <div class="filter-option" (click)="applyFilter('JulyQuality', 'Option 1')">Filter</div>
@@ -1079,168 +1074,168 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('JulyQuality')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Aug">Aug. GRN
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Aug.GRN')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AugGRN')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Aug.GRN']}">
-                        <div class="filter-option" (click)="applyFilter('Aug.GRN', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Aug.GRN']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Aug.GRN')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AugGRN']}">
+                        <div class="filter-option" (click)="applyFilter('AugGRN', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AugGRN']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AugGRN')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Aug">Aug. CR
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Aug.CR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AugCR')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Aug.CR']}">
-                        <div class="filter-option" (click)="applyFilter('Aug.CR', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Aug.CR']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Aug.CR')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AugCR']}">
+                        <div class="filter-option" (click)="applyFilter('AugCR', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AugCR']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AugCR')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Aug">Aug. Sch.
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Aug.Sch.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AugSch')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Aug.Sch.']}">
-                        <div class="filter-option" (click)="applyFilter('Aug.Sch.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Aug.Sch.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Aug.Sch.')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AugSch']}">
+                        <div class="filter-option" (click)="applyFilter('AugSch', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AugSch']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AugSch')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Aug">Aug. Delv Rate1
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Aug.DelvRate1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AugDelvRate1')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Aug.DelvRate1']}">
-                        <div class="filter-option" (click)="applyFilter('Aug.DelvRate1', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Aug.DelvRate1']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Aug.DelvRate1')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AugDelvRate1']}">
+                        <div class="filter-option" (click)="applyFilter('AugDelvRate1', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AugDelvRate1']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AugDelvRate1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Aug">Aug. Delv Rate2
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Aug.DelvRate2')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AugDelvRate2')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Aug.DelvRate2']}">
-                        <div class="filter-option" (click)="applyFilter('Aug.DelvRate2', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Aug.DelvRate2']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Aug.DelvRate2')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AugDelvRate2']}">
+                        <div class="filter-option" (click)="applyFilter('AugDelvRate2', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AugDelvRate2']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AugDelvRate2')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Aug">Aug. Quality
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Aug.Quality')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('AugQuality')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Aug.Quality']}">
-                        <div class="filter-option" (click)="applyFilter('Aug.Quality', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Aug.Quality']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Aug.Quality')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AugQuality']}">
+                        <div class="filter-option" (click)="applyFilter('AugQuality', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['AugQuality']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AugQuality')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
-                  <th style="text-align: right;" *ngIf="sept">sept. GRN
+                  <th style="text-align: right;" *ngIf="sept">Sept. GRN
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('sept.GRN')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('SeptGRN')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['sept.GRN']}">
-                        <div class="filter-option" (click)="applyFilter('sept.GRN', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['sept.GRN']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('sept.GRN')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SeptGRN']}">
+                        <div class="filter-option" (click)="applyFilter('SeptGRN', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['SeptGRN']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('SeptGRN')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
-                  <th style="text-align: right;" *ngIf="sept">sept. CR
+                  <th style="text-align: right;" *ngIf="sept">Sept. CR
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('sept.CR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('SeptCR')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['sept.CR']}">
-                        <div class="filter-option" (click)="applyFilter('sept.CR', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['sept.CR']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('sept.CR')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SeptCR']}">
+                        <div class="filter-option" (click)="applyFilter('SeptCR', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['SeptCR']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('SeptCR')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
-                  <th style="text-align: right;" *ngIf="sept">sept. Sch.
+                  <th style="text-align: right;" *ngIf="sept">Sept. Sch.
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('sept.Sch.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('SeptSch')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['sept.Sch.']}">
-                        <div class="filter-option" (click)="applyFilter('sept.Sch.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['sept.Sch.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('sept.Sch.')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SeptSch']}">
+                        <div class="filter-option" (click)="applyFilter('SeptSch', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['SeptSch']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('SeptSch')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
-                  <th style="text-align: right;" *ngIf="sept">sept. Delv Rate1
+                  <th style="text-align: right;" *ngIf="sept">Sept. Delv Rate1
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('sept.DelvRate1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('SeptDelvRate1')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['sept.DelvRate1']}">
-                        <div class="filter-option" (click)="applyFilter('sept.DelvRate1', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['sept.DelvRate1']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('sept.DelvRate1')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SeptDelvRate1']}">
+                        <div class="filter-option" (click)="applyFilter('SeptDelvRate1', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['SeptDelvRate1']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('SeptDelvRate1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
-                  <th style="text-align: right;" *ngIf="sept">sept. Delv Rate2
+                  <th style="text-align: right;" *ngIf="sept">Sept. Delv Rate2
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('sept.DelvRate2')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('SeptDelvRate2')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['sept.DelvRate2']}">
-                        <div class="filter-option" (click)="applyFilter('sept.DelvRate2', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['sept.DelvRate2']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('sept.DelvRate2')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SeptDelvRate2']}">
+                        <div class="filter-option" (click)="applyFilter('SeptDelvRate2', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['SeptDelvRate2']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('SeptDelvRate2')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
-                  <th style="text-align: right;" *ngIf="sept">sept. Quality
+                  <th style="text-align: right;" *ngIf="sept">Sept. Quality
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('sept.Quality')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                      <div class="filter-toggle" (click)="toggleFilter('SeptQuality')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['sept.Quality']}">
-                        <div class="filter-option" (click)="applyFilter('sept.Quality', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['sept.Quality']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('sept.Quality')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SeptQuality']}">
+                        <div class="filter-option" (click)="applyFilter('SeptQuality', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['SeptQuality']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('SeptQuality')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Oct">Oct GRN
-                    <div class="filter-container">
+                   <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('OctGRN')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['OctGRN']}">
                         <div class="filter-option" (click)="applyFilter('OctGRN', 'Option 1')">Filter</div>
@@ -1248,12 +1243,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('OctGRN')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Oct">Oct CR
-                    <div class="filter-container">
+                   <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('OctCR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['OctCR']}">
                         <div class="filter-option" (click)="applyFilter('OctCR', 'Option 1')">Filter</div>
@@ -1261,25 +1256,25 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('OctCR')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Oct">Oct Sch.
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('OctSch.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('OctSch')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['OctSch.']}">
-                        <div class="filter-option" (click)="applyFilter('OctSch.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['OctSch.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('OctSch.')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['OctSch']}">
+                        <div class="filter-option" (click)="applyFilter('OctSch', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['OctSch']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('OctSch')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Oct">Oct Delv Rate1
-                    <div class="filter-container">
+                   <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('OctDelvRate1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['OctDelvRate1']}">
                         <div class="filter-option" (click)="applyFilter('OctDelvRate1', 'Option 1')">Filter</div>
@@ -1287,12 +1282,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('OctDelvRate1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Oct">Oct Delv Rate2
-                    <div class="filter-container">
+                   <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('OctDelvRate2')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['OctDelvRate2']}">
                         <div class="filter-option" (click)="applyFilter('OctDelvRate2', 'Option 1')">Filter</div>
@@ -1300,12 +1295,12 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('OctDelvRate2')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Oct">Oct Quality
-                    <div class="filter-container">
+                   <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('OctQuality')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['OctQuality']}">
                         <div class="filter-option" (click)="applyFilter('OctQuality', 'Option 1')">Filter</div>
@@ -1313,163 +1308,163 @@
                           <input type="text" placeholder=" " (blur)="toggleFilterInput('OctQuality')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Nov">Nov. GRN
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Nov.GRN')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('NovGRN')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Nov.GRN']}">
-                        <div class="filter-option" (click)="applyFilter('Nov.GRN', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Nov.GRN']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Nov.GRN')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['NovGRN']}">
+                        <div class="filter-option" (click)="applyFilter('NovGRN', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['NovGRN']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('NovGRN')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Nov">Nov. CR
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Nov.CR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('NovCR')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Nov.CR']}">
-                        <div class="filter-option" (click)="applyFilter('Nov.CR', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Nov.CR']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Nov.CR')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['NovCR']}">
+                        <div class="filter-option" (click)="applyFilter('NovCR', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['NovCR']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('NovCR')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Nov">Nov. Sch.
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Nov.Sch.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('NovSch')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Nov.Sch.']}">
-                        <div class="filter-option" (click)="applyFilter('Nov.Sch.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Nov.Sch.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Nov.Sch.')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['NovSch']}">
+                        <div class="filter-option" (click)="applyFilter('NovSch', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['NovSch']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('NovSch')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Nov">Nov. Delv Rate1
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Nov.DelvRate1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('NovDelvRate1')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Nov.DelvRate1']}">
-                        <div class="filter-option" (click)="applyFilter('Nov.DelvRate1', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Nov.DelvRate1']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Nov.DelvRate1')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['NovDelvRate1']}">
+                        <div class="filter-option" (click)="applyFilter('NovDelvRate1', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['NovDelvRate1']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('NovDelvRate1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Nov">Nov. Delv Rate2
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Nov.DelvRate2')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('NovDelvRate2')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Nov.DelvRate2']}">
-                        <div class="filter-option" (click)="applyFilter('Nov.DelvRate2', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Nov.DelvRate2']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Nov.DelvRate2')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['NovDelvRate2']}">
+                        <div class="filter-option" (click)="applyFilter('NovDelvRate2', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['NovDelvRate2']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('NovDelvRate2')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Nov">Nov. Quality
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Nov.Quality')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('NovQuality')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Nov.Quality']}">
-                        <div class="filter-option" (click)="applyFilter('Nov.Quality', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Nov.Quality']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Nov.Quality')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['NovQuality']}">
+                        <div class="filter-option" (click)="applyFilter('NovQuality', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['NovQuality']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('NovQuality')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Dec">Dec. GRN
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Dec.GRN')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('DecGRN')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Dec.GRN']}">
-                        <div class="filter-option" (click)="applyFilter('Dec.GRN', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Dec.GRN']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Dec.GRN')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DecGRN']}">
+                        <div class="filter-option" (click)="applyFilter('DecGRN', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['DecGRN']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('DecGRN')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Dec">Dec. CR
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Dec.CR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('DecCR')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Dec.CR']}">
-                        <div class="filter-option" (click)="applyFilter('Dec.CR', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Dec.CR']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Dec.CR')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DecCR']}">
+                        <div class="filter-option" (click)="applyFilter('DecCR', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['DecCR']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('DecCR')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Dec">Dec. Sch.
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Dec.Sch.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('DecSch')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Dec.Sch.']}">
-                        <div class="filter-option" (click)="applyFilter('Dec.Sch.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Dec.Sch.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Dec.Sch.')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DecSch']}">
+                        <div class="filter-option" (click)="applyFilter('DecSch', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['DecSch']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('DecSch')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Dec">Dec. Delv Rate1
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Dec.DelvRate1')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('DecDelvRate1')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Dec.DelvRate1']}">
-                        <div class="filter-option" (click)="applyFilter('Dec.DelvRate1', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Dec.DelvRate1']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Dec.DelvRate1')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DecDelvRate1']}">
+                        <div class="filter-option" (click)="applyFilter('DecDelvRate1', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['DecDelvRate1']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('DecDelvRate1')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Dec">Dec. Delv Rate2
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Dec.DelvRate2')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('DecDelvRate2')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Dec.DelvRate2']}">
-                        <div class="filter-option" (click)="applyFilter('Dec.DelvRate2', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Dec.DelvRate2']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Dec.DelvRate2')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DecDelvRate2']}">
+                        <div class="filter-option" (click)="applyFilter('DecDelvRate2', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['DecDelvRate2']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('DecDelvRate2')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                   <th style="text-align: right;" *ngIf="Dec">Dec. Quality
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Dec.Quality')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span> 
+                   <div class="filter-container">
+                      <div class="filter-toggle" (click)="toggleFilter('DecQuality')">
+                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Dec.Quality']}">
-                        <div class="filter-option" (click)="applyFilter('Dec.Quality', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Dec.Quality']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Dec.Quality')">
+                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DecQuality']}">
+                        <div class="filter-option" (click)="applyFilter('DecQuality', 'Option 1')">Filter</div>
+                        <div class="input-box" [class.show-input]="isFilterInputOpen['DecQuality']">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('DecQuality')">
                         </div>
                       </div>
-                    </div> 
+                    </div>
                   </th>
                 </tr>
               </thead>
@@ -1644,8 +1639,6 @@
     </div>
   </div>
 </div>
-
-
 
 <div class="form-group row justify-content-md-center">
   <div class="col-sm text-center">
