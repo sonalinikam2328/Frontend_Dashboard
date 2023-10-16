@@ -197,7 +197,7 @@
                 </tr>
               </thead>
               <tbody *ngIf="Tabledata.length !=0">
-                <tr *ngFor="let data of Tabledata;let indexOfelement = index">
+                <tr *ngFor="let data of Tabledata;let indexOfelement = index"class="fixed-height-row">
                   <td class="td_left">{{data?.CUSTOMER_NAME}}</td>
                   <td class="td_left"> {{data?.MAT_NAME}}</td>
                   <td class="td_right">{{data?.PO_NO}}</td>

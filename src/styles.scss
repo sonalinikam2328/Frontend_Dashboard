@@ -69,6 +69,7 @@ select {
 
 tfoot {
   background-color: #f1f2f4;
+  
 }
 
 .card {
@@ -139,12 +140,14 @@ body[data-sidebar=dark] .navbar-brand-box {
 
 h5,
 .h5 {
-  font-size: 12px !important;
+  font-size: 15px !important;
   font-weight: 700 !important;
-  color: #04408C !important;
+  color:#564496 !important;
   text-align: center !important;
   line-height: 0.2 !important;
+  //align-items: center !important;
 }
+
 
 
 .form-control {
@@ -167,7 +170,8 @@ h5,
 
 .table-fixed {
   display: block;
-  height: 450px;
+ height: 450px;
+  
 }
 
 
@@ -242,8 +246,8 @@ html {
 .ng-dropdown-panel .scroll-host {
 
   position: fixed !important;
-  width: fit-content !important;
-
+  //width: fit-content !important;
+  width: 106px !important;
 }
 
 
@@ -391,3 +395,8 @@ h5 {
   width: 100%;
   white-space: nowrap;
 }
+.ng-select.ng-select-opened.ng-select-bottom>.ng-select-container {
+  
+  width: 106px !important;
+}
+

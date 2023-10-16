@@ -67,6 +67,23 @@
         </div>
     </form>
 </div>
+
+<div class="row" style="margin-top: 1px;" *ngIf="showtable">
+    <div class="col-lg">
+        <div class="card">
+            <div class="card-body">
+                <div class="chartjs-chart">
+                    <!-- Bar Chart -->
+                    <canvas baseChart [datasets]="datasets" chartType="bar" [options]="options" height="300"
+                        [labels]="labels">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable">
     <div class="col-12">
         <div class="table-responsive">
@@ -143,17 +160,3 @@
     </div>
 </div>
 
-<div class="row" style="margin-top: 1px;" *ngIf="showtable">
-    <div class="col-lg">
-        <div class="card">
-            <div class="card-body">
-                <div class="chartjs-chart">
-                    <!-- Bar Chart -->
-                    <canvas baseChart [datasets]="datasets" chartType="bar" [options]="options" height="300"
-                        [labels]="labels">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
