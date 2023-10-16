@@ -422,4 +422,48 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
 
   }
 
+
+  // Function for column search
+  // for filter
+  obj = {}
+  filterObject(ele, type) {
+    if (this.obj.hasOwnProperty(type)) {
+      if (ele.target.value == '') {
+        delete this.obj[type];
+      } else {
+        this.obj[type] = ele.target.value
+      }
+    } else {
+      this.obj[type] = ele.target.value
+    }
+    var filtered = this.multiFilter(this.Keyarray, this.obj);
+    this.Tabledata = filtered
+
+
+  }
+  filterObject1(ele, type) {
+    
+    type = type + 2;
+    if (this.obj.hasOwnProperty(type)) {
+      if (ele.target.value == '') {
+        delete this.obj[type];
+      } else {
+        this.obj[type] = ele.target.value
+      }
+    } else {
+      this.obj[type] = ele.target.value
+    }
+    var filtered = this.multiFilter(this.Keyarray, this.obj);
+    this.Tabledata = filtered
+
+
+  }
+
+  multiFilter(array, data) {
+    const filterKeys = Object.keys(data);
+    return array.filter((item) => {
+      return filterKeys.every(key => !!~String(item[key]).indexOf(data[key]));
+    });
+  }
+
 }

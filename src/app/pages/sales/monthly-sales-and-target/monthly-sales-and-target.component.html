@@ -74,7 +74,8 @@
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['srno']}">
                         <div class="filter-option" (click)="applyFilter('srno', 'Option 1')">Filter</div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['srno']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('srno')">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('srno')"
+                            (keyup)="filterObject($event,'0')">
                         </div>
                       </div>
                     </div>
@@ -87,12 +88,12 @@
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Month']}">
                         <div class="filter-option" (click)="applyFilter('Month', 'Option 1')">Filter</div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['Month']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Month')">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Month')"  (keyup)="filterObject($event,'1')">
                         </div>
                       </div>
                     </div>
                   </th>
-                  <th scope="col" style="width: max-content;" *ngFor="let data of Headers" style="text-align: right;">
+                  <th scope="col" style="width: max-content;" *ngFor="let data of Headers;let indexOfelement = index" style="text-align: right;">
                     {{data.VALUE}}
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter(data.VALUE)">
@@ -101,11 +102,11 @@
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen[data.VALUE]}">
                         <div class="filter-option" (click)="applyFilter(data.VALUE, 'Option 1')">Filter</div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen[data.VALUE]">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput(data.VALUE)">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput(data.VALUE)"  (keyup)="filterObject1($event,indexOfelement)">
                         </div>
                       </div>
                     </div>
-                  </th> 
+                  </th>
                 </tr>
               </thead>
               <tbody *ngIf="Tabledata.length !=0">

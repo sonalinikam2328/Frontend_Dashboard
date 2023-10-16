@@ -111,7 +111,7 @@
                   <th class="td_right">{{priviousFour | date :'MMM yyyy'}}</th>
                   <th class="td_right">{{priviousFive | date :'MMM yyyy'}}</th>
                 </tr>
-              <!-- </thead>
+                <!-- </thead>
               <thead style="position: sticky; top: 0; text-align: center;"> -->
                 <!-- <tr>                               
                 </tr>                              
@@ -121,20 +121,9 @@
                     </div>
                 </th> -->
                 <tr class="sticky-header">
-                  <th class="td_right table-header">Sr. No. 
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('SrNo')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                      </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SrNo']}">
-                        <div class="filter-option" (click)="applyFilter('SrNo', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['SrNo']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('SrNo')">
-                        </div>
-                      </div>
-                    </div>
+                  <th class="td_right table-header">Sr. No.
                   </th>
-                  <th class="td_left table-header">Name of Customer 
+                  <th class="td_left table-header">Name of Customer
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('NameofCustomer')">
                         <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
@@ -142,7 +131,8 @@
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['NameofCustomer']}">
                         <div class="filter-option" (click)="applyFilter('SrNo', 'Option 1')">Filter</div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['NameofCustomer']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('NameofCustomer')">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('NameofCustomer')"
+                            (keyup)="filterObject($event,'SUBGL_LONGNAME')">
                         </div>
                       </div>
                     </div>
@@ -152,10 +142,14 @@
                       <div class="filter-toggle" (click)="toggleFilter('PaymentAmountPlanForTheMonthRs.')">
                         <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['PaymentAmountPlanForTheMonthRs.']}">
+                      <div class="filter-options"
+                        [ngClass]="{'show-filter-options': isFilterOpen['PaymentAmountPlanForTheMonthRs.']}">
                         <div class="filter-option" (click)="applyFilter('SrNo', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['PaymentAmountPlanForTheMonthRs.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('PaymentAmountPlanForTheMonthRs.')">
+                        <div class="input-box"
+                          [class.show-input]="isFilterInputOpen['PaymentAmountPlanForTheMonthRs.']">
+                          <input type="text" placeholder=" "
+                            (blur)="toggleFilterInput('PaymentAmountPlanForTheMonthRs.')"
+                            (keyup)="filterObject($event,'INVOICE_AMT')">
                         </div>
                       </div>
                     </div>
@@ -165,15 +159,17 @@
                       <div class="filter-toggle" (click)="toggleFilter('AmountReceivedRs.')">
                         <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AmountReceivedRs.']}">
+                      <div class="filter-options"
+                        [ngClass]="{'show-filter-options': isFilterOpen['AmountReceivedRs.']}">
                         <div class="filter-option" (click)="applyFilter('SrNo', 'Option 1')">Filter</div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['AmountReceivedRs.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AmountReceivedRs.')">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AmountReceivedRs.')"
+                            (keyup)="filterObject($event,'RECEIPT_AMT')">
                         </div>
                       </div>
                     </div>
                   </th>
-                  <th class="td_right table-header">% of Recovery 
+                  <th class="td_right table-header">% of Recovery
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('%ofRecovery.')">
                         <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
@@ -181,7 +177,7 @@
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['%ofRecovery.']}">
                         <div class="filter-option" (click)="applyFilter('SrNo', 'Option 1')">Filter</div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['%ofRecovery.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('%ofRecovery.')">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('%ofRecovery.')" (keyup)="filterObject($event,'RECV_PERCENT')">
                         </div>
                       </div>
                     </div>
@@ -194,20 +190,22 @@
                       <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['CreditDay']}">
                         <div class="filter-option" (click)="applyFilter('CreditDay', 'Option 1')">Filter</div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['CreditDay']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('CreditDay')">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('CreditDay')" (keyup)="filterObject($event,'CREDIT_DAYS')">
                         </div>
                       </div>
                     </div>
                   </th>
-                  <th class="td_right table-header">Avg Payment Receipt Days 
+                  <th class="td_right table-header">Avg Payment Receipt Days
                     <div class="filter-container">
                       <div class="filter-toggle" (click)="toggleFilter('AvgPaymentReceiptDays')">
                         <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AvgPaymentReceiptDays']}">
-                        <div class="filter-option" (click)="applyFilter('AvgPaymentReceiptDays', 'Option 1')">Filter</div>
+                      <div class="filter-options"
+                        [ngClass]="{'show-filter-options': isFilterOpen['AvgPaymentReceiptDays']}">
+                        <div class="filter-option" (click)="applyFilter('AvgPaymentReceiptDays', 'Option 1')">Filter
+                        </div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['AvgPaymentReceiptDays']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPaymentReceiptDays')">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPaymentReceiptDays')" (keyup)="filterObject($event,'CR_DAYS')">
                         </div>
                       </div>
                     </div>
@@ -217,10 +215,12 @@
                       <div class="filter-toggle" (click)="toggleFilter('AvgPaymentReceiptDays1')">
                         <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AvgPaymentReceiptDays1']}">
-                        <div class="filter-option" (click)="applyFilter('AvgPaymentReceiptDays1', 'Option 1')">Filter</div>
+                      <div class="filter-options"
+                        [ngClass]="{'show-filter-options': isFilterOpen['AvgPaymentReceiptDays1']}">
+                        <div class="filter-option" (click)="applyFilter('AvgPaymentReceiptDays1', 'Option 1')">Filter
+                        </div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['AvgPaymentReceiptDays1']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPaymentReceiptDays1')">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPaymentReceiptDays1')" (keyup)="filterObject($event,'CR_DAYS1')">
                         </div>
                       </div>
                     </div>
@@ -230,10 +230,12 @@
                       <div class="filter-toggle" (click)="toggleFilter('AvgPaymentReceiptDays2')">
                         <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AvgPaymentReceiptDays2']}">
-                        <div class="filter-option" (click)="applyFilter('AvgPaymentReceiptDays2', 'Option 1')">Filter</div>
+                      <div class="filter-options"
+                        [ngClass]="{'show-filter-options': isFilterOpen['AvgPaymentReceiptDays2']}">
+                        <div class="filter-option" (click)="applyFilter('AvgPaymentReceiptDays2', 'Option 1')">Filter
+                        </div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['AvgPaymentReceiptDays2']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPaymentReceiptDays2')">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPaymentReceiptDays2')" (keyup)="filterObject($event,'CR_DAYS2')">
                         </div>
                       </div>
                     </div>
@@ -243,10 +245,12 @@
                       <div class="filter-toggle" (click)="toggleFilter('AvgPaymentReceiptDays3')">
                         <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AvgPaymentReceiptDays3']}">
-                        <div class="filter-option" (click)="applyFilter('AvgPaymentReceiptDays3', 'Option 1')">Filter</div>
+                      <div class="filter-options"
+                        [ngClass]="{'show-filter-options': isFilterOpen['AvgPaymentReceiptDays3']}">
+                        <div class="filter-option" (click)="applyFilter('AvgPaymentReceiptDays3', 'Option 1')">Filter
+                        </div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['AvgPaymentReceiptDays3']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPaymentReceiptDays3')">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPaymentReceiptDays3')" (keyup)="filterObject($event,'CR_DAYS3')">
                         </div>
                       </div>
                     </div>
@@ -256,10 +260,12 @@
                       <div class="filter-toggle" (click)="toggleFilter('AvgPaymentReceiptDays4')">
                         <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AvgPaymentReceiptDays4']}">
-                        <div class="filter-option" (click)="applyFilter('AvgPaymentReceiptDays4', 'Option 1')">Filter</div>
+                      <div class="filter-options"
+                        [ngClass]="{'show-filter-options': isFilterOpen['AvgPaymentReceiptDays4']}">
+                        <div class="filter-option" (click)="applyFilter('AvgPaymentReceiptDays4', 'Option 1')">Filter
+                        </div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['AvgPaymentReceiptDays4']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPaymentReceiptDays4')">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPaymentReceiptDays4')" (keyup)="filterObject($event,'CR_DAYS4')">
                         </div>
                       </div>
                     </div>
@@ -269,10 +275,12 @@
                       <div class="filter-toggle" (click)="toggleFilter('AvgPaymentReceiptDays5')">
                         <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['AvgPaymentReceiptDays5']}">
-                        <div class="filter-option" (click)="applyFilter('AvgPaymentReceiptDays5', 'Option 1')">Filter</div>
+                      <div class="filter-options"
+                        [ngClass]="{'show-filter-options': isFilterOpen['AvgPaymentReceiptDays5']}">
+                        <div class="filter-option" (click)="applyFilter('AvgPaymentReceiptDays5', 'Option 1')">Filter
+                        </div>
                         <div class="input-box" [class.show-input]="isFilterInputOpen['AvgPaymentReceiptDays5']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPaymentReceiptDays5')">
+                          <input type="text" placeholder=" " (blur)="toggleFilterInput('AvgPaymentReceiptDays5')" (keyup)="filterObject($event,'CR_DAYS5')">
                         </div>
                       </div>
                     </div>
@@ -281,7 +289,7 @@
               </thead>
               <tbody *ngIf="Tabledata.length !=0">
                 <tr *ngFor="let data of Tabledata;let indexOfelement = index">
-                  <td class="td_right"> {{indexOfelement +1 }}</td>
+                  <td class="td_right"> {{indexOfelement + 1 }}</td>
                   <td class="td_left">{{data.SUBGL_LONGNAME}} </td>
                   <td class="td_right"> {{data.INVOICE_AMT != null ? data.INVOICE_AMT : '-'}}</td>
                   <td class="td_right">{{data.RECEIPT_AMT != null ? data.RECEIPT_AMT : '-'}}</td>
@@ -311,9 +319,13 @@
                 <tr *ngFor="let data of FooterData;let indexOfelement = index">
                   <td class="td_right"> </td>
                   <td class="td_left" style="font-weight: bold;">{{data.SUBGL_LONGNAME}} </td>
-                  <td class="td_right" style="font-weight: bold;"> {{data.INVOICE_AMT != null ? data.INVOICE_AMT : ''}}</td>
-                  <td class="td_right" style="font-weight: bold;">{{data.RECEIPT_AMT != null ? data.RECEIPT_AMT : ''}}</td>
-                  <td class="td_right" style="font-weight: bold;">{{data.RECV_PERCENT != null ? data.RECV_PERCENT : ''}} </td>
+                  <td class="td_right" style="font-weight: bold;"> {{data.INVOICE_AMT != 'NaN' ? data.INVOICE_AMT : ''}}
+                  </td>
+                  <td class="td_right" style="font-weight: bold;">{{data.RECEIPT_AMT != 'NaN' ? data.RECEIPT_AMT : ''}}
+                  </td>
+                  <td class="td_right" style="font-weight: bold;">{{data.RECV_PERCENT != 'NaN' ? data.RECV_PERCENT :
+                    ''}}
+                  </td>
                   <td class="td_right" style="font-weight: bold;">{{data.CREDIT_DAYS != 0 ? data.CREDIT_DAYS : ''}}</td>
                   <td class="td_right" style="font-weight: bold;">{{data.CR_DAYS != 0 ? data.CR_DAYS : ''}}</td>
                   <td class="td_right" style="font-weight: bold;">{{data.CR_DAYS1 != 0 ? data.CR_DAYS1 : ''}}</td>

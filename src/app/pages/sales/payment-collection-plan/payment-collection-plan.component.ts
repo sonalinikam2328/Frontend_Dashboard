@@ -45,21 +45,21 @@ export class PaymentCollectionPlanComponent implements AfterViewInit, OnInit {
   // tableColumns = ['Sr. No.', 'Name of Customer','Payment Amount Plan For The Month Rs.','Amount Received Rs.','% of Recovery','Credit Day','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days','Avg Payment Receipt Days']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
-column: any;
-values: any;
-currentOpenFilter: string | null = null;
+  column: any;
+  values: any;
+  currentOpenFilter: string | null = null;
   renderer: any;
- toggleFilter(column: string) {
+  toggleFilter(column: string) {
     if (this.currentOpenFilter !== column) {
       // Close the previously open filter
       if (this.currentOpenFilter) {
         this.isFilterOpen[this.currentOpenFilter] = false;
         this.isFilterInputOpen[this.currentOpenFilter] = false;
       }
-  
+
       this.currentOpenFilter = column;
     }
-  
+
     this.isFilterOpen[column] = !this.isFilterOpen[column];
     this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
   }
@@ -250,6 +250,33 @@ currentOpenFilter: string | null = null;
       return user.DateValue == this.selectedMonth;
     });
     this.MonthData = filteredUsers
+  }
+
+
+  // Function for column search
+  // for filter
+  obj = {}
+  filterObject(ele, type) {
+    if (this.obj.hasOwnProperty(type)) {
+      if (ele.target.value == '') {
+        delete this.obj[type];
+      } else {
+        this.obj[type] = ele.target.value
+      }
+    } else {
+      this.obj[type] = ele.target.value
+    }
+    var filtered = this.multiFilter(this.temparray, this.obj);
+    this.Tabledata = filtered
+
+
+  }
+
+  multiFilter(array, data) {
+    const filterKeys = Object.keys(data);
+    return array.filter((item) => {
+      return filterKeys.every(key => !!~String(item[key]).indexOf(data[key]));
+    });
   }
 
 
