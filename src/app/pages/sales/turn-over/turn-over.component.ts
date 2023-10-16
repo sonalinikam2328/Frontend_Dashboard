@@ -95,6 +95,7 @@ export class TurnOverComponent {
 
   onFocus(ele: NgSelectComponent) {
     ele.open();
+    ele.close();
   }
   ngAfterViewInit(): void {
     // afterViewInit code

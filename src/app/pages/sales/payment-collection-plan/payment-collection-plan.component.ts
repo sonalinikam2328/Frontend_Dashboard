@@ -94,6 +94,7 @@ currentOpenFilter: string | null = null;
 
   onFocus(ele: NgSelectComponent) {
     ele.open();
+    ele.close();
   }
   ngAfterViewInit(): void {
     // afterViewInit code

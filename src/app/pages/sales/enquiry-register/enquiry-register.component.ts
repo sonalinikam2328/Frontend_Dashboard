@@ -90,6 +90,7 @@ toggleFilter(column: string) {
   }
   onFocus(ele: NgSelectComponent) {
     ele.open();
+    ele.close();
   }
   ngAfterViewInit(): void {
     // afterViewInit code.

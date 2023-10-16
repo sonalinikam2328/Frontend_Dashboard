@@ -96,6 +96,7 @@ export class CustomerWisePlanVsActualSaleComponent {
 
   onFocus(ele: NgSelectComponent) {
     ele.open();
+    ele.close();
   }
 
 

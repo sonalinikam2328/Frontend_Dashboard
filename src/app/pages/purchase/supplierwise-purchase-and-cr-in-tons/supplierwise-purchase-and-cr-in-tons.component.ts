@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TableComponent } from '@smart-webcomponents-angular/table';
 import { environment } from 'src/environments/environment';
 import * as  moment from 'moment';
@@ -120,30 +120,23 @@ Keyarray=[];
   isLoading1: boolean = false
   BRANCH: boolean = false
   showtable: boolean = false
-  @ViewChild('fdateInput') fdateInput: ElementRef;
 
- 
+  tableColumns = ['Supplier Name', 'Avg. Purchase','Avg. Purchase Returns','Avg. Purchase Schedule',
+  'Delivery Rating','Delivery Rating','Quality Rating','Q1 Purchase','Q1 purchase Return','Q1 Delivery Rating',
+  'Q1 Quality Rating','Q2 Purchase','Q2 purchase Return','Q2 Delivery Rating','Q2 Quality Rating','Q3 Purchase',
+  'Q3 purchase Return','Q3 Delivery Rating','Q3 Quality Rating','Q4 Purchase','Q4 purchase Return',
+  'Q4 Delivery Rating','Q4 Quality Rating']; 
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
  column: any;
  values: any;
- currentOpenFilter: string | null = null;
- toggleFilter(column: string) {
-  if (this.currentOpenFilter !== column) {
-    // Close the previously open filter
-    if (this.currentOpenFilter) {
-      this.isFilterOpen[this.currentOpenFilter] = false;
-      this.isFilterInputOpen[this.currentOpenFilter] = false;
-    }
+  renderer: any;
+  fdateInput: any;
 
-    this.currentOpenFilter = column;
+  toggleFilter(column: string) {
+    this.isFilterOpen[column] = !this.isFilterOpen[column];
+    this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
   }
-
-  this.isFilterOpen[column] = !this.isFilterOpen[column];
-  this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
-}
-
-  
 
   applyFilter(column: string, filterOption: string) {
     // Implement your filtering logic here based on the column and filterOption
@@ -161,13 +154,12 @@ Keyarray=[];
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private renderer: Renderer2,
-
   ) { }
 
 
   onFocus(ele: NgSelectComponent) {
     ele.open();
+    ele.close();
   }
 
   createForm() {
@@ -280,9 +272,6 @@ Keyarray=[];
         this.selectedBrach = this.branch[0]['CODE']
 
       }
-      setTimeout(() => {
-        this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
-      }, 100);
     });
 
     this._AppComponentService.financialYear(obj).subscribe((res) => {
@@ -294,17 +283,12 @@ Keyarray=[];
 
   ngAfterViewInit(): void {
     // afterViewInit code.
-    this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
-
-    this.init();
-    const table = document.querySelector('smart-table');
-    if (this.YEAR_NAME) {
-      this.YEAR_NAME.focus();
-    }
+      this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
+    
   }
 
   init(): void {
-    // init code.
+    // init code.ng
     const table = this.table;
 
     // table.addGroup('CREDIT_DAYS');

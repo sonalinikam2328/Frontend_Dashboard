@@ -206,14 +206,15 @@ td {
 //   width: 200000px;
 // }
 
-.table {
+// .table {
 
-  --bs-table-hover-bg: #dfe6ec !important;
-  table-layout: auto;
-  width: 100%;
-  white-space: nowrap;
+//   --bs-table-hover-bg: #dfe6ec !important;
+//   table-layout: auto;
+//   width: 100%;
+//   white-space: nowrap;
 
-}
+
+// }
 
 .marginTable {
   margin: 25px !important;
@@ -371,4 +372,22 @@ body {
 
 h5 {
   font-size: 15px;
+}
+
+.fa-fw {
+  text-align: left !important;
+  width: 25.25em !important;
+}
+.table { 
+ 
+  border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+.table {
+
+  --bs-table-hover-bg: #dfe6ec !important;
+  table-layout: auto ;
+  width: 100%;
+  white-space: nowrap;
 }

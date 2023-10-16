@@ -28,10 +28,10 @@ export class MonthlyValueAdditionTargetVsActualComponent {
   isLoading1: boolean = false;
   isLoading: boolean = false;
   BRANCH: boolean = false;
-
+  Tabledata = [];
   searchQuery: string = '';
   Keyarray = [];
-
+  
   isFilterOpen: { [key: string]: boolean } = {};
   isFilterInputOpen: { [key: string]: boolean } = {};
   data: any;
@@ -78,6 +78,7 @@ export class MonthlyValueAdditionTargetVsActualComponent {
 
   onFocus(ele: NgSelectComponent) {
     ele.open();
+    ele.close();
   }
 
   createForm() {
@@ -220,7 +221,7 @@ export class MonthlyValueAdditionTargetVsActualComponent {
     this.table.exportData(type, 'table');
   }
   Headers = [];
-  Tabledata = [];
+
   temparr = [];
   labels
   datasets

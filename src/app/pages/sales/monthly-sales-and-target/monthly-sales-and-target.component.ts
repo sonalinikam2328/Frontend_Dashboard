@@ -82,6 +82,7 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
 
   onFocus(ele: NgSelectComponent) {
     ele.open();
+    ele.close();
   }
 
   createForm() {
