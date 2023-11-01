@@ -152,7 +152,6 @@ toggleFilter(column: string) {
         this.branch = res.List
         this.isLoading1 = false
         this.selectedBrach = this.branch[0]['CODE']
-        
 
       }
       fetchData(); {
@@ -177,7 +176,6 @@ toggleFilter(column: string) {
 
   onFocus(ele: NgSelectComponent) {
     ele.open();
-    ele.close();
   }
 
   createForm() {

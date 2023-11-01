@@ -18,10 +18,9 @@
         "CUSTOMERWISEPLANVS.ACTUALSALE": " Customer Wise Plan Vs. Actual Sale",
         "MONTHLYVALUEADDITIONTARGETV/SACTUAL": "Monthly Value Addition Target V/s Actual",
         "MONTHLYSALESANDTARGET": "Monthly Sales and Target",
-        "CUSTOMERCIGRADEPERKGRATEREALIZATION": "Customerwise Per KG Rate Realization",
+        "CUSTOMERCIGRADEPERKGRATEREALIZATION": "Customer CI Grade Per KG Rate Realization",
         "ENQUIRYREGISTER": "Enquiry Register",
-        "DAILYSALESDATA": "Daily Sales Data",
-        "TURNOVER" : "Turnover"
+        "DAILYSALESDATA": "Daily Sales Data"
       }
     },
     "FINANCE": {
@@ -54,6 +53,16 @@
       "TEXT": "Quatity Control",
       "LIST": {
         "CUSTOMERWISECOMPLAINTSRECEIVED": "Customer Wise Complaints Received"
+      }
+    },
+    "CHARTS": {
+      "TEXT": "Chart",
+      "LIST": {
+        "APEX": "Apex",
+        "CHARTJS" : "Chartjs",
+        "CHARTIST": "CHARTIST",
+        "ECHART": "ECHART"
+
       }
     }
   }

@@ -91,7 +91,6 @@ currentOpenFilter: string | null = null;
 
   onFocus(ele: NgSelectComponent) {
     ele.open();
-    ele.close();
   }
 
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;

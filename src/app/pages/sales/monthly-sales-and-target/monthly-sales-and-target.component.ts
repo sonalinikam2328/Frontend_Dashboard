@@ -45,17 +45,17 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
   fdateInput: any;
 
   currentOpenFilter: string | null = null;
-  toggleFilter(column: string) {
+ toggleFilter(column: string) {
     if (this.currentOpenFilter !== column) {
       // Close the previously open filter
       if (this.currentOpenFilter) {
         this.isFilterOpen[this.currentOpenFilter] = false;
         this.isFilterInputOpen[this.currentOpenFilter] = false;
       }
-
+  
       this.currentOpenFilter = column;
     }
-
+  
     this.isFilterOpen[column] = !this.isFilterOpen[column];
     this.isFilterInputOpen[column] = false; // Close the input box when toggling the filter
   }
@@ -82,7 +82,6 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
 
   onFocus(ele: NgSelectComponent) {
     ele.open();
-    ele.close();
   }
 
   createForm() {
@@ -236,9 +235,9 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
   labels
   datasets
   options
-  arrdata
-  arrdata1
-  arrdata2
+  arrdata = []
+  arrdata1 = []
+  arrdata2 = []
   loadData() {
     this.Tabledata = []
     this.temparr = []
@@ -282,26 +281,31 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
             const propertyValues = Object.values(res.List[i]);
             this.Keyarray.push(propertyValues)
             this.temparr.push(propertyValues)
+
+
           }
 
-
+          
           this.arrdata = (this.temparr[this.temparr.length - 4])
           this.arrdata1 = (this.temparr[this.temparr.length - 2])
 
           this.arrdata2 = (this.temparr[this.temparr.length - 1])
 
           let name = this.arrdata[1]
-
-          this.arrdata = this.arrdata.slice(4);
-          this.arrdata = this.arrdata.slice(0, -2);
+          this.arrdata.pop()
+          this.arrdata.pop()
+          this.arrdata.splice(0, 1)[0]
+          this.arrdata.splice(0, 1)[0]
 
           let name2 = this.arrdata1[1]
-          this.arrdata1 = this.arrdata1.slice(4);
-          this.arrdata1 = this.arrdata1.slice(0, -2);
+          this.arrdata1.pop()
+          this.arrdata1.splice(0, 1)[0]
+          this.arrdata1.splice(0, 1)[0]
 
           let name3 = this.arrdata2[1]
-          this.arrdata2 = this.arrdata2.slice(4);
-          this.arrdata2 = this.arrdata2.slice(0, -2);
+          this.arrdata2.pop()
+          this.arrdata2.splice(0, 1)[0]
+          this.arrdata2.splice(0, 1)[0]
 
           this.Tabledata = this.Keyarray
           this.isLoading = false;
@@ -420,50 +424,6 @@ export class MonthlySalesAndTargetComponent implements AfterViewInit {
     }
 
 
-  }
-
-
-  // Function for column search
-  // for filter
-  obj = {}
-  filterObject(ele, type) {
-    if (this.obj.hasOwnProperty(type)) {
-      if (ele.target.value == '') {
-        delete this.obj[type];
-      } else {
-        this.obj[type] = ele.target.value
-      }
-    } else {
-      this.obj[type] = ele.target.value
-    }
-    var filtered = this.multiFilter(this.Keyarray, this.obj);
-    this.Tabledata = filtered
-
-
-  }
-  filterObject1(ele, type) {
-    
-    type = type + 2;
-    if (this.obj.hasOwnProperty(type)) {
-      if (ele.target.value == '') {
-        delete this.obj[type];
-      } else {
-        this.obj[type] = ele.target.value
-      }
-    } else {
-      this.obj[type] = ele.target.value
-    }
-    var filtered = this.multiFilter(this.Keyarray, this.obj);
-    this.Tabledata = filtered
-
-
-  }
-
-  multiFilter(array, data) {
-    const filterKeys = Object.keys(data);
-    return array.filter((item) => {
-      return filterKeys.every(key => !!~String(item[key]).indexOf(data[key]));
-    });
   }
 
 }

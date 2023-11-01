@@ -87,25 +87,36 @@
                                     </div>
                                 </th>
                                 <tr *ngIf="Headers.length !=0">
-                                    <th class="td_left" style="text-align:r;">Month
+                                    <!-- <th class="td_left" style="text-align:r;">Month
                                         <div class="filter-container">
-                                            <div class="filter-toggle" (click)="toggleFilter(column)">
+                                            <div class="filter-toggle" (click)="toggleFilter('Month')">
                                                 <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
                                             </div>
                                             <div class="filter-options"
-                                                [ngClass]="{'show-filter-options': isFilterOpen[column]}">
-                                                <div class="filter-option" (click)="applyFilter(column, 'Option 1')">
+                                                [ngClass]="{'show-filter-options': isFilterOpen['Month']}">
+                                                <div class="filter-option" (click)="applyFilter('Month', 'Option 1')">
                                                     Filter</div>
-                                                <div class="input-box" [class.show-input]="isFilterInputOpen[column]">
+                                                <div class="input-box" [class.show-input]="isFilterInputOpen['Month']">
                                                     <input type="text" placeholder=" "
-                                                        (blur)="toggleFilterInput(column)">
+                                                        (blur)="toggleFilterInput('Month')">
                                                 </div>
                                             </div>
                                         </div>
-                                    </th>
+                                    </th> -->
+                                    <th class="td_left" style="text-align:r;">
+                                        <div class="filter-container">Month
+                                          
+                                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('Month')"></span>
+                                        </div>
+                                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Month']}">
+                                          <div class="filter-option" (click)="applyFilter('Month', 'Option 1')">Filter</div>
+                                          <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['Month']}">
+                                            <input type="text" placeholder="" (blur)="toggleFilterInput(' Month')">
+                                          </div>
+                                        </div>
+                                      </th>
 
-
-                                    <th  *ngFor="let data of Headers " style="text-align:left;">
+                                    <!-- <th  *ngFor="let data of Headers " style="text-align:left;">
                                         {{data.MAT_NAME}}
                                         <div class="filter-container">
                                             <div class="filter-toggle" (click)="toggleFilter(data.MAT_NAME)">
@@ -122,7 +133,20 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </th>
+                                    </th> -->
+                                    <th scope="col" *ngFor="let data of Headers" style="text-align: left;">
+                   
+                                        <div class="filter-container">{{data.MAT_NAME}}
+                                          
+                                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter(data.MAT_NAME)"></span>
+                                        </div>
+                                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen[data.MAT_NAME]}">
+                                          <div class="filter-option" (click)="applyFilter('column' , 'Option 1')">Filter</div>
+                                          <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen[data.MAT_NAME]}">
+                                            <input type="text" placeholder="" (blur)="toggleFilterInput(data.MAT_NAME)">
+                                          </div>
+                                        </div>
+                                      </th>
                                 </tr>
 
                             </thead>

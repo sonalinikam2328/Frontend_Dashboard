@@ -49,21 +49,6 @@
   </form>
 </div>
 
-<div class="row" *ngIf="showtable" style="margin: 3%;">
-  <div class="col-lg">
-    <div class="card">
-      <div class="card-body">
-        <div class="chartjs-chart">
-          <!-- Line Chart -->
-          <canvas baseChart height="300" [datasets]="datasets" [labels]="labels" [options]="options" chartType="line">
-          </canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <div class="row" id="r1" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="showtable">
   <div class="col-12">
     <div class="table-responsive">
@@ -81,44 +66,44 @@
                   </div>
                 </th>
                 <tr *ngIf="Headers.length !=0">
-                  <th class="td_right">Sr. No.
+                 
+                  <th class="td_left table-header">
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('srno')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                      </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['srno']}">
-                        <div class="filter-option" (click)="applyFilter('srno', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['srno']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('srno')"
-                            (keyup)="filterObject($event,'0')">
-                        </div>
+                      Sr. No. 
+                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('SrNo')"></span>
+                    </div>
+                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SrNo']}">
+                      <div class="filter-option" (click)="applyFilter('SrNo', 'Option 1')">Filter</div>
+                      <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['SrNo']}">
+                        <input type="text" placeholder="" (blur)="toggleFilterInput('SrNo')">
                       </div>
                     </div>
                   </th>
-                  <th class="td_left">Month
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Month')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                      </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Month']}">
-                        <div class="filter-option" (click)="applyFilter('Month', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Month']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Month')"  (keyup)="filterObject($event,'1')">
-                        </div>
+                 
+                  <th class="td_left ">
+                    <div class="filter-container">Month
+                      
+                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('Month')"></span>
+                    </div>
+                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Month']}">
+                      <div class="filter-option" (click)="applyFilter('Month', 'Option 1')">Filter</div>
+                      <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['Month']}">
+                        <input type="text" placeholder="" (blur)="toggleFilterInput(' Month')">
                       </div>
                     </div>
                   </th>
-                  <th scope="col" style="width: max-content;" *ngFor="let data of Headers;let indexOfelement = index" style="text-align: right;">
-                    {{data.VALUE}}
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter(data.VALUE)">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                      </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen[data.VALUE]}">
-                        <div class="filter-option" (click)="applyFilter(data.VALUE, 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen[data.VALUE]">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput(data.VALUE)"  (keyup)="filterObject1($event,indexOfelement)">
-                        </div>
+                  
+                  
+                  <th scope="col" *ngFor="let data of Headers" style="text-align: right;">
+                   
+                    <div class="filter-container">{{data.VALUE}}
+                      
+                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter(data.VALUE)"></span>
+                    </div>
+                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen[data.VALUE]}">
+                      <div class="filter-option" (click)="applyFilter('column' , 'Option 1')">Filter</div>
+                      <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen[data.VALUE]}">
+                        <input type="text" placeholder="" (blur)="toggleFilterInput(data.VALUE)">
                       </div>
                     </div>
                   </th>
@@ -142,6 +127,19 @@
   </div>
 </div>
 
+<div class="row" *ngIf="showtable" style="margin: 3%;">
+  <div class="col-lg">
+    <div class="card">
+      <div class="card-body">
+        <div class="chartjs-chart">
+          <!-- Line Chart -->
+          <canvas baseChart height="300" [datasets]="datasets" [labels]="labels" [options]="options" chartType="line">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

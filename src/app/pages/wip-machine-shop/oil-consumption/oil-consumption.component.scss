@@ -1,16 +1,7 @@
 
-.filter-input-box {
-    position: relative;
-    display: inline-block;
-}
-
-.filter-input {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-}
-
-.filter-input-box:hover .filter-input {
-    display: block;
-}
+   th:last-child .filter-options {
+    position: absolute !important;
+    border-top: none !important;
+    border-radius: 0 0 4px 4px !important;
+    right: 0 !important; /* Position to the right */
+    }

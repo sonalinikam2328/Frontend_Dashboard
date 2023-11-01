@@ -89,115 +89,112 @@
                     </div>
                 </th>
                 <tr>
-                  <th class="td_left" style="width: 20%;">Customer Name 
+                  
+                  <th class="td_left" style="width: 20%;">
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('CustomerName')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                      </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['CustomerName']}">
-                        <div class="filter-option" (click)="applyFilter('CustomerName', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['CustomerName']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('CustomerName')">
-                        </div>
-                      </div>
-                    </div> 
-                  </th>
-                  <th class="td_left">Part Name 
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('PartName')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                      </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['PartName']}">
-                        <div class="filter-option" (click)="applyFilter('PartName', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['PartName']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('PartName')">
-                        </div>
-                      </div>
-                    </div> 
-                  </th>
-                  <th class="td_Right">Development P.O.No/Referance
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('DevelopmentP.O.No/Referance')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                      </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DevelopmentP.O.No/Referance']}">
-                        <div class="filter-option" (click)="applyFilter('DevelopmentP.O.No/Referance', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['DevelopmentP.O.No/Referance']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('DevelopmentP.O.No/Referance')">
-                        </div>
+                      Customer Name
+                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('CustomerName')"></span>
+                    </div>
+                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['CustomerName']}">
+                      <div class="filter-option" (click)="applyFilter('CustomerName', 'Option 1')">Filter</div>
+                      <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['CustomerName']}">
+                        <input type="text" placeholder="" (blur)="toggleFilterInput('CustomerName')">
                       </div>
                     </div>
                   </th>
-                  <th class="td_right">Approved Development Cost In INR
+                  
+                  <th class="td_left">
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('ApprovedDevelopmentCostInINR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                      </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['ApprovedDevelopmentCostInINR']}">
-                        <div class="filter-option" (click)="applyFilter('ApprovedDevelopmentCostInINR', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['ApprovedDevelopmentCostInINR']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('ApprovedDevelopmentCostInINR')">
-                        </div>
+                      Part Name 
+                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('PartName')"></span>
+                    </div>
+                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['PartName']}">
+                      <div class="filter-option" (click)="applyFilter('PartName', 'Option 1')">Filter</div>
+                      <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['PartName']}">
+                        <input type="text" placeholder="" (blur)="toggleFilterInput('PartName')">
                       </div>
                     </div>
                   </th>
-                  <th class="td_left">1st 50% Debit Note/Invoice No.
+                 
+                  <th class="td_right">
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('1st50%DebitNote/InvoiceNo.')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
+                      Development P.O.No/Referance
+                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('DevelopmentP.O.No/Referance')"></span>
+                    </div>
+                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DevelopmentP.O.No/Referance']}">
+                      <div class="filter-option" (click)="applyFilter('DevelopmentP.O.No/Referance', 'Option 1')">Filter</div>
+                      <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['DevelopmentP.O.No/Referance']}">
+                        <input type="text" placeholder="" (blur)="toggleFilterInput('DevelopmentP.O.No/Referance')">
                       </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['1st50%DebitNote/InvoiceNo.']}">
-                        <div class="filter-option" (click)="applyFilter('1st50%DebitNote/InvoiceNo.', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['1st50%DebitNote/InvoiceNo.']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('1st50%DebitNote/InvoiceNo.')">
-                        </div>
+                    </div>
+               </th>
+               <th class="td_right">
+                    <div class="filter-container">
+                      Approved Development Cost In INR 
+                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('ApprovedDevelopmentCostInINR')"></span>
+                    </div>
+                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['ApprovedDevelopmentCostInINR']}">
+                      <div class="filter-option" (click)="applyFilter('ApprovedDevelopmentCostInINR', 'Option 1')">Filter</div>
+                      <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['ApprovedDevelopmentCostInINR']}">
+                        <input type="text" placeholder="" (blur)="toggleFilterInput('ApprovedDevelopmentCostInINR')">
+                      </div>
+                    </div>
+               </th>
+               
+              <th class="td_left">
+                <div class="filter-container">
+                  1st 50% Debit Note/Invoice No.
+                  <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('1st50%DebitNote/InvoiceNo.')"></span>
+                </div>
+                <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['1st50%DebitNote/InvoiceNo.']}">
+                  <div class="filter-option" (click)="applyFilter('1st50%DebitNote/InvoiceNo.', 'Option 1')">Filter</div>
+                  <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['1st50%DebitNote/InvoiceNo.']}">
+                    <input type="text" placeholder="" (blur)="toggleFilterInput('1st50%DebitNote/InvoiceNo.')">
+                  </div>
+                </div>
+              </th>
+               <th class="td_left">
+                    <div class="filter-container">
+                      Balance 50% Debit Note/Invoice No.
+                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('Balance50%DebitNote/InvoiceNo')"></span>
+                    </div>
+                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Balance50%DebitNote/InvoiceNo']}">
+                      <div class="filter-option" (click)="applyFilter('Balance50%DebitNote/InvoiceNo', 'Option 1')">Filter</div>
+                      <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['Balance50%DebitNote/InvoiceNo']}">
+                        <input type="text" placeholder="" (blur)="toggleFilterInput('Balance50%DebitNote/InvoiceNo')">
                       </div>
                     </div>
                   </th>
-                  <th class="td_left">Balance 50% Debit Note/Invoice No.
+                 
+                  <th class="td_Right">
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('Balance50%DebitNote/InvoiceNo')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                      </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Balance50%DebitNote/InvoiceNo']}">
-                        <div class="filter-option" (click)="applyFilter('Balance50%DebitNote/InvoiceNo', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['Balance50%DebitNote/InvoiceNo']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('Balance50%DebitNote/InvoiceNo')">
-                        </div>
+                      Development Cost Received In INR
+                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('DevelopmentCostReceivedInINR')"></span>
+                    </div>
+                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DevelopmentCostReceivedInINR']}">
+                      <div class="filter-option" (click)="applyFilter('DevelopmentCostReceivedInINR', 'Option 1')">Filter</div>
+                      <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['DevelopmentCostReceivedInINR']}">
+                        <input type="text" placeholder="" (blur)="toggleFilterInput('DevelopmentCostReceivedInINR')">
                       </div>
                     </div>
-                  </th>
-                  <th class="td_right">Development Cost Received In INR
+               </th>
+
+              <th class="td_Right">
                     <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('DevelopmentCostReceivedInINR')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                      </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['DevelopmentCostReceivedInINR']}">
-                        <div class="filter-option" (click)="applyFilter('DevelopmentCostReceivedInINR', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['DevelopmentCostReceivedInINR']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('DevelopmentCostReceivedInINR')">
-                        </div>
+                      Balanced D.C. In INR to be Received
+                      <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('BalancedD.C.InINRtobeReceived')"></span>
+                    </div>
+                    <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['BalancedD.C.InINRtobeReceived']}">
+                      <div class="filter-option" (click)="applyFilter('BalancedD.C.InINRtobeReceived', 'Option 1')">Filter</div>
+                      <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['BalancedD.C.InINRtobeReceived']}">
+                        <input type="text" placeholder="" (blur)="toggleFilterInput('BalancedD.C.InINRtobeReceived')">
                       </div>
                     </div>
-                   
-                  </th>
-                  <th class="td_right">Balanced D.C. In INR to be Received
-                    <div class="filter-container">
-                      <div class="filter-toggle" (click)="toggleFilter('BalancedD.C.InINRtobeReceived')">
-                        <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                      </div>
-                      <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['BalancedD.C.InINRtobeReceived']}">
-                        <div class="filter-option" (click)="applyFilter('BalancedD.C.InINRtobeReceived', 'Option 1')">Filter</div>
-                        <div class="input-box" [class.show-input]="isFilterInputOpen['BalancedD.C.InINRtobeReceived']">
-                          <input type="text" placeholder=" " (blur)="toggleFilterInput('BalancedD.C.InINRtobeReceived')">
-                        </div>
-                      </div>
-                    </div>
-                  </th>
+               </th>
                 </tr>
               </thead>
               <tbody *ngIf="Tabledata.length !=0">
-                <tr *ngFor="let data of Tabledata;let indexOfelement = index"class="fixed-height-row">
+                <tr *ngFor="let data of Tabledata;let indexOfelement = index">
                   <td class="td_left">{{data?.CUSTOMER_NAME}}</td>
                   <td class="td_left"> {{data?.MAT_NAME}}</td>
                   <td class="td_right">{{data?.PO_NO}}</td>

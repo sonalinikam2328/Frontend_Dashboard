@@ -16,10 +16,11 @@ import { AppComponentService } from 'src/app/app-component.service';
   templateUrl: './supplier-wise-boring-recovery-details.component.html',
   styleUrls: ['./supplier-wise-boring-recovery-details.component.scss']
 })
-export class SupplierWiseBoringRecoveryDetailsComponent implements OnInit {
+export class SupplierWiseBoringRecoveryDetailsComponent {
   filterValues: string[] = new Array(Headers.length).fill('');
   columnOptions: any[] = []; 
   showColumnDropdown: boolean = true;
+  @ViewChild('YEAR_NAME', { static: false }) YEAR_NAME: NgSelectComponent;
   @ViewChild('table', { read: TableComponent, static: false }) table!: TableComponent;
   filterInputValue = '';
   selectedColumn:any;
@@ -84,20 +85,20 @@ toggleFilterInput(column: string) {
  }
 
 
-// showFilterInput(event: MouseEvent) {
-//   const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
-//   if (filterInput) {
-//       filterInput.classList.add('show');
-//   }
-// }
+showFilterInput(event: MouseEvent) {
+  const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
+  if (filterInput) {
+      filterInput.classList.add('show');
+  }
+}
 
-// // Method to hide filter input
-// hideFilterInput(event: MouseEvent) {
-//   const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
-//   if (filterInput) {
-//       filterInput.classList.remove('show');
-//   }
-// }
+// Method to hide filter input
+hideFilterInput(event: MouseEvent) {
+  const filterInput = (event.currentTarget as Element).querySelector('.filter-input');
+  if (filterInput) {
+      filterInput.classList.remove('show');
+  }
+}
 onFilterInputChange(value: string) {
 
 }
@@ -129,19 +130,14 @@ onFilterInputChange(value: string) {
 
   ngAfterViewInit(): void {
     // afterViewInit code.
-     this.init()
-     const table=document.querySelector('smart-table');
+
     this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
   }
   init() {
-    const table=this.table;
     // throw new Error('Method not implemented.');
   }
   
-  handleClick(event: Event, type: String) {
-    this.table.exportData(type, 'table');
-  } 
-  
+
   filterData() {
     const searchQuery = this.searchQuery.trim().toLowerCase(); // Convert search query to lowercase
   
@@ -282,7 +278,6 @@ onFilterInputChange(value: string) {
       this.previousDate = null;
     }
   }
-  
   upmonth() {
     if (this.selectedDate) {
       const selectedMoment = moment(this.selectedDate);

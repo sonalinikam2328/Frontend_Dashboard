@@ -4,3 +4,11 @@
     left: 55%;
     transform: translate(-50%, -50%);
 }
+
+
+th:last-child .filter-options {
+    position: absolute !important;
+    border-top: none !important;
+    border-radius: 0 0 4px 4px !important;
+    right: 0 !important; /* Position to the right */
+    }

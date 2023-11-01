@@ -7,8 +7,8 @@ import { FormBuilder, FormGroup, Validators, } from "@angular/forms";
 import { NgSelectComponent } from "@ng-select/ng-select";
 import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { CommonModule } from '@angular/common';
+
+
 import { DevelopmentcostdetailsService } from './developmentcostdetails.service';
 import { AppComponentService } from 'src/app/app-component.service';
 @Component({
@@ -52,7 +52,6 @@ export class DevelopmentCostDetailsComponent implements OnInit {
   values: any;
 
   currentOpenFilter: string | null = null;
-  table: any;
  toggleFilter(column: string) {
     if (this.currentOpenFilter !== column) {
       // Close the previously open filter
@@ -104,13 +103,9 @@ export class DevelopmentCostDetailsComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.init();
+
     const table = document.querySelector('smart-table');
     this.renderer.selectRootElement(this.fdateInput.nativeElement).focus();
-  }
-  init():void {
-    const table = this.table;
-
   }
 
 

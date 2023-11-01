@@ -89,7 +89,6 @@ export class CustomerCIGradePerKgRateRealizationComponent {
 
   onFocus(ele: NgSelectComponent) {
     ele.open();
-    ele.close();
   }
 
   ngAfterViewInit(): void {

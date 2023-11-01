@@ -2,15 +2,21 @@
     background-color:#b8cfee; /* Change this to your desired background color */
     color: #495057; /* Change this to your desired text color */
     font-weight: bold;
-    // text-align: center;
+    text-align: center;
   }
   
   
   .sticky-header {
     position: sticky;
     top: 0;
-    background-color: #333;
-    color: white; 
     font-weight: bold;
-    // text-align: center;
+    text-align: center;
   }
+  
+
+  th:last-child .filter-options {
+    position: absolute !important;
+    border-top: none !important;
+    border-radius: 0 0 4px 4px !important;
+    right: 0 !important; /* Position to the right */
+    }

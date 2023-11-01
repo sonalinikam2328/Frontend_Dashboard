@@ -87,72 +87,71 @@
                                     </div>
                                 </th>
                                 <tr>
-                                    <th scope="col" class="td_right">Sr.No.
+                                   
+                                    <th scope="col"  class="td_right">
                                         <div class="filter-container">
-                                            <div class="filter-toggle" (click)="toggleFilter('SrNo')">
-                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                                            </div>
-                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SrNo']}">
-                                              <div class="filter-option" (click)="applyFilter('SrNo', 'Option 1')">Filter</div>
-                                              <div class="input-box" [class.show-input]="isFilterInputOpen['SrNo']">
-                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('SrNo')">
-                                              </div>
-                                            </div>
+                                          Sr. No. 
+                                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('SrNo')"></span>
+                                        </div>
+                                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['SrNo']}">
+                                          <div class="filter-option" (click)="applyFilter('SrNo', 'Option 1')">Filter</div>
+                                          <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['SrNo']}">
+                                            <input type="text" placeholder="" (blur)="toggleFilterInput('SrNo')">
                                           </div>
-                                    </th>
-                                    <th scope="col" class="td_left">Customer
+                                        </div>
+                                      </th>
+                                 
+                                    <th scope="col"  class="td_left">
                                         <div class="filter-container">
-                                            <div class="filter-toggle" (click)="toggleFilter('Customer')">
-                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                                            </div>
-                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Customer']}">
-                                              <div class="filter-option" (click)="applyFilter('Customer', 'Option 1')">Filter</div>
-                                              <div class="input-box" [class.show-input]="isFilterInputOpen['Customer']">
-                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('Customer')">
-                                              </div>
-                                            </div>
+                                            Customer
+                                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('Customer')"></span>
+                                        </div>
+                                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Customer']}">
+                                          <div class="filter-option" (click)="applyFilter('Customer', 'Option 1')">Filter</div>
+                                          <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['Customer']}">
+                                            <input type="text" placeholder="" (blur)="toggleFilterInput('Customer')">
                                           </div>
-                                    </th>
-                                    <th scope="col" class="td_right">Sch. Qty
+                                        </div>
+                                      </th>
+                                    
+                                    <th scope="col"  class="td_left">
                                         <div class="filter-container">
-                                            <div class="filter-toggle" (click)="toggleFilter('Sch.Qty')">
-                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                                            </div>
-                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Sch.Qty']}">
-                                              <div class="filter-option" (click)="applyFilter('Sch.Qty', 'Option 1')">Filter</div>
-                                              <div class="input-box" [class.show-input]="isFilterInputOpen['Sch.Qty']">
-                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('Sch.Qty')">
-                                              </div>
-                                            </div>
+                                            Sch. Qty
+                                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('Sch.Qty')"></span>
+                                        </div>
+                                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Sch.Qty']}">
+                                          <div class="filter-option" (click)="applyFilter('Sch.Qty', 'Option 1')">Filter</div>
+                                          <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['Sch.Qty']}">
+                                            <input type="text" placeholder="" (blur)="toggleFilterInput('Sch.Qty')">
                                           </div>
-                                    </th>
-                                    <th scope="col" class="td_right">Disp. Qty
+                                        </div>
+                                      </th>
+                                    
+                                    <th scope="col"  class="td_left">
                                         <div class="filter-container">
-                                            <div class="filter-toggle" (click)="toggleFilter('Disp.Qty')">
-                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                                            </div>
-                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Disp.Qty']}">
-                                              <div class="filter-option" (click)="applyFilter('Disp.Qty', 'Option 1')">Filter</div>
-                                              <div class="input-box" [class.show-input]="isFilterInputOpen['Disp.Qty']">
-                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('Disp.Qty')">
-                                              </div>
-                                            </div>
+                                            Disp.Qty
+                                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('Disp.Qty')"></span>
+                                        </div>
+                                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Disp.Qty']}">
+                                          <div class="filter-option" (click)="applyFilter('Disp.Qty', 'Option 1')">Filter</div>
+                                          <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['Disp.Qty']}">
+                                            <input type="text" placeholder="" (blur)="toggleFilterInput('Disp.Qty')">
                                           </div>
-                                    </th>
-                                    <th scope="col" class="td_right">Adherence
+                                        </div>
+                                      </th>
+                                    
+                                    <th scope="col"  class="td_left">
                                         <div class="filter-container">
-                                            <div class="filter-toggle" (click)="toggleFilter('Adherence')">
-                                              <span class="tnb-icon fa fa-caret-down" aria-hidden="true"></span>
-                                            </div>
-                                            <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Adherence']}">
-                                              <div class="filter-option" (click)="applyFilter('Adherence', 'Option 1')">Filter</div>
-                                              <div class="input-box" [class.show-input]="isFilterInputOpen['Adherence']">
-                                                <input type="text" placeholder=" " (blur)="toggleFilterInput('Adherence')">
-                                              </div>
-                                            </div>
+                                            Adherence
+                                          <span class="tnb-icon fa fa-caret-down" aria-hidden="true" (click)="toggleFilter('Adherence')"></span>
+                                        </div>
+                                        <div class="filter-options" [ngClass]="{'show-filter-options': isFilterOpen['Adherence']}">
+                                          <div class="filter-option" (click)="applyFilter('Adherence', 'Option 1')">Filter</div>
+                                          <div class="input-box" [ngClass]="{'show-input': isFilterInputOpen['Adherence']}">
+                                            <input type="text" placeholder="" (blur)="toggleFilterInput('Adherence')">
                                           </div>
-                                    </th>
-
+                                        </div>
+                                      </th>
                                     
                   
                                     </tr>
